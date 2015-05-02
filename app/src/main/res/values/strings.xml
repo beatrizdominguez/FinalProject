@@ -20,6 +20,10 @@
     <string name="action_search">Buscar</string>
     <string name="action_back">Volver</string>
     <string name="action_exit">Salir</string>
+    <!-- Menu contextual -->
+    <string name="action_remove">Eliminar</string>
+    <string name="action_modify">Modificar</string>
+
 
     <!-- Buttons -->
     <string name="action_add">Añadir</string>
@@ -57,6 +61,12 @@
     <!-- <string name="action_save">Guardar</string> -->
     <string name="txt_delete_cat">Eliminar categoría</string>
     <!-- <string name="action_delete">Eliminar</string> -->
+
+
+    <!-- Toast messages -->
+    <string name="txt_remove">La prenda ha sido eliminada</string>
+
+
 
 
     <!-- Nombres de los items -->

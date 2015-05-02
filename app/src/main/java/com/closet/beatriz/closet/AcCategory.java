@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 public class AcCategory extends Activity {
 
     public final static int REQUEST_ADD = 1;
-    GridView camisetas;
+    GridView lv;
     AdapterItem adaptador;
     private ArrayList<Item> lista = new ArrayList<Item>();
     String category;
@@ -47,20 +49,23 @@ public class AcCategory extends Activity {
         // creamos el adaptador
         adaptador = new AdapterItem(this.getBaseContext(), lista);
         // creamos el adaptador
-        camisetas = (GridView) findViewById(R.id.gridOneCategory);
+        lv = (GridView) findViewById(R.id.gridOneCategory);
         // asociar menu contextual
-        registerForContextMenu(camisetas);
-        camisetas.setAdapter(adaptador);
+        registerForContextMenu(lv);
+        lv.setAdapter(adaptador);
+
+        // asociar menu contextual
+        registerForContextMenu(lv);
+        lv.setAdapter(adaptador);
 
         Log.e("TAG", "before loadImages()");
-        loadImages(lista);
+        //loadImages(lista);
 
         usdbh.cargarLista(lista);
 
 
-
         // definir el listener del listview
-        camisetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -68,7 +73,7 @@ public class AcCategory extends Activity {
                 category = "Camisetas";
 
                 Item i = null;
-                i = (Item) camisetas.getItemAtPosition(position);
+                i = (Item) lv.getItemAtPosition(position);
                 Log.e("TAG", "listener del gridview");
                 Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
                 Intent intentVer = new Intent(AcCategory.this, AcItemDetail.class);
@@ -147,6 +152,15 @@ public class AcCategory extends Activity {
         return true;
     }
 
+    // menu contextual
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_ctx, menu);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -177,4 +191,52 @@ public class AcCategory extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    // menuu contextual
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+                .getMenuInfo();
+
+
+        // guardamos la posición del item
+        pos = info.position;
+        Log.e("ID-click", String.valueOf(pos));
+
+        Item i = null;
+
+        i = (Item) lv.getItemAtPosition(pos);
+
+        // segÃºn la opción seleccionada hacemos una cosa y otra
+        switch (item.getItemId()) {
+            case R.id.CtxLblModificar:
+
+
+                // modificar(pos);
+                Toast.makeText(this, "Modificar item", Toast.LENGTH_SHORT).show();
+
+                return true;
+
+            // borrar
+            case R.id.CtxLblBorrar:
+
+               //delete from the DB
+                usdbh.deleteItem(i.getId());
+
+                //remove on ArrayList
+                lista.remove(pos);
+                adaptador.notifyDataSetChanged();
+
+                //user mesage
+                Toast.makeText(this, R.string.txt_remove, Toast.LENGTH_SHORT).show();
+
+                return true;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+
 }

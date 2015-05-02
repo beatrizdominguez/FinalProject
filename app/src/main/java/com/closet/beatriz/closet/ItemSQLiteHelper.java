@@ -151,8 +151,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 new String[]{queryValues.get("id")});
     }
 
-    ///delete un item
-    public void deleteItem(String id) {
+    public void deleteItem(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
         String deleteQuery = "DELETE FROM Items where id='" + id + "'";
         // Log.d("query", deleteQuery);
