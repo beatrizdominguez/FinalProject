@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class AcCategory extends Activity {
 
     public final static int REQUEST_ADD = 1;
+    public final static int REQUEST_MODIFY = 2;
     GridView lv;
     AdapterItem adaptador;
     private ArrayList<Item> lista = new ArrayList<Item>();
@@ -215,6 +216,7 @@ public class AcCategory extends Activity {
 
                 // modificar(pos);
                 Toast.makeText(this, "Modificar item", Toast.LENGTH_SHORT).show();
+                modify(i);
 
                 return true;
 
@@ -238,5 +240,18 @@ public class AcCategory extends Activity {
         }
     }
 
+    // metodo modificar
+    public void modify(Item i) {
+
+        Intent intentModify = new Intent();
+        Bundle mBundle = new Bundle();
+        mBundle.putSerializable("item", (Serializable) i);
+        intentModify.putExtras(mBundle);
+        setResult(RESULT_OK, intentModify);
+
+        //lanzamos el intent
+       // startActivityForResult(intentModify, REQUEST_MODIFY);
+
+    }
 
 }

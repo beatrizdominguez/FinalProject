@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -30,6 +31,17 @@ import java.util.Date;
 
 public class AcAddItem extends Activity {
 
+
+    //controls
+    EditText etxtDesc;
+    Spinner spnCat;
+    //colores almacenarlos en un array
+    Spinner spnSize;
+    EditText etxtPrice;
+    DatePicker datePicker;
+    Spinner spnShop;
+
+
     ImageButton btnImg;
     Button btnAddColor;
     Button btnSave;
@@ -40,7 +52,7 @@ public class AcAddItem extends Activity {
     int colorCount = 0;
 
 
-   ItemSQLiteHelper usdbh;
+    ItemSQLiteHelper usdbh;
 
 
     @Override
@@ -48,9 +60,30 @@ public class AcAddItem extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_add_item);
 
+
+        //controls
+        EditText etxtDesc = (EditText) findViewById(R.id.etxtDesc);
+        Spinner spnCat = (Spinner) findViewById(R.id.spnCat);
+        //colores almacenarlos en un array
+        Spinner spnSize = (Spinner) findViewById(R.id.spnSize);
+        EditText etxtPrice = (EditText) findViewById(R.id.etxtPrice);
+        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
+        Spinner spnShop = (Spinner) findViewById(R.id.spnShop);
+
         //base de datos
         usdbh = new ItemSQLiteHelper(this, "Closet",
                 null, 1);
+
+
+        // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+
+            modify((Item) extras.getSerializable("item"));
+            // Toast.makeText(getApplicationContext(), "Modificar",
+            // Toast.LENGTH_SHORT).show();
+
+        }
 
         btnImg = (ImageButton) findViewById(R.id.imageButton);
         btnImg.setOnClickListener(new View.OnClickListener() {
@@ -112,18 +145,8 @@ public class AcAddItem extends Activity {
         Toast.makeText(this, "save", Toast.LENGTH_SHORT).show();
         Log.e("TAG------------ color count", String.valueOf(colorCount));
         for (int i = 0; i < colorArray.length; i++) {
-          //  Log.e("TAG----------color-", colorArray[i]);
+            //  Log.e("TAG----------color-", colorArray[i]);
         }
-
-
-        //controls
-        EditText etxtDesc = (EditText) findViewById(R.id.etxtDesc);
-        Spinner spnCat = (Spinner) findViewById(R.id.spnCat);
-//colores almacenarlos en un array
-        Spinner spnSize = (Spinner) findViewById(R.id.spnSize);
-        EditText etxtPrice = (EditText) findViewById(R.id.etxtPrice);
-        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-        Spinner spnShop = (Spinner) findViewById(R.id.spnShop);
 
 
         int id;
@@ -152,26 +175,20 @@ public class AcAddItem extends Activity {
         size = spnSize.getSelectedItem().toString();
         prize = Float.valueOf(etxtPrice.getText().toString());
         shop = spnShop.getSelectedItem().toString();
-        Log.e("TAG----------", s_date.toString());
-//        Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        // Item i = new Item(imageBitmap, description, category, s_date.toString(), size, prize, shop);
-        Item i = new Item( description, colorArray, category, s_date.toString(), size, prize, shop);
 
-        Log.e("TAG--------", "item created");
-        Log.e("TAG--------", i.getDescription());
+        //Log.e("TAG----------", s_date.toString());
+        // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
+        // Item i = new Item(imageBitmap, description, category, s_date.toString(), size, prize, shop);
+        Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
+
+        // Log.e("TAG--------", "item created");
+        // Log.e("TAG--------", i.getDescription());
 
         Intent intentSave = new Intent();
         Bundle mBundle = new Bundle();
         mBundle.putSerializable("item", (Serializable) i);
         intentSave.putExtras(mBundle);
         setResult(RESULT_OK, intentSave);
-
-        Log.e("TAG--------", "intent con info");
-
-
-        //add to data base
-
-        // usdbh.guardarItem(i);
 
 
         // cerramos la actividad
@@ -275,5 +292,40 @@ public class AcAddItem extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void modify(Item i) {
+
+        int spinnerPosition=0;
+
+        //controls
+        etxtDesc.setText(i.getDescription());
+
+        // category
+        ArrayAdapter myAdapCat = (ArrayAdapter) spnCat.getAdapter(); // cast
+        spinnerPosition = myAdapCat.getPosition(i.getCategory());
+        // set the default according to value
+        spnCat.setSelection(spinnerPosition);
+
+        //colores almacenarlos en un array
+        Spinner spnSize;
+
+        // size
+ /*       ArrayAdapter myAdapSize = (ArrayAdapter) spnSize.getAdapter(); // cast
+         spinnerPosition = myAdapSize.getPosition(i.getSize());
+        // set the default according to value
+        spnSize.setSelection(spinnerPosition);
+*/
+
+        etxtPrice.setText(String.valueOf(i.getPrize()));
+        DatePicker datePicker;
+
+        // shop
+        ArrayAdapter myAdapShop = (ArrayAdapter) spnShop.getAdapter(); // cast
+        spinnerPosition = myAdapShop.getPosition(i.getShop());
+        // set the default according to value
+        spnShop.setSelection(spinnerPosition);
+
     }
 }
