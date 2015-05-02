@@ -7,8 +7,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,6 +27,7 @@ public class FmItems extends Fragment {
     AdapterItem adaptador;
     private ArrayList<Item> lista = new ArrayList<Item>();
     String category;
+    ItemSQLiteHelper usdbh;
 
 
     @Override
@@ -39,6 +43,10 @@ public class FmItems extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
 
+        //base de datos
+        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+                null, 1);
+
         // creamos el adaptador
         adaptador = new AdapterItem(getActivity().getBaseContext(), lista);
         // creamos el adaptador
@@ -49,7 +57,7 @@ public class FmItems extends Fragment {
 
         Log.e("TAG", "before loadImages()");
         loadImages(lista);
-
+        cargarLista();
 
         ImageButton btnCat = (ImageButton) rootview.findViewById(R.id.imgCamisetas);
         btnCat.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +68,7 @@ public class FmItems extends Fragment {
                 Toast.makeText(getActivity(), "Categoría",
                         Toast.LENGTH_SHORT).show();
 
-                Log.e("TAG-----------item",  String.valueOf(R.string.txt_shirts));
+                Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
                 /// -------------whould be string from @string
                 category("Camisetas");
             }
@@ -93,6 +101,48 @@ public class FmItems extends Fragment {
 
             }
         });
+
+        //add button
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+
+
+        // LinearLayout row = new LinearLayout(getActivity());
+        // row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        Button btnTag = new Button(getActivity());
+        //btnTag.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        btnTag.setText("Button creado");
+
+        // row.addView(btnTag);
+
+
+        layout.addView(btnTag);
+
+
+    }
+
+    private void cargarLista() {
+
+        usdbh.cargarLista(lista);
+
+
+        //add button
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+
+            Button btnTag = new Button(getActivity());
+            btnTag.setText(item.getDescription());
+
+            //ImageView image = new ImageView(getActivity());
+            //image.setImageBitmap(item.getImage());
+
+            layout.addView(btnTag);
+
+        }
+
+
     }
 
     private void loadImages(ArrayList<Item> lista) {
