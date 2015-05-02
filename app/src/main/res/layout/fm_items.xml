@@ -1,0 +1,223 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:padding="20dp">
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin">
+
+
+        <!-- SECCION 1 -->
+        <TextView
+            android:id="@+id/camisetas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_shirts" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin">
+
+
+            <ImageButton
+                android:id="@+id/imgCamisetas"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/camisetas"/>
+
+
+            <ImageView
+                android:id="@+id/imgLeftCamisetas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+                android:id="@+id/ScrollCamisetas"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <GridView
+                    android:id="@+id/gridViewCamisetas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imgRightCamisetas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddCamisetas"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchCamisetas"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- SECCION 2 -->
+        <TextView
+            android:id="@+id/txtPantalones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_pants" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin">
+
+
+            <ImageButton
+                android:id="@+id/imgPantalones"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/pantalones"/>
+
+
+            <ImageView
+                android:id="@+id/imgLeftPantalones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollViewPantalones"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <GridView
+                    android:id="@+id/gridViewPantalones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imgRightPantalones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddPantalones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchPantalones"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!-- SECCION 3 -->
+        <TextView
+            android:id="@+id/txtComplementos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Complementos" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin">
+
+
+            <ImageButton
+                android:id="@+id/imgComplementos"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+                android:id="@+id/imgLeftComplementos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalScrollViewComplementos"
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <GridView
+                    android:id="@+id/gridViewComplementos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/imgRightComplementos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddComplementos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchComplementos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- new section-->
+
+    </LinearLayout>
+</ScrollView>

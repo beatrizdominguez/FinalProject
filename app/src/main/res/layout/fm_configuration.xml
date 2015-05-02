@@ -1,0 +1,111 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="left|top"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_default" />
+
+        <Spinner
+            android:id="@+id/SpnDefault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:entries="@array/shopsArrays" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_save" />
+
+        <TextView
+            android:id="@+id/TxtAddCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_add_cat" />
+
+        <!-- RESTINGIR A LO QUE SEA EL ARCHAR EN LA BASE DE DATOS EJ 20 CARACTERES-->
+        <EditText
+            android:id="@+id/EditAddCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnAddCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_add" />
+
+        <TextView
+            android:id="@+id/RenameCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_rename_cat" />
+
+        <Spinner
+            android:id="@+id/SpnCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:entries="@array/shopsArrays" />
+
+        <TextView
+            android:id="@+id/EditNewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_newname_cat" />
+
+        <!-- RESTINGIR A LO QUE SEA EL ARCHAR EN LA BASE DE DATOS EJ 20 CARACTERES-->
+        <EditText
+            android:id="@+id/EditRenameCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnRenameCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_save" />
+
+        <TextView
+            android:id="@+id/TxtDelCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_delete_cat" />
+
+        <Spinner
+            android:id="@+id/SpnDelCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:entries="@array/shopsArrays" />
+
+        <Button
+            android:id="@+id/btnDelCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_delete" />
+    </LinearLayout>
+</ScrollView>

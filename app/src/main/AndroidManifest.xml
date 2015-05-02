@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.closet.beatriz.closet">
+
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Splash"
+            android:label="@string/title_activity_splash">
+
+            <!-- Quitar comentario para que sea MAIN -->
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+
+            <!-- Quitar, rolo desarrollo rapidez -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AcAddItem"
+            android:label="@string/title_activity_add_item2" />
+        <activity
+            android:name=".AcSearch"
+            android:label="@string/title_activity_search" />
+        <activity
+            android:name=".AcCategory"
+            android:label="@string/title_activity_ac_category" />
+        <activity
+            android:name=".AcItemDetail"
+            android:label="@string/title_activity_ac_item_detail" />
+        <activity
+            android:name=".AcItemPhoto"
+            android:label="@string/title_activity_ac_item_photo" />
+
+    </application>
+
+</manifest>
