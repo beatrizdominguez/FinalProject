@@ -43,7 +43,7 @@
                 android:id="@+id/ScrollCamisetas"
                 android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_vertical">
 
                 <LinearLayout
                     android:id="@+id/linearCamisetas"

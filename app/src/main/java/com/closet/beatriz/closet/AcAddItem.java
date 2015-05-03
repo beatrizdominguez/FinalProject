@@ -11,6 +11,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -164,10 +166,11 @@ public class AcAddItem extends Activity {
         // btnImg.buildDrawingCache();
         // image =  btnImg.getDrawingCache();
 
-        //BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
-        //Bitmap bitmap = drawable.getBitmap();
+        BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
 
-
+        String str = BitmapToString(bitmap);
+       // Log.e("bitmap", str);
 //        Log.e("TAG ------------",image.toString());
 
         description = etxtDesc.getText().toString();
@@ -179,8 +182,8 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        // Item i = new Item(imageBitmap, description, category, s_date.toString(), size, prize, shop);
-        Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
+         Item i = new Item(str, description, category, s_date.toString(), size, prize, shop);
+       // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
         // Log.e("TAG--------", "item created");
         // Log.e("TAG--------", i.getDescription());
@@ -251,6 +254,7 @@ public class AcAddItem extends Activity {
 
                 if (imageBitmap != null) {
                     btnImg.setImageBitmap(imageBitmap);
+
                 }
 
             } else if (requestCode == SELECT_FILE) {
@@ -272,6 +276,16 @@ public class AcAddItem extends Activity {
 
             }
         }
+    }
+
+    private String BitmapToString(Bitmap imageBitmap) {
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+        String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
+        return encoded;
     }
 
     @Override

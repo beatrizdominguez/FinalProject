@@ -2,13 +2,18 @@ package com.closet.beatriz.closet;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 
 public class AcItemDetail extends Activity {
@@ -32,11 +37,13 @@ public class AcItemDetail extends Activity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(AcItemDetail.this, "img grande",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(AcItemDetail.this, "img grande",  Toast.LENGTH_SHORT).show();
 
                 Intent intentPhoto = new Intent(AcItemDetail.this, AcItemPhoto.class);
-                //intent.putExtra("Category", cat);
+                Bundle mBundle = new Bundle();
+                //intentVer.putExtras("cat",category);
+                mBundle.putSerializable("item", (Serializable) i);
+                intentPhoto.putExtras(mBundle);
                 startActivity(intentPhoto);
             }
         });
@@ -44,6 +51,7 @@ public class AcItemDetail extends Activity {
 
     private void show(Item i) {
 
+        ImageButton image = (ImageButton) findViewById(R.id.imgItem);
         TextView txtDesc = (TextView) findViewById(R.id.txtDesc2);
         TextView txtCat = (TextView) findViewById(R.id.txtCat2);
         TextView txtColor = (TextView) findViewById(R.id.txtColor2);
@@ -52,6 +60,8 @@ public class AcItemDetail extends Activity {
         TextView txtWhen = (TextView) findViewById(R.id.txtWhen2);
         TextView txtWhere = (TextView) findViewById(R.id.txtWhere2);
 
+        Bitmap btm = StringToBitmap(i.getImage());
+        image.setImageBitmap(btm);
         txtDesc.setText(i.getDescription());
         txtCat.setText(i.getCategory());
         //txtColor;
@@ -83,4 +93,13 @@ public class AcItemDetail extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private Bitmap StringToBitmap(String image) {
+
+        byte[] decodedString = null;
+        decodedString = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return bitmap;
+    }
+
 }

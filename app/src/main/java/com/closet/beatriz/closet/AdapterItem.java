@@ -7,6 +7,7 @@ package com.closet.beatriz.closet;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -79,17 +81,25 @@ public class AdapterItem extends BaseAdapter {
             photo.setImageBitmap(b);
 
         } else {
-            photo.setImageBitmap(i.getImage());
+            Bitmap btm = StringToBitmap(i.getImage());
+            photo.setImageBitmap(btm);
         }
 
         desc.setText(i.getDescription());
         cat.setText(i.getCategory());
         price.setText(String.valueOf(i.getPrize()) + "€");
 
-        Log.e("TAG-------------adapter", String.valueOf(i.getPrize()));
         convertView.setTag(i.getId());
 
         return convertView;
+    }
+
+    private Bitmap StringToBitmap(String image) {
+
+        byte[] decodedString = null;
+        decodedString = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return bitmap;
     }
 
 }

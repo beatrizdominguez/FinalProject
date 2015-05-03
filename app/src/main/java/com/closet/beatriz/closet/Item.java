@@ -13,8 +13,8 @@ import java.io.Serializable;
 public class Item  implements Serializable{
 
     int id;
-    Bitmap image;
-    //String image;
+    //Bitmap image;
+    String image;
     String description;
     String category;
     //Date s_date;
@@ -58,7 +58,7 @@ public class Item  implements Serializable{
         this.prize = prize;
         this.shop = shop;
     }
-    public Item( Bitmap image, String description, String category, String s_date, String size, float prize, String shop) {
+    public Item( String image, String description, String category, String s_date, String size, float prize, String shop) {
         this.image = image;
         this.description = description;
         this.category = category;
@@ -68,7 +68,7 @@ public class Item  implements Serializable{
         this.shop = shop;
     }
 
-    public Item(int id, Bitmap image, String description, String category, String s_date, String size, float prize, String shop) {
+    public Item(int id, String image, String description, String category, String s_date, String size, float prize, String shop) {
         this.id = id;
         this.image = image;
         this.description = description;
@@ -87,11 +87,11 @@ public class Item  implements Serializable{
         this.id = id;
     }
 
-    public Bitmap getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Bitmap image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR(30), category VARCHAR(20), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
 
     public ItemSQLiteHelper(Context contexto, String nombre,
                             CursorFactory factory, int version) {
@@ -58,7 +58,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
         int idIdx = c.getColumnIndex("id");
-        // int fotoIdx = c.getColumnIndex("foto");
+        int fotoIdx = c.getColumnIndex("image");
         int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
         int sizeIdx = c.getColumnIndex("i_size");
@@ -73,7 +73,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
                 // // cargamos la información en el objeto
                 int cId = c.getInt(idIdx);
-                // String cFoto = c.getString(fotoIdx);
+                 String cFoto = c.getString(fotoIdx);
                 String cDescription = c.getString(descriptionIdx);
                 String cCategory = c.getString(categoryIdx);
                 String cSize = c.getString(sizeIdx);
@@ -83,12 +83,10 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cDescription, cCategory, cDate, cSize,
+                i = new Item(cId, cFoto, cDescription, cCategory, cDate, cSize,
                         cPrice, cShop);
 
                 // cargamos la informavión en la lista
-
-
                 if (cCategory.equals("Camisetas")) {
                     ALCamisetas.add(i);
                 } else if (cCategory.equals("Pantalones")) {
@@ -107,13 +105,18 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     public void guardarItem(Item i) {
 
-
+       // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sqlInertItem = "INSERT INTO Items ( description, category, i_size, s_date, price, shop ) VALUES ('" +
-                i.getDescription() +
-                "', '" +
-                i.getCategory() + "', '" + i.getSize() + "', '" + i.getS_date() + "', " + i.getPrize() + ", '" + i.getShop() + "');";
+        String sqlInertItem = "INSERT INTO Items (image, description, category, i_size, s_date, price, shop ) VALUES ('" +
+                i.getImage() + "', '" +
+                i.getDescription() + "', '" +
+                i.getCategory() + "', '" +
+                i.getSize() + "', '" +
+                i.getS_date() + "', " +
+                i.getPrize() + ", '" +
+                i.getShop() + "');";
+
         db.execSQL(sqlInertItem);
 
     }

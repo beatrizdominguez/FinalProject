@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,8 +153,24 @@ public class FmItems extends Fragment {
                 image.setMaxHeight(70);
                 image.setClickable(true);*/
 
-                layout.addView(btnTag);
-               // layout.addView(image);
+
+                ImageView image = new ImageView(getActivity());
+                Bitmap b = StringToBitmap(item.getImage());
+                image.setImageBitmap(b);
+                //image.setImageBitmap(i.getImage());
+                // image.setMaxWidth(5);
+                //image.setMaxHeight(70);
+                //image.setClickable(true);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+                image.setLayoutParams(layoutParams);
+
+
+                // image.setLayoutParams();
+                // image.setBackgroundColor(R.color.red);
+
+
+                //layout.addView(btnTag);
+                layout.addView(image);
 
             }
         }
@@ -207,4 +224,13 @@ public class FmItems extends Fragment {
         startActivity(intentSearch);
 
     }
+
+    private Bitmap StringToBitmap(String image) {
+
+        byte[] decodedString = null;
+        decodedString = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return bitmap;
+    }
+
 }
