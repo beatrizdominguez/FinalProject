@@ -14,6 +14,7 @@
         <!-- SECCION 1 -->
         <TextView
             android:id="@+id/camisetas"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_shirts" />
@@ -72,14 +73,17 @@
 
                 <ImageButton
                     android:id="@+id/imgAddCamisetas"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/add_ic" />
 
                 <ImageButton
                     android:id="@+id/imgSearchCamisetas"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/search_ic" />
             </LinearLayout>
         </LinearLayout>
@@ -88,6 +92,7 @@
         <!-- SECCION 2 -->
         <TextView
             android:id="@+id/txtPantalones"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_pants" />
@@ -146,14 +151,17 @@
 
                 <ImageButton
                     android:id="@+id/imgAddPantalones"
+                    style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/add_ic" />
 
                 <ImageButton
                     android:id="@+id/imgSearchPantalones"
+                    style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/search_ic" />
             </LinearLayout>
         </LinearLayout>
@@ -162,6 +170,7 @@
         <!-- SECCION 3 -->
         <TextView
             android:id="@+id/txtComplementos"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Complementos" />
@@ -213,14 +222,17 @@
 
                 <ImageButton
                     android:id="@+id/imgAddComplementos"
+                    style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/add_ic" />
 
                 <ImageButton
                     android:id="@+id/imgSearchComplementos"
+                    style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/search_ic" />
             </LinearLayout>
         </LinearLayout>

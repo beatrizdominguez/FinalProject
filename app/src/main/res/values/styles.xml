@@ -8,6 +8,21 @@
     </style>
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">#FA95F0</item>
+        <item name="android:background">@color/main</item>
     </style>
+
+
+    <!-- Buttons style -->
+    <style name="button_color">
+        <item name="android:background">@color/main</item>
+        <item name="android:textColor">@color/background</item>
+    </style>
+
+    <!-- Text style -->
+    <style name="text_color">
+        <item name="android:textColor">@color/main</item>
+        <!--        <item name="android:background">@color/background</item>-->
+        <item name="android:textSize">25dp</item>
+    </style>
+
 </resources>

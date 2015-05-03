@@ -23,10 +23,10 @@
             android:layout_width="140dp"
             android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/no_image"/>
+            android:src="@drawable/no_image" />
 
         <TextView
-            android:id="@+id/txtDesc"
+            android:id="@+id/txtDesc"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
             android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:id="@+id/txtCat"
+            android:id="@+id/txtCat"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -56,7 +56,7 @@
 
 
         <TextView
-            android:id="@+id/txtCol"
+            android:id="@+id/txtCol"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -79,13 +79,14 @@
 
         <Button
             android:id="@+id/btnAddColor"
+            style="@style/button_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/action_add" />
 
         <TextView
-            android:id="@+id/txtSize"
+            android:id="@+id/txtSize"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -102,7 +103,7 @@
 
 
         <TextView
-            android:id="@+id/txtPrize"
+            android:id="@+id/txtPrize"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -117,7 +118,7 @@
             android:inputType="number" />
 
         <TextView
-            android:id="@+id/txtDate"
+            android:id="@+id/txtDate"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -133,7 +134,7 @@
             android:calendarViewShown="false" />
 
         <TextView
-            android:id="@+id/txtShop"
+            android:id="@+id/txtShop"  style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_where_buy"
@@ -148,6 +149,7 @@
 
         <Button
             android:id="@+id/btnSave"
+            style="@style/button_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

@@ -27,6 +27,7 @@
 
             <TextView
                 android:id="@+id/txtDesc"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_desc"
@@ -40,6 +41,7 @@
 
             <TextView
                 android:id="@+id/txtCat"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_cat"
@@ -53,6 +55,7 @@
 
             <TextView
                 android:id="@+id/txtColor"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_color"
@@ -66,6 +69,7 @@
 
             <TextView
                 android:id="@+id/txtSize"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_size"
@@ -79,6 +83,7 @@
 
             <TextView
                 android:id="@+id/txtPrice"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_price"
@@ -92,6 +97,7 @@
 
             <TextView
                 android:id="@+id/txtWhen"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_when_buy"
@@ -105,6 +111,7 @@
 
             <TextView
                 android:id="@+id/txtWhere"
+                style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_where_buy"

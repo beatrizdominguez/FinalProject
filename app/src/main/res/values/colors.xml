@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#fff</color>
-    <color name="red">#f00</color>
-    <color name="list_background_pressed">#992416</color>
-    <color name="list_divider">#272727</color>
-    <color name="counter_text_bg">#626262</color>
-    <color name="counter_text_color">#c5c4c4</color>
+    <color name="main">#9554D6</color>
+    <color name="background">#fff</color>
+    <color name="drawer_background">#fff</color>
+    <color name="config_color">#FF3300</color>
 </resources>
 
-    <!--
-    azul: #1f3778
-    -->
+
