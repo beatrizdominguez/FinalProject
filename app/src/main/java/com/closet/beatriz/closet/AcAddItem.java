@@ -166,12 +166,13 @@ public class AcAddItem extends Activity {
         // btnImg.buildDrawingCache();
         // image =  btnImg.getDrawingCache();
 
+        //get bitmap from ImageButton
         BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
+        Log.e("bitmap ----size--", String.valueOf(bitmap.getByteCount()));
 
+        //convert bitmap to string
         String str = BitmapToString(bitmap);
-       // Log.e("bitmap", str);
-//        Log.e("TAG ------------",image.toString());
 
         description = etxtDesc.getText().toString();
         category = spnCat.getSelectedItem().toString();
@@ -182,20 +183,17 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-         Item i = new Item(str, description, category, s_date.toString(), size, prize, shop);
-       // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
+        Item i = new Item(str, description, category, s_date.toString(), size, prize, shop);
+        // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
-        // Log.e("TAG--------", "item created");
-        // Log.e("TAG--------", i.getDescription());
-
+        //create intent
         Intent intentSave = new Intent();
         Bundle mBundle = new Bundle();
         mBundle.putSerializable("item", (Serializable) i);
         intentSave.putExtras(mBundle);
         setResult(RESULT_OK, intentSave);
 
-
-        // cerramos la actividad
+        // close the activity
         finish();
 
 
