@@ -8,8 +8,7 @@
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/activity_horizontal_margin">
+        android:orientation="vertical">
 
 
         <!-- SECCION 1 -->
@@ -22,13 +21,12 @@
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_horizontal_margin">
+            android:orientation="horizontal">
 
 
             <ImageButton
                 android:id="@+id/imgCamisetas"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/camisetas" />
@@ -43,14 +41,18 @@
 
             <HorizontalScrollView
                 android:id="@+id/ScrollCamisetas"
-                android:layout_width="103dp"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal">
 
-                <GridView
-                    android:id="@+id/gridViewCamisetas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:id="@+id/linearCamisetas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
 
 
             </HorizontalScrollView>
@@ -93,8 +95,7 @@
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_horizontal_margin">
+            android:orientation="horizontal">
 
 
             <ImageButton
@@ -122,26 +123,10 @@
                     android:id="@+id/linearPantalones"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/activity_horizontal_margin">
+                    android:orientation="horizontal">
 
-                    <ImageButton
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/left_ic" />
-                    <ImageButton
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/left_ic" />
-                    <ImageButton
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/left_ic" />
-
-                    </LinearLayout>
+                </LinearLayout>
 
 
             </HorizontalScrollView>
@@ -184,8 +169,7 @@
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/activity_horizontal_margin">
+            android:orientation="horizontal">
 
 
             <ImageButton

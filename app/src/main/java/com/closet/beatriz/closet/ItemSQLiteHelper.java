@@ -21,7 +21,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
     String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, description VARCHAR(30), category VARCHAR(20), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
-    // String sqlCreateItems = "CREATE TABLE Items (id INTEGER, image BLOB, description VARCHAR(30), category VARCHAR(20), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
 
     public ItemSQLiteHelper(Context contexto, String nombre,
                             CursorFactory factory, int version) {
@@ -45,8 +44,8 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateItems);
     }
 
+    public void cargarLista(ArrayList<Item> ALCamisetas, ArrayList<Item> ALPantalones, ArrayList<Item> ALRopainterior, ArrayList<Item> ALAbrigos) {
 
-    public void cargarLista(ArrayList<Item> lista) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
 
@@ -88,9 +87,16 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                         cPrice, cShop);
 
                 // cargamos la informavión en la lista
-                lista.add(i);
-                //Log.e("TAG", "id: " + vest.getId());
-                //Log.e("TAG", "tienda: " + vest.getTienda());
+
+
+                if (cCategory.equals("Camisetas")) {
+                    ALCamisetas.add(i);
+                } else if (cCategory.equals("Pantalones")) {
+                    ALPantalones.add(i);
+                } else if (cCategory.equals("Ropa interior")) {
+                    ALRopainterior.add(i);
+                }
+                //AÑADIR LAS QUE QUEDARN!!!!!!!!!!!!!!!
 
             } while (c.moveToNext());
         }
@@ -114,15 +120,9 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     /*
     public void guardarTodosItem(ArrayList<Vestido> lista) {
-
         for (int i = 0; i < lista.size(); i++) {
-
-
             //  guardarItem(lista[i]);
-
         }
-
-
     }
 */
 

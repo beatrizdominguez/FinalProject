@@ -67,8 +67,6 @@
     <string name="txt_remove">La prenda ha sido eliminada</string>
 
 
-
-
     <!-- Nombres de los items -->
     <string-array name="nav_drawer_items">
         <item>Seccion1</item>
@@ -92,6 +90,28 @@
     <!-- Content Description -->
 
     <string name="desc_list_item_icon">Item Icon</string>
+
+
+    //categories
+    <string name="catShirts">Camisetas</string>
+    <string name="catPants">Pantalones</string>
+    <string name="catUnderWear">Ropa interior</string>
+    <string name="catCoats">Abrigos</string>
+    <string name="catJumper">Jerseys</string>
+    <string name="catShoes">Zapatos</string>
+    <string name="catAccesories">Complementos</string>
+
+
+    <string-array name="categoryArrays">
+        <item>Camisetas</item>
+        <item>Pantalones</item>
+        <item>Ropa interior</item>
+        <item>Abrigos</item>
+        <item>Jerseys</item>
+        <item>Zapatos</item>
+        <item>Complementos</item>
+    </string-array>
+
 
     <!-- Shops ???? tabla de la base de datos -->
     <string-array name="shopsArrays">
@@ -153,7 +173,6 @@
         <item>Green</item>
         <item>Aqua</item>
     </string-array>
-
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

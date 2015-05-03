@@ -2,6 +2,8 @@ package com.closet.beatriz.closet;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,12 +25,13 @@ import java.util.ArrayList;
 public class FmItems extends Fragment {
 
     View rootview;
-    GridView camisetas;
-    AdapterItem adaptador;
-    private ArrayList<Item> lista = new ArrayList<Item>();
+    // GridView camisetas;
+    private ArrayList<Item> ALCamisetas = new ArrayList<Item>();
+    private ArrayList<Item> ALPantalones = new ArrayList<Item>();
+    private ArrayList<Item> ALRopaInterior = new ArrayList<Item>();
+    private ArrayList<Item> ALAbrigos = new ArrayList<Item>();
     String category;
     ItemSQLiteHelper usdbh;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,16 +50,7 @@ public class FmItems extends Fragment {
         usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
                 null, 1);
 
-        // creamos el adaptador
-        adaptador = new AdapterItem(getActivity().getBaseContext(), lista);
-        // creamos el adaptador
-        camisetas = (GridView) rootview.findViewById(R.id.gridViewCamisetas);
-        // asociar menu contextual
-        registerForContextMenu(camisetas);
-        camisetas.setAdapter(adaptador);
-
-        Log.e("TAG", "before loadImages()");
-        loadImages(lista);
+        // loadImages(lista);
         cargarLista();
 
         ImageButton btnCat = (ImageButton) rootview.findViewById(R.id.imgCamisetas);
@@ -65,12 +59,11 @@ public class FmItems extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "Categoría",
-                        Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "Categoría", Toast.LENGTH_SHORT).show();
 
-                Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
+                //Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
                 /// -------------whould be string from @string
-                category("Camisetas");
+                category(getString(R.string.catShirts));
             }
         });
 
@@ -80,10 +73,9 @@ public class FmItems extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "add camisetas",
-                        Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "add camisetas", Toast.LENGTH_SHORT).show();
 
-                addItem("camisetas");
+                addItem(getString(R.string.catShirts));
 
             }
         });
@@ -94,57 +86,81 @@ public class FmItems extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "searcth camisetas",
-                        Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "searcth camisetas", Toast.LENGTH_SHORT).show();
 
-                search("camisetas");
+                search(getString(R.string.catShirts));
 
             }
         });
 
-        //add button
-        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+        ImageButton btnCatPantalones = (ImageButton) rootview.findViewById(R.id.imgPantalones);
+        btnCatPantalones.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
 
-        // LinearLayout row = new LinearLayout(getActivity());
-        // row.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                //  Toast.makeText(getActivity(), "Categoría",  Toast.LENGTH_SHORT).show();
 
-        Button btnTag = new Button(getActivity());
-        //btnTag.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        btnTag.setText("Button creado");
-
-        // row.addView(btnTag);
-
-
-        layout.addView(btnTag);
+                // Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
+                /// -------------whould be string from @string
+                category(getString(R.string.catPants));
+            }
+        });
 
 
     }
 
     private void cargarLista() {
 
-        usdbh.cargarLista(lista);
+        //cargamos los ArrayList con información
+        usdbh.cargarLista(ALCamisetas, ALPantalones, ALRopaInterior, ALAbrigos);
+
+        //definimos un arrayList vacio y un LinearLAyout
+        ArrayList<Item> lista = new ArrayList<Item>();
+        LinearLayout layout = null;
 
 
-        //add button
-        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+        for (int i = 0; i < 2; i++) {
 
-        for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            switch (i) {
 
-            Button btnTag = new Button(getActivity());
-            btnTag.setText(item.getDescription());
+                case 0:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
+                    lista = ALCamisetas;
+                    break;
 
-            //ImageView image = new ImageView(getActivity());
-            //image.setImageBitmap(item.getImage());
+                case 1:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+                    lista = ALPantalones;
+                    break;
+            }
 
-            layout.addView(btnTag);
 
+            for (int j = 0; j < lista.size(); j++) {
+                Item item = (Item) lista.get(j);
+                // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+                Button btnTag = new Button(getActivity());
+                btnTag.setText(item.getDescription());
+
+/*
+                ImageView image = new ImageView(getActivity());
+                Bitmap b = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.no_image);
+                image.setImageBitmap(b);
+                //image.setImageBitmap(i.getImage());
+                image.setMaxWidth(5);
+                image.setMaxHeight(70);
+                image.setClickable(true);*/
+
+                layout.addView(btnTag);
+               // layout.addView(image);
+
+            }
         }
 
 
     }
-
+/*
     private void loadImages(ArrayList<Item> lista) {
 
         Item i = new Item("camiseta1", "camisetas", "12/2/2015", "M", 23.45f, "Tesco");
@@ -156,12 +172,11 @@ public class FmItems extends Fragment {
         lista.add(i);
         adaptador.notifyDataSetChanged();
 
-    }
+    }*/
 
     public void category(String cat) {
 
-        Toast.makeText(getActivity(), "Cat->" + cat,
-                Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "Cat->" + cat,  Toast.LENGTH_SHORT).show();
 
         Intent intentCat = new Intent(getActivity(), AcCategory.class);
         intentCat.putExtra("Category", cat);
@@ -172,11 +187,9 @@ public class FmItems extends Fragment {
     public void addItem(String cat) {
 
 
-        Toast.makeText(getActivity(), "Cat->" + cat,
-                Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(getActivity(), "Cat->" + cat, Toast.LENGTH_SHORT).show();
 
         Intent intentAdd = new Intent(getActivity(), AcAddItem.class);
-
         //intent.putExtra("Category", cat);
         startActivity(intentAdd);
 
@@ -186,12 +199,11 @@ public class FmItems extends Fragment {
     public void search(String cat) {
 
 
-        Toast.makeText(getActivity(), "Cat->" + cat,
-                Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(getActivity(), "Cat->" + cat,  Toast.LENGTH_SHORT).show();
 
         Intent intentSearch = new Intent(getActivity(), AcSearch.class);
-
-        //intent.putExtra("Category", cat);
+        intentSearch.putExtra("Category", cat);
+        //intentSearch.putParcelableArrayListExtra()
         startActivity(intentSearch);
 
     }

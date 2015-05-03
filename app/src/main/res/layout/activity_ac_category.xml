@@ -9,9 +9,9 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Category"
         android:layout_gravity="center_horizontal"
-        android:textSize="30dp"/>
+        android:text="Category"
+        android:textSize="30dp" />
 
 
     <!--android:numColumns="3auto_fit"-->

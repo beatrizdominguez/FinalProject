@@ -20,5 +20,5 @@
         android:divider="@color/list_divider"
         android:dividerHeight="1dp"
         android:listSelector="@drawable/ic_launcher"
-        android:background="@color/list_background"/>
+        android:background="@color/red"/>
 </android.support.v4.widget.DrawerLayout>

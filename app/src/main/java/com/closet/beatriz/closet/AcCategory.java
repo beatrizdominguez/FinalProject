@@ -24,8 +24,12 @@ public class AcCategory extends Activity {
     public final static int REQUEST_ADD = 1;
     public final static int REQUEST_MODIFY = 2;
     GridView lv;
-    AdapterItem adaptador;
+    AdapterItem adaptador = null;
     private ArrayList<Item> lista = new ArrayList<Item>();
+    private ArrayList<Item> ALCamisetas = new ArrayList<Item>();
+    private ArrayList<Item> ALPantalones = new ArrayList<Item>();
+    private ArrayList<Item> ALRopaInterior = new ArrayList<Item>();
+    private ArrayList<Item> ALAbrigos = new ArrayList<Item>();
     String category;
     ItemSQLiteHelper usdbh;
 
@@ -46,9 +50,32 @@ public class AcCategory extends Activity {
         TextView title = (TextView) findViewById(R.id.txtTitle);
         title.setText(category);
 
+        // Log.e("TAG--------", "crear adaptador");
+
+        if (category.equals(getString(R.string.catShirts))) {
+            Log.e("TAG--------------adaptador", "camisetas");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALCamisetas);
+
+        } else if (category.equals(getString(R.string.catPants))) {
+            // Log.e("TAG--------------adaptador", "pantalones");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALPantalones);
+
+        } else if (category.equals(getString(R.string.catUnderWear))) {
+            //  Log.e("TAG--------------adaptador", "ropa interior");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALRopaInterior);
+
+        } else if (category.equals(getString(R.string.catCoats))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALAbrigos);
+
+        }
 
         // creamos el adaptador
-        adaptador = new AdapterItem(this.getBaseContext(), lista);
+        //adaptador = new AdapterItem(this.getBaseContext(), lista);
         // creamos el adaptador
         lv = (GridView) findViewById(R.id.gridOneCategory);
         // asociar menu contextual
@@ -56,13 +83,14 @@ public class AcCategory extends Activity {
         lv.setAdapter(adaptador);
 
         // asociar menu contextual
-        registerForContextMenu(lv);
-        lv.setAdapter(adaptador);
+        // registerForContextMenu(lv);
+        // lv.setAdapter(adaptador);
 
-        Log.e("TAG", "before loadImages()");
+        // Log.e("TAG", "before loadImages()");
         //loadImages(lista);
 
-        usdbh.cargarLista(lista);
+        //usdbh.cargarLista(lista);
+        usdbh.cargarLista(ALCamisetas, ALPantalones, ALRopaInterior, ALAbrigos);
 
 
         // definir el listener del listview
@@ -71,12 +99,13 @@ public class AcCategory extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 pos = position;
-                category = "Camisetas";
+                //category =String.valueOf( R.string.catShirts);
+                //MAYBE PROBLEM!!!
 
                 Item i = null;
                 i = (Item) lv.getItemAtPosition(position);
-                Log.e("TAG", "listener del gridview");
-                Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
+                //Log.e("TAG", "listener del gridview");
+                // Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
                 Intent intentVer = new Intent(AcCategory.this, AcItemDetail.class);
                 Bundle mBundle = new Bundle();
                 //intentVer.putExtras("cat",category);
@@ -102,8 +131,24 @@ public class AcCategory extends Activity {
                 Item i = (Item) data.getSerializableExtra("item");
 
                 // añadimos la nueva información a la lista
-                lista.add(i);
+                String category = i.getCategory();
+
+                Log.e("TAG ---- on act result ccat", category);
+                if (category.equals(getString(R.string.catShirts))) {
+                    ALCamisetas.add(i);
+                } else if (category.equals(getString(R.string.catPants))) {
+                    Log.e("TAG ---- on act result ccat", "add to pantalones");
+                    ALPantalones.add(i);
+                } else if (category.equals(getString(R.string.catUnderWear))) {
+                    ALRopaInterior.add(i);
+                } else if (category.equals(getString(R.string.catCoats))) {
+                    ALAbrigos.add(i);
+                }
+
+
+                // lista.add(i);
                 adaptador.notifyDataSetChanged();
+
 
                 //añadir a la base de datos
                 usdbh.guardarItem(i);
@@ -113,6 +158,7 @@ public class AcCategory extends Activity {
         }
     }
 
+    /*
     private void loadImages(ArrayList<Item> lista) {
 
 
@@ -144,7 +190,7 @@ public class AcCategory extends Activity {
         lista.add(i);
         adaptador.notifyDataSetChanged();
 
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -223,11 +269,26 @@ public class AcCategory extends Activity {
             // borrar
             case R.id.CtxLblBorrar:
 
-               //delete from the DB
+                //delete from the DB
                 usdbh.deleteItem(i.getId());
 
-                //remove on ArrayList
-                lista.remove(pos);
+                //remove on ArrayList dependeing on the category
+                if (category.equals(getString(R.string.catShirts))) {
+
+                    ALCamisetas.remove(pos);
+
+                } else if (category.equals(getString(R.string.catPants))) {
+
+                    ALPantalones.remove(pos);
+
+                } else if (category.equals(getString(R.string.catUnderWear))) {
+
+                    ALRopaInterior.remove(pos);
+                } else if (category.equals(getString(R.string.catCoats))) {
+
+                    ALAbrigos.remove(pos);
+                }
+
                 adaptador.notifyDataSetChanged();
 
                 //user mesage
@@ -250,7 +311,7 @@ public class AcCategory extends Activity {
         setResult(RESULT_OK, intentModify);
 
         //lanzamos el intent
-       // startActivityForResult(intentModify, REQUEST_MODIFY);
+        // startActivityForResult(intentModify, REQUEST_MODIFY);
 
     }
 

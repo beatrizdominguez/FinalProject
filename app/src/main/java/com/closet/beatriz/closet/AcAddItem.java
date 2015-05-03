@@ -62,13 +62,13 @@ public class AcAddItem extends Activity {
 
 
         //controls
-        EditText etxtDesc = (EditText) findViewById(R.id.etxtDesc);
-        Spinner spnCat = (Spinner) findViewById(R.id.spnCat);
+        etxtDesc = (EditText) findViewById(R.id.etxtDesc);
+        spnCat = (Spinner) findViewById(R.id.spnCat);
         //colores almacenarlos en un array
-        Spinner spnSize = (Spinner) findViewById(R.id.spnSize);
-        EditText etxtPrice = (EditText) findViewById(R.id.etxtPrice);
-        DatePicker datePicker = (DatePicker) findViewById(R.id.datePicker);
-        Spinner spnShop = (Spinner) findViewById(R.id.spnShop);
+        spnSize = (Spinner) findViewById(R.id.spnSize);
+        etxtPrice = (EditText) findViewById(R.id.etxtPrice);
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+        spnShop = (Spinner) findViewById(R.id.spnShop);
 
         //base de datos
         usdbh = new ItemSQLiteHelper(this, "Closet",
@@ -142,7 +142,7 @@ public class AcAddItem extends Activity {
 
     private void save() {
 
-        Toast.makeText(this, "save", Toast.LENGTH_SHORT).show();
+
         Log.e("TAG------------ color count", String.valueOf(colorCount));
         for (int i = 0; i < colorArray.length; i++) {
             //  Log.e("TAG----------color-", colorArray[i]);
@@ -164,11 +164,12 @@ public class AcAddItem extends Activity {
         // btnImg.buildDrawingCache();
         // image =  btnImg.getDrawingCache();
 
-        // BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
+        //BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
         //Bitmap bitmap = drawable.getBitmap();
 
 
 //        Log.e("TAG ------------",image.toString());
+
         description = etxtDesc.getText().toString();
         category = spnCat.getSelectedItem().toString();
         s_date = getDateFromDatePicker(datePicker);
@@ -297,7 +298,7 @@ public class AcAddItem extends Activity {
 
     private void modify(Item i) {
 
-        int spinnerPosition=0;
+        int spinnerPosition = 0;
 
         //controls
         etxtDesc.setText(i.getDescription());
@@ -313,7 +314,7 @@ public class AcAddItem extends Activity {
 
         // size
  /*       ArrayAdapter myAdapSize = (ArrayAdapter) spnSize.getAdapter(); // cast
-         spinnerPosition = myAdapSize.getPosition(i.getSize());
+        spinnerPosition = myAdapSize.getPosition(i.getSize());
         // set the default according to value
         spnSize.setSelection(spinnerPosition);
 */
