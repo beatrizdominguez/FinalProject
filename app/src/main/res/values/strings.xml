@@ -30,13 +30,6 @@
     <string name="action_save">Guardar</string>
     <string name="action_delete">Eliminar</string>
 
-    <!-- Items - Mis prendas - Principal -->
-    <!-- SECURAMENTE COJER DE LA TABLA DE CATEGORIAS DEE LA BBDD -->
-    <string name="txt_shirts">Camisetas</string>
-    <string name="txt_pants">Pantalones</string>
-    <string name="txt_accessories">Complementos</string>
-    <string name="txt_underwear">Ropa interior</string>
-
     <!-- Add item -->
     <string name="txt_desc">Descripción</string>
     <string name="txt_cat">Categoría</string>
@@ -183,7 +176,6 @@
     <string name="statistics_shirt_value">Tienes camisetas por un valor de: </string>
     <string name="statistics_pants_value">Tienes pantalones por un valor de: </string>
     <string name="statistics_shoes_value">Tus zapatos valen de: </string>
-
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -17,7 +17,7 @@
             style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txt_shirts" />
+            android:text="@string/catShirts" />
 
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -95,7 +95,7 @@
             style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txt_pants" />
+            android:text="@string/catPants" />
 
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -169,11 +169,11 @@
 
         <!-- SECCION 3 -->
         <TextView
-            android:id="@+id/txtComplementos"
+            android:id="@+id/txtUnderWear"
             style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Complementos" />
+            android:text="@string/catUnderWear" />
 
         <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
@@ -182,33 +182,39 @@
 
 
             <ImageButton
-                android:id="@+id/imgComplementos"
+                android:id="@+id/imgUnderWar"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical" />
 
 
             <ImageView
-                android:id="@+id/imgLeftComplementos"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
-                android:id="@+id/horizontalScrollViewComplementos"
+
                 android:layout_width="103dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal">
 
-                <GridView
-                    android:id="@+id/gridViewComplementos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:id="@+id/linearUnderWear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
             </HorizontalScrollView>
 
             <ImageView
-                android:id="@+id/imgRightComplementos"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -221,14 +227,14 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/imgAddComplementos"
+                    android:id="@+id/imgAddUnderWear"
                     style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/add_ic" />
 
                 <ImageButton
-                    android:id="@+id/imgSearchComplementos"
+                    android:id="@+id/imgSearchUnderWear"
                     style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -236,6 +242,473 @@
                     android:src="@drawable/search_ic" />
             </LinearLayout>
         </LinearLayout>
+
+
+        <!-- SECCION 4 -->
+        <TextView
+            android:id="@+id/txtCoats"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catCoats" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgCoats"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearCoats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddCoats"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchCoats"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- SECCION 5 -->
+        <TextView
+            android:id="@+id/txtShoes"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catShoes" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgShoes"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearShoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddShoes"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchShoes"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- SECCION 6 -->
+        <TextView
+            android:id="@+id/txtJumper"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catJumper" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgJumper"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearJumper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddJumper"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchJumper"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- SECCION 7 -->
+        <TextView
+            android:id="@+id/txtPijamas"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catPijamas" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgPijamas"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearPijamas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddPijamas"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchPijamas"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- SECCION 8 -->
+        <TextView
+            android:id="@+id/txtDress"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catDress" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgDress"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearDress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddDress"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchDress"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!-- SECCION 9 -->
+        <TextView
+            android:id="@+id/txtAccesories"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catAccesories" />
+
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/imgAccesories"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical" />
+
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/left_ic" />
+
+            <HorizontalScrollView
+
+                android:layout_width="103dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:id="@+id/linearAccesories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/right_ic" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imgAddAccesories"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add_ic" />
+
+                <ImageButton
+                    android:id="@+id/imgSearchAccesories"
+                    style="@style/button_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/search_ic" />
+            </LinearLayout>
+
+        </LinearLayout>
+
 
         <!-- new section-->
 

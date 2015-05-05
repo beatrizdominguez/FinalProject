@@ -54,62 +54,21 @@ public class FmItems extends Fragment {
         // loadImages(lista);
         cargarLista();
 
-        ImageButton btnCat = (ImageButton) rootview.findViewById(R.id.imgCamisetas);
-        btnCat.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-
-                // Toast.makeText(getActivity(), "Categoría", Toast.LENGTH_SHORT).show();
-
-                //Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
-                /// -------------whould be string from @string
-                category(getString(R.string.catShirts));
-            }
-        });
-
-        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddCamisetas);
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // Toast.makeText(getActivity(), "add camisetas", Toast.LENGTH_SHORT).show();
-
-                addItem(getString(R.string.catShirts));
-
-            }
-        });
-
-        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchCamisetas);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                //Toast.makeText(getActivity(), "searcth camisetas", Toast.LENGTH_SHORT).show();
-
-                search(getString(R.string.catShirts));
-
-            }
-        });
-
-        ImageButton btnCatPantalones = (ImageButton) rootview.findViewById(R.id.imgPantalones);
-        btnCatPantalones.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                //  Toast.makeText(getActivity(), "Categoría",  Toast.LENGTH_SHORT).show();
-
-                // Log.e("TAG-----------item", String.valueOf(R.string.txt_shirts));
-                /// -------------whould be string from @string
-                category(getString(R.string.catPants));
-            }
-        });
+        //inicialize buttons
+        ShirtButtons();
+        PantsButtons();
+        UnderWearButtons();
+        CoatsButtons();
+        ShoesButtons();
+        JumperButtons();
+        PijamasButtons();
+        DressButtons();
+        AccessoriesButtons();
 
 
     }
+
 
     private void cargarLista() {
 
@@ -232,5 +191,337 @@ public class FmItems extends Fragment {
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return bitmap;
     }
+
+    private void ShirtButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgCamisetas);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catShirts));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddCamisetas);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catShirts));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchCamisetas);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catShirts));
+
+            }
+        });
+
+
+    }
+    private void PantsButtons() {
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgPantalones);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                category(getString(R.string.catPants));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddPantalones);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                addItem(getString(R.string.catPants));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchPantalones);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                search(getString(R.string.catPants));
+
+            }
+        });
+
+
+    }
+    private void UnderWearButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgUnderWar);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catUnderWear));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddUnderWear);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catUnderWear));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchUnderWear);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catUnderWear));
+
+            }
+        });
+
+
+    }
+    private void CoatsButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgCoats);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catCoats));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddCoats);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catCoats));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchCoats);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catCoats));
+
+            }
+        });
+
+
+    }
+    private void ShoesButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgShoes);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catShoes));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddShoes);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catShoes));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchShoes);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catShoes));
+
+            }
+        });
+
+    }
+    private void JumperButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgJumper);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catJumper));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddJumper);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catJumper));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchJumper);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catJumper));
+
+            }
+        });
+
+    }
+    private void PijamasButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgPijamas);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catPijamas));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddPijamas);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catPijamas));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchPijamas);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catPijamas));
+
+            }
+        });
+
+    }
+    private void DressButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgDress);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catDress));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddDress);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catDress));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchDress);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catDress));
+
+            }
+        });
+
+    }
+    private void AccessoriesButtons() {
+
+
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgAccesories);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                category(getString(R.string.catAccesories));
+            }
+        });
+
+        ImageButton btnAdd = (ImageButton) rootview.findViewById(R.id.imgAddAccesories);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                addItem(getString(R.string.catAccesories));
+
+            }
+        });
+
+        ImageButton btnSearch = (ImageButton) rootview.findViewById(R.id.imgSearchAccesories);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                search(getString(R.string.catAccesories));
+
+            }
+        });
+
+    }
+
 
 }
