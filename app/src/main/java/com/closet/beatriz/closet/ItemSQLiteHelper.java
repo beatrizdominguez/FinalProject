@@ -310,13 +310,13 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int countDress = 0;
         int counteCoats = 0;
         int countAccessories = 0;
-        int countPrimavera = 0;
-        int countVerano = 0;
-        int countInvierno = 0;
-        int countOtono = 0;
+        int countspring = 0;
+        int countWinter = 0;
+        int countSummer = 0;
+        int countAutumn = 0;
 
         //string of num of categories +4 seasons +1 total
-        Integer[] ItemCount = new Integer[10];
+        Integer[] ItemCount = new Integer[14];
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -387,6 +387,21 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                     countAccessories++;
                 }
 
+                //seasons
+
+                if (cSeason.equals(context.getResources().getString(R.string.seasonSpring))) {
+                    countspring++;
+                }
+                if (cSeason.equals(context.getResources().getString(R.string.seasonSummer))) {
+                    countSummer++;
+                }
+                if (cSeason.equals(context.getResources().getString(R.string.seasonAutumn))) {
+                    countAutumn++;
+                }
+                if (cSeason.equals(context.getResources().getString(R.string.seasonWinter))) {
+                    countWinter++;
+                }
+
 
             } while (c.moveToNext());
         }
@@ -401,6 +416,10 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         ItemCount[7] = countDress;
         ItemCount[8] = counteCoats;
         ItemCount[9] = countAccessories;
+        ItemCount[10] = countspring;
+        ItemCount[11] = countSummer;
+        ItemCount[12] = countAutumn;
+        ItemCount[13] = countWinter;
         //etc add all categories
         Log.e("total number of items", String.valueOf(totalCount));
 

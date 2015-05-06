@@ -133,6 +133,13 @@
         <item>Otoño</item>
     </string-array>
 
+    //seasons
+    <string name="seasonSpring">Primavera</string>
+    <string name="seasonSummer">Verano</string>
+    <string name="seasonWinter">Invierno</string>
+    <string name="seasonAutumn">Otoño</string>
+
+
     <!-- Item size -->
     <!-- TALLAS EN USA CAMBIAN!!!!!!!!!!!! -->
     <string-array name="sizeArrays">

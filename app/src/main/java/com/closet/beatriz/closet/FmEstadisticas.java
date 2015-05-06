@@ -48,8 +48,9 @@ public class FmEstadisticas extends Fragment {
         ItemValue = usdbh.priceStatistics(getActivity());
         Log.e("TAG-----total value", String.valueOf(ItemValue[0]));
 
-
+        //total
         TextView txtTotal = (TextView) rootview.findViewById(R.id.txtTotalValue);
+        //categories
         TextView shirtValue = (TextView) rootview.findViewById(R.id.txtShirtValue);
         TextView pantsValue = (TextView) rootview.findViewById(R.id.txtPantstValue);
         TextView UnderWearValue = (TextView) rootview.findViewById(R.id.txtUnderWearValue);
@@ -59,6 +60,7 @@ public class FmEstadisticas extends Fragment {
         TextView DressValue = (TextView) rootview.findViewById(R.id.txtDressValue);
         TextView CoatsValue = (TextView) rootview.findViewById(R.id.txtCoatsValue);
         TextView AccessoriesValue = (TextView) rootview.findViewById(R.id.txtAccesoriesValue);
+
 
         Float total;
         float totalValue = 0;
@@ -99,12 +101,13 @@ public class FmEstadisticas extends Fragment {
 
     private void displayCount() {
 
-        Integer[] ItemCount = new Integer[10];
+        Integer[] ItemCount = new Integer[14];
         ItemCount = usdbh.countStatistics(getActivity());
         Log.e("TAG-----total value", String.valueOf(ItemCount[0]));
 
-
+//total
         TextView totalCount = (TextView) rootview.findViewById(R.id.txtTotalCount);
+        //categories
         TextView shirtCount = (TextView) rootview.findViewById(R.id.txtShirtCount);
         TextView pantsCount = (TextView) rootview.findViewById(R.id.txtPantsCount);
         TextView UnderWearCount = (TextView) rootview.findViewById(R.id.txtUnderWearCount);
@@ -114,9 +117,15 @@ public class FmEstadisticas extends Fragment {
         TextView DressCount = (TextView) rootview.findViewById(R.id.txtDressCount);
         TextView CoatsCount = (TextView) rootview.findViewById(R.id.txtCoatsCount);
         TextView AccessoriesCount = (TextView) rootview.findViewById(R.id.txtAccesoriesCount);
+        //seasons
+        TextView srpingCount = (TextView) rootview.findViewById(R.id.txtSpringCount);
+        TextView summerCount = (TextView) rootview.findViewById(R.id.txtSummerCount);
+        TextView automnCount = (TextView) rootview.findViewById(R.id.txtAutomnCount);
+        TextView winterCount = (TextView) rootview.findViewById(R.id.txtWinterCount);
 
         int total;
         int totalValue = 0;
+        //categories
         int countShirts = 0;
         int countPants = 0;
         int countUnderWear = 0;
@@ -126,8 +135,14 @@ public class FmEstadisticas extends Fragment {
         int countDress = 0;
         int countCoats = 0;
         int countAccessories = 0;
+        //seasons
+        int countspring = 0;
+        int countWinter = 0;
+        int countSummer = 0;
+        int countAutumn = 0;
 
         total = ItemCount[0];
+        //categories
         countShirts = ItemCount[1];
         countPants = ItemCount[2];
         countUnderWear = ItemCount[3];
@@ -137,6 +152,11 @@ public class FmEstadisticas extends Fragment {
         countDress = ItemCount[7];
         countCoats = ItemCount[8];
         countAccessories = ItemCount[9];
+        //seasons
+         countspring = ItemCount[10];
+        countSummer = ItemCount[11];
+        countAutumn = ItemCount[12];
+        countWinter = ItemCount[13];
 
         totalCount.setText(totalCount.getText() + String.valueOf(total));
         shirtCount.setText(String.valueOf(countShirts));
@@ -148,6 +168,13 @@ public class FmEstadisticas extends Fragment {
         DressCount.setText(String.valueOf(countDress));
         CoatsCount.setText(String.valueOf(countCoats));
         AccessoriesCount.setText(String.valueOf(countAccessories));
+        //seasons
+        srpingCount.setText(String.valueOf(countspring));
+        summerCount.setText(String.valueOf(countSummer));
+        automnCount.setText(String.valueOf(countAutumn));
+        winterCount.setText(String.valueOf(countWinter));
+        //primasvera- ii
+        //in - ii
 
 
     }
