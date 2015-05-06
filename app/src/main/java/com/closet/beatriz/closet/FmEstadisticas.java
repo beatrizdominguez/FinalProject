@@ -103,9 +103,8 @@ public class FmEstadisticas extends Fragment {
 
         Integer[] ItemCount = new Integer[14];
         ItemCount = usdbh.countStatistics(getActivity());
-        Log.e("TAG-----total value", String.valueOf(ItemCount[0]));
 
-//total
+        //total
         TextView totalCount = (TextView) rootview.findViewById(R.id.txtTotalCount);
         //categories
         TextView shirtCount = (TextView) rootview.findViewById(R.id.txtShirtCount);
@@ -153,7 +152,7 @@ public class FmEstadisticas extends Fragment {
         countCoats = ItemCount[8];
         countAccessories = ItemCount[9];
         //seasons
-         countspring = ItemCount[10];
+        countspring = ItemCount[10];
         countSummer = ItemCount[11];
         countAutumn = ItemCount[12];
         countWinter = ItemCount[13];
@@ -173,9 +172,6 @@ public class FmEstadisticas extends Fragment {
         summerCount.setText(String.valueOf(countSummer));
         automnCount.setText(String.valueOf(countAutumn));
         winterCount.setText(String.valueOf(countWinter));
-        //primasvera- ii
-        //in - ii
-
 
     }
 

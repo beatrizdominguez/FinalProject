@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -31,7 +30,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class AcAddItem extends Activity {
+public class AcModifyItem extends Activity {
 
 
     //controls
@@ -55,6 +54,8 @@ public class AcAddItem extends Activity {
     Bitmap imageBitmap = null;
     String[] colorArray = new String[20];
     int colorCount = 0;
+
+    Item i;
 
 
     ItemSQLiteHelper usdbh;
@@ -83,11 +84,9 @@ public class AcAddItem extends Activity {
 
         // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
         Bundle extras = getIntent().getExtras();
-        String cat = extras.getString("Category");
-        int categoryIndex = 0;
-        categoryIndex = getCategoryIndex(cat);
+        i = (Item) getIntent().getSerializableExtra("item");
+        show(i);
 
-        spnCat.setSelection(categoryIndex);
 
         btnImg = (ImageButton) findViewById(R.id.imageButton);
         btnImg.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +126,7 @@ public class AcAddItem extends Activity {
         });
     }
 
+
     private int getCategoryIndex(String cat) {
 
         int index = 0;
@@ -162,6 +162,29 @@ public class AcAddItem extends Activity {
             index = 8;
         }
 
+
+        return index;
+    }
+
+    private int getSeasonIndex(String season) {
+
+        int index = 0;
+
+
+        if (season.equals(getResources().getString(R.string.seasonSpring))) {
+
+            index = 0;
+
+        } else if (season.equals(getResources().getString(R.string.seasonSummer))) {
+
+            index = 1;
+        } else if (season.equals(getResources().getString(R.string.seasonAutumn))) {
+
+            index = 2;
+        } else if (season.equals(getResources().getString(R.string.seasonWinter))) {
+
+            index = 3;
+        }
 
         return index;
     }
@@ -217,24 +240,17 @@ public class AcAddItem extends Activity {
         //convert bitmap to string
         String str = BitmapToString(bitmap);
 
-        description = etxtDesc.getText().toString();
-        category = spnCat.getSelectedItem().toString();
-        Log.e("TAG--season", "before season------------");
-        Log.e("TAG--season", spnSeason.getSelectedItem().toString());
-        season = spnSeason.getSelectedItem().toString();
-        s_date = getDateFromDatePicker(datePicker);
-        size = spnSize.getSelectedItem().toString();
-        prize = Float.valueOf(etxtPrice.getText().toString());
-        shop = spnShop.getSelectedItem().toString();
-
-        //Log.e("TAG----------", s_date.toString());
-        // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        Item i = new Item(str, description, category, season, s_date.toString(), size, prize, shop);
-        // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
-
+        i.setDescription(etxtDesc.getText().toString());
+        i.setCategory(spnCat.getSelectedItem().toString());
+        i.setSeason(spnSeason.getSelectedItem().toString());
+        i.setS_date(getDateFromDatePicker(datePicker).toString());
+        i.setSize(spnSize.getSelectedItem().toString());
+        i.setPrize(Float.valueOf(etxtPrice.getText().toString()));
+        i.setShop(spnShop.getSelectedItem().toString());
 
         //save on data base
-        usdbh.guardarItem(i);
+        usdbh.updateItem(i);
+
         //create intent
         Intent intentSave = new Intent();
         Bundle mBundle = new Bundle();
@@ -248,7 +264,7 @@ public class AcAddItem extends Activity {
 
     }
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
+    public static Date getDateFromDatePicker(DatePicker datePicker) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year = datePicker.getYear();
@@ -274,7 +290,7 @@ public class AcAddItem extends Activity {
                 } else if (items[item].equals("Choose from Library")) {
                     Intent intent = new Intent(
                             Intent.ACTION_PICK,
-                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
                     startActivityForResult(
                             Intent.createChooser(intent, "Select File"),
@@ -324,6 +340,35 @@ public class AcAddItem extends Activity {
             }
         }
     }
+
+
+    private void show(Item i) {
+
+       // Log.e("TAG ---- image", i.getImage());
+        //Bitmap btm = StringToBitmap(i.getImage());
+        //btnImg.setImageBitmap(btm);
+        //btnImg.setImageBitmap(StringToBitmap(i.getImage()));
+        etxtDesc.setText(i.getDescription());
+        spnCat.setSelection(getCategoryIndex(i.getCategory()));
+        spnSeason.setSelection(getSeasonIndex(i.getSeason()));
+        //date
+        //s_date = getDateFromDatePicker(datePicker);
+        //size
+        //size = spnSize.getSelectedItem().toString();
+        etxtPrice.setText(String.valueOf(i.getPrize()));
+        //shop
+        //shop = spnShop.getSelectedItem().toString();
+
+    }
+
+    private Bitmap StringToBitmap(String image) {
+
+        byte[] decodedString = null;
+        decodedString = Base64.decode(image, Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        return bitmap;
+    }
+
 
     private String BitmapToString(Bitmap imageBitmap) {
 

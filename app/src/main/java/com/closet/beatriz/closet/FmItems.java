@@ -195,7 +195,7 @@ public class FmItems extends Fragment {
         //  Toast.makeText(getActivity(), "Cat->" + cat, Toast.LENGTH_SHORT).show();
 
         Intent intentAdd = new Intent(getActivity(), AcAddItem.class);
-        //intent.putExtra("Category", cat);
+        intentAdd.putExtra("Category", cat);
         startActivity(intentAdd);
 
 

@@ -163,39 +163,57 @@ public class AcCategory extends Activity {
                 // añadimos la nueva información a la lista
                 String category = i.getCategory();
 
-                if (category.equals(getString(R.string.catShirts))) {
-                    ALShirts.add(i);
+                addToList(category, i);
 
-                } else if (category.equals(getString(R.string.catPants))) {
 
-                    ALPants.add(i);
+            } else if (requestCode == REQUEST_MODIFY) {
 
-                } else if (category.equals(getString(R.string.catUnderWear))) {
-                    ALUnderWear.add(i);
+                deleteItem(pos);
 
-                } else if (category.equals(getString(R.string.catCoats))) {
-                    ALCoats.add(i);
+                Item i = (Item) data.getSerializableExtra("item");
 
-                } else if (category.equals(getString(R.string.catShoes))) {
-                    ALShoes.add(i);
+                String category = i.getCategory();
 
-                } else if (category.equals(getString(R.string.catJumper))) {
-                    ALJumper.add(i);
+                addToList(category, i);
 
-                } else if (category.equals(getString(R.string.catPijamas))) {
-                    ALPijamas.add(i);
-
-                } else if (category.equals(getString(R.string.catDress))) {
-                    ALDress.add(i);
-
-                } else if (category.equals(getString(R.string.catAccesories))) {
-                    ALAccesories.add(i);
-                }
-
-                adaptador.notifyDataSetChanged();
 
             }
         }
+    }
+
+    private void addToList(String category, Item i) {
+
+        if (category.equals(getString(R.string.catShirts))) {
+            ALShirts.add(i);
+
+        } else if (category.equals(getString(R.string.catPants))) {
+
+            ALPants.add(i);
+
+        } else if (category.equals(getString(R.string.catUnderWear))) {
+            ALUnderWear.add(i);
+
+        } else if (category.equals(getString(R.string.catCoats))) {
+            ALCoats.add(i);
+
+        } else if (category.equals(getString(R.string.catShoes))) {
+            ALShoes.add(i);
+
+        } else if (category.equals(getString(R.string.catJumper))) {
+            ALJumper.add(i);
+
+        } else if (category.equals(getString(R.string.catPijamas))) {
+            ALPijamas.add(i);
+
+        } else if (category.equals(getString(R.string.catDress))) {
+            ALDress.add(i);
+
+        } else if (category.equals(getString(R.string.catAccesories))) {
+            ALAccesories.add(i);
+        }
+
+        adaptador.notifyDataSetChanged();
+
     }
 
     /*
@@ -262,7 +280,7 @@ public class AcCategory extends Activity {
 
 
                 Intent intentAdd = new Intent(this, AcAddItem.class);
-                //intent.putExtra("Category", cat);
+                intentAdd.putExtra("Category", category);
                 startActivityForResult(intentAdd, REQUEST_ADD);
                 break;
 
@@ -312,35 +330,7 @@ public class AcCategory extends Activity {
                 //delete from the DB
                 usdbh.deleteItem(i.getId());
 
-                //remove on ArrayList dependeing on the category
-                if (category.equals(getString(R.string.catShirts))) {
-                    ALShirts.remove(pos);
-
-                } else if (category.equals(getString(R.string.catPants))) {
-
-                    ALPants.remove(pos);
-
-                } else if (category.equals(getString(R.string.catUnderWear))) {
-                    ALUnderWear.remove(pos);
-
-                } else if (category.equals(getString(R.string.catCoats))) {
-                    ALCoats.remove(pos);
-
-                } else if (category.equals(getString(R.string.catShoes))) {
-                    ALShoes.remove(pos);
-
-                } else if (category.equals(getString(R.string.catJumper))) {
-                    ALJumper.remove(pos);
-
-                } else if (category.equals(getString(R.string.catPijamas))) {
-                    ALPijamas.remove(pos);
-
-                } else if (category.equals(getString(R.string.catDress))) {
-                    ALDress.remove(pos);
-
-                } else if (category.equals(getString(R.string.catAccesories))) {
-                    ALAccesories.remove(pos);
-                }
+                deleteItem(pos);
 
                 adaptador.notifyDataSetChanged();
 
@@ -357,14 +347,48 @@ public class AcCategory extends Activity {
     // metodo modificar
     public void modify(Item i) {
 
-        Intent intentModify = new Intent();
+        Intent intentModify = new Intent(AcCategory.this, AcModifyItem.class);
         Bundle mBundle = new Bundle();
         mBundle.putSerializable("item", (Serializable) i);
         intentModify.putExtras(mBundle);
         setResult(RESULT_OK, intentModify);
+        startActivityForResult(intentModify, REQUEST_MODIFY);
 
-        //lanzamos el intent
-        // startActivityForResult(intentModify, REQUEST_MODIFY);
+    }
+
+    public void deleteItem(int pos) {
+
+        //remove on ArrayList dependeing on the category
+        if (category.equals(getString(R.string.catShirts))) {
+            ALShirts.remove(pos);
+
+        } else if (category.equals(getString(R.string.catPants))) {
+
+            ALPants.remove(pos);
+
+        } else if (category.equals(getString(R.string.catUnderWear))) {
+            ALUnderWear.remove(pos);
+
+        } else if (category.equals(getString(R.string.catCoats))) {
+            ALCoats.remove(pos);
+
+        } else if (category.equals(getString(R.string.catShoes))) {
+            ALShoes.remove(pos);
+
+        } else if (category.equals(getString(R.string.catJumper))) {
+            ALJumper.remove(pos);
+
+        } else if (category.equals(getString(R.string.catPijamas))) {
+            ALPijamas.remove(pos);
+
+        } else if (category.equals(getString(R.string.catDress))) {
+            ALDress.remove(pos);
+
+        } else if (category.equals(getString(R.string.catAccesories))) {
+            ALAccesories.remove(pos);
+        }
+
+        adaptador.notifyDataSetChanged();
 
     }
 

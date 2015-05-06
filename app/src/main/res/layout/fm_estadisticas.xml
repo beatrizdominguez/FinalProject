@@ -282,7 +282,7 @@
             style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/statistics_total_value" />
+            android:text="@string/statistics_total_count" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -307,7 +307,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
 
         </LinearLayout>
 
@@ -335,7 +335,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
 
@@ -362,7 +362,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -388,7 +388,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -414,7 +414,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
 
@@ -441,7 +441,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
 
@@ -468,7 +468,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
 
@@ -495,7 +495,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -521,7 +521,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <TextView
@@ -555,7 +555,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -581,7 +581,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
 
@@ -608,7 +608,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
@@ -634,7 +634,7 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:text="0" />
         </LinearLayout>
 
     </LinearLayout>

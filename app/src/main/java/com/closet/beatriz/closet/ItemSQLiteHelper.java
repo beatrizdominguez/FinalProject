@@ -152,27 +152,26 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
     ////not changed
-    public int updateVestido(HashMap<String, String> queryValues) {
+    public int updateItem(Item i) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         //values.put("id", queryValues.get("id"));
-        Log.e("ID--", queryValues.get("id"));
-        values.put("foto", queryValues.get("foto"));
-        values.put("tienda", queryValues.get("tienda"));
-        values.put("disenador", queryValues.get("disenador"));
-        values.put("color", queryValues.get("color"));
-        values.put("corte", queryValues.get("corte"));
-        values.put("escote", queryValues.get("escote"));
-        values.put("valoracion", queryValues.get("valoracion"));
-        values.put("precio", queryValues.get("precio"));
+        Log.e("ID--MODIFICAT", String.valueOf(i.getId()));
+        //values.put("id", i.getId());
+        values.put("image", i.getImage());
+        values.put("description", i.getDescription());
+        values.put("category", i.getCategory());
+        values.put("season", i.getSeason());
+        values.put("i_size", i.getSize());
+        values.put("s_date", i.getS_date());
+        values.put("price", i.getPrize());
+        values.put("shop", i.getShop());
 
-        //  return 1;
-        Log.e("MODIFICAR", queryValues.get("id"));
 
-        return database.update("Vestidos", values, "id" + " = ?",
-                new String[]{queryValues.get("id")});
+        return database.update("Items", values, "id" + " = ?",
+                new String[]{String.valueOf(i.getId())});
     }
 
     public void deleteItem(int id) {

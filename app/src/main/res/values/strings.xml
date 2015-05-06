@@ -102,6 +102,7 @@
         <item>Camisetas</item>
         <item>Pantalones</item>
         <item>Ropa interior</item>
+        <item>Abrigos</item>
         <item>Zapatos</item>
         <item>Jerseys</item>
         <item>Pijamas</item>
@@ -182,9 +183,8 @@
     <!-- Statistics -->
     <string name="statistics_title">Estadísticas</string>
     <string name="statistics_total_value">El valor total de tu armario es: </string>
-    <string name="statistics_shirt_value">Tienes camisetas por un valor de: </string>
-    <string name="statistics_pants_value">Tienes pantalones por un valor de: </string>
-    <string name="statistics_shoes_value">Tus zapatos valen de: </string>
+    <string name="statistics_total_count">Número de prendas en tu armario: </string>
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
