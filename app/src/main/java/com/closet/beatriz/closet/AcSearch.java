@@ -23,10 +23,15 @@ public class AcSearch extends Activity {
 
     AdapterItem adaptador = null;
     private ArrayList<Item> lista = new ArrayList<Item>();
-    private ArrayList<Item> ALCamisetas = new ArrayList<Item>();
-    private ArrayList<Item> ALPantalones = new ArrayList<Item>();
-    private ArrayList<Item> ALRopaInterior = new ArrayList<Item>();
-    private ArrayList<Item> ALAbrigos = new ArrayList<Item>();
+    private ArrayList<Item> ALShirts = new ArrayList<Item>();
+    private ArrayList<Item> ALPants = new ArrayList<Item>();
+    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
+    private ArrayList<Item> ALCoats = new ArrayList<Item>();
+    private ArrayList<Item> ALShoes = new ArrayList<Item>();
+    private ArrayList<Item> ALJumper = new ArrayList<Item>();
+    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
+    private ArrayList<Item> ALDress = new ArrayList<Item>();
+    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
 
     ItemSQLiteHelper usdbh;
     int pos;
@@ -35,7 +40,6 @@ public class AcSearch extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
 
 
         Bundle extras = getIntent().getExtras();
@@ -50,29 +54,52 @@ public class AcSearch extends Activity {
 
 
         // Log.e("TAG--------", "crear adaptador");
-
         if (category.equals(getString(R.string.catShirts))) {
             Log.e("TAG--------------adaptador", "camisetas");
             // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALCamisetas);
+            adaptador = new AdapterItem(this.getBaseContext(), ALShirts);
 
         } else if (category.equals(getString(R.string.catPants))) {
             // Log.e("TAG--------------adaptador", "pantalones");
             // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALPantalones);
+            adaptador = new AdapterItem(this.getBaseContext(), ALPants);
 
         } else if (category.equals(getString(R.string.catUnderWear))) {
             //  Log.e("TAG--------------adaptador", "ropa interior");
             // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALRopaInterior);
+            adaptador = new AdapterItem(this.getBaseContext(), ALUnderWear);
 
         } else if (category.equals(getString(R.string.catCoats))) {
             //  Log.e("TAG--------------adaptador", "abrigos");
             // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALAbrigos);
+            adaptador = new AdapterItem(this.getBaseContext(), ALCoats);
+
+        } else if (category.equals(getString(R.string.catShoes))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALShoes);
+
+        } else if (category.equals(getString(R.string.catJumper))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALJumper);
+
+        } else if (category.equals(getString(R.string.catPijamas))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALPijamas);
+
+        } else if (category.equals(getString(R.string.catDress))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALDress);
+
+        } else if (category.equals(getString(R.string.catAccesories))) {
+            //  Log.e("TAG--------------adaptador", "abrigos");
+            // creamos el adaptador
+            adaptador = new AdapterItem(this.getBaseContext(), ALAccesories);
 
         }
-
         // creamos el adaptador
         //adaptador = new AdapterItem(this.getBaseContext(), lista);
         // creamos el adaptador
@@ -81,7 +108,8 @@ public class AcSearch extends Activity {
         registerForContextMenu(lv);
         lv.setAdapter(adaptador);
 
-        usdbh.cargarLista(ALCamisetas, ALPantalones, ALRopaInterior, ALAbrigos);
+
+        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
 
         // definir el listener del listview

@@ -101,9 +101,10 @@
         <item>Camisetas</item>
         <item>Pantalones</item>
         <item>Ropa interior</item>
-        <item>Abrigos</item>
-        <item>Jerseys</item>
         <item>Zapatos</item>
+        <item>Jerseys</item>
+        <item>Pijamas</item>
+        <item>Vestidos</item>
         <item>Complementos</item>
     </string-array>
 

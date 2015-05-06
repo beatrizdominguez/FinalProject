@@ -6,17 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,10 +23,15 @@ public class FmItems extends Fragment {
 
     View rootview;
     // GridView camisetas;
-    private ArrayList<Item> ALCamisetas = new ArrayList<Item>();
-    private ArrayList<Item> ALPantalones = new ArrayList<Item>();
-    private ArrayList<Item> ALRopaInterior = new ArrayList<Item>();
-    private ArrayList<Item> ALAbrigos = new ArrayList<Item>();
+    private ArrayList<Item> ALShirts = new ArrayList<Item>();
+    private ArrayList<Item> ALPants = new ArrayList<Item>();
+    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
+    private ArrayList<Item> ALCoats = new ArrayList<Item>();
+    private ArrayList<Item> ALShoes = new ArrayList<Item>();
+    private ArrayList<Item> ALJumper = new ArrayList<Item>();
+    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
+    private ArrayList<Item> ALDress = new ArrayList<Item>();
+    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
     String category;
     ItemSQLiteHelper usdbh;
 
@@ -73,25 +74,53 @@ public class FmItems extends Fragment {
     private void cargarLista() {
 
         //cargamos los ArrayList con información
-        usdbh.cargarLista(ALCamisetas, ALPantalones, ALRopaInterior, ALAbrigos);
+        usdbh.cargarLista(getActivity(), ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
         //definimos un arrayList vacio y un LinearLAyout
         ArrayList<Item> lista = new ArrayList<Item>();
         LinearLayout layout = null;
 
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 9; i++) {
 
             switch (i) {
 
                 case 0:
                     layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
-                    lista = ALCamisetas;
+                    lista = ALShirts;
                     break;
 
                 case 1:
                     layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
-                    lista = ALPantalones;
+                    lista = ALPants;
+                    break;
+                case 2:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearUnderWear);
+                    lista = ALUnderWear;
+                    break;
+                case 3:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearCoats);
+                    lista = ALCoats;
+                    break;
+                case 4:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearShoes);
+                    lista = ALShoes;
+                    break;
+                case 5:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearJumper);
+                    lista = ALJumper;
+                    break;
+                case 6:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearPijamas);
+                    lista = ALPijamas;
+                    break;
+                case 7:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearDress);
+                    lista = ALDress;
+                    break;
+                case 8:
+                    layout = (LinearLayout) rootview.findViewById(R.id.linearAccesories);
+                    lista = ALAccesories;
                     break;
             }
 
@@ -229,6 +258,7 @@ public class FmItems extends Fragment {
 
 
     }
+
     private void PantsButtons() {
 
         ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgPantalones);
@@ -268,6 +298,7 @@ public class FmItems extends Fragment {
 
 
     }
+
     private void UnderWearButtons() {
 
 
@@ -305,6 +336,7 @@ public class FmItems extends Fragment {
 
 
     }
+
     private void CoatsButtons() {
 
 
@@ -342,6 +374,7 @@ public class FmItems extends Fragment {
 
 
     }
+
     private void ShoesButtons() {
 
 
@@ -378,6 +411,7 @@ public class FmItems extends Fragment {
         });
 
     }
+
     private void JumperButtons() {
 
 
@@ -414,6 +448,7 @@ public class FmItems extends Fragment {
         });
 
     }
+
     private void PijamasButtons() {
 
 
@@ -450,6 +485,7 @@ public class FmItems extends Fragment {
         });
 
     }
+
     private void DressButtons() {
 
 
@@ -486,6 +522,7 @@ public class FmItems extends Fragment {
         });
 
     }
+
     private void AccessoriesButtons() {
 
 

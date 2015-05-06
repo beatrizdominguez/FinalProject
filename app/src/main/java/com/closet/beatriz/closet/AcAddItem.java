@@ -186,6 +186,9 @@ public class AcAddItem extends Activity {
         Item i = new Item(str, description, category, s_date.toString(), size, prize, shop);
         // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
+
+        //save on data base
+        usdbh.guardarItem(i);
         //create intent
         Intent intentSave = new Intent();
         Bundle mBundle = new Bundle();

@@ -44,7 +44,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateItems);
     }
 
-    public void cargarLista(ArrayList<Item> ALCamisetas, ArrayList<Item> ALPantalones, ArrayList<Item> ALRopainterior, ArrayList<Item> ALAbrigos) {
+    public void cargarLista(Context context,ArrayList<Item> ALShirts, ArrayList<Item> ALPants, ArrayList<Item> ALUnderWear, ArrayList<Item> ALCoats,ArrayList<Item> ALShoes,ArrayList<Item> ALJumper,ArrayList<Item> ALPijamas,ArrayList<Item> ALDress,ArrayList<Item> ALAccesories ) {
 
 
         Log.e("TAG-----------", "en el helper cargarlista");
@@ -86,13 +86,39 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 i = new Item(cId, cFoto, cDescription, cCategory, cDate, cSize,
                         cPrice, cShop);
 
+
                 // cargamos la informavión en la lista
-                if (cCategory.equals("Camisetas")) {
-                    ALCamisetas.add(i);
-                } else if (cCategory.equals("Pantalones")) {
-                    ALPantalones.add(i);
-                } else if (cCategory.equals("Ropa interior")) {
-                    ALRopainterior.add(i);
+                if (cCategory.equals(context.getResources().getString(R.string.catShirts))) {
+
+                    ALShirts.add(i);
+                } else if (cCategory.equals(context.getResources().getString(R.string.catPants))) {
+
+                    ALPants.add(i);
+
+                } else if (cCategory.equals(context.getResources().getString(R.string.catUnderWear))) {
+
+                    ALUnderWear.add(i);
+
+                } else if (cCategory.equals(context.getResources().getString(R.string.catCoats))) {
+                    ALCoats.add(i);
+
+                } else if (cCategory.equals(context.getResources().getString(R.string.catShoes))) {
+                    ALShoes.add(i);
+
+
+                } else if (cCategory.equals(context.getResources().getString(R.string.catJumper))) {
+                    ALJumper.add(i);
+
+
+                } else if (cCategory.equals(context.getResources().getString(R.string.catPijamas))) {
+
+                    ALPijamas.add(i);
+                } else if (cCategory.equals(context.getResources().getString(R.string.catDress))) {
+
+                    ALDress.add(i);
+                } else if (cCategory.equals(context.getResources().getString(R.string.catAccesories))) {
+
+                    ALAccesories.add(i);
                 }
                 //AÑADIR LAS QUE QUEDARN!!!!!!!!!!!!!!!
 
@@ -357,7 +383,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
                     countAccessories++;
                 }
-                //AÑADIR LAS QUE QUEDARN!!!!!!!!!!!!!!!
+
 
             } while (c.moveToNext());
         }
