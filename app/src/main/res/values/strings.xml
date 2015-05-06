@@ -33,6 +33,7 @@
     <!-- Add item -->
     <string name="txt_desc">Descripción</string>
     <string name="txt_cat">Categoría</string>
+    <string name="txt_season">Temporada</string>
     <string name="txt_color">Color</string>
     <string name="txt_size">Talla</string>
     <string name="txt_price">Precio</string>
@@ -42,7 +43,7 @@
     <!-- Search -->
     <!-- <string name="txt_cat">Categoría</string> -->
     <!-- <string name="txt_color">Color</string> -->
-    <string name="txt_season">Estación</string>
+   <!-- <string name="txt_season">Estación</string> -->
 
     <!-- Configuration -->
     <string name="txt_default">Armario predegterminado</string>

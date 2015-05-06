@@ -37,6 +37,7 @@ public class AcAddItem extends Activity {
     //controls
     EditText etxtDesc;
     Spinner spnCat;
+    Spinner spnSeason;
     //colores almacenarlos en un array
     Spinner spnSize;
     EditText etxtPrice;
@@ -66,6 +67,7 @@ public class AcAddItem extends Activity {
         //controls
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
+        spnSeason = (Spinner) findViewById(R.id.spnSeason);
         //colores almacenarlos en un array
         spnSize = (Spinner) findViewById(R.id.spnSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
@@ -156,6 +158,8 @@ public class AcAddItem extends Activity {
         //String image;
         String description;
         String category;
+        String colour;
+        String season;
         Date s_date;
         //String s_date;
         String size;
@@ -176,6 +180,9 @@ public class AcAddItem extends Activity {
 
         description = etxtDesc.getText().toString();
         category = spnCat.getSelectedItem().toString();
+        Log.e("TAG--season","before season------------");
+        Log.e("TAG--season",spnSeason.getSelectedItem().toString());
+        season = spnSeason.getSelectedItem().toString();
         s_date = getDateFromDatePicker(datePicker);
         size = spnSize.getSelectedItem().toString();
         prize = Float.valueOf(etxtPrice.getText().toString());
@@ -183,7 +190,7 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        Item i = new Item(str, description, category, s_date.toString(), size, prize, shop);
+        Item i = new Item(str, description, category, season, s_date.toString(), size, prize, shop);
         // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
 

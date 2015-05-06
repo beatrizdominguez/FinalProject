@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
 
     public ItemSQLiteHelper(Context contexto, String nombre,
                             CursorFactory factory, int version) {
@@ -44,7 +44,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateItems);
     }
 
-    public void cargarLista(Context context,ArrayList<Item> ALShirts, ArrayList<Item> ALPants, ArrayList<Item> ALUnderWear, ArrayList<Item> ALCoats,ArrayList<Item> ALShoes,ArrayList<Item> ALJumper,ArrayList<Item> ALPijamas,ArrayList<Item> ALDress,ArrayList<Item> ALAccesories ) {
+    public void cargarLista(Context context, ArrayList<Item> ALShirts, ArrayList<Item> ALPants, ArrayList<Item> ALUnderWear, ArrayList<Item> ALCoats, ArrayList<Item> ALShoes, ArrayList<Item> ALJumper, ArrayList<Item> ALPijamas, ArrayList<Item> ALDress, ArrayList<Item> ALAccesories) {
 
 
         Log.e("TAG-----------", "en el helper cargarlista");
@@ -61,6 +61,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int fotoIdx = c.getColumnIndex("image");
         int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
         int sizeIdx = c.getColumnIndex("i_size");
         int dateIdx = c.getColumnIndex("s_date");
         int priceIdx = c.getColumnIndex("price");
@@ -76,6 +77,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cFoto = c.getString(fotoIdx);
                 String cDescription = c.getString(descriptionIdx);
                 String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
                 String cSize = c.getString(sizeIdx);
                 String cDate = c.getString(dateIdx);
                 Float cPrice = c.getFloat(priceIdx);
@@ -83,7 +85,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cDate, cSize,
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -120,7 +122,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
                     ALAccesories.add(i);
                 }
-                //AÑADIR LAS QUE QUEDARN!!!!!!!!!!!!!!!
+
 
             } while (c.moveToNext());
         }
@@ -134,10 +136,11 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sqlInertItem = "INSERT INTO Items (image, description, category, i_size, s_date, price, shop ) VALUES ('" +
+        String sqlInertItem = "INSERT INTO Items (image, description, category,season, i_size, s_date, price, shop ) VALUES ('" +
                 i.getImage() + "', '" +
                 i.getDescription() + "', '" +
                 i.getCategory() + "', '" +
+                i.getSeason() + "', '" +
                 i.getSize() + "', '" +
                 i.getS_date() + "', " +
                 i.getPrize() + ", '" +
@@ -146,14 +149,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlInertItem);
 
     }
-
-    /*
-    public void guardarTodosItem(ArrayList<Vestido> lista) {
-        for (int i = 0; i < lista.size(); i++) {
-            //  guardarItem(lista[i]);
-        }
-    }
-*/
 
 
     ////not changed
@@ -226,6 +221,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int fotoIdx = c.getColumnIndex("image");
         int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
         int sizeIdx = c.getColumnIndex("i_size");
         int dateIdx = c.getColumnIndex("s_date");
         int priceIdx = c.getColumnIndex("price");
@@ -241,6 +237,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cFoto = c.getString(fotoIdx);
                 String cDescription = c.getString(descriptionIdx);
                 String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
                 String cSize = c.getString(sizeIdx);
                 String cDate = c.getString(dateIdx);
                 Float cPrice = c.getFloat(priceIdx);
@@ -248,7 +245,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cDate, cSize,
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cDate, cSize,
                         cPrice, cShop);
                 totalValue += i.getPrize();
 
@@ -313,8 +310,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int countDress = 0;
         int counteCoats = 0;
         int countAccessories = 0;
+        int countPrimavera = 0;
+        int countVerano = 0;
+        int countInvierno = 0;
+        int countOtono = 0;
 
-        //string of num of categories +1
+        //string of num of categories +4 seasons +1 total
         Integer[] ItemCount = new Integer[10];
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -327,6 +328,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int fotoIdx = c.getColumnIndex("image");
         int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
         int sizeIdx = c.getColumnIndex("i_size");
         int dateIdx = c.getColumnIndex("s_date");
         int priceIdx = c.getColumnIndex("price");
@@ -342,6 +344,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cFoto = c.getString(fotoIdx);
                 String cDescription = c.getString(descriptionIdx);
                 String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
                 String cSize = c.getString(sizeIdx);
                 String cDate = c.getString(dateIdx);
                 Float cPrice = c.getFloat(priceIdx);
@@ -349,7 +352,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cDate, cSize,
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cDate, cSize,
                         cPrice, cShop);
                 totalCount++;
 

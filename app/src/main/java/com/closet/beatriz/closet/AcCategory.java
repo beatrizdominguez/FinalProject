@@ -269,7 +269,7 @@ public class AcCategory extends Activity {
             case (R.id.action_search):
 
                 Intent intentSearch = new Intent(this, AcSearch.class);
-                //intent.putExtra("Category", cat);
+                intentSearch.putExtra("Category", category);
                 startActivity(intentSearch);
 
                 break;

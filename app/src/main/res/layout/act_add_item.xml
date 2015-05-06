@@ -54,6 +54,22 @@
             android:layout_gravity="center_horizontal"
             android:entries="@array/categoryArrays" />
 
+        <TextView
+            android:id="@+id/txtSeason"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/txt_season"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/spnSeason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:entries="@array/seasonsArrays" />
+
 
         <TextView
             android:id="@+id/txtCol"  style="@style/text_color"

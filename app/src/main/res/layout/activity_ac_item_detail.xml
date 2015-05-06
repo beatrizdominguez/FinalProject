@@ -54,6 +54,20 @@
                 android:text="@string/txt_cat" />
 
             <TextView
+                android:id="@+id/txtSeason"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_season"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/txtSeason2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_season" />
+
+            <TextView
                 android:id="@+id/txtColor"
                 style="@style/text_color"
                 android:layout_width="wrap_content"

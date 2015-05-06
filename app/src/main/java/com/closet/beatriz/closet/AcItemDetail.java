@@ -64,6 +64,7 @@ public class AcItemDetail extends Activity {
         ImageButton image = (ImageButton) findViewById(R.id.imgItem);
         TextView txtDesc = (TextView) findViewById(R.id.txtDesc2);
         TextView txtCat = (TextView) findViewById(R.id.txtCat2);
+        TextView txtSeason = (TextView) findViewById(R.id.txtSeason2);
         TextView txtColor = (TextView) findViewById(R.id.txtColor2);
         TextView txtSize = (TextView) findViewById(R.id.txtSize2);
         TextView txtPrice = (TextView) findViewById(R.id.txtPrice2);
@@ -74,6 +75,7 @@ public class AcItemDetail extends Activity {
         image.setImageBitmap(btm);
         txtDesc.setText(i.getDescription());
         txtCat.setText(i.getCategory());
+        txtSeason.setText(i.getSeason());
         //txtColor;
         txtSize.setText(i.getSize());
         txtPrice.setText(String.valueOf(i.getPrize()) + " €");

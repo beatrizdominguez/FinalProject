@@ -10,73 +10,78 @@ import java.io.Serializable;
 /**
  * Created by Beatriz on 24/04/2015.
  */
-public class Item  implements Serializable{
+public class Item implements Serializable {
 
     int id;
     //Bitmap image;
     String image;
     String description;
     String category;
+    String colours;
+    String season;
     //Date s_date;
     String s_date;
     String size;
     float prize;
     String shop;
     //colors!!
-    String[] colorArray;
+    // String[] colorArray;
 
     public Item() {
 
     }
 
-    public Item(String description, String category, String s_date, String size, float prize, String shop) {
-        this.description = description;
-        this.category = category;
-        this.s_date = s_date;
-        this.size = size;
-        this.prize = prize;
-        this.shop = shop;
-    }
 
-    public Item(String description, String[] colorArray, String category, String s_date, String size, float prize, String shop) {
-        this.description = description;
-        this.colorArray = colorArray;
-        this.category = category;
-        this.s_date = s_date;
-        this.size = size;
-        this.prize = prize;
-        this.shop = shop;
-    }
-
-    //just for testing
-    public Item(int id, String description, String category, String s_date, String size, float prize, String shop) {
-        this.id = id;
-        this.description = description;
-        this.category = category;
-        this.s_date = s_date;
-        this.size = size;
-        this.prize = prize;
-        this.shop = shop;
-    }
-    public Item( String image, String description, String category, String s_date, String size, float prize, String shop) {
+    public Item(String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
         this.image = image;
         this.description = description;
         this.category = category;
+        this.season = season;
         this.s_date = s_date;
         this.size = size;
         this.prize = prize;
         this.shop = shop;
+
     }
 
-    public Item(int id, String image, String description, String category, String s_date, String size, float prize, String shop) {
+    public Item(int id, String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
         this.id = id;
         this.image = image;
         this.description = description;
         this.category = category;
+        this.season = season;
         this.s_date = s_date;
         this.size = size;
         this.prize = prize;
         this.shop = shop;
+
+    }
+
+    public Item(String image, String description, String category, String colours, String season, String s_date, String size, float prize, String shop) {
+        this.image = image;
+        this.description = description;
+        this.category = category;
+        this.colours = colours;
+        this.season = season;
+        this.s_date = s_date;
+        this.size = size;
+        this.prize = prize;
+        this.shop = shop;
+
+    }
+
+    public Item(int id, String image, String description, String category, String colours, String season, String s_date, String size, float prize, String shop) {
+        this.id = id;
+        this.image = image;
+        this.description = description;
+        this.category = category;
+        this.colours = colours;
+        this.season = season;
+        this.s_date = s_date;
+        this.size = size;
+        this.prize = prize;
+        this.shop = shop;
+
     }
 
     public int getId() {
@@ -99,8 +104,8 @@ public class Item  implements Serializable{
         return description;
     }
 
-    public void setDescription(String name) {
-        this.description = name;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {
@@ -109,6 +114,14 @@ public class Item  implements Serializable{
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
     }
 
     public String getS_date() {
@@ -142,7 +155,6 @@ public class Item  implements Serializable{
     public void setShop(String shop) {
         this.shop = shop;
     }
-
 
 
 }

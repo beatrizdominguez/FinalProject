@@ -208,7 +208,6 @@ public class FmItems extends Fragment {
 
         Intent intentSearch = new Intent(getActivity(), AcSearch.class);
         intentSearch.putExtra("Category", cat);
-        //intentSearch.putParcelableArrayListExtra()
         startActivity(intentSearch);
 
     }
