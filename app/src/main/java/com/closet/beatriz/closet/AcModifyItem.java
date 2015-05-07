@@ -38,7 +38,7 @@ public class AcModifyItem extends Activity {
     Spinner spnCat;
     Spinner spnSeason;
     //colores almacenarlos en un array
-    Spinner spnSize;
+    EditText etxtSize;
     EditText etxtPrice;
     DatePicker datePicker;
     Spinner spnShop;
@@ -72,7 +72,7 @@ public class AcModifyItem extends Activity {
         spnCat = (Spinner) findViewById(R.id.spnCat);
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
         //colores almacenarlos en un array
-        spnSize = (Spinner) findViewById(R.id.spnSize);
+        etxtSize = (EditText) findViewById(R.id.etxtSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         spnShop = (Spinner) findViewById(R.id.spnShop);
@@ -244,7 +244,7 @@ public class AcModifyItem extends Activity {
         i.setCategory(spnCat.getSelectedItem().toString());
         i.setSeason(spnSeason.getSelectedItem().toString());
         i.setS_date(getDateFromDatePicker(datePicker).toString());
-        i.setSize(spnSize.getSelectedItem().toString());
+        i.setSize(etxtSize.getText().toString());
         i.setPrize(Float.valueOf(etxtPrice.getText().toString()));
         i.setShop(spnShop.getSelectedItem().toString());
 
@@ -344,7 +344,7 @@ public class AcModifyItem extends Activity {
 
     private void show(Item i) {
 
-       // Log.e("TAG ---- image", i.getImage());
+        // Log.e("TAG ---- image", i.getImage());
         //Bitmap btm = StringToBitmap(i.getImage());
         //btnImg.setImageBitmap(btm);
         //btnImg.setImageBitmap(StringToBitmap(i.getImage()));
@@ -353,8 +353,7 @@ public class AcModifyItem extends Activity {
         spnSeason.setSelection(getSeasonIndex(i.getSeason()));
         //date
         //s_date = getDateFromDatePicker(datePicker);
-        //size
-        //size = spnSize.getSelectedItem().toString();
+        etxtSize.setText(i.getSize());
         etxtPrice.setText(String.valueOf(i.getPrize()));
         //shop
         //shop = spnShop.getSelectedItem().toString();

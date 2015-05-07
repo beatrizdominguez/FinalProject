@@ -70,6 +70,14 @@ public class FmItems extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+
+        //cargarLista();
+
+        super.onResume();
+    }
+
 
     private void cargarLista() {
 
@@ -80,7 +88,9 @@ public class FmItems extends Fragment {
         ArrayList<Item> lista = new ArrayList<Item>();
         LinearLayout layout = null;
 
+        //emptyLayouts();
 
+        //9 as categories
         for (int i = 0; i < 9; i++) {
 
             switch (i) {
@@ -129,18 +139,6 @@ public class FmItems extends Fragment {
                 Item item = (Item) lista.get(j);
                 // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
-                Button btnTag = new Button(getActivity());
-                btnTag.setText(item.getDescription());
-
-/*
-                ImageView image = new ImageView(getActivity());
-                Bitmap b = BitmapFactory.decodeResource(getActivity().getResources(), R.drawable.no_image);
-                image.setImageBitmap(b);
-                //image.setImageBitmap(i.getImage());
-                image.setMaxWidth(5);
-                image.setMaxHeight(70);
-                image.setClickable(true);*/
-
 
                 ImageView image = new ImageView(getActivity());
                 Bitmap b = StringToBitmap(item.getImage());
@@ -163,6 +161,13 @@ public class FmItems extends Fragment {
             }
         }
 
+
+    }
+
+    private void emptyLayouts() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
+        layout.removeAllViews();
 
     }
 /*

@@ -8,8 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -134,6 +137,43 @@ public class AcSearch extends Activity {
 
             }
         });
+
+        Button btnCategory = (Button) findViewById(R.id.btnSearch);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                filter();
+                Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void filter() {
+        Spinner spn = (Spinner) findViewById(R.id.spnSeason);
+        String season = spn.getSelectedItem().toString();
+        //lista.clear();
+
+        Log.e("SEASON--------", season);
+
+
+        for (int i = 0; i < ALShirts.size(); i++) {
+            Item item = (Item) lv.getItemAtPosition(i);
+            Log.e("item--------", item.getDescription());
+
+            if (item.getSeason().equals(season)) {
+
+                //peta
+               // ALShirts.remove(item);
+               // ALShirts.remove(i);
+                Log.e("TAG----", "remove item");
+
+            }
+
+
+        }
 
     }
 

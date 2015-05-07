@@ -24,7 +24,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/txt_color"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:text=":"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Spinner
             android:id="@+id/spnCol"
@@ -32,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:entries="@array/colorArrays" />
+            android:entries="@array/searchColorArrays" />
     </LinearLayout>
 
     <LinearLayout
@@ -46,7 +56,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="@string/txt_season"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:text=":"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Spinner
             android:id="@+id/spnSeason"
@@ -54,8 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_weight="1"
-            android:entries="@array/seasonsArrays"
-            android:prompt="@string/season_pronpt" />
+            android:entries="@array/searchSeasonsArrays" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,13 +83,23 @@
         android:orientation="horizontal">
 
 
-        <Spinner
-            android:id="@+id/spnOther"
-            android:layout_width="150dp"
+        <TextView
+            android:id="@+id/txtDesc"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_weight="1"
-            android:entries="@array/seasonsArrays" />
+            android:layout_gravity="center_vertical"
+            android:text="@string/txt_desc"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="20dp"
+            android:text=":"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
             android:id="@+id/etxtOther"
@@ -79,6 +108,14 @@
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/search_ic" />
 
     <GridView
         android:id="@+id/gridSearch"

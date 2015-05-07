@@ -26,7 +26,8 @@
             android:src="@drawable/no_image" />
 
         <TextView
-            android:id="@+id/txtDesc"  style="@style/text_color"
+            android:id="@+id/txtDesc"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -40,7 +41,8 @@
             android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:id="@+id/txtCat"  style="@style/text_color"
+            android:id="@+id/txtCat"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -72,7 +74,8 @@
 
 
         <TextView
-            android:id="@+id/txtCol"  style="@style/text_color"
+            android:id="@+id/txtCol"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -101,40 +104,72 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/action_add" />
 
-        <TextView
-            android:id="@+id/txtSize"  style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/txt_size"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-        <Spinner
-            android:id="@+id/spnSize"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:entries="@array/sizeArrays" />
+            android:orientation="horizontal">
 
 
-        <TextView
-            android:id="@+id/txtPrize"  style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/txt_price"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/txtSize"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"
+                android:text="@string/txt_size"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <EditText
-            android:id="@+id/etxtPrice"
+
+            <EditText
+                android:id="@+id/etxtSize"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="20dp"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:inputType="number" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtPrize"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/txt_price"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/etxtPrice"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/txtCurrency"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/txt_currency"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/txtDate"  style="@style/text_color"
+            android:id="@+id/txtDate"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -150,7 +185,8 @@
             android:calendarViewShown="false" />
 
         <TextView
-            android:id="@+id/txtShop"  style="@style/text_color"
+            android:id="@+id/txtShop"
+            style="@style/text_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_where_buy"

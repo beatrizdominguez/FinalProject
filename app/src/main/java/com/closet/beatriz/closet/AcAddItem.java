@@ -39,7 +39,7 @@ public class AcAddItem extends Activity {
     Spinner spnCat;
     Spinner spnSeason;
     //colores almacenarlos en un array
-    Spinner spnSize;
+    EditText etxtSize;
     EditText etxtPrice;
     DatePicker datePicker;
     Spinner spnShop;
@@ -71,7 +71,7 @@ public class AcAddItem extends Activity {
         spnCat = (Spinner) findViewById(R.id.spnCat);
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
         //colores almacenarlos en un array
-        spnSize = (Spinner) findViewById(R.id.spnSize);
+        etxtSize = (EditText) findViewById(R.id.etxtSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         spnShop = (Spinner) findViewById(R.id.spnShop);
@@ -223,7 +223,7 @@ public class AcAddItem extends Activity {
         Log.e("TAG--season", spnSeason.getSelectedItem().toString());
         season = spnSeason.getSelectedItem().toString();
         s_date = getDateFromDatePicker(datePicker);
-        size = spnSize.getSelectedItem().toString();
+        size = etxtSize.getText().toString();
         prize = Float.valueOf(etxtPrice.getText().toString());
         shop = spnShop.getSelectedItem().toString();
 

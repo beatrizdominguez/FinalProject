@@ -37,6 +37,7 @@
     <string name="txt_color">Color</string>
     <string name="txt_size">Talla</string>
     <string name="txt_price">Precio</string>
+    <string name="txt_currency"> €</string>
     <string name="txt_when_buy">¿Cúandlo lo compraste</string>
     <string name="txt_where_buy">¿Dónde lo compraste</string>
 
@@ -134,6 +135,14 @@
         <item>Otoño</item>
     </string-array>
 
+    <string-array name="searchSeasonsArrays">
+        <item>All</item>
+        <item>Primavera</item>
+        <item>Verano</item>
+        <item>Invierno</item>
+        <item>Otoño</item>
+    </string-array>
+
     //seasons
     <string name="seasonSpring">Primavera</string>
     <string name="seasonSummer">Verano</string>
@@ -141,32 +150,7 @@
     <string name="seasonAutumn">Otoño</string>
 
 
-    <!-- Item size -->
-    <!-- TALLAS EN USA CAMBIAN!!!!!!!!!!!! -->
-    <string-array name="sizeArrays">
-        <item>32</item>
-        <item>34</item>
-        <item>36</item>
-        <item>38</item>
-        <item>40</item>
-        <item>42</item>
-        <item>44</item>
-        <item>46</item>
-        <item>48</item>
-        <item>50</item>
-        <item>52</item>
-        <item>54</item>
-        <item>XS</item>
-        <item>S</item>
-        <item>M</item>
-        <item>L</item>
-        <item>XL</item>
-        <item>XXL</item>
-        <item>XXXL</item>
-    </string-array>
-
-    <!-- Item size -->
-    <!-- TALLAS EN USA CAMBIAN!!!!!!!!!!!! -->
+    <!-- Color list -->
     <string-array name="colorArrays">
         <item>Red</item>
         <item>Blue</item>
@@ -178,6 +162,21 @@
         <item>Green</item>
         <item>Aqua</item>
     </string-array>
+
+    <!-- Color list -->
+    <string-array name="searchColorArrays">
+        <item>All</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Orange</item>
+        <item>White</item>
+        <item>Black</item>
+        <item>Pink</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Aqua</item>
+    </string-array>
+
 
 
     <!-- Statistics -->
