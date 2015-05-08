@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 
 
 public class AcSearch extends Activity {
@@ -26,6 +28,7 @@ public class AcSearch extends Activity {
 
     AdapterItem adaptador = null;
     private ArrayList<Item> lista = new ArrayList<Item>();
+    private ArrayList<Item> backupLista = new ArrayList<Item>();
     private ArrayList<Item> ALShirts = new ArrayList<Item>();
     private ArrayList<Item> ALPants = new ArrayList<Item>();
     private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
@@ -55,56 +58,11 @@ public class AcSearch extends Activity {
         usdbh = new ItemSQLiteHelper(this, "Closet",
                 null, 1);
 
+        //cargamos la lista a mostrar
+        selectList();
 
-        // Log.e("TAG--------", "crear adaptador");
-        if (category.equals(getString(R.string.catShirts))) {
-            Log.e("TAG--------------adaptador", "camisetas");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALShirts);
-
-        } else if (category.equals(getString(R.string.catPants))) {
-            // Log.e("TAG--------------adaptador", "pantalones");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALPants);
-
-        } else if (category.equals(getString(R.string.catUnderWear))) {
-            //  Log.e("TAG--------------adaptador", "ropa interior");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALUnderWear);
-
-        } else if (category.equals(getString(R.string.catCoats))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALCoats);
-
-        } else if (category.equals(getString(R.string.catShoes))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALShoes);
-
-        } else if (category.equals(getString(R.string.catJumper))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALJumper);
-
-        } else if (category.equals(getString(R.string.catPijamas))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALPijamas);
-
-        } else if (category.equals(getString(R.string.catDress))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALDress);
-
-        } else if (category.equals(getString(R.string.catAccesories))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALAccesories);
-
-        }
         // creamos el adaptador
-        //adaptador = new AdapterItem(this.getBaseContext(), lista);
+        adaptador = new AdapterItem(this.getBaseContext(), lista);
         // creamos el adaptador
         lv = (GridView) findViewById(R.id.gridSearch);
         // asociar menu contextual
@@ -112,7 +70,7 @@ public class AcSearch extends Activity {
         lv.setAdapter(adaptador);
 
 
-        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
+        //usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
 
         // definir el listener del listview
@@ -145,13 +103,67 @@ public class AcSearch extends Activity {
             public void onClick(View v) {
 
                 filter();
-                Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
+               // filter2();
+                //Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
+    private void selectList(){
+
+
+        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
+
+        // Log.e("TAG--------", "crear adaptador");
+        if (category.equals(getString(R.string.catShirts))) {
+
+            lista =ALShirts;
+
+        } else if (category.equals(getString(R.string.catPants))) {
+
+            lista =ALPants;
+
+        } else if (category.equals(getString(R.string.catUnderWear))) {
+
+            lista =ALUnderWear;
+
+        } else if (category.equals(getString(R.string.catCoats))) {
+
+            lista =ALCoats;
+
+        } else if (category.equals(getString(R.string.catShoes))) {
+
+            lista =ALShoes;
+
+        } else if (category.equals(getString(R.string.catJumper))) {
+
+            lista =ALJumper;
+
+        } else if (category.equals(getString(R.string.catPijamas))) {
+
+            lista =ALPijamas;
+
+        } else if (category.equals(getString(R.string.catDress))) {
+
+            lista =ALDress;
+
+        } else if (category.equals(getString(R.string.catAccesories))) {
+
+            lista =ALAccesories;
+
+        }
+
+        backupLista = lista;
+
+
+    }
+
     private void filter() {
+
+        lista = backupLista;
+        adaptador.notifyDataSetChanged();
+
         Spinner spn = (Spinner) findViewById(R.id.spnSeason);
         String season = spn.getSelectedItem().toString();
         //lista.clear();
@@ -159,19 +171,65 @@ public class AcSearch extends Activity {
         Log.e("SEASON--------", season);
 
 
-        for (int i = 0; i < ALShirts.size(); i++) {
+        for (int i = 0; i < lista.size(); i++) {
             Item item = (Item) lv.getItemAtPosition(i);
             Log.e("item--------", item.getDescription());
 
             if (item.getSeason().equals(season)) {
 
                 //peta
-               // ALShirts.remove(item);
-               // ALShirts.remove(i);
+                // ALShirts.remove(item);
+                lista.remove(i);
+                adaptador.notifyDataSetChanged();
                 Log.e("TAG----", "remove item");
 
             }
 
+
+        }
+
+    }
+
+    private void filter2() {
+
+        lista = backupLista;
+
+        Spinner spnSeason = (Spinner) findViewById(R.id.spnSeason);
+        String season = spnSeason.getSelectedItem().toString();
+        //lista.clear
+
+        Spinner spnColur = (Spinner) findViewById(R.id.spnCol);
+        String  color = spnColur.getSelectedItem().toString();
+        //CharSequence  colour = spnColur.getSelectedItem().toString();
+
+        EditText txtDesc = (EditText) findViewById(R.id.etxtDesc);
+        String  desc = txtDesc.getText().toString();
+        //String  desc = txtDesc.gettText().toString();
+
+
+        Log.e("SEASON--------", season);
+
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lv.getItemAtPosition(i);
+            Log.e("item--------", item.getDescription());
+
+            if (item.getSeason().equals(season) ==false) {
+
+                //if (!item.getColor().contains(color)) {
+
+                    if (!item.getDescription().contains(desc)) {
+
+                        //peta
+                        // ALShirts.remove(item);
+                        lista.remove(i);
+                        adaptador.notifyDataSetChanged();
+                        Log.e("TAG----", "remove item");
+
+                    }
+
+                //}
+
+            }
 
         }
 

@@ -39,6 +39,9 @@ public class FmEstadisticas extends Fragment {
         displayPrices();
         displayCount();
 
+        //mainLayout.setVisibility(LinearLayout.GONE);
+        //android:visibility="gone"
+
 
     }
 
