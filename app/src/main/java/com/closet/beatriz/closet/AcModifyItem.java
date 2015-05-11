@@ -42,12 +42,13 @@ public class AcModifyItem extends Activity {
     EditText etxtPrice;
     DatePicker datePicker;
     Spinner spnShop;
-
     int spinnerIndex;
 
-
     ImageButton btnImg;
+
+
     Button btnAddColor;
+    Button btnRmvColor;
     Button btnSave;
     public final static int REQUEST_CAMERA = 1;
     public final static int SELECT_FILE = 2;
@@ -111,6 +112,17 @@ public class AcModifyItem extends Activity {
             }
         });
 
+
+        btnRmvColor = (Button) findViewById(R.id.btnRMVColor);
+        btnRmvColor.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                removeColour();
+
+            }
+        });
 
         btnSave = (Button) findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +203,7 @@ public class AcModifyItem extends Activity {
 
     private void addColour() {
 
-        Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
 
         String color;
         TextView txtColors = (TextView) findViewById(R.id.txtColors);
@@ -199,11 +211,40 @@ public class AcModifyItem extends Activity {
 
         color = spnColor.getSelectedItem().toString();
 
-        txtColors.setText(txtColors.getText() + ", " + color);
+        //si está vació que no meta la coma
+        if (txtColors.getText().length() == 0) {
+
+            txtColors.setText(color);
+
+        } else {
+
+            txtColors.setText(txtColors.getText() + ", " + color);
+
+        }
 
         colorArray[colorCount] = color;
         colorCount++;
 
+    }
+
+    private void removeColour() {
+
+        //cojer el texto del txt color y quitarle hasta la última ,
+
+        TextView txtColors = (TextView) findViewById(R.id.txtColors);
+
+        String allColors = txtColors.getText().toString();
+
+        //String ultimo = allColors.substring(allColors.lastIndexOf(',') + 1);
+
+        if (allColors.indexOf(",") != -1) {
+            txtColors.setText(allColors.substring(0, allColors.lastIndexOf(",")) + "");
+        } else {
+            txtColors.setText("");
+        }
+
+        //Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
     }
 
     private void save() {
@@ -346,8 +387,8 @@ public class AcModifyItem extends Activity {
 
 
         Bitmap btm = StringToBitmap(i.getImage());
-       // Log.e("TAG","image -  " + i.getImage());
-        Log.e("TAG","image -  " + btm.getByteCount());
+        // Log.e("TAG","image -  " + i.getImage());
+        Log.e("TAG", "image -  " + btm.getByteCount());
         btnImg.setImageBitmap(btm);
         //btnImg.setImageBitmap(StringToBitmap(i.getImage()));
         etxtDesc.setText(i.getDescription());

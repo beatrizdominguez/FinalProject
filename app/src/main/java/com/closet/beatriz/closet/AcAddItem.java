@@ -102,18 +102,9 @@ public class AcAddItem extends Activity {
             }
         });
 
-        btnRmvColor = (Button) findViewById(R.id.btnRMVColor);
-        btnRmvColor.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                removeColour();
-
-            }
-        });
 
         btnAddColor = (Button) findViewById(R.id.btnAddColor);
+
         btnAddColor.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -124,6 +115,17 @@ public class AcAddItem extends Activity {
             }
         });
 
+
+        btnRmvColor = (Button) findViewById(R.id.btnRMVColor);
+        btnRmvColor.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                removeColour();
+
+            }
+        });
 
         btnSave = (Button) findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -145,12 +147,18 @@ public class AcAddItem extends Activity {
 
         TextView txtColors = (TextView) findViewById(R.id.txtColors);
 
-        String todos = txtColors.getText().toString();
+        String allColors = txtColors.getText().toString();
 
-        String ultimo = todos.substring(todos.lastIndexOf(',') + 1);
+        //String ultimo = allColors.substring(allColors.lastIndexOf(',') + 1);
 
-        Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
+        if (allColors.indexOf(",") != -1) {
+            txtColors.setText(allColors.substring(0, allColors.lastIndexOf(",")) + "");
+        } else {
+            txtColors.setText("");
+        }
+
+        //Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
     }
 
     private int getCategoryIndex(String cat) {
@@ -204,11 +212,11 @@ public class AcAddItem extends Activity {
 
 
         //si está vació que no meta la coma
-        if(txtColors.getText().length() == 0){
+        if (txtColors.getText().length() == 0) {
 
             txtColors.setText(color);
 
-        }else{
+        } else {
 
             txtColors.setText(txtColors.getText() + ", " + color);
 

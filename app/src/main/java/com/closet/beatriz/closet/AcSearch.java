@@ -195,12 +195,14 @@ public class AcSearch extends Activity {
 
             if (!item.getSeason().equals(season)) {
 
+                // Log.e("TAG","borrar item");
+
                 lista.remove(t);
+
                 Log.e("TAG----", "REMOVE ITEM");
                 Log.e("item--------", "DESCRIPTION: " + item.getDescription());
 
             }
-
 
         }
 
