@@ -49,6 +49,7 @@ public class AcAddItem extends Activity {
 
     ImageButton btnImg;
     Button btnAddColor;
+    Button btnRmvColor;
     Button btnSave;
     public final static int REQUEST_CAMERA = 1;
     public final static int SELECT_FILE = 2;
@@ -101,6 +102,17 @@ public class AcAddItem extends Activity {
             }
         });
 
+        btnRmvColor = (Button) findViewById(R.id.btnRMVColor);
+        btnRmvColor.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                removeColour();
+
+            }
+        });
+
         btnAddColor = (Button) findViewById(R.id.btnAddColor);
         btnAddColor.setOnClickListener(new View.OnClickListener() {
 
@@ -125,6 +137,20 @@ public class AcAddItem extends Activity {
 
             }
         });
+    }
+
+    private void removeColour() {
+
+        //cojer el texto del txt color y quitarle hasta la última ,
+
+        TextView txtColors = (TextView) findViewById(R.id.txtColors);
+
+        String todos = txtColors.getText().toString();
+
+        String ultimo = todos.substring(todos.lastIndexOf(',') + 1);
+
+        Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
     }
 
     private int getCategoryIndex(String cat) {
@@ -176,7 +202,18 @@ public class AcAddItem extends Activity {
 
         color = spnColor.getSelectedItem().toString();
 
-        txtColors.setText(txtColors.getText() + ", " + color);
+
+        //si está vació que no meta la coma
+        if(txtColors.getText().length() == 0){
+
+            txtColors.setText(color);
+
+        }else{
+
+            txtColors.setText(txtColors.getText() + ", " + color);
+
+        }
+
 
         colorArray[colorCount] = color;
         colorCount++;

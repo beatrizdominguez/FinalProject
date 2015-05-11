@@ -19,7 +19,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-
 public class AcSearch extends Activity {
 
     String category;
@@ -103,14 +102,14 @@ public class AcSearch extends Activity {
             public void onClick(View v) {
 
                 filter();
-               // filter2();
-                //Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
+                //filter2();
+                Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    private void selectList(){
+    private void selectList() {
 
 
         usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
@@ -118,43 +117,44 @@ public class AcSearch extends Activity {
         // Log.e("TAG--------", "crear adaptador");
         if (category.equals(getString(R.string.catShirts))) {
 
-            lista =ALShirts;
+            lista = ALShirts;
 
         } else if (category.equals(getString(R.string.catPants))) {
 
-            lista =ALPants;
+            lista = ALPants;
 
         } else if (category.equals(getString(R.string.catUnderWear))) {
 
-            lista =ALUnderWear;
+            lista = ALUnderWear;
 
         } else if (category.equals(getString(R.string.catCoats))) {
 
-            lista =ALCoats;
+            lista = ALCoats;
 
         } else if (category.equals(getString(R.string.catShoes))) {
 
-            lista =ALShoes;
+            lista = ALShoes;
 
         } else if (category.equals(getString(R.string.catJumper))) {
 
-            lista =ALJumper;
+            lista = ALJumper;
 
         } else if (category.equals(getString(R.string.catPijamas))) {
 
-            lista =ALPijamas;
+            lista = ALPijamas;
 
         } else if (category.equals(getString(R.string.catDress))) {
 
-            lista =ALDress;
+            lista = ALDress;
 
         } else if (category.equals(getString(R.string.catAccesories))) {
 
-            lista =ALAccesories;
+            lista = ALAccesories;
 
         }
 
         backupLista = lista;
+        Log.e("TAG -----", "lista al cargar" + lista.size());
 
 
     }
@@ -168,26 +168,44 @@ public class AcSearch extends Activity {
         String season = spn.getSelectedItem().toString();
         //lista.clear();
 
+        Log.e("TAG--------", "FILTRAMOS LA INFO DE ESTA ESTACIÓN");
         Log.e("SEASON--------", season);
+        Log.e("SEASON--------", "-------------------------------");
 
+        int size = lista.size();
 
-        for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lv.getItemAtPosition(i);
-            Log.e("item--------", item.getDescription());
+        //Log.e("TAG--------", "lista size: " + lista.size());
+        Log.e("TAG--------", "lista size: " + size);
+        Log.e("TAG--------", "adapt size: " + adaptador.getCount());
 
-            if (item.getSeason().equals(season)) {
+        /*
+        for (int a = 0; a < lista.size(); a++) {
 
-                //peta
-                // ALShirts.remove(item);
-                lista.remove(i);
-                adaptador.notifyDataSetChanged();
-                Log.e("TAG----", "remove item");
+            Log.e("TAG", "primer bucle " + a);
+
+        }*/
+
+        for (int t = 0; t < lista.size(); t++) {
+
+            Item item = (Item) lv.getItemAtPosition(t);
+
+            Log.e("TAG--------", "ITEM Nº: " + t);
+            Log.e("item--------", "DESCRIPTION: " + item.getDescription());
+            Log.e("item--------", "SEASON: " + item.getSeason());
+
+            if (!item.getSeason().equals(season)) {
+
+                lista.remove(t);
+                Log.e("TAG----", "REMOVE ITEM");
+                Log.e("item--------", "DESCRIPTION: " + item.getDescription());
 
             }
 
 
         }
 
+        adaptador.notifyDataSetChanged();
+        Log.e("TAG----", "fin del for");
     }
 
     private void filter2() {
@@ -199,11 +217,11 @@ public class AcSearch extends Activity {
         //lista.clear
 
         Spinner spnColur = (Spinner) findViewById(R.id.spnCol);
-        String  color = spnColur.getSelectedItem().toString();
+        String color = spnColur.getSelectedItem().toString();
         //CharSequence  colour = spnColur.getSelectedItem().toString();
 
         EditText txtDesc = (EditText) findViewById(R.id.etxtDesc);
-        String  desc = txtDesc.getText().toString();
+        String desc = txtDesc.getText().toString();
         //String  desc = txtDesc.gettText().toString();
 
 
@@ -213,19 +231,19 @@ public class AcSearch extends Activity {
             Item item = (Item) lv.getItemAtPosition(i);
             Log.e("item--------", item.getDescription());
 
-            if (item.getSeason().equals(season) ==false) {
+            if (item.getSeason().equals(season) == false) {
 
                 //if (!item.getColor().contains(color)) {
 
-                    if (!item.getDescription().contains(desc)) {
+                if (!item.getDescription().contains(desc)) {
 
-                        //peta
-                        // ALShirts.remove(item);
-                        lista.remove(i);
-                        adaptador.notifyDataSetChanged();
-                        Log.e("TAG----", "remove item");
+                    //peta
+                    // ALShirts.remove(item);
+                    lista.remove(i);
+                    adaptador.notifyDataSetChanged();
+                    Log.e("TAG----", "remove item");
 
-                    }
+                }
 
                 //}
 

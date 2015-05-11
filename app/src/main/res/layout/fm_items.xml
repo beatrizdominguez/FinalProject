@@ -29,7 +29,7 @@
                 android:id="@+id/imgCamisetas"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center_vertical|left"
                 android:src="@drawable/camisetas" />
 
 
@@ -68,7 +68,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="right"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -76,7 +76,8 @@
                     style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
+                    android:src="@drawable/add_ic"
+                    android:layout_gravity="right" />
 
                 <ImageButton
                     android:id="@+id/imgSearchCamisetas"
@@ -84,7 +85,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
+                    android:src="@drawable/search_ic"
+                    android:layout_gravity="right" />
             </LinearLayout>
         </LinearLayout>
 
@@ -430,7 +432,7 @@
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:layout_width="122dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal">
 
@@ -453,17 +455,18 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:gravity="right" >
 
                 <ImageButton
                     android:id="@+id/imgAddJumper"
                     style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_alignParentRight="true"
                     android:src="@drawable/add_ic" />
 
                 <ImageButton
@@ -471,9 +474,12 @@
                     style="@style/button_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
+                    android:layout_gravity="right"
+                    android:src="@drawable/search_ic"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+            </RelativeLayout>
 
         </LinearLayout>
 

@@ -68,6 +68,7 @@ public class AcModifyItem extends Activity {
 
 
         //controls
+        btnImg = (ImageButton) findViewById(R.id.imageButton);
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
@@ -83,12 +84,11 @@ public class AcModifyItem extends Activity {
 
 
         // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
-        Bundle extras = getIntent().getExtras();
+        // Bundle extras = getIntent().getExtras();
         i = (Item) getIntent().getSerializableExtra("item");
         show(i);
 
 
-        btnImg = (ImageButton) findViewById(R.id.imageButton);
         btnImg.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -344,9 +344,11 @@ public class AcModifyItem extends Activity {
 
     private void show(Item i) {
 
-        // Log.e("TAG ---- image", i.getImage());
-        //Bitmap btm = StringToBitmap(i.getImage());
-        //btnImg.setImageBitmap(btm);
+
+        Bitmap btm = StringToBitmap(i.getImage());
+       // Log.e("TAG","image -  " + i.getImage());
+        Log.e("TAG","image -  " + btm.getByteCount());
+        btnImg.setImageBitmap(btm);
         //btnImg.setImageBitmap(StringToBitmap(i.getImage()));
         etxtDesc.setText(i.getDescription());
         spnCat.setSelection(getCategoryIndex(i.getCategory()));

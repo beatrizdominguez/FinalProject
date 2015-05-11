@@ -22,252 +22,284 @@
             android:layout_height="wrap_content"
             android:text="@string/statistics_title" />
 
-        <TextView
-            android:id="@+id/txtTotalValue"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/statistics_total_value" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffff9eb8"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txtShirt"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catShirts" />
 
-            <TextView
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=": " />
+                android:text="@string/statistics_value" />
 
-            <TextView
-                android:id="@+id/txtShirtValue"
-                style="@style/text_color"
+            <Button
+                android:id="@+id/btnValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 €" />
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/down_arrow" />
 
         </LinearLayout>
 
 
         <LinearLayout
+            android:id="@+id/layoutPrecio"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
-                android:id="@+id/txtPants"
+                android:id="@+id/txtTotalValue"
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/catPants" />
+                android:text="@string/statistics_total" />
 
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=": " />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtPantstValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtShirt"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catShirts" />
 
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtShirtValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
 
-            <TextView
-                android:id="@+id/txUnderWear"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catUnderWear" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtUnderWearValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtShoes"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catShoes" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtShoesValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtCoats"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catCoats" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtCoatsValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtJumper"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catJumper" />
+                <TextView
+                    android:id="@+id/txtPants"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catPants" />
 
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
 
-            <TextView
-                android:id="@+id/txtJumperValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/txtAccesories"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catAccesories" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtAccesoriesValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtPantstValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtPijamas"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catPijamas" />
+                <TextView
+                    android:id="@+id/txUnderWear"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catUnderWear" />
 
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
 
-            <TextView
-                android:id="@+id/txtPijamasValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtUnderWearValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtDress"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catDress" />
+                <TextView
+                    android:id="@+id/txtShoes"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catShoes" />
 
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
 
-            <TextView
-                android:id="@+id/txtDressValue"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 €" />
+                <TextView
+                    android:id="@+id/txtShoesValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCoats"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catCoats" />
+
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/txtCoatsValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtJumper"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catJumper" />
+
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/txtJumperValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtAccesories"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catAccesories" />
+
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/txtAccesoriesValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtPijamas"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catPijamas" />
+
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/txtPijamasValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtDress"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/catDress" />
+
+                <TextView
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": " />
+
+                <TextView
+                    android:id="@+id/txtDressValue"
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 €" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <TextView
@@ -277,16 +309,11 @@
             android:layout_height="wrap_content"
             android:text="////////////////////////" />
 
-        <TextView
-            android:id="@+id/txtTotalCount"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/statistics_total_count" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffff9eb8"
             android:orientation="horizontal">
 
             <TextView
@@ -294,348 +321,456 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/catShirts" />
+                android:text="@string/statistics_count" />
 
-            <TextView
-                style="@style/text_color"
+            <Button
+                android:id="@+id/btnCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=": " />
+                android:background="@drawable/down_arrow" />
 
-            <TextView
-                android:id="@+id/txtShirtCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catPants" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtPantsCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catUnderWear" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtUnderWearCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layoutCount"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <TextView
-
+                android:id="@+id/txtTotalCount"
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/catShoes" />
+                android:text="@string/statistics_total" />
 
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
 
-            <TextView
-                android:id="@+id/txtShoesCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="0" />
+                android:layout_gravity="center_horizontal"
+                android:background="#f3ff70"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/statistics_category" />
+
+                <Button
+                    android:id="@+id/btnCountCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:background="@drawable/down_arrow" />
+
+            </LinearLayout>
+
+            /////////////////
+
+
+            <LinearLayout
+                android:id="@+id/layoutCountCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catShirts" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtShirtCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catPants" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtPantsCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catUnderWear" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtUnderWearCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catShoes" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtShoesCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catCoats" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtCoatsCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catJumper" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtJumperCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catAccesories" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtAccesoriesCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catPijamas" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtPijamasCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/catDress" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtDressCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <TextView
+
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_season" />
+            </LinearLayout>
+
+            //////////seasons
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="#f3ff70"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/text_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/statistics_seasons" />
+
+                <Button
+                    android:id="@+id/btnCountSeasons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:background="@drawable/down_arrow" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/layoutCountSeasons">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seasonSpring" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtSpringCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seasonSummer" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtSummerCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seasonAutumn" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtAutomnCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seasonWinter" />
+
+                    <TextView
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=": " />
+
+                    <TextView
+                        android:id="@+id/txtWinterCount"
+                        style="@style/text_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0" />
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catCoats" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtCoatsCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catJumper" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtJumperCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catAccesories" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtAccesoriesCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catPijamas" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtPijamasCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/catDress" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtDressCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-        <TextView
-
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/txt_season" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/seasonSpring" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtSpringCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/seasonSummer" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtSummerCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/seasonAutumn" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtAutomnCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/seasonWinter" />
-
-            <TextView
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": " />
-
-            <TextView
-                android:id="@+id/txtWinterCount"
-                style="@style/text_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
-        </LinearLayout>
+        ////////////////////////////
 
     </LinearLayout>
 

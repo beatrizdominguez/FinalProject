@@ -55,54 +55,9 @@ public class AcCategory extends Activity {
         TextView title = (TextView) findViewById(R.id.txtTitle);
         title.setText(category);
 
-        // Log.e("TAG--------", "crear adaptador");
-        if (category.equals(getString(R.string.catShirts))) {
-            Log.e("TAG--------------adaptador", "camisetas");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALShirts);
+        selectList();
 
-        } else if (category.equals(getString(R.string.catPants))) {
-            // Log.e("TAG--------------adaptador", "pantalones");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALPants);
-
-        } else if (category.equals(getString(R.string.catUnderWear))) {
-            //  Log.e("TAG--------------adaptador", "ropa interior");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALUnderWear);
-
-        } else if (category.equals(getString(R.string.catCoats))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALCoats);
-
-        } else if (category.equals(getString(R.string.catShoes))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALShoes);
-
-        } else if (category.equals(getString(R.string.catJumper))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALJumper);
-
-        } else if (category.equals(getString(R.string.catPijamas))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALPijamas);
-
-        } else if (category.equals(getString(R.string.catDress))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALDress);
-
-        } else if (category.equals(getString(R.string.catAccesories))) {
-            //  Log.e("TAG--------------adaptador", "abrigos");
-            // creamos el adaptador
-            adaptador = new AdapterItem(this.getBaseContext(), ALAccesories);
-
-        }
-
+        adaptador = new AdapterItem(this.getBaseContext(), lista);
 
         // creamos el adaptador
         //adaptador = new AdapterItem(this.getBaseContext(), lista);
@@ -111,17 +66,6 @@ public class AcCategory extends Activity {
         // asociar menu contextual
         registerForContextMenu(lv);
         lv.setAdapter(adaptador);
-
-        // asociar menu contextual
-        // registerForContextMenu(lv);
-        // lv.setAdapter(adaptador);
-
-        // Log.e("TAG", "before loadImages()");
-        //loadImages(lista);
-
-        //usdbh.cargarLista(lista);
-        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
-
 
         // definir el listener del listview
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -132,7 +76,7 @@ public class AcCategory extends Activity {
                 //category =String.valueOf( R.string.catShirts);
                 //MAYBE PROBLEM!!!
 
-                Item i = null;
+                Item i;
                 i = (Item) lv.getItemAtPosition(position);
                 //Log.e("TAG", "listener del gridview");
                 // Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
@@ -145,7 +89,6 @@ public class AcCategory extends Activity {
 
             }
         });
-
 
     }
 
@@ -160,10 +103,11 @@ public class AcCategory extends Activity {
 
                 Item i = (Item) data.getSerializableExtra("item");
 
-                // añadimos la nueva información a la lista
-                String category = i.getCategory();
+                if (i.getCategory().equals(category)) {
 
-                addToList(category, i);
+                    addToList(i);
+
+                }
 
 
             } else if (requestCode == REQUEST_MODIFY) {
@@ -172,83 +116,71 @@ public class AcCategory extends Activity {
 
                 Item i = (Item) data.getSerializableExtra("item");
 
-                String category = i.getCategory();
+                if (i.getCategory().equals(category)) {
 
-                addToList(category, i);
+                    addToList(i);
+
+                }
 
 
             }
         }
     }
 
-    private void addToList(String category, Item i) {
+    private void addToList(Item i) {
 
-        if (category.equals(getString(R.string.catShirts))) {
-            ALShirts.add(i);
-
-        } else if (category.equals(getString(R.string.catPants))) {
-
-            ALPants.add(i);
-
-        } else if (category.equals(getString(R.string.catUnderWear))) {
-            ALUnderWear.add(i);
-
-        } else if (category.equals(getString(R.string.catCoats))) {
-            ALCoats.add(i);
-
-        } else if (category.equals(getString(R.string.catShoes))) {
-            ALShoes.add(i);
-
-        } else if (category.equals(getString(R.string.catJumper))) {
-            ALJumper.add(i);
-
-        } else if (category.equals(getString(R.string.catPijamas))) {
-            ALPijamas.add(i);
-
-        } else if (category.equals(getString(R.string.catDress))) {
-            ALDress.add(i);
-
-        } else if (category.equals(getString(R.string.catAccesories))) {
-            ALAccesories.add(i);
-        }
-
+        lista.add(i);
         adaptador.notifyDataSetChanged();
 
     }
 
-    /*
-    private void loadImages(ArrayList<Item> lista) {
+    private void selectList() {
 
 
-        Item i = new Item("camiseta1", "camisetas", "12/2/2015", "M", 23.45f, "Tesco");
-        Log.e("TAG", i.description);
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        i = new Item("camiseta5", "camisetas", "12/2/2015", "M", 3.02f, "Zara");
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
-        lista.add(i);
-        adaptador.notifyDataSetChanged();
+        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
-    }*/
+        // Log.e("TAG--------", "crear adaptador");
+        if (category.equals(getString(R.string.catShirts))) {
+
+            lista = ALShirts;
+
+        } else if (category.equals(getString(R.string.catPants))) {
+
+            lista = ALPants;
+
+        } else if (category.equals(getString(R.string.catUnderWear))) {
+
+            lista = ALUnderWear;
+
+        } else if (category.equals(getString(R.string.catCoats))) {
+
+            lista = ALCoats;
+
+        } else if (category.equals(getString(R.string.catShoes))) {
+
+            lista = ALShoes;
+
+        } else if (category.equals(getString(R.string.catJumper))) {
+
+            lista = ALJumper;
+
+        } else if (category.equals(getString(R.string.catPijamas))) {
+
+            lista = ALPijamas;
+
+        } else if (category.equals(getString(R.string.catDress))) {
+
+            lista = ALDress;
+
+        } else if (category.equals(getString(R.string.catAccesories))) {
+
+            lista = ALAccesories;
+
+        }
+
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -309,7 +241,7 @@ public class AcCategory extends Activity {
         pos = info.position;
         Log.e("ID-click", String.valueOf(pos));
 
-        Item i = null;
+        Item i;
 
         i = (Item) lv.getItemAtPosition(pos);
 
@@ -358,36 +290,7 @@ public class AcCategory extends Activity {
 
     public void deleteItem(int pos) {
 
-        //remove on ArrayList dependeing on the category
-        if (category.equals(getString(R.string.catShirts))) {
-            ALShirts.remove(pos);
-
-        } else if (category.equals(getString(R.string.catPants))) {
-
-            ALPants.remove(pos);
-
-        } else if (category.equals(getString(R.string.catUnderWear))) {
-            ALUnderWear.remove(pos);
-
-        } else if (category.equals(getString(R.string.catCoats))) {
-            ALCoats.remove(pos);
-
-        } else if (category.equals(getString(R.string.catShoes))) {
-            ALShoes.remove(pos);
-
-        } else if (category.equals(getString(R.string.catJumper))) {
-            ALJumper.remove(pos);
-
-        } else if (category.equals(getString(R.string.catPijamas))) {
-            ALPijamas.remove(pos);
-
-        } else if (category.equals(getString(R.string.catDress))) {
-            ALDress.remove(pos);
-
-        } else if (category.equals(getString(R.string.catAccesories))) {
-            ALAccesories.remove(pos);
-        }
-
+        lista.remove(pos);
         adaptador.notifyDataSetChanged();
 
     }
