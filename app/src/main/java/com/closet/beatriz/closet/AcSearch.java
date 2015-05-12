@@ -72,6 +72,10 @@ public class AcSearch extends Activity {
         //usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
 
+        //create a buckup list for filtering
+        //backupLista();
+
+
         // definir el listener del listview
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -110,7 +114,6 @@ public class AcSearch extends Activity {
     }
 
     private void selectList() {
-
 
         usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
@@ -153,16 +156,39 @@ public class AcSearch extends Activity {
 
         }
 
-        backupLista = lista;
+        //es lo mismo (copia) o se rellena con los datos de la lista??
+         backupLista.addAll(lista);
+        //backupLista();
         Log.e("TAG -----", "lista al cargar" + lista.size());
+
+    }
+
+    private void backupLista() {
+
+        Log.e("TAG","create the backupList");
+        Log.e("TAG","Lista size:   " + lista.size());
+
+        for (int t = 0; t < lista.size(); t++) {
+
+            Item item = (Item) lv.getItemAtPosition(t);
+
+            backupLista.add(item);
+
+        }
 
 
     }
 
     private void filter() {
 
-        lista = backupLista;
+        lista.clear();
+        lista.addAll(backupLista);
         adaptador.notifyDataSetChanged();
+        int lstSearch = lista.size();
+        int lstBack = backupLista.size();
+        Log.e("----------------lista search", String.valueOf(lstSearch));
+        Log.e("----------------lista backup", String.valueOf(lstBack));
+
 
         Spinner spn = (Spinner) findViewById(R.id.spnSeason);
         String season = spn.getSelectedItem().toString();
@@ -178,13 +204,6 @@ public class AcSearch extends Activity {
         Log.e("TAG--------", "lista size: " + size);
         Log.e("TAG--------", "adapt size: " + adaptador.getCount());
 
-        /*
-        for (int a = 0; a < lista.size(); a++) {
-
-            Log.e("TAG", "primer bucle " + a);
-
-        }*/
-
         for (int t = 0; t < lista.size(); t++) {
 
             Item item = (Item) lv.getItemAtPosition(t);
@@ -198,6 +217,7 @@ public class AcSearch extends Activity {
                 // Log.e("TAG","borrar item");
 
                 lista.remove(t);
+                t--;
 
                 Log.e("TAG----", "REMOVE ITEM");
                 Log.e("item--------", "DESCRIPTION: " + item.getDescription());
@@ -205,6 +225,7 @@ public class AcSearch extends Activity {
             }
 
         }
+        Log.e("TAG----", "lista size al final:   " + lista.size());
 
         adaptador.notifyDataSetChanged();
         Log.e("TAG----", "fin del for");
