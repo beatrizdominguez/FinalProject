@@ -198,6 +198,7 @@ public class AcSearch extends Activity {
                 // Log.e("TAG","borrar item");
 
                 lista.remove(t);
+                t--;
 
                 Log.e("TAG----", "REMOVE ITEM");
                 Log.e("item--------", "DESCRIPTION: " + item.getDescription());
