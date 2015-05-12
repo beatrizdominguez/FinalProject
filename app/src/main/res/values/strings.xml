@@ -189,6 +189,7 @@
     <string name="statistics_value">Precio</string>
     <string name="statistics_category">Categorías</string>
     <string name="statistics_seasons">Estaciones</string>
+    <string name="statistics_colors">Colores</string>
     <string name="statistics_count">Numero de prendas</string>
     <string name="statistics_total_count">Número de prendas en tu armario: </string>
 
