@@ -233,46 +233,21 @@ public class AcModifyItem extends Activity {
         //cojer el texto del txt color y quitarle hasta la última ,
 
         TextView txtColors = (TextView) findViewById(R.id.txtColors);
-
         String allColors = txtColors.getText().toString();
 
-        //String ultimo = allColors.substring(allColors.lastIndexOf(',') + 1);
 
+        //remove last color
         if (allColors.indexOf(",") != -1) {
             txtColors.setText(allColors.substring(0, allColors.lastIndexOf(",")) + "");
         } else {
             txtColors.setText("");
         }
 
-        //Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
-        // Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
+
     }
 
     private void save() {
 
-
-        Log.e("TAG------------ color count", String.valueOf(colorCount));
-        for (int i = 0; i < colorArray.length; i++) {
-            //  Log.e("TAG----------color-", colorArray[i]);
-        }
-
-
-        int id;
-        Bitmap image;
-        //String image;
-        String description;
-        String category;
-        String colors;
-        String season;
-        Date s_date;
-        //String s_date;
-        String size;
-        float prize;
-        String shop;
-
-        Log.e("TAG ------------", "image1");
-        // btnImg.buildDrawingCache();
-        // image =  btnImg.getDrawingCache();
 
         //get bitmap from ImageButton
         BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
@@ -280,8 +255,8 @@ public class AcModifyItem extends Activity {
         Log.e("bitmap ----size--", String.valueOf(bitmap.getByteCount()));
 
         //convert bitmap to string
-        String str = BitmapToString(bitmap);
-
+        //String str = BitmapToString(bitmap);
+        i.setImage(BitmapToString(bitmap));
         i.setDescription(etxtDesc.getText().toString());
         i.setCategory(spnCat.getSelectedItem().toString());
         i.setSeason(spnSeason.getSelectedItem().toString());
@@ -291,19 +266,23 @@ public class AcModifyItem extends Activity {
         i.setPrize(Float.valueOf(etxtPrice.getText().toString()));
         i.setShop(spnShop.getSelectedItem().toString());
 
-        //save on data base
-        usdbh.updateItem(i);
 
-        //create intent
-        Intent intentSave = new Intent();
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable("item", (Serializable) i);
-        intentSave.putExtras(mBundle);
-        setResult(RESULT_OK, intentSave);
+        //if all data is introduced
+        if (validItem(i)) {
 
-        // close the activity
-        finish();
+            //save on data base
+            usdbh.updateItem(i);
 
+            //create intent
+            Intent intentSave = new Intent();
+            Bundle mBundle = new Bundle();
+            mBundle.putSerializable("item", (Serializable) i);
+            intentSave.putExtras(mBundle);
+            setResult(RESULT_OK, intentSave);
+
+            // close the activity
+            finish();
+        }
 
     }
 
@@ -387,12 +366,7 @@ public class AcModifyItem extends Activity {
 
     private void show(Item i) {
 
-
-        Bitmap btm = StringToBitmap(i.getImage());
-        // Log.e("TAG","image -  " + i.getImage());
-        Log.e("TAG", "image -  " + btm.getByteCount());
-        btnImg.setImageBitmap(btm);
-        //btnImg.setImageBitmap(StringToBitmap(i.getImage()));
+        btnImg.setImageBitmap(StringToBitmap(i.getImage()));
         etxtDesc.setText(i.getDescription());
         spnCat.setSelection(getCategoryIndex(i.getCategory()));
         spnSeason.setSelection(getSeasonIndex(i.getSeason()));
@@ -402,7 +376,7 @@ public class AcModifyItem extends Activity {
         etxtSize.setText(i.getSize());
         etxtPrice.setText(String.valueOf(i.getPrize()));
         //shop
-        //shop = spnShop.getSelectedItem().toString();
+        // spnShop.setSelection(getShopIndex(i.getShop()));
 
     }
 
@@ -444,6 +418,42 @@ public class AcModifyItem extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private boolean validItem(Item item) {
+
+
+        if (item.getDescription().length() > 0) {
+
+
+            if (item.getColours().length() > 0) {
+
+
+                if (item.getSize().length() > 0) {
+
+
+                    return true;
+
+
+                } else {
+                    Toast.makeText(this, R.string.txt_invalid_size, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
+
+            } else {
+                Toast.makeText(this, R.string.txt_invalid_colors, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+
+        } else {
+            Toast.makeText(this, R.string.txt_invalid_description, Toast.LENGTH_SHORT).show();
+            // Log.e("TAG-----validation", "description false");
+            return false;
+        }
+
     }
 
 }

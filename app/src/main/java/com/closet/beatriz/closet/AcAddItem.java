@@ -233,15 +233,8 @@ public class AcAddItem extends Activity {
     private void save() {
 
 
-        Log.e("TAG------------ color count", String.valueOf(colorCount));
-        for (int i = 0; i < colorArray.length; i++) {
-            //  Log.e("TAG----------color-", colorArray[i]);
-        }
-
-
-        int id;
-        Bitmap image;
-        //String image;
+        //int id;
+        String image;
         String description;
         String category;
         String colors;
@@ -259,15 +252,14 @@ public class AcAddItem extends Activity {
         //get bitmap from ImageButton
         BitmapDrawable drawable = (BitmapDrawable) btnImg.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
-        Log.e("bitmap ----size--", String.valueOf(bitmap.getByteCount()));
+//        Log.e("bitmap ----size--", String.valueOf(bitmap.getByteCount()));
 
         //convert bitmap to string
-        String str = BitmapToString(bitmap);
-
+        image = BitmapToString(bitmap);
         description = etxtDesc.getText().toString();
         category = spnCat.getSelectedItem().toString();
-        Log.e("TAG--season", "before season------------");
-        Log.e("TAG--season", spnSeason.getSelectedItem().toString());
+        //  Log.e("TAG--season", "before season------------");
+        // Log.e("TAG--season", spnSeason.getSelectedItem().toString());
         season = spnSeason.getSelectedItem().toString();
         colors = txtColors.getText().toString();
         s_date = getDateFromDatePicker(datePicker);
@@ -277,21 +269,23 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        Item i = new Item(str, description, category, season, colors, s_date.toString(), size, prize, shop);
+        Item i = new Item(image, description, category, season, colors, s_date.toString(), size, prize, shop);
         // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
+        if (validItem(i)) {
 
-        //save on data base
-        usdbh.guardarItem(i);
-        //create intent
-        Intent intentSave = new Intent();
-        Bundle mBundle = new Bundle();
-        mBundle.putSerializable("item", (Serializable) i);
-        intentSave.putExtras(mBundle);
-        setResult(RESULT_OK, intentSave);
+            //save on data base
+            usdbh.guardarItem(i);
+            //create intent
+            Intent intentSave = new Intent();
+            Bundle mBundle = new Bundle();
+            mBundle.putSerializable("item", (Serializable) i);
+            intentSave.putExtras(mBundle);
+            setResult(RESULT_OK, intentSave);
 
-        // close the activity
-        finish();
+            // close the activity
+            finish();
+        }
 
 
     }
@@ -404,11 +398,39 @@ public class AcAddItem extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean validItem(Item item){
+    private boolean validItem(Item item) {
 
-        if (item.getDescription().length() >0 && item.getColours().length() > 0 && item.getSize().length() > 0)
-            return true;
 
-        return false;
+        if (item.getDescription().length() > 0) {
+
+
+            if (item.getColours().length() > 0) {
+
+
+                if (item.getSize().length() > 0) {
+
+
+                    return true;
+
+
+                } else {
+                    Toast.makeText(this, R.string.txt_invalid_size, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+
+
+            } else {
+                Toast.makeText(this, R.string.txt_invalid_colors, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
+
+        } else {
+            Toast.makeText(this, R.string.txt_invalid_description, Toast.LENGTH_SHORT).show();
+            // Log.e("TAG-----validation", "description false");
+            return false;
+        }
+
+
     }
 }

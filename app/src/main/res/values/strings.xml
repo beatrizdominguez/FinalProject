@@ -40,11 +40,15 @@
     <string name="txt_currency"> €</string>
     <string name="txt_when_buy">¿Cúandlo lo compraste</string>
     <string name="txt_where_buy">¿Dónde lo compraste</string>
+    <string name="txt_invalid_description">No se ha introducido una descripción</string>
+    <string name="txt_invalid_colors">Añada colores a la prenda</string>
+    <string name="txt_invalid_size">Especifique una talla</string>
 
     <!-- Search -->
     <!-- <string name="txt_cat">Categoría</string> -->
     <!-- <string name="txt_color">Color</string> -->
    <!-- <string name="txt_season">Estación</string> -->
+    <string name="txt_all">All</string>
 
     <!-- Configuration -->
     <string name="txt_default">Armario predegterminado</string>
