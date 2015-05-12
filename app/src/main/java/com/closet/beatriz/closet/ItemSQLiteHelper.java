@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
-    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), colors VARCHAR(150), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
 
     public ItemSQLiteHelper(Context contexto, String nombre,
                             CursorFactory factory, int version) {
@@ -62,6 +62,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
         int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
         int sizeIdx = c.getColumnIndex("i_size");
         int dateIdx = c.getColumnIndex("s_date");
         int priceIdx = c.getColumnIndex("price");
@@ -78,6 +79,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cDescription = c.getString(descriptionIdx);
                 String cCategory = c.getString(categoryIdx);
                 String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
                 String cSize = c.getString(sizeIdx);
                 String cDate = c.getString(dateIdx);
                 Float cPrice = c.getFloat(priceIdx);
@@ -85,7 +87,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cDate, cSize,
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -136,16 +138,17 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sqlInertItem = "INSERT INTO Items (image, description, category,season, i_size, s_date, price, shop ) VALUES ('" +
+        String sqlInertItem = "INSERT INTO Items (image, description, category, season, colors, i_size, s_date, price, shop ) VALUES ('" +
                 i.getImage() + "', '" +
                 i.getDescription() + "', '" +
                 i.getCategory() + "', '" +
                 i.getSeason() + "', '" +
+                i.getColours() + "', '" +
                 i.getSize() + "', '" +
                 i.getS_date() + "', " +
                 i.getPrize() + ", '" +
                 i.getShop() + "');";
-
+        Log.e("insert item", sqlInertItem);
         db.execSQL(sqlInertItem);
 
     }

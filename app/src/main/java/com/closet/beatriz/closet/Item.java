@@ -24,8 +24,7 @@ public class Item implements Serializable {
     String size;
     float prize;
     String shop;
-    //colors!!
-    // String[] colorArray;
+
 
     public Item() {
 
@@ -57,7 +56,7 @@ public class Item implements Serializable {
 
     }
 
-    public Item(String image, String description, String category, String colours, String season, String s_date, String size, float prize, String shop) {
+    public Item(String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
         this.image = image;
         this.description = description;
         this.category = category;
@@ -70,7 +69,7 @@ public class Item implements Serializable {
 
     }
 
-    public Item(int id, String image, String description, String category, String colours, String season, String s_date, String size, float prize, String shop) {
+    public Item(int id, String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
         this.id = id;
         this.image = image;
         this.description = description;
@@ -122,6 +121,14 @@ public class Item implements Serializable {
 
     public void setSeason(String season) {
         this.season = season;
+    }
+
+    public String getColours() {
+        return colours;
+    }
+
+    public void setColours(String colours) {
+        this.colours = colours;
     }
 
     public String getS_date() {

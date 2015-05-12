@@ -38,6 +38,7 @@ public class AcAddItem extends Activity {
     EditText etxtDesc;
     Spinner spnCat;
     Spinner spnSeason;
+    TextView txtColors;
     //colores almacenarlos en un array
     EditText etxtSize;
     EditText etxtPrice;
@@ -71,6 +72,7 @@ public class AcAddItem extends Activity {
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
+        txtColors = (TextView) findViewById(R.id.txtColors);
         //colores almacenarlos en un array
         etxtSize = (EditText) findViewById(R.id.etxtSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
@@ -205,7 +207,7 @@ public class AcAddItem extends Activity {
         Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
 
         String color;
-        TextView txtColors = (TextView) findViewById(R.id.txtColors);
+
         Spinner spnColor = (Spinner) findViewById(R.id.spnCol);
 
         color = spnColor.getSelectedItem().toString();
@@ -242,7 +244,7 @@ public class AcAddItem extends Activity {
         //String image;
         String description;
         String category;
-        String colour;
+        String colors;
         String season;
         Date s_date;
         //String s_date;
@@ -267,6 +269,7 @@ public class AcAddItem extends Activity {
         Log.e("TAG--season", "before season------------");
         Log.e("TAG--season", spnSeason.getSelectedItem().toString());
         season = spnSeason.getSelectedItem().toString();
+        colors = txtColors.getText().toString();
         s_date = getDateFromDatePicker(datePicker);
         size = etxtSize.getText().toString();
         prize = Float.valueOf(etxtPrice.getText().toString());
@@ -274,7 +277,7 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        Item i = new Item(str, description, category, season, s_date.toString(), size, prize, shop);
+        Item i = new Item(str, description, category, season, colors, s_date.toString(), size, prize, shop);
         // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
 
@@ -401,4 +404,11 @@ public class AcAddItem extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    private boolean validItem(Item item){
+
+        if (item.getDescription().length() >0 && item.getColours().length() > 0 && item.getSize().length() > 0)
+            return true;
+
+        return false;
+    }
 }

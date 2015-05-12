@@ -37,7 +37,7 @@ public class AcModifyItem extends Activity {
     EditText etxtDesc;
     Spinner spnCat;
     Spinner spnSeason;
-    //colores almacenarlos en un array
+    TextView txtColors;
     EditText etxtSize;
     EditText etxtPrice;
     DatePicker datePicker;
@@ -73,6 +73,7 @@ public class AcModifyItem extends Activity {
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
+        txtColors = (TextView) findViewById(R.id.txtColors);
         //colores almacenarlos en un array
         etxtSize = (EditText) findViewById(R.id.etxtSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
@@ -203,7 +204,7 @@ public class AcModifyItem extends Activity {
 
     private void addColour() {
 
-      //  Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
 
         String color;
         TextView txtColors = (TextView) findViewById(R.id.txtColors);
@@ -261,7 +262,7 @@ public class AcModifyItem extends Activity {
         //String image;
         String description;
         String category;
-        String colour;
+        String colors;
         String season;
         Date s_date;
         //String s_date;
@@ -284,6 +285,7 @@ public class AcModifyItem extends Activity {
         i.setDescription(etxtDesc.getText().toString());
         i.setCategory(spnCat.getSelectedItem().toString());
         i.setSeason(spnSeason.getSelectedItem().toString());
+        i.setColours(txtColors.getText().toString());
         i.setS_date(getDateFromDatePicker(datePicker).toString());
         i.setSize(etxtSize.getText().toString());
         i.setPrize(Float.valueOf(etxtPrice.getText().toString()));
@@ -394,6 +396,7 @@ public class AcModifyItem extends Activity {
         etxtDesc.setText(i.getDescription());
         spnCat.setSelection(getCategoryIndex(i.getCategory()));
         spnSeason.setSelection(getSeasonIndex(i.getSeason()));
+        txtColors.setText(i.getColours());
         //date
         //s_date = getDateFromDatePicker(datePicker);
         etxtSize.setText(i.getSize());

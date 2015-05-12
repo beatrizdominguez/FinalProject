@@ -76,7 +76,7 @@ public class AcItemDetail extends Activity {
         txtDesc.setText(i.getDescription());
         txtCat.setText(i.getCategory());
         txtSeason.setText(i.getSeason());
-        //txtColor;
+        txtColor.setText(i.getColours());
         txtSize.setText(i.getSize());
         txtPrice.setText(String.valueOf(i.getPrize()) + " €");
         txtWhen.setText(i.getS_date());
