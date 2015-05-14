@@ -68,14 +68,6 @@ public class AcSearch extends Activity {
         registerForContextMenu(lv);
         lv.setAdapter(adaptador);
 
-
-        //usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
-
-
-        //create a buckup list for filtering
-        //backupLista();
-
-
         // definir el listener del listview
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -157,29 +149,14 @@ public class AcSearch extends Activity {
         }
 
         //es lo mismo (copia) o se rellena con los datos de la lista??
-         backupLista.addAll(lista);
+        backupLista.addAll(lista);
         //backupLista();
         Log.e("TAG -----", "lista al cargar" + lista.size());
 
     }
 
-    private void backupLista() {
 
-        Log.e("TAG","create the backupList");
-        Log.e("TAG","Lista size:   " + lista.size());
-
-        for (int t = 0; t < lista.size(); t++) {
-
-            Item item = (Item) lv.getItemAtPosition(t);
-
-            backupLista.add(item);
-
-        }
-
-
-    }
-
-    private void filter() {
+    private void filter2() {
 
         lista.clear();
         lista.addAll(backupLista);
@@ -231,9 +208,11 @@ public class AcSearch extends Activity {
         Log.e("TAG----", "fin del for");
     }
 
-    private void filter2() {
+    private void filter() {
 
-        lista = backupLista;
+        lista.clear();
+        lista.addAll(backupLista);
+        adaptador.notifyDataSetChanged();
 
         Spinner spnSeason = (Spinner) findViewById(R.id.spnSeason);
         String season = spnSeason.getSelectedItem().toString();
@@ -249,28 +228,53 @@ public class AcSearch extends Activity {
 
 
         Log.e("SEASON--------", season);
+        Log.e("COLOR--------", color);
+        Log.e("DESCRIPTION--------", desc);
 
         for (int i = 0; i < lista.size(); i++) {
+
             Item item = (Item) lv.getItemAtPosition(i);
-            Log.e("item--------", item.getDescription());
 
-            if (item.getSeason().equals(season) == false) {
+            Log.e("item ------- check", "--------------------");
+            Log.e("item ------- check", "position in list:   " + i);
+            Log.e("item ------- check", "--------------------");
+            Log.e("item--------season", item.getSeason());
+            Log.e("item--------color", item.getColours());
+            Log.e("item--------desc", item.getDescription());
+            Log.e("item ------- check", "--------------------");
 
-                //if (!item.getColor().contains(color)) {
+            if (!item.getSeason().equals(season) && spnSeason.getSelectedItemPosition() != 0) {
 
-                if (!item.getDescription().contains(desc)) {
 
-                    //peta
-                    // ALShirts.remove(item);
-                    lista.remove(i);
-                    adaptador.notifyDataSetChanged();
-                    Log.e("TAG----", "remove item");
+                lista.remove(i);
+                adaptador.notifyDataSetChanged();
+                Log.e("TAG----", "remove item");
 
-                }
+                i--;
 
-                //}
+                // Log.e("TAG -- remove", "No season, " + item.getSeason());
+
+            } else if (!item.getColours().contains(color) && spnColur.getSelectedItemPosition() != 0) {
+
+                // Log.e("TAG -- remove", "No colors, " + item.getColours());
+
+                lista.remove(i);
+                adaptador.notifyDataSetChanged();
+                Log.e("TAG----", "remove item");
+
+                i--;
+
+            } else if (!item.getDescription().contains(desc) && desc.length() > 0) {
+
+                // Log.e("TAG -- remove", "No description, " + item.getDescription());
+                lista.remove(i);
+                adaptador.notifyDataSetChanged();
+                Log.e("TAG----", "remove item");
+
+                i--;
 
             }
+
 
         }
 
