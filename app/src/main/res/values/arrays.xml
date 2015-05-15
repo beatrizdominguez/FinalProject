@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<string-array name="categoriesArrays">
+        <item>Camisetas</item>
+        <item>Pantalones</item>
+        <item>Ropa interior</item>
+        <item>Abrigos</item>
+        <item>Zapatos</item>
+        <item>Jerseys</item>
+        <item>Pijamas</item>
+        <item>Vestidos</item>
+        <item>Complementos</item>
+    </string-array>
 
     <string-array name="colorArrays">
         <item>Red</item>
