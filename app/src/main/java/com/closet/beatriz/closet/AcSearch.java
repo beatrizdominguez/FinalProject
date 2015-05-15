@@ -264,7 +264,7 @@ public class AcSearch extends Activity {
 
                 i--;
 
-            } else if (!item.getDescription().contains(desc) && desc.length() > 0) {
+            } else if (desc.length() > 0 && !item.getDescription().contains(desc)) {
 
                 // Log.e("TAG -- remove", "No description, " + item.getDescription());
                 lista.remove(i);
