@@ -432,6 +432,55 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         return ItemCount;
     }
 
+public int[] categoriesStatistics2(Context context) {
+
+
+        String[] categories = context.getResources().getStringArray(R.array.categoryArrays);
+        int categoriesNumber = colors.length;
+        // Log.e("TAG", "how many colors are in the array:  " + colorNumber);
+
+        //string of num of colors + 1 for the total
+        int[] categoryCount = new int[categoriesNumber + 1];
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int categoryIdx = c.getColumnIndex("category");
+       
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información
+                int cId = c.getInt(idIdx);
+                String cCategory = c.getString(categoryIdx);
+             
+
+                // totalCount++;
+
+                for (int i = 0; i < categoriesNumber; i++) {
+                    if (cCategory.equals(categories[i])) {
+
+                        categoryCount[i]++;
+                    }
+                }
+              
+
+            } while (c.moveToNext());
+        }
+
+        
+        c.close();
+        db.close();
+
+        return categoryCount;
+    }
+
+
     public int[] colorStatistics(Context context) {
 
 
@@ -450,33 +499,16 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
         int idIdx = c.getColumnIndex("id");
-        // int fotoIdx = c.getColumnIndex("image");
-        // int descriptionIdx = c.getColumnIndex("description");
-        // int categoryIdx = c.getColumnIndex("category");
-        // int seasonIdx = c.getColumnIndex("season");
         int colorsIdx = c.getColumnIndex("colors");
-        // int sizeIdx = c.getColumnIndex("i_size");
-        // int dateIdx = c.getColumnIndex("s_date");
-        // int priceIdx = c.getColumnIndex("price");
-        // int shopIdx = c.getColumnIndex("shop");
-
-        //Log.e("TAG", "id" + idIdx);
+       
 
         if (c.moveToFirst()) {
             do {
 
-                // // cargamos la información en el objeto
+                // // cargamos la información
                 int cId = c.getInt(idIdx);
-                // String cFoto = c.getString(fotoIdx);
-                // String cDescription = c.getString(descriptionIdx);
-                // String cCategory = c.getString(categoryIdx);
-                // String cSeason = c.getString(seasonIdx);
                 String cColors = c.getString(colorsIdx);
-                // String cSize = c.getString(sizeIdx);
-                // String cDate = c.getString(dateIdx);
-                // Float cPrice = c.getFloat(priceIdx);
-                // String cShop = c.getString(shopIdx);
-
+             
 
                 // totalCount++;
 
@@ -486,69 +518,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                         ItemCount[i]++;
                     }
                 }
-               /*
-                Log.e("--------cat", context.getResources().getString(R.string.catCoats));
-                // cargamos la informavión en la lista
-                if (cColors.contains(colors[0])) {
-
-                    countOne++;
-                }
-                if (cColors.contains(colors[1])) {
-
-                    countTwo++;
-                }
-                if (cColors.contains(colors[2])) {
-
-                    countThree++;
-                }
-                if (cColors.contains(colors[3])) {
-
-                    countFour++;
-                }
-                if (cColors.contains(colors[4])) {
-
-                    countFive++;
-                }
-                if (cColors.contains(colors[5])) {
-
-                    countSix++;
-                }
-                if (cColors.contains(colors[6])) {
-
-                    countSeven++;
-                }
-                if (cColors.contains(colors[7])) {
-
-                    counteEight++;
-                }
-                if (cColors.contains(colors[8])) {
-
-                    countNine++;
-                }
-
-                if (cColors.contains(colors[9])) {
-
-                    countother++;
-                }
-*/
+              
 
             } while (c.moveToNext());
         }
 
-        /*
-        ItemCount[0] = totalCount;
-        ItemCount[1] = countOne;
-        ItemCount[2] = countTwo;
-        ItemCount[3] = countThree;
-        ItemCount[4] = countFour;
-        ItemCount[5] = countFive;
-        ItemCount[6] = countSix;
-        ItemCount[7] = countSeven;
-        ItemCount[8] = counteEight;
-        ItemCount[9] = countNine;
-        ItemCount[10] = countTen;
-        ItemCount[11] = countother;
-*/
+        
         c.close();
         db.close();
 
