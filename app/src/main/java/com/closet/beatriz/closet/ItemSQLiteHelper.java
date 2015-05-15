@@ -167,6 +167,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         values.put("description", i.getDescription());
         values.put("category", i.getCategory());
         values.put("season", i.getSeason());
+        values.put("colors", i.getColours());
         values.put("i_size", i.getSize());
         values.put("s_date", i.getS_date());
         values.put("price", i.getPrize());
@@ -429,6 +430,181 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.close();
 
         return ItemCount;
+    }
+
+    public int[] colorStatistics(Context context) {
+
+
+        String[] colors = context.getResources().getStringArray(R.array.colorArrays);
+        int colorNumber = colors.length;
+        // Log.e("TAG", "how many colors are in the array:  " + colorNumber);
+
+        //string of num of colors + 1 for the total
+        int[] ItemCount = new int[colorNumber + 1];
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        // int fotoIdx = c.getColumnIndex("image");
+        // int descriptionIdx = c.getColumnIndex("description");
+        // int categoryIdx = c.getColumnIndex("category");
+        // int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        // int sizeIdx = c.getColumnIndex("i_size");
+        // int dateIdx = c.getColumnIndex("s_date");
+        // int priceIdx = c.getColumnIndex("price");
+        // int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                // String cFoto = c.getString(fotoIdx);
+                // String cDescription = c.getString(descriptionIdx);
+                // String cCategory = c.getString(categoryIdx);
+                // String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                // String cSize = c.getString(sizeIdx);
+                // String cDate = c.getString(dateIdx);
+                // Float cPrice = c.getFloat(priceIdx);
+                // String cShop = c.getString(shopIdx);
+
+
+                // totalCount++;
+
+                for (int i = 0; i < colorNumber; i++) {
+                    if (cColors.contains(colors[i])) {
+
+                        ItemCount[i]++;
+                    }
+                }
+               /*
+                Log.e("--------cat", context.getResources().getString(R.string.catCoats));
+                // cargamos la informavión en la lista
+                if (cColors.contains(colors[0])) {
+
+                    countOne++;
+                }
+                if (cColors.contains(colors[1])) {
+
+                    countTwo++;
+                }
+                if (cColors.contains(colors[2])) {
+
+                    countThree++;
+                }
+                if (cColors.contains(colors[3])) {
+
+                    countFour++;
+                }
+                if (cColors.contains(colors[4])) {
+
+                    countFive++;
+                }
+                if (cColors.contains(colors[5])) {
+
+                    countSix++;
+                }
+                if (cColors.contains(colors[6])) {
+
+                    countSeven++;
+                }
+                if (cColors.contains(colors[7])) {
+
+                    counteEight++;
+                }
+                if (cColors.contains(colors[8])) {
+
+                    countNine++;
+                }
+
+                if (cColors.contains(colors[9])) {
+
+                    countother++;
+                }
+*/
+
+            } while (c.moveToNext());
+        }
+
+        /*
+        ItemCount[0] = totalCount;
+        ItemCount[1] = countOne;
+        ItemCount[2] = countTwo;
+        ItemCount[3] = countThree;
+        ItemCount[4] = countFour;
+        ItemCount[5] = countFive;
+        ItemCount[6] = countSix;
+        ItemCount[7] = countSeven;
+        ItemCount[8] = counteEight;
+        ItemCount[9] = countNine;
+        ItemCount[10] = countTen;
+        ItemCount[11] = countother;
+*/
+        c.close();
+        db.close();
+
+        return ItemCount;
+    }
+
+    public int[] shopStatistics(Context context) {
+
+        Log.e("TAG", "dentro de shopStatistics");
+
+        String[] shops = context.getResources().getStringArray(R.array.shopsArrays);
+        int shopNumber = shops.length;
+        // Log.e("TAG", "how many colors are in the array:  " + colorNumber);
+
+        //string of num of colors + 1 for the total
+        int[] shopCount = new int[shopNumber];
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cShop = c.getString(shopIdx);
+
+
+                // totalCount++;
+
+                for (int i = 0; i < shopNumber; i++) {
+                    if (cShop.equals(shops[i])) {
+
+                        shopCount[i]++;
+                        Log.e("TAG", "----prenda de esa tienda------" + cShop);
+                    }
+                }
+
+
+            } while (c.moveToNext());
+        }
+
+
+        c.close();
+        db.close();
+
+        return shopCount;
     }
 
 }

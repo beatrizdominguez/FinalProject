@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string-array name="colorArrays">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Orange</item>
+        <item>White</item>
+        <item>Black</item>
+        <item>Pink</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Aqua</item>
+        <item>Green</item>
+        <item>Other</item>
+    </string-array>
+
+    <!-- Shops ???? tabla de la base de datos -->
+    <string-array name="shopsArrays">
+        <item>Zara</item>
+        <item>HM</item>
+        <item>Primark</item>
+        <item>Berska</item>
+        <item>Stradivarius</item>
+        <item>Mango</item>
+        <item>Cortefield</item>
+        <item>Espirit</item>
+        <item>Kaymo</item>
+        <item>Other</item>
+    </string-array>
+
+
+</resources>

@@ -28,6 +28,8 @@ public class FmEstadisticas extends Fragment {
     Button btnCount;
     Button btnCountCategory;
     Button btnCountSeasons;
+    Button btnCountColors;
+    Button btnCountShops;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +51,9 @@ public class FmEstadisticas extends Fragment {
 
         displayPrices();
         displayCount();
+        displayColors();
+        displayShops();
+
         btnvalue = (Button) rootview.findViewById(R.id.btnValue);
         btnvalue.setOnClickListener(new View.OnClickListener() {
 
@@ -88,6 +93,26 @@ public class FmEstadisticas extends Fragment {
             }
         });
 
+
+        btnCountColors = (Button) rootview.findViewById(R.id.btnCountColors);
+        btnCountColors.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                showCountColors();
+            }
+        });
+
+        btnCountShops = (Button) rootview.findViewById(R.id.btnCountShops);
+        btnCountShops.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                showCountShops();
+            }
+        });
     }
 
     private void showValue() {
@@ -97,13 +122,13 @@ public class FmEstadisticas extends Fragment {
 
         if (precio.getVisibility() != LinearLayout.GONE) {
             precio.setVisibility(LinearLayout.GONE);
-            Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
             //btnvalue.setBackground(R.drawable.arrow_down_float);
             btnvalue.setBackground(getResources().getDrawable(R.drawable.down_arrow));
 
         } else {
             precio.setVisibility(LinearLayout.VISIBLE);
-            Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
             btnvalue.setBackground(getResources().getDrawable(R.drawable.up_arrow));
         }
 
@@ -115,13 +140,13 @@ public class FmEstadisticas extends Fragment {
 
         if (count.getVisibility() != LinearLayout.GONE) {
             count.setVisibility(LinearLayout.GONE);
-            Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
             //btnvalue.setBackground(R.drawable.arrow_down_float);
             btnCount.setBackground(getResources().getDrawable(R.drawable.down_arrow));
 
         } else {
             count.setVisibility(LinearLayout.VISIBLE);
-            Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
             btnCount.setBackground(getResources().getDrawable(R.drawable.up_arrow));
         }
 
@@ -133,13 +158,13 @@ public class FmEstadisticas extends Fragment {
 
         if (layout.getVisibility() != LinearLayout.GONE) {
             layout.setVisibility(LinearLayout.GONE);
-            Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
             //btnvalue.setBackground(R.drawable.arrow_down_float);
             btnCountCategory.setBackground(getResources().getDrawable(R.drawable.down_arrow));
 
         } else {
             layout.setVisibility(LinearLayout.VISIBLE);
-            Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
             btnCountCategory.setBackground(getResources().getDrawable(R.drawable.up_arrow));
         }
 
@@ -151,14 +176,50 @@ public class FmEstadisticas extends Fragment {
 
         if (layout.getVisibility() != LinearLayout.GONE) {
             layout.setVisibility(LinearLayout.GONE);
-            Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
             //btnvalue.setBackground(R.drawable.arrow_down_float);
             btnCountSeasons.setBackground(getResources().getDrawable(R.drawable.down_arrow));
 
         } else {
             layout.setVisibility(LinearLayout.VISIBLE);
-            Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
             btnCountSeasons.setBackground(getResources().getDrawable(R.drawable.up_arrow));
+        }
+
+    }
+
+    private void showCountColors() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountColors);
+
+        if (layout.getVisibility() != LinearLayout.GONE) {
+            layout.setVisibility(LinearLayout.GONE);
+            //Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            //btnvalue.setBackground(R.drawable.arrow_down_float);
+            btnCountColors.setBackground(getResources().getDrawable(R.drawable.down_arrow));
+
+        } else {
+            layout.setVisibility(LinearLayout.VISIBLE);
+            //Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            btnCountColors.setBackground(getResources().getDrawable(R.drawable.up_arrow));
+        }
+
+    }
+
+    private void showCountShops() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountShops);
+
+        if (layout.getVisibility() != LinearLayout.GONE) {
+            layout.setVisibility(LinearLayout.GONE);
+            //Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            //btnvalue.setBackground(R.drawable.arrow_down_float);
+            btnCountShops.setBackground(getResources().getDrawable(R.drawable.down_arrow));
+
+        } else {
+            layout.setVisibility(LinearLayout.VISIBLE);
+            //Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            btnCountShops.setBackground(getResources().getDrawable(R.drawable.up_arrow));
         }
 
     }
@@ -296,5 +357,52 @@ public class FmEstadisticas extends Fragment {
         winterCount.setText(String.valueOf(countWinter));
 
     }
+
+    private void displayColors() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountColors);
+
+        String[] colorName = getActivity().getResources().getStringArray(R.array.colorArrays);
+        int[] colorCount = usdbh.colorStatistics(getActivity());
+
+
+        int colorNo = colorName.length;
+
+        for (int i = 0; i < colorNo; i++) {
+
+            //añadimos el nombre
+            TextView color = new TextView(getActivity());
+            color.setText(colorName[i] + ": " + colorCount[i]);
+            //add style
+            // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+            layout.addView(color);
+        }
+
+
+    }
+
+    private void displayShops() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountShops);
+
+        String[] shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
+        int[] shopCount = usdbh.shopStatistics(getActivity());
+
+
+        int shopNo = shopName.length;
+
+        for (int i = 0; i < shopNo; i++) {
+
+            //añadimos el nombre
+            TextView shop = new TextView(getActivity());
+            shop.setText(shopName[i] + ": " + shopCount[i]);
+            //add style
+            // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+            layout.addView(shop);
+        }
+
+
+    }
+
 
 }

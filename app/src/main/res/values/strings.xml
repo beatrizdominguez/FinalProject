@@ -47,7 +47,7 @@
     <!-- Search -->
     <!-- <string name="txt_cat">Categoría</string> -->
     <!-- <string name="txt_color">Color</string> -->
-   <!-- <string name="txt_season">Estación</string> -->
+    <!-- <string name="txt_season">Estación</string> -->
     <string name="txt_all">All</string>
 
     <!-- Configuration -->
@@ -117,7 +117,7 @@
 
 
     <!-- Shops ???? tabla de la base de datos -->
-    <string-array name="shopsArrays">
+    <string-array name="shopsArrays22">
         <item>Zara</item>
         <item>HM</item>
         <item>Primark</item>
@@ -155,7 +155,7 @@
 
 
     <!-- Color list -->
-    <string-array name="colorArrays">
+    <string-array name="colorArrays2">
         <item>Red</item>
         <item>Blue</item>
         <item>Orange</item>
@@ -165,6 +165,8 @@
         <item>Yellow</item>
         <item>Green</item>
         <item>Aqua</item>
+        <item>Green</item>
+        <item>Other</item>
     </string-array>
 
     <!-- Color list -->
@@ -182,7 +184,6 @@
     </string-array>
 
 
-
     <!-- Statistics -->
     <string name="statistics_title">Estadísticas</string>
     <string name="statistics_total">Total: </string>
@@ -190,9 +191,9 @@
     <string name="statistics_category">Categorías</string>
     <string name="statistics_seasons">Estaciones</string>
     <string name="statistics_colors">Colores</string>
+    <string name="statistics_shops">Tiendas</string>
     <string name="statistics_count">Numero de prendas</string>
     <string name="statistics_total_count">Número de prendas en tu armario: </string>
-
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
