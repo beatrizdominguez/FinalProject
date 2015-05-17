@@ -144,37 +144,14 @@ public class AcModifyItem extends Activity {
 
         int index = 0;
 
-        // cargamos la informavión en la lista
-        if (cat.equals(getResources().getString(R.string.catShirts))) {
+        String[] categoy = getResources().getStringArray(R.array.categoriesArrays);
 
-            index = 0;
-
-        } else if (cat.equals(getResources().getString(R.string.catPants))) {
-
-            index = 1;
-        } else if (cat.equals(getResources().getString(R.string.catUnderWear))) {
-
-            index = 2;
-        } else if (cat.equals(getResources().getString(R.string.catCoats))) {
-
-            index = 3;
-        } else if (cat.equals(getResources().getString(R.string.catShoes))) {
-
-            index = 4;
-        } else if (cat.equals(getResources().getString(R.string.catJumper))) {
-
-            index = 5;
-        } else if (cat.equals(getResources().getString(R.string.catPijamas))) {
-
-            index = 6;
-        } else if (cat.equals(getResources().getString(R.string.catDress))) {
-
-            index = 7;
-        } else if (cat.equals(getResources().getString(R.string.catAccesories))) {
-
-            index = 8;
+        for (int i = 0; i < categoy.length; i++) {
+            if (categoy[i].equals(cat)) {
+                index = i;
+                break;
+            }
         }
-
 
         return index;
     }
@@ -183,20 +160,13 @@ public class AcModifyItem extends Activity {
 
         int index = 0;
 
+        String[] seasons = getResources().getStringArray(R.array.seasonsArrays);
 
-        if (season.equals(getResources().getString(R.string.seasonSpring))) {
-
-            index = 0;
-
-        } else if (season.equals(getResources().getString(R.string.seasonSummer))) {
-
-            index = 1;
-        } else if (season.equals(getResources().getString(R.string.seasonAutumn))) {
-
-            index = 2;
-        } else if (season.equals(getResources().getString(R.string.seasonWinter))) {
-
-            index = 3;
+        for (int i = 0; i < seasons.length; i++) {
+            if (seasons[i].equals(season)) {
+                index = i;
+                break;
+            }
         }
 
         return index;

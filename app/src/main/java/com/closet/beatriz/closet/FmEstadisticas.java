@@ -50,7 +50,9 @@ public class FmEstadisticas extends Fragment {
                 null, 1);
 
         displayPrices();
-        displayCount();
+        //displayCount();
+        displayCountCategory();
+        displayCountSeason();
         displayColors();
         displayShops();
 
@@ -227,136 +229,91 @@ public class FmEstadisticas extends Fragment {
 
     private void displayPrices() {
 
-        Float[] ItemValue = new Float[10];
-        ItemValue = usdbh.priceStatistics(getActivity());
-        Log.e("TAG-----total value", String.valueOf(ItemValue[0]));
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutPrecio);
+
+        String[] categoryName = getActivity().getResources().getStringArray(R.array.categoriesArrays);
+        Float[] pricesArray = usdbh.priceStatistics(getActivity());
+        float total = 0;
+
+
+        int shopNo = categoryName.length;
+
+        for (int i = 0; i < pricesArray.length; i++) {
+
+            total += pricesArray[i];
+
+            //añadimos el nombre
+            TextView cat = new TextView(getActivity());
+            cat.setText(categoryName[i] + ": " + pricesArray[i] + getActivity().getResources().getString(R.string.txt_currency));
+            //add style
+            // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+            layout.addView(cat);
+        }
 
         //total
         TextView txtTotal = (TextView) rootview.findViewById(R.id.txtTotalValue);
-        //categories
-        TextView shirtValue = (TextView) rootview.findViewById(R.id.txtShirtValue);
-        TextView pantsValue = (TextView) rootview.findViewById(R.id.txtPantstValue);
-        TextView UnderWearValue = (TextView) rootview.findViewById(R.id.txtUnderWearValue);
-        TextView ShoesValue = (TextView) rootview.findViewById(R.id.txtShoesValue);
-        TextView JumperValue = (TextView) rootview.findViewById(R.id.txtJumperValue);
-        TextView PijamasValue = (TextView) rootview.findViewById(R.id.txtPijamasValue);
-        TextView DressValue = (TextView) rootview.findViewById(R.id.txtDressValue);
-        TextView CoatsValue = (TextView) rootview.findViewById(R.id.txtCoatsValue);
-        TextView AccessoriesValue = (TextView) rootview.findViewById(R.id.txtAccesoriesValue);
 
-
-        Float total;
-        float totalValue = 0;
-        float valueShirts = 0;
-        float valuePants = 0;
-        float valueUnderWear = 0;
-        float valueShoes = 0;
-        float valueJumper = 0;
-        float valuePijamas = 0;
-        float valueDress = 0;
-        float valueCoats = 0;
-        float valueAccessories = 0;
-
-        total = ItemValue[0];
-        valueShirts = ItemValue[1];
-        valuePants = ItemValue[2];
-        valueUnderWear = ItemValue[3];
-        valueShoes = ItemValue[4];
-        valueJumper = ItemValue[5];
-        valuePijamas = ItemValue[6];
-        valueDress = ItemValue[7];
-        valueCoats = ItemValue[8];
-        valueAccessories = ItemValue[9];
-
-        txtTotal.setText(txtTotal.getText() + String.valueOf(total) + " €");
-        shirtValue.setText(String.valueOf(valueShirts) + " €");
-        pantsValue.setText(String.valueOf(valuePants) + " €");
-        UnderWearValue.setText(String.valueOf(valueUnderWear) + " €");
-        ShoesValue.setText(String.valueOf(valueShoes) + " €");
-        JumperValue.setText(String.valueOf(valueJumper) + " €");
-        PijamasValue.setText(String.valueOf(valuePijamas) + " €");
-        DressValue.setText(String.valueOf(valueDress) + " €");
-        CoatsValue.setText(String.valueOf(valueCoats) + " €");
-        AccessoriesValue.setText(String.valueOf(valueAccessories) + " €");
-
+        txtTotal.setText(getActivity().getResources().getString(R.string.statistics_total) + String.valueOf(total) + getActivity().getResources().getString(R.string.txt_currency));
 
     }
 
-    private void displayCount() {
 
-        Integer[] ItemCount = new Integer[14];
-        ItemCount = usdbh.countStatistics(getActivity());
+    private void displayCountCategory() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountCategory);
+
+        String[] categoryName = getActivity().getResources().getStringArray(R.array.categoriesArrays);
+        int[] countArray = usdbh.countCategoryStatistics(getActivity());
+        int total = 0;
+
+        for (int i = 0; i < countArray.length; i++) {
+
+            total += countArray[i];
+
+            //añadimos el nombre
+            TextView cat = new TextView(getActivity());
+            cat.setText(categoryName[i] + ": " + countArray[i]);
+            //add style
+            // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+            layout.addView(cat);
+        }
 
         //total
-        TextView totalCount = (TextView) rootview.findViewById(R.id.txtTotalCount);
-        //categories
-        TextView shirtCount = (TextView) rootview.findViewById(R.id.txtShirtCount);
-        TextView pantsCount = (TextView) rootview.findViewById(R.id.txtPantsCount);
-        TextView UnderWearCount = (TextView) rootview.findViewById(R.id.txtUnderWearCount);
-        TextView ShoesCount = (TextView) rootview.findViewById(R.id.txtShoesCount);
-        TextView JumperCount = (TextView) rootview.findViewById(R.id.txtJumperCount);
-        TextView PijamasCount = (TextView) rootview.findViewById(R.id.txtPijamasCount);
-        TextView DressCount = (TextView) rootview.findViewById(R.id.txtDressCount);
-        TextView CoatsCount = (TextView) rootview.findViewById(R.id.txtCoatsCount);
-        TextView AccessoriesCount = (TextView) rootview.findViewById(R.id.txtAccesoriesCount);
-        //seasons
-        TextView srpingCount = (TextView) rootview.findViewById(R.id.txtSpringCount);
-        TextView summerCount = (TextView) rootview.findViewById(R.id.txtSummerCount);
-        TextView automnCount = (TextView) rootview.findViewById(R.id.txtAutomnCount);
-        TextView winterCount = (TextView) rootview.findViewById(R.id.txtWinterCount);
+        TextView txtTotal = (TextView) rootview.findViewById(R.id.txtTotalCount);
 
-        int total;
-        int totalValue = 0;
-        //categories
-        int countShirts = 0;
-        int countPants = 0;
-        int countUnderWear = 0;
-        int valueShoes = 0;
-        int countJumper = 0;
-        int countPijamas = 0;
-        int countDress = 0;
-        int countCoats = 0;
-        int countAccessories = 0;
-        //seasons
-        int countspring = 0;
-        int countWinter = 0;
-        int countSummer = 0;
-        int countAutumn = 0;
-
-        total = ItemCount[0];
-        //categories
-        countShirts = ItemCount[1];
-        countPants = ItemCount[2];
-        countUnderWear = ItemCount[3];
-        valueShoes = ItemCount[4];
-        countJumper = ItemCount[5];
-        countPijamas = ItemCount[6];
-        countDress = ItemCount[7];
-        countCoats = ItemCount[8];
-        countAccessories = ItemCount[9];
-        //seasons
-        countspring = ItemCount[10];
-        countSummer = ItemCount[11];
-        countAutumn = ItemCount[12];
-        countWinter = ItemCount[13];
-
-        totalCount.setText(totalCount.getText() + String.valueOf(total));
-        shirtCount.setText(String.valueOf(countShirts));
-        pantsCount.setText(String.valueOf(countPants));
-        UnderWearCount.setText(String.valueOf(countUnderWear));
-        ShoesCount.setText(String.valueOf(valueShoes));
-        JumperCount.setText(String.valueOf(countJumper));
-        PijamasCount.setText(String.valueOf(countPijamas));
-        DressCount.setText(String.valueOf(countDress));
-        CoatsCount.setText(String.valueOf(countCoats));
-        AccessoriesCount.setText(String.valueOf(countAccessories));
-        //seasons
-        srpingCount.setText(String.valueOf(countspring));
-        summerCount.setText(String.valueOf(countSummer));
-        automnCount.setText(String.valueOf(countAutumn));
-        winterCount.setText(String.valueOf(countWinter));
+        txtTotal.setText(getActivity().getResources().getString(R.string.statistics_total) + String.valueOf(total));
 
     }
+
+    private void displayCountSeason() {
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountSeasons);
+
+        String[] seasonName = getActivity().getResources().getStringArray(R.array.seasonsArrays);
+        int[] countArray = usdbh.countSeasonsStatistics(getActivity());
+        float total = 0;
+
+
+        int shopNo = seasonName.length;
+
+        for (int i = 0; i < countArray.length; i++) {
+
+            // total += countArray[i];
+
+            //añadimos el nombre
+            TextView cat = new TextView(getActivity());
+            cat.setText(seasonName[i] + ": " + countArray[i]);
+            //add style
+            // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+            layout.addView(cat);
+        }
+
+        //total
+        //  TextView txtTotal = (TextView) rootview.findViewById(R.id.txtTotalValue);
+
+        //   txtTotal.setText(getActivity().getResources().getString(R.string.statistics_total) + String.valueOf(total) + getActivity().getResources().getString(R.string.txt_currency));
+
+    }
+
 
     private void displayColors() {
 
@@ -401,8 +358,6 @@ public class FmEstadisticas extends Fragment {
             layout.addView(shop);
         }
 
-
     }
-
 
 }

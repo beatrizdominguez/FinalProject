@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:entries="@array/categoryArrays" />
+            android:entries="@array/categoriesArrays" />
 
         <TextView
             android:id="@+id/txtSeason"

@@ -48,7 +48,7 @@
     <!-- <string name="txt_cat">Categoría</string> -->
     <!-- <string name="txt_color">Color</string> -->
     <!-- <string name="txt_season">Estación</string> -->
-    <string name="txt_all">All</string>
+    <string name="txt_all">Todos</string>
 
     <!-- Configuration -->
     <string name="txt_default">Armario predegterminado</string>
@@ -132,7 +132,7 @@
     <!-- Seasons -->
     <string name="season_pronpt">Choose a season</string>
 
-    <string-array name="seasonsArrays">
+    <string-array name="seasonsArrays2">
         <item>Primavera</item>
         <item>Verano</item>
         <item>Invierno</item>

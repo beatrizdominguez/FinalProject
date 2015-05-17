@@ -193,26 +193,16 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+
     public Float[] priceStatistics(Context context) {
 
+        String[] categoryName = context.getResources().getStringArray(R.array.categoriesArrays);
+        Float[] pricesArray = new Float[categoryName.length];
 
-        //Log.e("TAG-----------", "en el helper cargarlista");
-
-        Item i;
-
-        float totalValue = 0;
-        float valueShirts = 0;
-        float valuePants = 0;
-        float valueUnderWear = 0;
-        float valueShoes = 0;
-        float valueJumper = 0;
-        float valuePijamas = 0;
-        float valueDress = 0;
-        float valueCoats = 0;
-        float valueAccessories = 0;
-
-        //string of num of categories +1
-        Float[] ItemValue = new Float[10];
+        //inicializar todos a 0
+        for (int i = 0; i < pricesArray.length; i++) {
+            pricesArray[i] = Float.valueOf(0);
+        }
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -221,80 +211,142 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
         int idIdx = c.getColumnIndex("id");
-        int fotoIdx = c.getColumnIndex("image");
-        int descriptionIdx = c.getColumnIndex("description");
         int categoryIdx = c.getColumnIndex("category");
-        int seasonIdx = c.getColumnIndex("season");
-        int sizeIdx = c.getColumnIndex("i_size");
-        int dateIdx = c.getColumnIndex("s_date");
         int priceIdx = c.getColumnIndex("price");
-        int shopIdx = c.getColumnIndex("shop");
-
-        //Log.e("TAG", "id" + idIdx);
 
         if (c.moveToFirst()) {
             do {
 
                 // // cargamos la información en el objeto
                 int cId = c.getInt(idIdx);
-                String cFoto = c.getString(fotoIdx);
-                String cDescription = c.getString(descriptionIdx);
+
                 String cCategory = c.getString(categoryIdx);
-                String cSeason = c.getString(seasonIdx);
-                String cSize = c.getString(sizeIdx);
-                String cDate = c.getString(dateIdx);
                 Float cPrice = c.getFloat(priceIdx);
-                String cShop = c.getString(shopIdx);
-                //Log.e("foto-helper-cargar", cFoto);
 
+                //lo sumamos a la categoría corresponeidnte
+                for (int i = 0; i < categoryName.length; i++) {
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cDate, cSize,
-                        cPrice, cShop);
-                totalValue += i.getPrize();
+                    if (categoryName[i].equals(cCategory)) {
 
-                Log.e("--------cat", context.getResources().getString(R.string.catCoats));
-                // cargamos la informavión en la lista
-                if (cCategory.equals(context.getResources().getString(R.string.catShirts))) {
-                    valueShirts += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catPants))) {
-                    valuePants += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catUnderWear))) {
-                    valueUnderWear += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catCoats))) {
-                    valueCoats += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catShoes))) {
-                    valueShoes += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catJumper))) {
-                    valueJumper += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catPijamas))) {
-                    valuePijamas += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catDress))) {
-                    valueDress += i.getPrize();
-                } else if (cCategory.equals(context.getResources().getString(R.string.catAccesories))) {
-                    valueAccessories += i.getPrize();
+                        pricesArray[i] += cPrice;
+                        break;
+                    }
+
                 }
-                //AÑADIR LAS QUE QUEDARN!!!!!!!!!!!!!!!
 
             } while (c.moveToNext());
         }
 
-        ItemValue[0] = totalValue;
-        ItemValue[1] = valueShirts;
-        ItemValue[2] = valuePants;
-        ItemValue[3] = valueUnderWear;
-        ItemValue[4] = valueShoes;
-        ItemValue[5] = valueJumper;
-        ItemValue[6] = valuePijamas;
-        ItemValue[7] = valueDress;
-        ItemValue[8] = valueCoats;
-        ItemValue[9] = valueAccessories;
-        //etc add all categories
 
         c.close();
         db.close();
 
-        return ItemValue;
+        return pricesArray;
     }
+
+
+
+    public int[] countCategoryStatistics(Context context) {
+
+        String[] categoryName = context.getResources().getStringArray(R.array.categoriesArrays);
+        int[] countArray = new int[categoryName.length];
+
+        //inicializar todos a 0
+        for (int i = 0; i < countArray.length; i++) {
+            countArray[i] = 0;
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int categoryIdx = c.getColumnIndex("category");
+       // int priceIdx = c.getColumnIndex("price");
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+
+                String cCategory = c.getString(categoryIdx);
+               // Float cPrice = c.getFloat(priceIdx);
+
+                //lo sumamos a la categoría corresponeidnte
+                for (int i = 0; i < categoryName.length; i++) {
+
+                    if (categoryName[i].equals(cCategory)) {
+
+                        countArray[i] ++;
+                        break;
+                    }
+
+                }
+
+            } while (c.moveToNext());
+        }
+
+
+        c.close();
+        db.close();
+
+        return countArray;
+    }
+
+
+    public int[] countSeasonsStatistics(Context context) {
+
+        String[] seasonName = context.getResources().getStringArray(R.array.seasonsArrays);
+        int[] countArray = new int[seasonName.length];
+
+        //inicializar todos a 0
+        for (int i = 0; i < countArray.length; i++) {
+            countArray[i] = 0;
+        }
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int seeasonIdx = c.getColumnIndex("season");
+        // int priceIdx = c.getColumnIndex("price");
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+
+                String cSeason = c.getString(seeasonIdx);
+                // Float cPrice = c.getFloat(priceIdx);
+
+                //lo sumamos a la categoría corresponeidnte
+                for (int i = 0; i < seasonName.length; i++) {
+
+                    if (seasonName[i].equals(cSeason)) {
+
+                        countArray[i] ++;
+                        break;
+                    }
+
+                }
+
+            } while (c.moveToNext());
+        }
+
+
+        c.close();
+        db.close();
+
+        return countArray;
+    }
+
 
     public Integer[] countStatistics(Context context) {
 
@@ -450,35 +502,16 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
         int idIdx = c.getColumnIndex("id");
-        // int fotoIdx = c.getColumnIndex("image");
-        // int descriptionIdx = c.getColumnIndex("description");
-        // int categoryIdx = c.getColumnIndex("category");
-        // int seasonIdx = c.getColumnIndex("season");
         int colorsIdx = c.getColumnIndex("colors");
-        // int sizeIdx = c.getColumnIndex("i_size");
-        // int dateIdx = c.getColumnIndex("s_date");
-        // int priceIdx = c.getColumnIndex("price");
-        // int shopIdx = c.getColumnIndex("shop");
 
         //Log.e("TAG", "id" + idIdx);
 
         if (c.moveToFirst()) {
             do {
 
-                // // cargamos la información en el objeto
+                // // cargamos la información
                 int cId = c.getInt(idIdx);
-                // String cFoto = c.getString(fotoIdx);
-                // String cDescription = c.getString(descriptionIdx);
-                // String cCategory = c.getString(categoryIdx);
-                // String cSeason = c.getString(seasonIdx);
                 String cColors = c.getString(colorsIdx);
-                // String cSize = c.getString(sizeIdx);
-                // String cDate = c.getString(dateIdx);
-                // Float cPrice = c.getFloat(priceIdx);
-                // String cShop = c.getString(shopIdx);
-
-
-                // totalCount++;
 
                 for (int i = 0; i < colorNumber; i++) {
                     if (cColors.contains(colors[i])) {
@@ -486,69 +519,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                         ItemCount[i]++;
                     }
                 }
-               /*
-                Log.e("--------cat", context.getResources().getString(R.string.catCoats));
-                // cargamos la informavión en la lista
-                if (cColors.contains(colors[0])) {
 
-                    countOne++;
-                }
-                if (cColors.contains(colors[1])) {
-
-                    countTwo++;
-                }
-                if (cColors.contains(colors[2])) {
-
-                    countThree++;
-                }
-                if (cColors.contains(colors[3])) {
-
-                    countFour++;
-                }
-                if (cColors.contains(colors[4])) {
-
-                    countFive++;
-                }
-                if (cColors.contains(colors[5])) {
-
-                    countSix++;
-                }
-                if (cColors.contains(colors[6])) {
-
-                    countSeven++;
-                }
-                if (cColors.contains(colors[7])) {
-
-                    counteEight++;
-                }
-                if (cColors.contains(colors[8])) {
-
-                    countNine++;
-                }
-
-                if (cColors.contains(colors[9])) {
-
-                    countother++;
-                }
-*/
 
             } while (c.moveToNext());
         }
 
-        /*
-        ItemCount[0] = totalCount;
-        ItemCount[1] = countOne;
-        ItemCount[2] = countTwo;
-        ItemCount[3] = countThree;
-        ItemCount[4] = countFour;
-        ItemCount[5] = countFive;
-        ItemCount[6] = countSix;
-        ItemCount[7] = countSeven;
-        ItemCount[8] = counteEight;
-        ItemCount[9] = countNine;
-        ItemCount[10] = countTen;
-        ItemCount[11] = countother;
-*/
+
         c.close();
         db.close();
 

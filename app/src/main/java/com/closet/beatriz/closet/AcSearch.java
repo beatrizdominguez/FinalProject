@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -40,6 +41,8 @@ public class AcSearch extends Activity {
 
     ItemSQLiteHelper usdbh;
     int pos;
+    String[] arrayColors;
+    String[] arraySeasons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,52 @@ public class AcSearch extends Activity {
         TextView title = (TextView) findViewById(R.id.txtTitle);
         title.setText(category);
 
+
+        //spinners
+        String[] getC = getResources().getStringArray(R.array.colorArrays);
+        arrayColors = new String[getC.length + 1];
+        // Log.e("TAG----- ", "season lengthe " + arraySeasons.length);
+        // int seasons = arrayColors.length;
+        System.arraycopy(getC, 0, arrayColors, 0, getC.length);
+        // Log.e("TAG-------------color count", "nº: " + arrayColors.length);
+        arrayColors[arrayColors.length - 1] = getResources().getString(R.string.txt_all);
+        // arrayColors[arrayColors.length] = "Prueba";
+        Spinner spinnerColors = (Spinner) findViewById(R.id.spnCol);
+
+        // Application of the Array to the Spinner
+        ArrayAdapter<String> spinnerArrayAdapterC = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arrayColors);
+        spinnerArrayAdapterC.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinnerColors.setAdapter(spinnerArrayAdapterC);
+
+        //default to all
+        spinnerColors.setSelection(arrayColors.length - 1);
+
+
+        //set the default to the last
+//spinnerColors.setSelection(colors);
+
+        Log.e("TAG----- ", "already set the color array ");
+
+        //spinners
+        String[] getS = getResources().getStringArray(R.array.seasonsArrays);
+        arraySeasons = new String[getS.length + 1];
+        Log.e("TAG----- ", "season lengthe " + arraySeasons.length);
+        // int seasons = arrayColors.length;
+        System.arraycopy(getS, 0, arraySeasons, 0, getS.length);
+        Log.e("TAG-------------color count", "nº: " + arrayColors.length);
+        arraySeasons[arraySeasons.length - 1] = getResources().getString(R.string.txt_all);
+        // arrayColors[arrayColors.length] = "Prueba";
+        Spinner spinnerSeason = (Spinner) findViewById(R.id.spnSeason);
+
+        // Application of the Array to the Spinner
+        ArrayAdapter<String> spinnerArrayAdapterS = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arraySeasons);
+        spinnerArrayAdapterS.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        spinnerSeason.setAdapter(spinnerArrayAdapterS);
+
+        //default to all
+        spinnerSeason.setSelection(arraySeasons.length - 1);
+
+
         //base de datos
         usdbh = new ItemSQLiteHelper(this, "Closet",
                 null, 1);
@@ -60,6 +109,7 @@ public class AcSearch extends Activity {
         //cargamos la lista a mostrar
         selectList();
 
+        Log.e("TAG-----------", "espues de cargar la lista");
         // creamos el adaptador
         adaptador = new AdapterItem(this.getBaseContext(), lista);
         // creamos el adaptador
@@ -67,6 +117,7 @@ public class AcSearch extends Activity {
         // asociar menu contextual
         registerForContextMenu(lv);
         lv.setAdapter(adaptador);
+        Log.e("TAG-----------", "espues de crear el adaptador");
 
         // definir el listener del listview
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -102,7 +153,7 @@ public class AcSearch extends Activity {
                 Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
             }
         });
-
+        Log.e("TAG-----------", "final del on create");
     }
 
     private void selectList() {
@@ -155,6 +206,7 @@ public class AcSearch extends Activity {
 
     }
 
+    /*
 
     private void filter2() {
 
@@ -207,7 +259,7 @@ public class AcSearch extends Activity {
         adaptador.notifyDataSetChanged();
         Log.e("TAG----", "fin del for");
     }
-
+*/
     private void filter() {
 
         lista.clear();
@@ -243,7 +295,7 @@ public class AcSearch extends Activity {
             Log.e("item--------desc", item.getDescription());
             Log.e("item ------- check", "--------------------");
 
-            if (!item.getSeason().equals(season) && spnSeason.getSelectedItemPosition() != 0) {
+            if (!item.getSeason().equals(season) && !item.getSeason().equals(getResources().getString(R.string.txt_all))) {
 
 
                 lista.remove(i);
@@ -254,7 +306,7 @@ public class AcSearch extends Activity {
 
                 // Log.e("TAG -- remove", "No season, " + item.getSeason());
 
-            } else if (!item.getColours().contains(color) && spnColur.getSelectedItemPosition() != 0) {
+            } else if (!item.getColours().contains(color) && !item.getColours().equals(getResources().getString(R.string.txt_all))) {
 
                 // Log.e("TAG -- remove", "No colors, " + item.getColours());
 
