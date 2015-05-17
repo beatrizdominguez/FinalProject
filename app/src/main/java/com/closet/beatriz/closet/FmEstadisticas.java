@@ -30,6 +30,10 @@ public class FmEstadisticas extends Fragment {
     Button btnCountSeasons;
     Button btnCountColors;
     Button btnCountShops;
+    Button btnColors;
+    Button btnShops;
+
+    int total = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,9 +54,10 @@ public class FmEstadisticas extends Fragment {
                 null, 1);
 
         displayPrices();
-        //displayCount();
         displayCountCategory();
         displayCountSeason();
+        displayCountColors();
+        displayCountShops();
         displayColors();
         displayShops();
 
@@ -113,6 +118,26 @@ public class FmEstadisticas extends Fragment {
             public void onClick(View v) {
 
                 showCountShops();
+            }
+        });
+
+        btnColors = (Button) rootview.findViewById(R.id.btnColor);
+        btnColors.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                showColors();
+            }
+        });
+
+        btnShops = (Button) rootview.findViewById(R.id.btnShops);
+        btnShops.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                showShops();
             }
         });
     }
@@ -226,6 +251,42 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    private void showColors() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutColors);
+
+        if (layout.getVisibility() != LinearLayout.GONE) {
+            layout.setVisibility(LinearLayout.GONE);
+            //Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            //btnvalue.setBackground(R.drawable.arrow_down_float);
+            btnColors.setBackground(getResources().getDrawable(R.drawable.down_arrow));
+
+        } else {
+            layout.setVisibility(LinearLayout.VISIBLE);
+            //Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            btnColors.setBackground(getResources().getDrawable(R.drawable.up_arrow));
+        }
+
+    }
+
+    private void showShops() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
+
+        if (layout.getVisibility() != LinearLayout.GONE) {
+            layout.setVisibility(LinearLayout.GONE);
+            //Toast.makeText(getActivity(), "hide", Toast.LENGTH_SHORT).show();
+            //btnvalue.setBackground(R.drawable.arrow_down_float);
+            btnShops.setBackground(getResources().getDrawable(R.drawable.down_arrow));
+
+        } else {
+            layout.setVisibility(LinearLayout.VISIBLE);
+            //Toast.makeText(getActivity(), "show", Toast.LENGTH_SHORT).show();
+            btnShops.setBackground(getResources().getDrawable(R.drawable.up_arrow));
+        }
+
+    }
+
 
     private void displayPrices() {
 
@@ -236,7 +297,7 @@ public class FmEstadisticas extends Fragment {
         float total = 0;
 
 
-        int shopNo = categoryName.length;
+        // int shopNo = categoryName.length;
 
         for (int i = 0; i < pricesArray.length; i++) {
 
@@ -264,7 +325,7 @@ public class FmEstadisticas extends Fragment {
 
         String[] categoryName = getActivity().getResources().getStringArray(R.array.categoriesArrays);
         int[] countArray = usdbh.countCategoryStatistics(getActivity());
-        int total = 0;
+
 
         for (int i = 0; i < countArray.length; i++) {
 
@@ -280,7 +341,6 @@ public class FmEstadisticas extends Fragment {
 
         //total
         TextView txtTotal = (TextView) rootview.findViewById(R.id.txtTotalCount);
-
         txtTotal.setText(getActivity().getResources().getString(R.string.statistics_total) + String.valueOf(total));
 
     }
@@ -293,7 +353,7 @@ public class FmEstadisticas extends Fragment {
         float total = 0;
 
 
-        int shopNo = seasonName.length;
+        //  int shopNo = seasonName.length;
 
         for (int i = 0; i < countArray.length; i++) {
 
@@ -315,7 +375,7 @@ public class FmEstadisticas extends Fragment {
     }
 
 
-    private void displayColors() {
+    private void displayCountColors() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountColors);
 
@@ -323,9 +383,9 @@ public class FmEstadisticas extends Fragment {
         int[] colorCount = usdbh.colorStatistics(getActivity());
 
 
-        int colorNo = colorName.length;
+        // int colorNo = colorName.length;
 
-        for (int i = 0; i < colorNo; i++) {
+        for (int i = 0; i < colorName.length; i++) {
 
             //añadimos el nombre
             TextView color = new TextView(getActivity());
@@ -338,7 +398,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
-    private void displayShops() {
+    private void displayCountShops() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountShops);
 
@@ -346,9 +406,9 @@ public class FmEstadisticas extends Fragment {
         int[] shopCount = usdbh.shopStatistics(getActivity());
 
 
-        int shopNo = shopName.length;
+        // int shopNo = shopName.length;
 
-        for (int i = 0; i < shopNo; i++) {
+        for (int i = 0; i < shopName.length; i++) {
 
             //añadimos el nombre
             TextView shop = new TextView(getActivity());
@@ -357,6 +417,70 @@ public class FmEstadisticas extends Fragment {
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
             layout.addView(shop);
         }
+
+    }
+
+    private void displayColors() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutColors);
+
+        String[] colorName = getActivity().getResources().getStringArray(R.array.colorArrays);
+        int[] colorCount = usdbh.colorStatistics(getActivity());
+
+
+        int colorNo = colorName.length;
+
+        for (int i = 0; i < colorNo; i++) {
+
+            if (colorCount[i] != 0) {
+
+                Log.e("TAG", "count" + colorCount[i]);
+                Log.e("TAG", "total---" + total);
+                int cCount = colorCount[i];
+                Log.e("TAG", "color count: " + cCount);
+
+
+                float percentage = (float) colorCount[i] / total * 100;
+
+                //añadimos el nombre
+                TextView color = new TextView(getActivity());
+                color.setText(colorName[i] + ": " + Math.abs(percentage) + "%");
+                //add style
+                // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+                layout.addView(color);
+            }
+
+        }
+
+
+    }
+
+
+    private void displayShops() {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
+
+        String[] shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
+        int[] shopCount = usdbh.colorStatistics(getActivity());
+
+
+        for (int i = 0; i < shopCount.length; i++) {
+
+            if (shopCount[i] != 0) {
+
+
+                float percentage = (float) shopCount[i] / total * 100;
+
+                //añadimos el nombre
+                TextView color = new TextView(getActivity());
+                color.setText(shopName[i] + ": " + Math.abs(percentage) + "%");
+                //add style
+                // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
+                layout.addView(color);
+            }
+
+        }
+
 
     }
 
