@@ -125,18 +125,6 @@ public class AcModifyItem extends Activity {
             }
         });
 
-        btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-
-                save();
-
-
-            }
-        });
     }
 
 
@@ -384,6 +372,12 @@ public class AcModifyItem extends Activity {
             case (R.id.action_close):
 
                 this.finish();
+                break;
+
+            case (R.id.action_save):
+
+                save();
+
                 break;
         }
 

@@ -216,14 +216,5 @@
             android:layout_gravity="center_horizontal"
             android:entries="@array/shopsArrays" />
 
-        <Button
-            android:id="@+id/btnSave"
-            style="@style/button_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/action_save" />
-
-
     </LinearLayout>
 </ScrollView>

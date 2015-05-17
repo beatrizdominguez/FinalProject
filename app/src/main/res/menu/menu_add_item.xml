@@ -5,6 +5,11 @@
         android:id="@+id/action_close"
         android:icon="@drawable/close_ic"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
-        android:title="@string/action_close" />
+        android:showAsAction="always"
+        android:title="@string/action_cancel" />
+    <item
+        android:id="@+id/action_save"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/action_save" />
 </menu>

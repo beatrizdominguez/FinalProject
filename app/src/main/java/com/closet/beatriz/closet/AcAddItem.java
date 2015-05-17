@@ -129,18 +129,6 @@ public class AcAddItem extends Activity {
             }
         });
 
-        btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-
-                save();
-
-
-            }
-        });
     }
 
     private void removeColour() {
@@ -290,7 +278,7 @@ public class AcAddItem extends Activity {
 
     }
 
-    public static java.util.Date getDateFromDatePicker(DatePicker datePicker) {
+    public static Date getDateFromDatePicker(DatePicker datePicker) {
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
         int year = datePicker.getYear();
@@ -392,6 +380,12 @@ public class AcAddItem extends Activity {
             case (R.id.action_close):
 
                 this.finish();
+                break;
+
+            case (R.id.action_save):
+
+                save();
+
                 break;
         }
 
