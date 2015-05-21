@@ -24,17 +24,6 @@ public class FmCalendar extends Fragment {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fm_calendar, container, false);
 
-        Button btn = (Button) rootview.findViewById(R.id.btnCalendar);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(getActivity(), "hola",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
 
 int vut;
 

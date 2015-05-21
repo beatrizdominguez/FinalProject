@@ -21,16 +21,34 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
     String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), colors VARCHAR(150), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateColrs = "CREATE TABLE Colors (color VARCHAR(30))";
+    String sqlFillColrs = "Insert Into Colors VALUES(?)";
+
+
+    Context ctx = null;
 
     public ItemSQLiteHelper(Context contexto, String nombre,
                             CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
+        ctx = contexto;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Se ejecuta la sentencia SQL de creación de la tabla
         db.execSQL(sqlCreateItems);
+        db.execSQL(sqlCreateColrs);
+
+        String[] color = ctx.getResources().getStringArray(R.array.colorArrays);
+
+
+        //insert colors
+        for (int i = 0; i < color.length; i++) {
+            Log.e("TAG", "array length:  " + color.length);
+            String sqlFillColrs = "Insert Into Colors VALUES('" + color[i] + "');";
+            db.execSQL(sqlFillColrs);
+        }
+
     }
 
     @Override
@@ -153,6 +171,17 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    public void addColor(String color) {
+
+        // Log.e("-----guardar item helper", i.getImage());
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sqlAddColor = "Insert into Colors VALUES('" + color + "')";
+        db.execSQL(sqlAddColor);
+
+
+    }
+
 
     ////not changed
     public int updateItem(Item i) {
@@ -245,7 +274,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
     }
 
 
-
     public int[] countCategoryStatistics(Context context) {
 
         String[] categoryName = context.getResources().getStringArray(R.array.categoriesArrays);
@@ -264,7 +292,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
         int idIdx = c.getColumnIndex("id");
         int categoryIdx = c.getColumnIndex("category");
-       // int priceIdx = c.getColumnIndex("price");
+        // int priceIdx = c.getColumnIndex("price");
 
         if (c.moveToFirst()) {
             do {
@@ -273,14 +301,14 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 int cId = c.getInt(idIdx);
 
                 String cCategory = c.getString(categoryIdx);
-               // Float cPrice = c.getFloat(priceIdx);
+                // Float cPrice = c.getFloat(priceIdx);
 
                 //lo sumamos a la categoría corresponeidnte
                 for (int i = 0; i < categoryName.length; i++) {
 
                     if (categoryName[i].equals(cCategory)) {
 
-                        countArray[i] ++;
+                        countArray[i]++;
                         break;
                     }
 
@@ -331,7 +359,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
                     if (seasonName[i].equals(cSeason)) {
 
-                        countArray[i] ++;
+                        countArray[i]++;
                         break;
                     }
 
@@ -445,5 +473,45 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
         return shopCount;
     }
+
+    //not working
+    public String[] getColors() {
+
+
+        String[] colors = null;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Colors";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int colorIdx = c.getColumnIndex("color");
+        int count = 0;
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cColor = c.getInt(colorIdx);
+
+                Log.e("TAG --- add color", "color: " + cColor + " at position " + count);
+
+                colors[count] = String.valueOf(cColor);
+                count++;
+
+
+            } while (c.moveToNext());
+        }
+
+
+        c.close();
+        db.close();
+
+        return colors;
+    }
+
 
 }

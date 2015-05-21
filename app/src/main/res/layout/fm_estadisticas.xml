@@ -248,7 +248,8 @@
 
         </LinearLayout>
 
-//new
+        //new
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -281,10 +282,17 @@
             android:visibility="gone">
 
 
+            <Button
+                android:id="@+id/btnGraphColor"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/statistics_see_graph" />
 
 
         </LinearLayout>
         //new
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -317,7 +325,12 @@
             android:visibility="gone">
 
 
-
+            <Button
+                android:id="@+id/btnGraphShop"
+    android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/statistics_see_graph" />
 
         </LinearLayout>
 

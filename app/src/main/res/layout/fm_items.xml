@@ -432,7 +432,7 @@
 
             <HorizontalScrollView
 
-                android:layout_width="122dp"
+                android:layout_width="103dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal">
 

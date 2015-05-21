@@ -97,6 +97,7 @@ public class FmItems extends Fragment {
 
                 case 0:
                     layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
+                    layout.setVisibility(LinearLayout.GONE);
                     lista = ALShirts;
                     break;
 

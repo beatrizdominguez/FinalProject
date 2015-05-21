@@ -1,6 +1,8 @@
 package com.closet.beatriz.closet;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Layout;
@@ -13,6 +15,13 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.achartengine.ChartFactory;
+import org.achartengine.GraphicalView;
+import org.achartengine.chart.PieChart;
+import org.achartengine.model.CategorySeries;
+import org.achartengine.renderer.DefaultRenderer;
+import org.achartengine.renderer.SimpleSeriesRenderer;
 
 
 /**
@@ -32,6 +41,12 @@ public class FmEstadisticas extends Fragment {
     Button btnCountShops;
     Button btnColors;
     Button btnShops;
+
+    String[] colorName;
+    int[] colorCount;
+
+    String[] shopName;
+    int[] shopCount;
 
     int total = 0;
 
@@ -128,6 +143,7 @@ public class FmEstadisticas extends Fragment {
             public void onClick(View v) {
 
                 showColors();
+
             }
         });
 
@@ -140,6 +156,38 @@ public class FmEstadisticas extends Fragment {
                 showShops();
             }
         });
+
+        Button btnColorGraph = (Button) rootview.findViewById(R.id.btnGraphColor);
+        btnColorGraph.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                //   String[] colorName = getActivity().getResources().getStringArray(R.array.colorArrays);
+                //  int[] colorCount = usdbh.colorStatistics(getActivity());
+
+
+                Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                intentCat.putExtra("name", colorName);
+                intentCat.putExtra("value", colorCount);
+                startActivity(intentCat);
+            }
+        });
+
+        Button btnShopGraph = (Button) rootview.findViewById(R.id.btnGraphShop);
+        btnShopGraph.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                intentCat.putExtra("name", shopName);
+                intentCat.putExtra("value", shopCount);
+                startActivity(intentCat);
+            }
+        });
+
     }
 
     private void showValue() {
@@ -424,8 +472,8 @@ public class FmEstadisticas extends Fragment {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutColors);
 
-        String[] colorName = getActivity().getResources().getStringArray(R.array.colorArrays);
-        int[] colorCount = usdbh.colorStatistics(getActivity());
+        colorName = getActivity().getResources().getStringArray(R.array.colorArrays);
+        colorCount = usdbh.colorStatistics(getActivity());
 
 
         int colorNo = colorName.length;
@@ -460,12 +508,13 @@ public class FmEstadisticas extends Fragment {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
 
-        String[] shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
-        int[] shopCount = usdbh.colorStatistics(getActivity());
+        shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
+        shopCount = usdbh.colorStatistics(getActivity());
 
 
         for (int i = 0; i < shopCount.length; i++) {
 
+            Log.e("TAG","count loop:  " + i);
             if (shopCount[i] != 0) {
 
 
@@ -484,4 +533,43 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+
+    public void creteChart() {
+
+
+        int[] COLORS = new int[]{Color.GREEN, Color.BLUE, Color.MAGENTA, Color.CYAN};
+
+        double[] VALUES = new double[]{10, 11, 12, 13};
+
+        String[] NAME_LIST = new String[]{"A", "B", "C", "D"};
+
+        CategorySeries mSeries = new CategorySeries("");
+
+        DefaultRenderer mRenderer = new DefaultRenderer();
+
+        GraphicalView mChartView;
+
+        mRenderer.setApplyBackgroundColor(true);
+        mRenderer.setBackgroundColor(Color.argb(100, 50, 50, 50));
+        mRenderer.setChartTitleTextSize(20);
+        mRenderer.setLabelsTextSize(15);
+        mRenderer.setLegendTextSize(15);
+        mRenderer.setMargins(new int[]{20, 30, 15, 0});
+        mRenderer.setZoomButtonsVisible(true);
+        mRenderer.setStartAngle(90);
+
+        for (int i = 0; i < VALUES.length; i++) {
+            mSeries.add(NAME_LIST[i] + " " + VALUES[i], VALUES[i]);
+            SimpleSeriesRenderer renderer = new SimpleSeriesRenderer();
+            renderer.setColor(COLORS[(mSeries.getItemCount() - 1) % COLORS.length]);
+            mRenderer.addSeriesRenderer(renderer);
+        }
+
+        /*
+        if (mChartView != null) {
+            mChartView.repaint();
+        }*/
+
+
+    }
 }

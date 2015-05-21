@@ -61,6 +61,8 @@
     <!-- <string name="action_save">Guardar</string> -->
     <string name="txt_delete_cat">Eliminar categoría</string>
     <!-- <string name="action_delete">Eliminar</string> -->
+    <string name="txt_add_color">Añadir color</string>
+    <string name="txt_msg_color">Se ha añadido el color a la base de datos</string>
 
 
     <!-- Toast messages -->
@@ -195,6 +197,7 @@
     <string name="statistics_shops">Tiendas</string>
     <string name="statistics_count">Numero de prendas</string>
     <string name="statistics_total_count">Número de prendas en tu armario: </string>
+    <string name="statistics_see_graph">Ver la gráfica</string>
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

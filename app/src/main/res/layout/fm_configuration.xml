@@ -117,5 +117,27 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="@string/action_delete" />
+
+        <TextView
+            style="@style/text_color"
+            android:id="@+id/txtAddColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/txt_add_color"
+            android:textColor="@color/config_color" />
+
+        <EditText
+            android:id="@+id/eTxtColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:id="@+id/btnAddColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/action_add" />
     </LinearLayout>
 </ScrollView>

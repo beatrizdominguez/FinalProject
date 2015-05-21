@@ -3,15 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Calendar"
-        android:id="@+id/btnCalendar"
-        android:layout_gravity="center_horizontal" />
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"></GridLayout>
+
+
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/calendarView" />
+
 </LinearLayout>

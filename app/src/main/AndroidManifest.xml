@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.closet.beatriz.closet">
 
+    <uses-sdk android:minSdkVersion="22"
+        android:targetSdkVersion="22"
+        android:maxSdkVersion="14" />
+
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -58,6 +62,10 @@
             android:label="@string/title_activity_ac_item_detail" />
         <activity
             android:name=".AcItemPhoto"
+            android:label="@string/title_activity_ac_item_photo" />
+
+        <activity
+            android:name=".PieChartView"
             android:label="@string/title_activity_ac_item_photo" />
 
     </application>

@@ -3,6 +3,7 @@ package com.closet.beatriz.closet;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +21,10 @@ public class FmConfig extends Fragment {
     View rootview;
     //Button btnSave;
     Button btnAdd;
+    Button btnAddColor;
     Button btnRename;
 
+    ItemSQLiteHelper usdbh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +41,11 @@ public class FmConfig extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
+
+
+        //base de datos
+        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+                null, 1);
 
         Button btnSave = (Button) getActivity().findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +68,24 @@ public class FmConfig extends Fragment {
 
             }
         });
+        btnAddColor = (Button) getActivity().findViewById(R.id.btnAddColor);
+        btnAddColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //check if work
+               // usdbh.getColors();
+
+                EditText txtColor = (EditText) rootview.findViewById(R.id.eTxtColor);
+                Log.e("TAG----", "color added: " + txtColor.getText().toString());
+                usdbh.addColor(txtColor.getText().toString());
+                //user message
+                Toast.makeText(getActivity(), R.string.txt_msg_color,
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         btnRename = (Button) getActivity().findViewById(R.id.btnRenameCat);
         btnRename.setOnClickListener(new View.OnClickListener() {
             @Override
