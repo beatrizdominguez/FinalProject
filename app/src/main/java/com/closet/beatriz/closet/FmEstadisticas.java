@@ -168,6 +168,7 @@ public class FmEstadisticas extends Fragment {
 
 
                 Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                intentCat.putExtra("title", R.string.statistics_colors);
                 intentCat.putExtra("name", colorName);
                 intentCat.putExtra("value", colorCount);
                 startActivity(intentCat);
@@ -182,6 +183,7 @@ public class FmEstadisticas extends Fragment {
 
 
                 Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                intentCat.putExtra("title", R.string.statistics_shops);
                 intentCat.putExtra("name", shopName);
                 intentCat.putExtra("value", shopCount);
                 startActivity(intentCat);

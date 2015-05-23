@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="main">#9554D6</color>
-    <color name="background">#fff</color>
+    <color name="main">#ff76d696</color>
+    <color name="background">#ffeefff8</color>
     <color name="drawer_background">#fff</color>
     <color name="config_color">#FF3300</color>
+
+    <!-- color codes -->
+    <string-array name="colors">
+        <item name="BLACK">#000000</item>
+        <item name="WHITE">#FFFFFF</item>
+        <item name="RED">#FF0000</item>
+        <item name="BLUE">#0000FF</item>
+        <item name="ORANGE">#FF9900</item>
+        <item name="PINK">#FF0099</item>
+        <item name="YELLLOW">#FFFF00</item>
+        <item name="GREEN">#00CC00</item>
+        <item name="AQUA">#00FF99</item>
+        <item name="OTHER">#CC99CC</item>
+    </string-array>
+
+
 </resources>
 
 

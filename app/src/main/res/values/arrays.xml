@@ -21,16 +21,15 @@
     </string-array>
 
     <string-array name="colorArrays">
+        <item>Black</item>
+        <item>White</item>
         <item>Red</item>
         <item>Blue</item>
         <item>Orange</item>
-        <item>White</item>
-        <item>Black</item>
         <item>Pink</item>
         <item>Yellow</item>
         <item>Green</item>
         <item>Aqua</item>
-        <item>Green</item>
         <item>Other</item>
     </string-array>
 

@@ -2,6 +2,7 @@ package com.closet.beatriz.closet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,55 +24,63 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 /**
  * Created by Beatriz on 21/05/2015.
  */
+
 public class PieChartView extends Activity {
 
 
     //add lots of colors for it to choose
-    private static int[] COLORS = new int[]{Color.BLUE, Color.RED, Color.MAGENTA, Color.YELLOW, Color.GRAY};
+    //  private static int[] COLORS = new int[]{Color.RED, Color.BLUE , Color.YELLOW, Color.WHITE, Color.BLACK, Color.YELLOW, Color.YELLOW};
 
-    private static double[] VALUES = new double[]{10, 11, 12, 13};
+    // private static double[] VALUES = new double[]{10, 11, 12, 13};
 
-    private static String[] NAME_LIST = new String[]{"A", "B", "C", "D"};
+    // private static String[] NAME_LIST = new String[]{"A", "B", "C", "D"};
 
-    String[] colorName;
-    int[] colorCount;
-
+    int[] VALUES;
     private CategorySeries mSeries = new CategorySeries("");
 
     private DefaultRenderer mRenderer = new DefaultRenderer();
 
     private GraphicalView mChartView;
 
+    String[] NAME_LIST;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chart);
 
+
+        //color codes
+        String[] COLORS = getResources().getStringArray(R.array.colors);
+
         Bundle extras = getIntent().getExtras();
 
+        //get the information
+        String title = extras.getString("title");
+        NAME_LIST = (String[]) extras.get("name");
+        VALUES = (int[]) extras.get("value");
 
-        colorName = (String[]) extras.get("name");
-        colorCount = (int[]) extras.get("value");
-
-        Log.e("TAG----------", "color name: " + colorName.length);
-        Log.e("TAG----------", "color alue: " + colorCount.length);
-
-
+        //chart information
         mRenderer.setApplyBackgroundColor(true);
-        mRenderer.setBackgroundColor(Color.argb(100, 0, 0, 0));
+        mRenderer.setBackgroundColor(getResources().getColor(R.color.background));
+        mRenderer.setShowLegend(false);
+        //mRenderer.setShowLegend(true);
+        mRenderer.setChartTitle(title);
         mRenderer.setChartTitleTextSize(20);
+        //mRenderer.setShowLabels(false);
         mRenderer.setLabelsTextSize(15);
         mRenderer.setLegendTextSize(15);
         mRenderer.setMargins(new int[]{20, 30, 15, 0});
         mRenderer.setZoomButtonsVisible(true);
         mRenderer.setStartAngle(90);
 
-        for (int i = 0; i < colorName.length; i++) {
-            if (colorCount[i] > 0) {
-                mSeries.add(colorName[i] + " " + colorCount[i], colorCount[i]);
+        for (int i = 0; i < NAME_LIST.length; i++) {
+            if (VALUES[i] > 0) {
+                mSeries.add(NAME_LIST[i] + " " + VALUES[i], VALUES[i]);
                 Log.e("TAG", "color count " + i);
                 SimpleSeriesRenderer renderer = new SimpleSeriesRenderer();
-                renderer.setColor(COLORS[(mSeries.getItemCount() - 1) % COLORS.length]);
+                //renderer.setColor(COLORS[(mSeries.getItemCount() - 1) % COLORS.length]);
+                renderer.setColor(Color.parseColor(COLORS[i]));
                 mRenderer.addSeriesRenderer(renderer);
             }
         }
