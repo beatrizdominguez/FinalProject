@@ -3,15 +3,50 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"></GridLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffc8ecde">
 
+        <GridView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/gridView2"
+            android:numColumns="2"
+            android:layout_weight="2" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:background="#ff000000">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutNotes"
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_row="5"
+            android:layout_column="18"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notas:" />
+
+
+        </LinearLayout>
+    </LinearLayout>
 
 
     <CalendarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/calendarView" />
+        android:layout_height="0dp"
+        android:id="@+id/calendarView"
+        android:layout_weight="2" />
 
 </LinearLayout>
