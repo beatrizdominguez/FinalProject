@@ -50,7 +50,7 @@
     <!-- <string name="txt_cat">Categoría</string> -->
     <!-- <string name="txt_color">Color</string> -->
     <!-- <string name="txt_season">Estación</string> -->
-    <string name="txt_all">Estación</string>
+    <string name="txt_all">ALL</string>
 
     <!-- Configuration -->
     <string name="txt_default">Armario predegterminado</string>
@@ -79,16 +79,6 @@
         <item>Seccion5</item>
         <item>Seccion6</item>
     </string-array>
-
-    <!-- Iconos de los items -->
-    <array name="nav_drawer_icons">
-        <item>@drawable/ic_whats_hot</item>
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_communities</item>
-        <item>@drawable/ic_whats_hot</item>
-        <item>@drawable/ic_photos</item>
-    </array>
 
     <!-- Content Description -->
 

@@ -3,48 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:padding="20dp">
+    android:clickable="false"
+    android:focusable="false"
+    android:padding="20dp"
+    android:scrollbarStyle="outsideOverlay">
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-
-        <!-- SECCION 1 -->
-        <TextView
-            android:id="@+id/camisetas"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catShirts" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        <!-- CAMISETAS -->
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
+            <TextView
+
+                android:id="@+id/txtCamisetas"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catShirts" />
 
             <ImageButton
+
                 android:id="@+id/imgCamisetas"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/camisetas" />
 
 
             <ImageView
+
                 android:id="@+id/imgLeftCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgCamisetas"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgCamisetas"
+                android:layout_toRightOf="@+id/imgCamisetas"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
-                android:id="@+id/ScrollCamisetas"
+
+                android:id="@+id/horizontalScrollViewCamisetas"
                 android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_vertical">
+                android:layout_alignBottom="@+id/imgSearchCamisetas"
+                android:layout_below="@+id/txtCamisetas"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftCamisetas"
+                android:layout_toLeftOf="@+id/imgRightCamisetas"
+                android:layout_toRightOf="@+id/imgLeftCamisetas"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearCamisetas"
@@ -59,72 +77,93 @@
             </HorizontalScrollView>
 
             <ImageView
+
                 android:id="@+id/imgRightCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgCamisetas"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddCamisetas"
+                android:layout_toStartOf="@+id/imgAddCamisetas"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddCamisetas"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtCamisetas"
                 android:layout_gravity="right"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddCamisetas"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic"
-                    android:layout_gravity="right" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchCamisetas"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic"
-                    android:layout_gravity="right" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <!-- SECCION 2 -->
-        <TextView
-            android:id="@+id/txtPantalones"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catPants" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchCamisetas"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddCamisetas"
+                android:layout_alignStart="@+id/imgAddCamisetas"
+                android:layout_below="@+id/imgAddCamisetas"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+        <!-- PANTALONES-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtPantalones"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catPants" />
+
+            <ImageButton
+
                 android:id="@+id/imgPantalones"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewPantalones"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/pantalones" />
 
 
             <ImageView
+
                 android:id="@+id/imgLeftPantalones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgPantalones"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgPantalones"
+                android:layout_toRightOf="@+id/imgPantalones"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
+
                 android:id="@+id/horizontalScrollViewPantalones"
-                android:layout_width="103dp"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchPantalones"
+                android:layout_below="@+id/txtPantalones"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftPantalones"
+                android:layout_toLeftOf="@+id/imgRightPantalones"
+                android:layout_toRightOf="@+id/imgLeftPantalones"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearPantalones"
@@ -139,69 +178,94 @@
             </HorizontalScrollView>
 
             <ImageView
+
                 android:id="@+id/imgRightPantalones"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgPantalones"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddPantalones"
+                android:layout_toStartOf="@+id/imgAddPantalones"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddPantalones"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddPantalones"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchPantalones"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <!-- SECCION 3 -->
-        <TextView
-            android:id="@+id/txtUnderWear"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catUnderWear" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtPantalones"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
-                android:id="@+id/imgUnderWar"
-                android:layout_width="50dp"
+
+                android:id="@+id/imgSearchPantalones"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddPantalones"
+                android:layout_alignStart="@+id/imgAddPantalones"
+                android:layout_below="@+id/imgAddPantalones"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+
+        <!-- ROPA INTERIOR -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtUnderWear"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catUnderWear" />
+
+            <ImageButton
+
+                android:id="@+id/imgUnderWear"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewUnderWear"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftUnderWear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgUnderWear"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgUnderWear"
+                android:layout_toRightOf="@+id/imgUnderWear"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewUnderWear"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchUnderWear"
+                android:layout_below="@+id/txtUnderWear"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftUnderWear"
+                android:layout_toLeftOf="@+id/imgRightUnderWear"
+                android:layout_toRightOf="@+id/imgLeftUnderWear"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearUnderWear"
@@ -217,68 +281,93 @@
 
             <ImageView
 
+                android:id="@+id/imgRightUnderWear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgUnderWear"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddUnderWear"
+                android:layout_toStartOf="@+id/imgAddUnderWear"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddUnderWear"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddUnderWear"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchUnderWear"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <!-- SECCION 4 -->
-        <TextView
-            android:id="@+id/txtCoats"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catCoats" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtUnderWear"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchUnderWear"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddUnderWear"
+                android:layout_alignStart="@+id/imgAddUnderWear"
+                android:layout_below="@+id/imgAddUnderWear"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+        <!-- ABRIGOS -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtCoats"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catCoats" />
+
+            <ImageButton
+
                 android:id="@+id/imgCoats"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewCoats"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftCoats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgCoats"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgCoats"
+                android:layout_toRightOf="@+id/imgCoats"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewCoats"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchCoats"
+                android:layout_below="@+id/txtCoats"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftCoats"
+                android:layout_toLeftOf="@+id/imgRightCoats"
+                android:layout_toRightOf="@+id/imgLeftCoats"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearCoats"
@@ -294,69 +383,92 @@
 
             <ImageView
 
+                android:id="@+id/imgRightCoats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgCoats"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddCoats"
+                android:layout_toStartOf="@+id/imgAddCoats"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddCoats"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddCoats"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchCoats"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <!-- SECCION 5 -->
-        <TextView
-            android:id="@+id/txtShoes"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catShoes" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtCoats"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchCoats"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddCoats"
+                android:layout_alignStart="@+id/imgAddCoats"
+                android:layout_below="@+id/imgAddCoats"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+        <!-- ZAPATOS -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtShoes"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catShoes" />
+
+            <ImageButton
+
                 android:id="@+id/imgShoes"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewShoes"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftShoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgShoes"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgShoes"
+                android:layout_toRightOf="@+id/imgShoes"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewShoes"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchShoes"
+                android:layout_below="@+id/txtShoes"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftShoes"
+                android:layout_toLeftOf="@+id/imgRightShoes"
+                android:layout_toRightOf="@+id/imgLeftShoes"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearShoes"
@@ -372,69 +484,92 @@
 
             <ImageView
 
+                android:id="@+id/imgRightShoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgShoes"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddShoes"
+                android:layout_toStartOf="@+id/imgAddShoes"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddShoes"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddShoes"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchShoes"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <!-- SECCION 6 -->
-        <TextView
-            android:id="@+id/txtJumper"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catJumper" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtShoes"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchShoes"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddShoes"
+                android:layout_alignStart="@+id/imgAddShoes"
+                android:layout_below="@+id/imgAddShoes"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+
+        <!-- JERSEYS -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtJumper"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catJumper" />
+
+            <ImageButton
+
                 android:id="@+id/imgJumper"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewJumper"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftJumper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgJumper"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgJumper"
+                android:layout_toRightOf="@+id/imgJumper"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewJumper"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchJumper"
+                android:layout_below="@+id/txtJumper"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftJumper"
+                android:layout_toLeftOf="@+id/imgRightJumper"
+                android:layout_toRightOf="@+id/imgLeftJumper"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearJumper"
@@ -450,73 +585,94 @@
 
             <ImageView
 
+                android:id="@+id/imgRightJumper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgJumper"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddJumper"
+                android:layout_toStartOf="@+id/imgAddJumper"
                 android:src="@drawable/right_ic" />
 
-            <RelativeLayout
+            <ImageButton
+
+                android:id="@+id/imgAddJumper"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="right" >
-
-                <ImageButton
-                    android:id="@+id/imgAddJumper"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_alignParentRight="true"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchJumper"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:src="@drawable/search_ic"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-
-        <!-- SECCION 7 -->
-        <TextView
-            android:id="@+id/txtPijamas"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catPijamas" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtJumper"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchJumper"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddJumper"
+                android:layout_alignStart="@+id/imgAddJumper"
+                android:layout_below="@+id/imgAddJumper"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+
+        <!-- PIJAMAS -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtPijamas"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catPijamas" />
+
+            <ImageButton
+
                 android:id="@+id/imgPijamas"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewPijamas"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftPijamas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgPijamas"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgPijamas"
+                android:layout_toRightOf="@+id/imgPijamas"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewPijamas"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchPijamas"
+                android:layout_below="@+id/txtPijamas"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftPijamas"
+                android:layout_toLeftOf="@+id/imgRightPijamas"
+                android:layout_toRightOf="@+id/imgLeftPijamas"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearPijamas"
@@ -532,69 +688,92 @@
 
             <ImageView
 
+                android:id="@+id/imgRightPijamas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgPijamas"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddPijamas"
+                android:layout_toStartOf="@+id/imgAddPijamas"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddPijamas"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddPijamas"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchPijamas"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-        <!-- SECCION 8 -->
-        <TextView
-            android:id="@+id/txtDress"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catDress" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtPijamas"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchPijamas"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddPijamas"
+                android:layout_alignStart="@+id/imgAddPijamas"
+                android:layout_below="@+id/imgAddPijamas"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+        <!-- VESTIDOS -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtDress"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catDress" />
+
+            <ImageButton
+
                 android:id="@+id/imgDress"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewDress"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftDress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgDress"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgDress"
+                android:layout_toRightOf="@+id/imgDress"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewDress"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchDress"
+                android:layout_below="@+id/txtDress"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftDress"
+                android:layout_toLeftOf="@+id/imgRightDress"
+                android:layout_toRightOf="@+id/imgLeftDress"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearDress"
@@ -610,67 +789,93 @@
 
             <ImageView
 
+                android:id="@+id/imgRightDress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgDress"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddDress"
+                android:layout_toStartOf="@+id/imgAddDress"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddDress"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imgAddDress"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
-
-                <ImageButton
-                    android:id="@+id/imgSearchDress"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-
-        </LinearLayout>
-        <!-- SECCION 9 -->
-        <TextView
-            android:id="@+id/txtAccesories"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/catAccesories" />
-
-        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtDress"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
             <ImageButton
+
+                android:id="@+id/imgSearchDress"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddDress"
+                android:layout_alignStart="@+id/imgAddDress"
+                android:layout_below="@+id/imgAddDress"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
+
+        <!-- ACCESORIES -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+
+                android:id="@+id/txtAccesories"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/catAccesories" />
+
+            <ImageButton
+
                 android:id="@+id/imgAccesories"
-                android:layout_width="50dp"
+                android:layout_width="40dp"
                 android:layout_height="50dp"
-                android:layout_gravity="center_vertical" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/horizontalScrollViewAccesories"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginTop="10dp" />
 
 
             <ImageView
 
+                android:id="@+id/imgLeftAccesories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgAccesories"
                 android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgAccesories"
+                android:layout_toRightOf="@+id/imgAccesories"
                 android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
-                android:layout_width="103dp"
+                android:id="@+id/horizontalScrollViewAccesories"
+                android:layout_width="118dp"
                 android:layout_height="108dp"
-                android:layout_gravity="center_horizontal">
+                android:layout_alignBottom="@+id/imgSearchAccesories"
+                android:layout_below="@+id/txtAccesories"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgLeftAccesories"
+                android:layout_toLeftOf="@+id/imgRightAccesories"
+                android:layout_toRightOf="@+id/imgLeftAccesories"
+                android:fillViewport="false"
+                android:scrollbarStyle="outsideOverlay">
 
                 <LinearLayout
                     android:id="@+id/linearAccesories"
@@ -686,34 +891,40 @@
 
             <ImageView
 
+                android:id="@+id/imgRightAccesories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imgAccesories"
                 android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/imgAddAccesories"
+                android:layout_toStartOf="@+id/imgAddAccesories"
                 android:src="@drawable/right_ic" />
 
-            <LinearLayout
+            <ImageButton
+
+                android:id="@+id/imgAddAccesories"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtAccesories"
+                android:layout_gravity="right"
+                android:src="@drawable/add_ic" />
 
-                <ImageButton
-                    android:id="@+id/imgAddAccesories"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/add_ic" />
+            <ImageButton
 
-                <ImageButton
-                    android:id="@+id/imgSearchAccesories"
-                    style="@style/button_color"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/search_ic" />
-            </LinearLayout>
-
-        </LinearLayout>
+                android:id="@+id/imgSearchAccesories"
+                style="@style/button_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/imgAddAccesories"
+                android:layout_alignStart="@+id/imgAddAccesories"
+                android:layout_below="@+id/imgAddAccesories"
+                android:layout_gravity="right"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/search_ic" />
+        </RelativeLayout>
 
 
         <!-- new section-->

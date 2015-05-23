@@ -9,7 +9,6 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -71,7 +70,6 @@ public class FmItems extends Fragment {
         DressButtons();
         AccessoriesButtons();
 
-
     }
 
     @Override
@@ -101,7 +99,6 @@ public class FmItems extends Fragment {
 
                 case 0:
                     layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
-                    layout.setVisibility(LinearLayout.GONE);
                     lista = ALShirts;
                     break;
 
@@ -311,7 +308,7 @@ public class FmItems extends Fragment {
     private void UnderWearButtons() {
 
 
-        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgUnderWar);
+        ImageButton btnCategory = (ImageButton) rootview.findViewById(R.id.imgUnderWear);
         btnCategory.setOnClickListener(new View.OnClickListener() {
 
             @Override

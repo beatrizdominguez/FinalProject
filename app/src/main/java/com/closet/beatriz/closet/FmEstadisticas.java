@@ -513,7 +513,7 @@ public class FmEstadisticas extends Fragment {
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
 
         shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
-        shopCount = usdbh.colorStatistics(getActivity());
+        shopCount = usdbh.shopStatistics(getActivity());
 
 
         for (int i = 0; i < shopCount.length; i++) {
