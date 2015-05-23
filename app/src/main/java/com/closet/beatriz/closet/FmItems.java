@@ -35,6 +35,10 @@ public class FmItems extends Fragment {
     String category;
     ItemSQLiteHelper usdbh;
 
+
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

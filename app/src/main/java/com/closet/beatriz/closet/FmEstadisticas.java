@@ -49,6 +49,8 @@ public class FmEstadisticas extends Fragment {
     int[] shopCount;
 
     int total = 0;
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -516,7 +518,7 @@ public class FmEstadisticas extends Fragment {
 
         for (int i = 0; i < shopCount.length; i++) {
 
-            Log.e("TAG","count loop:  " + i);
+            Log.e("TAG", "count loop:  " + i);
             if (shopCount[i] != 0) {
 
 

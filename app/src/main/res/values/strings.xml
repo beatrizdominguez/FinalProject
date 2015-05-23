@@ -9,6 +9,7 @@
     <string name="title_section4">Mis armarios</string>
     <string name="title_section5">Conoce tu armario</string>
     <string name="title_section6">Configuración</string>
+    <string name="title_section7">About</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
@@ -209,5 +210,8 @@
     <string name="title_activity_ac_item_detail">AcItemDetail</string>
     <string name="title_activity_ac_item_photo">AcItemPhoto</string>
     <string name="title_activity_horizontal_list_view_demo">HorizontalListViewDemo</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
 
 </resources>

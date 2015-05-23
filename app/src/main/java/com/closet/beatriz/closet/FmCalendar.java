@@ -17,6 +17,8 @@ public class FmCalendar extends Fragment {
 
     View rootview;
 
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,7 +27,7 @@ public class FmCalendar extends Fragment {
         rootview = inflater.inflate(R.layout.fm_calendar, container, false);
 
 
-int vut;
+        int vut;
 
         return rootview;
     }
