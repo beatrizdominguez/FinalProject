@@ -49,29 +49,23 @@ public class MainActivity extends Activity {
         dataList = new ArrayList<DrawerItem>();
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.action_add);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem("Message", R.drawable.add_ic));
-        dataList.add(new DrawerItem("Likes", R.drawable.ic_communities));
-        dataList.add(new DrawerItem("Games", R.drawable.ic_drawer));
-        dataList.add(new DrawerItem("Lables", R.drawable.ic_photos));
-        dataList.add(new DrawerItem("Search", R.drawable.ic_people));
-        dataList.add(new DrawerItem("Cloud", R.drawable.ic_whats_hot));
-        dataList.add(new DrawerItem("Camara", R.drawable.right_ic));
-        dataList.add(new DrawerItem("Video", R.drawable.left_ic));
-        dataList.add(new DrawerItem("Groups", R.drawable.ic_communities));
-        dataList.add(new DrawerItem("Import & Export",
-                R.drawable.ic_photos));
-        dataList.add(new DrawerItem("About", R.drawable.ic_whats_hot));
-        dataList.add(new DrawerItem("Settings", R.drawable.ic_communities));
-        dataList.add(new DrawerItem("Help", R.drawable.search_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section1), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section2), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section3), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section4), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section5), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section6), R.drawable.add_ic));
+        dataList.add(new DrawerItem(getString(R.string.title_section7), R.drawable.add_ic));
 
-        adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
+
+        adapter = new CustomDrawerAdapter(MainActivity.this, R.layout.custom_drawer_item,
                 dataList);
 
         mDrawerList.setAdapter(adapter);
@@ -84,6 +78,7 @@ public class MainActivity extends Activity {
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.drawable.ic_drawer, R.string.drawer_open,
                 R.string.drawer_close) {
+
             public void onDrawerClosed(View view) {
                 getActionBar().setTitle(mTitle);
                 invalidateOptionsMenu(); // creates call to
@@ -133,75 +128,35 @@ public class MainActivity extends Activity {
                         .getImgResID());
                 break;
             case 3:
-                fragment = new FmEstadisticas();
-                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 4:
-                fragment = new FmConfig();
-                args.putString(FmConfig.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmConfig.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 5:
-                fragment = new FmItems();
-                args.putString(FmItems.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 6:
-                fragment = new FmEstadisticas();
-                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 7:
-                fragment = new FmConfig();
-                args.putString(FmConfig.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmConfig.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 8:
-                fragment = new FmOutfit();
-                args.putString(FmOutfit.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmOutfit.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
-            case 9:
                 fragment = new FmMyClosets();
                 args.putString(FmMyClosets.ITEM_NAME, dataList.get(possition)
                         .getItemName());
                 args.putInt(FmMyClosets.IMAGE_RESOURCE_ID, dataList.get(possition)
                         .getImgResID());
                 break;
-            case 10:
+            case 4:
                 fragment = new FmEstadisticas();
                 args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
                         .getItemName());
                 args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
                         .getImgResID());
                 break;
-            case 11:
+            case 5:
+                fragment = new FmConfig();
+                args.putString(FmConfig.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmConfig.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 6:
+                //change when fragment created
                 fragment = new FmItems();
                 args.putString(FmItems.ITEM_NAME, dataList.get(possition)
                         .getItemName());
                 args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
                         .getImgResID());
                 break;
-            case 12:
-                fragment = new FmEstadisticas();
-                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
-                        .getItemName());
-                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
-                        .getImgResID());
-                break;
+
             default:
                 break;
         }

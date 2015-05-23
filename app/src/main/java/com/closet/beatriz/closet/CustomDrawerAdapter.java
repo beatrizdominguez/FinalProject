@@ -21,8 +21,8 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
                                List<DrawerItem> listItems) {
         super(context, layoutResourceID, listItems);
         this.context = context;
-        this.drawerItemList = listItems;
         this.layoutResID = layoutResourceID;
+        this.drawerItemList = listItems;
 
     }
 
