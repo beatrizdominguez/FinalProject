@@ -64,7 +64,6 @@ public class MainActivity extends Activity {
         dataList.add(new DrawerItem(getString(R.string.title_section6), R.drawable.add_ic));
         dataList.add(new DrawerItem(getString(R.string.title_section7), R.drawable.add_ic));
 
-
         adapter = new CustomDrawerAdapter(MainActivity.this, R.layout.custom_drawer_item,
                 dataList);
 
