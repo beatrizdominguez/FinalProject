@@ -7,8 +7,11 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,184 +19,250 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
+public class MainActivity extends Activity {
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    CustomDrawerAdapter adapter;
+
+    List<DrawerItem> dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        // Initializing
+        dataList = new ArrayList<DrawerItem>();
+        mTitle = mDrawerTitle = getTitle();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.action_add);
 
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
+                GravityCompat.START);
 
-        //prueba a cambiar
-        //drawer_layout
+
+        // Add Drawer Item to dataList
+        dataList.add(new DrawerItem("Message", R.drawable.add_ic));
+        dataList.add(new DrawerItem("Likes", R.drawable.ic_communities));
+        dataList.add(new DrawerItem("Games", R.drawable.ic_drawer));
+        dataList.add(new DrawerItem("Lables", R.drawable.ic_photos));
+        dataList.add(new DrawerItem("Search", R.drawable.ic_people));
+        dataList.add(new DrawerItem("Cloud", R.drawable.ic_whats_hot));
+        dataList.add(new DrawerItem("Camara", R.drawable.right_ic));
+        dataList.add(new DrawerItem("Video", R.drawable.left_ic));
+        dataList.add(new DrawerItem("Groups", R.drawable.ic_communities));
+        dataList.add(new DrawerItem("Import & Export",
+                R.drawable.ic_photos));
+        dataList.add(new DrawerItem("About", R.drawable.ic_whats_hot));
+        dataList.add(new DrawerItem("Settings", R.drawable.ic_communities));
+        dataList.add(new DrawerItem("Help", R.drawable.search_ic));
+
+        adapter = new CustomDrawerAdapter(this, R.layout.custom_drawer_item,
+                dataList);
+
+        mDrawerList.setAdapter(adapter);
+
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                R.drawable.ic_drawer, R.string.drawer_open,
+                R.string.drawer_close) {
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to
+                // onPrepareOptionsMenu()
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to
+                // onPrepareOptionsMenu()
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        if (savedInstanceState == null) {
+            SelectItem(0);
+        }
+
+    }
+
+
+    public void SelectItem(int possition) {
+
+        Fragment fragment = null;
+        Bundle args = new Bundle();
+        switch (possition) {
+            case 0:
+                fragment = new FmItems();
+                args.putString(FmItems.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 1:
+                fragment = new FmOutfit();
+                args.putString(FmOutfit.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmOutfit.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 2:
+                fragment = new FmCalendar();
+                args.putString(FmCalendar.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmCalendar.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 3:
+                fragment = new FmEstadisticas();
+                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 4:
+                fragment = new FmConfig();
+                args.putString(FmConfig.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmConfig.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 5:
+                fragment = new FmItems();
+                args.putString(FmItems.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 6:
+                fragment = new FmEstadisticas();
+                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 7:
+                fragment = new FmConfig();
+                args.putString(FmConfig.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmConfig.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 8:
+                fragment = new FmOutfit();
+                args.putString(FmOutfit.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmOutfit.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 9:
+                fragment = new FmMyClosets();
+                args.putString(FmMyClosets.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmMyClosets.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 10:
+                fragment = new FmEstadisticas();
+                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 11:
+                fragment = new FmItems();
+                args.putString(FmItems.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            case 12:
+                fragment = new FmEstadisticas();
+                args.putString(FmEstadisticas.ITEM_NAME, dataList.get(possition)
+                        .getItemName());
+                args.putInt(FmEstadisticas.IMAGE_RESOURCE_ID, dataList.get(possition)
+                        .getImgResID());
+                break;
+            default:
+                break;
+        }
+
+        fragment.setArguments(args);
+        FragmentManager frgManager = getFragmentManager();
+        frgManager.beginTransaction().replace(R.id.content_frame, fragment)
+                .commit();
+
+        mDrawerList.setItemChecked(possition, true);
+        setTitle(dataList.get(possition).getItemName());
+        mDrawerLayout.closeDrawer(mDrawerList);
+
+    }
+
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
-
-        Fragment objFragment = null;
-
-        switch (position) {
-            //Mis prendas
-            case 0:
-                objFragment = new FmItems();
-                break;
-
-            //Mis conjuntos
-            case 1:
-                objFragment = new FmOutfit();
-                break;
-
-            //Calendario
-            case 2:
-                objFragment = new FmCalendar();
-                break;
-
-            //Mis armarios
-            case 3:
-                objFragment = new FmMyClosets();
-                break;
-
-            //Conoce tu armario
-            case 4:
-                objFragment = new FmEstadisticas();
-                break;
-
-            //Configuracion
-            case 5:
-                objFragment = new FmConfig();
-                break;
-        }
-
-
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, objFragment)
-                .commit();
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-            case 4:
-                mTitle = getString(R.string.title_section4);
-                break;
-            case 5:
-                mTitle = getString(R.string.title_section5);
-                break;
-            case 6:
-                mTitle = getString(R.string.title_section6);
-                break;
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // The action bar home/up action should open or close the drawer.
+        // ActionBarDrawerToggle will take care of this.
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
         }
+
+        return false;
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggles
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.main, menu);
-            restoreActionBar();
-            return true;
-        }
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()) {
-
-            case (R.id.action_close):
-
-                break;
-
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
+    private class DrawerItemClickListener implements
+            ListView.OnItemClickListener {
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fm_items, container, false);
-            return rootView;
-        }
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            SelectItem(position);
 
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
-
 }

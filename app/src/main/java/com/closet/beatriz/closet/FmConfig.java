@@ -26,6 +26,9 @@ public class FmConfig extends Fragment {
 
     ItemSQLiteHelper usdbh;
 
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class FmConfig extends Fragment {
             public void onClick(View v) {
 
                 //check if work
-               // usdbh.getColors();
+                // usdbh.getColors();
 
                 EditText txtColor = (EditText) rootview.findViewById(R.id.eTxtColor);
                 Log.e("TAG----", "color added: " + txtColor.getText().toString());

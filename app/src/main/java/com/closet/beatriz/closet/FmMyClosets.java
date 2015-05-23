@@ -14,6 +14,8 @@ public class FmMyClosets extends Fragment {
 
     View rootview;
 
+    public static final String IMAGE_RESOURCE_ID = "iconResourceID";
+    public static final String ITEM_NAME = "itemName";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -63,13 +63,13 @@ public class PieChartView extends Activity {
         //chart information
         mRenderer.setApplyBackgroundColor(true);
         mRenderer.setBackgroundColor(getResources().getColor(R.color.background));
-        mRenderer.setShowLegend(false);
-        //mRenderer.setShowLegend(true);
+        //mRenderer.setShowLegend(false);
+        mRenderer.setShowLegend(true);
         mRenderer.setChartTitle(title);
         mRenderer.setChartTitleTextSize(20);
-        //mRenderer.setShowLabels(false);
-        mRenderer.setLabelsTextSize(15);
-        mRenderer.setLegendTextSize(15);
+        mRenderer.setShowLabels(false);
+        //mRenderer.setLabelsTextSize(15);
+        //mRenderer.setLegendTextSize(15);
         mRenderer.setMargins(new int[]{20, 30, 15, 0});
         mRenderer.setZoomButtonsVisible(true);
         mRenderer.setStartAngle(90);
