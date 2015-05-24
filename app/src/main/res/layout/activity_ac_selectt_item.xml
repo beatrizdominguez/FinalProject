@@ -1,0 +1,146 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:clickable="false"
+    android:focusable="false"
+    android:padding="20dp"
+    android:scrollbarStyle="outsideOverlay">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtCamisetas"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catShirts" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewshirts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+
+        <TextView
+            android:id="@+id/txtPantalones"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catPants" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewPants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtUnderWear"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catUnderWear" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewUnderWear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+
+        <TextView
+            android:id="@+id/txtCoats"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catCoats" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewCoats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtShoes"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catShoes" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewShoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtJumper"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catJumper" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewJumper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtPijamas"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catPijamas" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewPijamas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtDress"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catDress" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewDress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <TextView
+            android:id="@+id/txtAccesories"
+            style="@style/text_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/catAccesories" />
+
+        <com.closet.beatriz.closet.ExpandableHeightGridView
+            android:id="@+id/gridViewAccesories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+    </LinearLayout>
+
+</ScrollView>

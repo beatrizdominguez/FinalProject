@@ -5,18 +5,18 @@
         android:id="@+id/action_back"
         android:icon="@drawable/back_ic"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_back" />
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/search_ic"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_search" />
     <item
         android:id="@+id/action_add"
         android:icon="@drawable/add_ic"
         android:orderInCategory="100"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/action_add" />
 </menu>
