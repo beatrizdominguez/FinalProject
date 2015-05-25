@@ -12,6 +12,17 @@
         <item>Vestidos</item>
         <item>Complementos</item>
     </string-array>
+    <string-array name="categoriesImagesArrays">
+        <item>shirt_img</item>
+        <item>pants_img</item>
+        <item>under_wear_img</item>
+        <item>camisetas</item>
+        <item>shoes_img</item>
+        <item>camisetas</item>
+        <item>camisetas</item>
+        <item>camisetas</item>
+        <item>camisetas</item>
+    </string-array>
 
     <string-array name="seasonsArrays">
         <item>Primavera</item>

@@ -29,14 +29,15 @@
             <ImageButton
 
                 android:id="@+id/imgCamisetas"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/camisetas" />
+                android:src="@drawable/shirt_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -44,11 +45,11 @@
                 android:id="@+id/imgLeftCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imgCamisetas"
                 android:layout_gravity="center_vertical"
-                android:layout_toEndOf="@+id/imgCamisetas"
+                android:src="@drawable/left_ic"
+                android:layout_alignBottom="@+id/horizontalScrollViewCamisetas"
                 android:layout_toRightOf="@+id/imgCamisetas"
-                android:src="@drawable/left_ic" />
+                android:layout_toEndOf="@+id/imgCamisetas" />
 
             <HorizontalScrollView
 
@@ -81,11 +82,11 @@
                 android:id="@+id/imgRightCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imgCamisetas"
                 android:layout_gravity="center_vertical"
-                android:layout_toLeftOf="@+id/imgAddCamisetas"
-                android:layout_toStartOf="@+id/imgAddCamisetas"
-                android:src="@drawable/right_ic" />
+                android:src="@drawable/right_ic"
+                android:layout_below="@+id/imgAddCamisetas"
+                android:layout_toLeftOf="@+id/imgSearchCamisetas"
+                android:layout_toStartOf="@+id/imgSearchCamisetas" />
 
             <ImageButton
 
@@ -130,14 +131,15 @@
             <ImageButton
 
                 android:id="@+id/imgPantalones"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewPantalones"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pantalones" />
+                android:src="@drawable/pants_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -233,13 +235,15 @@
             <ImageButton
 
                 android:id="@+id/imgUnderWear"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewUnderWear"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/under_wear_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -436,13 +440,15 @@
             <ImageButton
 
                 android:id="@+id/imgShoes"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewShoes"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/shoes_img"
+                android:background="@color/background" />
 
 
             <ImageView

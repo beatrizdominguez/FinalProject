@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -45,9 +47,13 @@ public class AcAddItem extends Activity {
     DatePicker datePicker;
     Spinner spnShop;
 
+    public final static int SPINNER_COLOR = 1;
+    public final static int SPINNER_CATEGORY = 2;
+
+    Spinner spnColor;
+
+
     int spinnerIndex;
-
-
     ImageButton btnImg;
     Button btnAddColor;
     Button btnRmvColor;
@@ -58,9 +64,17 @@ public class AcAddItem extends Activity {
     String[] colorArray = new String[20];
     int colorCount = 0;
 
+    String color = "";
+    String category = "";
 
     ItemSQLiteHelper usdbh;
 
+    //Custom spinner
+    /**
+     * ***********  Intialize Variables ************
+     */
+    // public ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
+    SpinnerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +85,18 @@ public class AcAddItem extends Activity {
         //controls
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
+        initializeCategorySpinner();
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
+        //colors
         txtColors = (TextView) findViewById(R.id.txtColors);
-        //colores almacenarlos en un array
+        spnColor = (Spinner) findViewById(R.id.spnCol);
+        initializeColorSpinner();
+
         etxtSize = (EditText) findViewById(R.id.etxtSize);
         etxtPrice = (EditText) findViewById(R.id.etxtPrice);
         datePicker = (DatePicker) findViewById(R.id.datePicker);
         spnShop = (Spinner) findViewById(R.id.spnShop);
+
 
         //base de datos
         usdbh = new ItemSQLiteHelper(this, "Closet",
@@ -131,6 +150,105 @@ public class AcAddItem extends Activity {
 
     }
 
+    private void initializeColorSpinner() {
+
+        ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
+        // Now i have taken static values by loop.
+        // For further inhancement we can take data by webservice / json / xml;
+        String[] colorNames = getResources().getStringArray(R.array.colorArrays);
+        String[] colorCodes = getResources().getStringArray(R.array.colors);
+
+        for (int i = 0; i < colorNames.length; i++) {
+
+            final SpinnerModel sched = new SpinnerModel();
+
+            /******* Firstly take data in model object ******/
+            sched.setType(SPINNER_COLOR);
+            sched.setName(colorNames[i]);
+            sched.setImage(colorCodes[i]);
+
+            /******** Take Model Object in ArrayList **********/
+            CustomListViewValuesArr.add(sched);
+        }
+
+        // Create custom adapter object ( see below CustomAdapter.java )
+        adapter = new SpinnerAdapter(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
+
+        // Set adapter to spinner
+        spnColor.setAdapter(adapter);
+
+
+        // Listener called when spinner item selected
+        spnColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View v, int position, long id) {
+                // your code here
+
+                // Get selected row data to show on screen
+                color = ((TextView) v.findViewById(R.id.name)).getText().toString();
+
+                Toast.makeText(
+                        getApplicationContext(), color, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+    }
+
+    private void initializeCategorySpinner() {
+        ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
+
+        // Now i have taken static values by loop.
+        // For further inhancement we can take data by webservice / json / xml;
+        String[] catNames = getResources().getStringArray(R.array.categoriesArrays);
+        String[] catIcons = getResources().getStringArray(R.array.categoriesImagesArrays);
+
+        for (int i = 0; i < catNames.length; i++) {
+
+            final SpinnerModel sched = new SpinnerModel();
+
+            /******* Firstly take data in model object ******/
+            sched.setType(SPINNER_CATEGORY);
+            sched.setName(catNames[i]);
+            sched.setImage(catIcons[i]);
+            Log.e("TAG------image", "image array--- " + catIcons[i]);
+            Log.e("TAG------image", "image object--- " + sched.getImage());
+
+            /******** Take Model Object in ArrayList **********/
+            CustomListViewValuesArr.add(sched);
+        }
+
+        // Create custom adapter object ( see below CustomAdapter.java )
+        adapter = new SpinnerAdapter(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
+
+        // Set adapter to spinner
+        spnCat.setAdapter(adapter);
+
+        // Listener called when spinner item selected
+        spnCat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View v, int position, long id) {
+                // your code here
+
+                // Get selected row data to show on screen
+                category = ((TextView) v.findViewById(R.id.name)).getText().toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
+
+    }
+
     private void removeColour() {
 
         //cojer el texto del txt color y quitarle hasta la última ,
@@ -147,12 +265,11 @@ public class AcAddItem extends Activity {
             txtColors.setText("");
         }
 
-        //Toast.makeText(this, "Todos: " + todos, Toast.LENGTH_SHORT).show();
-        // Toast.makeText(this, "Ultimo: " + ultimo, Toast.LENGTH_SHORT).show();
     }
 
     private int getCategoryIndex(String cat) {
 
+        category = cat;
         int index = 0;
 
         // cargamos la informavión en la lista
@@ -190,16 +307,8 @@ public class AcAddItem extends Activity {
         return index;
     }
 
+
     private void addColour() {
-
-        Toast.makeText(this, "add colour", Toast.LENGTH_SHORT).show();
-
-        String color;
-
-        Spinner spnColor = (Spinner) findViewById(R.id.spnCol);
-
-        color = spnColor.getSelectedItem().toString();
-
 
         //si está vació que no meta la coma
         if (txtColors.getText().length() == 0) {
@@ -212,7 +321,6 @@ public class AcAddItem extends Activity {
 
         }
 
-
         colorArray[colorCount] = color;
         colorCount++;
 
@@ -224,7 +332,7 @@ public class AcAddItem extends Activity {
         //int id;
         String image;
         String description;
-        String category;
+        //  String category;
         String colors;
         String season;
         Date s_date;
@@ -233,7 +341,6 @@ public class AcAddItem extends Activity {
         float prize;
         String shop;
 
-        Log.e("TAG ------------", "image1");
         // btnImg.buildDrawingCache();
         // image =  btnImg.getDrawingCache();
 
@@ -245,7 +352,8 @@ public class AcAddItem extends Activity {
         //convert bitmap to string
         image = BitmapToString(bitmap);
         description = etxtDesc.getText().toString();
-        category = spnCat.getSelectedItem().toString();
+        // category = spnCat.getSelectedItem().toString();
+        // Toast.makeText(this, "category del item: " + category, Toast.LENGTH_SHORT).show();
         //  Log.e("TAG--season", "before season------------");
         // Log.e("TAG--season", spnSeason.getSelectedItem().toString());
         season = spnSeason.getSelectedItem().toString();

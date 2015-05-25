@@ -9,6 +9,7 @@
 
     <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/main</item>
+        <item name="android:textColor">@color/drawer_background</item>
     </style>
 
 
