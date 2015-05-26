@@ -151,6 +151,557 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    public ArrayList<Item> getShirts(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catShirts))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getPants(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catPants))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getUnderWear(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catUnderWear))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getCoats(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catCoats))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getShoes(Context context) {
+
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catShoes))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getJumper(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catJumper))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getPijamas(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catPijamas))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+    public ArrayList<Item> getDress(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catDress))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+
+    public ArrayList<Item> getAcessories(Context context) {
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+        ArrayList<Item> list = new ArrayList<Item>();
+
+        Item i;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                        cPrice, cShop);
+
+
+                // cargamos la informavión en la lista
+                if (cCategory.equals(context.getResources().getString(R.string.catAccesories))) {
+
+                    list.add(i);
+                }
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return list;
+
+    }
+
+
     public void guardarItem(Item i) {
 
         // Log.e("-----guardar item helper", i.getImage());
@@ -166,7 +717,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 i.getS_date() + "', " +
                 i.getPrize() + ", '" +
                 i.getShop() + "');";
-        Log.e("insert item", sqlInertItem);
+        // Log.e("insert item", sqlInertItem);
         db.execSQL(sqlInertItem);
 
     }

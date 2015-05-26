@@ -1,17 +1,21 @@
 package com.closet.beatriz.closet;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,6 +26,20 @@ public class FmItems extends Fragment {
 
     View rootview;
     // GridView camisetas;
+
+    //count textViews
+    TextView shirtCount;
+    TextView pantsCount;
+    TextView underWearCount;
+    TextView coatsCount;
+    TextView shoesCount;
+    TextView jumperCount;
+    TextView pijamasCount;
+    TextView dressCount;
+    TextView accessoriesCount;
+
+
+    //arraylist
     private ArrayList<Item> ALShirts = new ArrayList<Item>();
     private ArrayList<Item> ALPants = new ArrayList<Item>();
     private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
@@ -34,6 +52,8 @@ public class FmItems extends Fragment {
     String category;
     ItemSQLiteHelper usdbh;
 
+    public final static int REQUEST_ADD = 1;
+    public final static int REQUEST_CATEGORY = 2;
 
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
@@ -55,9 +75,11 @@ public class FmItems extends Fragment {
         usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
                 null, 1);
 
-        // loadImages(lista);
-        cargarLista();
+        initializeTextView();
 
+        // loadImages(lista);
+        // cargarLista();
+        cargarListas();
 
         //inicialize buttons
         ShirtButtons();
@@ -72,97 +94,372 @@ public class FmItems extends Fragment {
 
     }
 
-    @Override
-    public void onResume() {
+    private void initializeTextView() {
 
-        //cargarLista();
+        shirtCount = (TextView) rootview.findViewById(R.id.txtShirtCount);
+        pantsCount = (TextView) rootview.findViewById(R.id.txtPantsCount);
+        underWearCount = (TextView) rootview.findViewById(R.id.txtUnderWearCount);
+        coatsCount = (TextView) rootview.findViewById(R.id.txtCoatsCount);
+        shoesCount = (TextView) rootview.findViewById(R.id.txtShoesCount);
+        jumperCount = (TextView) rootview.findViewById(R.id.txtJumperCount);
+        pijamasCount = (TextView) rootview.findViewById(R.id.txtPijamasCount);
+        dressCount = (TextView) rootview.findViewById(R.id.txtDressCount);
+        accessoriesCount = (TextView) rootview.findViewById(R.id.txtAccessoriesCount);
 
-        super.onResume();
+    }
+
+    private void addShirt(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+
+        layout.getChildCount();
+        Log.e("TAG", "child count: " + layout.getChildCount());
+        //update count
+        shirtCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addPants(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        pantsCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addUnderWear(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearUnderWear);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        underWearCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addCoats(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCoats);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        coatsCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addShoes(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearShoes);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        shoesCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addJumper(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearJumper);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        jumperCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addPijamas(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPijamas);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        pijamasCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void addDress(Item item) {
+
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearDress);
+
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
+
+
+        layout.addView(image);
+
+        //update count
+        dressCount.setText("(" + layout.getChildCount() + ")");
+
     }
 
 
-    private void cargarLista() {
+    private void addAccessories(Item item) {
 
-        //cargamos los ArrayList con información
-        usdbh.cargarLista(getActivity(), ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
+        // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
-        //definimos un arrayList vacio y un LinearLAyout
-        ArrayList<Item> lista = new ArrayList<Item>();
-        LinearLayout layout = null;
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearAccesories);
 
-        //emptyLayouts();
-
-        //9 as categories
-        for (int i = 0; i < 9; i++) {
-
-            switch (i) {
-
-                case 0:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
-                    lista = ALShirts;
-                    break;
-
-                case 1:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
-                    lista = ALPants;
-                    break;
-                case 2:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearUnderWear);
-                    lista = ALUnderWear;
-                    break;
-                case 3:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearCoats);
-                    lista = ALCoats;
-                    break;
-                case 4:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearShoes);
-                    lista = ALShoes;
-                    break;
-                case 5:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearJumper);
-                    lista = ALJumper;
-                    break;
-                case 6:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearPijamas);
-                    lista = ALPijamas;
-                    break;
-                case 7:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearDress);
-                    lista = ALDress;
-                    break;
-                case 8:
-                    layout = (LinearLayout) rootview.findViewById(R.id.linearAccesories);
-                    lista = ALAccesories;
-                    break;
-            }
+        ImageView image = new ImageView(getActivity());
+        Bitmap b = StringToBitmap(item.getImage());
+        image.setImageBitmap(b);
+        //image.setImageBitmap(i.getImage());
+        // image.setMaxWidth(5);
+        //image.setMaxHeight(70);
+        //image.setClickable(true);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        image.setLayoutParams(layoutParams);
 
 
-            for (int j = 0; j < lista.size(); j++) {
-                Item item = (Item) lista.get(j);
-                // Log.e("TAG--", "valor de j" + String.valueOf(j));
+        layout.addView(image);
+
+        //update count
+        accessoriesCount.setText("(" + layout.getChildCount() + ")");
+
+    }
+
+    private void cargarListas() {
+
+        loadShirts();
+        loadPants();
+        loadUnderWear();
+        loadCoats();
+        loadShoes();
+        loadJumpers();
+        loadPijamas();
+        loadDresses();
+        loadAccessories();
 
 
-                ImageView image = new ImageView(getActivity());
-                Bitmap b = StringToBitmap(item.getImage());
-                image.setImageBitmap(b);
-                //image.setImageBitmap(i.getImage());
-                // image.setMaxWidth(5);
-                //image.setMaxHeight(70);
-                //image.setClickable(true);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
-                image.setLayoutParams(layoutParams);
+    }
 
-
-                // image.setLayoutParams();
-                // image.setBackgroundColor(R.color.red);
-
-
-                //layout.addView(btnTag);
-                layout.addView(image);
-
-            }
+    private void loadAccessories() {
+        ArrayList<Item> lista;
+        //*********** accessoriesCount *********//
+        lista = usdbh.getAcessories(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addAccessories(item);
         }
+        //counter
+        accessoriesCount.setText("(" + lista.size() + ")");
+    }
 
+    private void loadDresses() {
+        ArrayList<Item> lista;
+        //*********** dressCount *********//
+        lista = usdbh.getDress(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addDress(item);
+        }
+        //counter
+        dressCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadPijamas() {
+        ArrayList<Item> lista;
+        //*********** pijamasCount *********//
+        lista = usdbh.getPijamas(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addPijamas(item);
+        }
+        //counter
+        pijamasCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadJumpers() {
+        ArrayList<Item> lista;
+        //*********** jumperCount *********//
+        lista = usdbh.getJumper(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addJumper(item);
+        }
+        //counter
+        jumperCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadShoes() {
+        ArrayList<Item> lista;
+        //*********** shoesCount *********//
+        lista = usdbh.getShoes(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addShoes(item);
+        }
+        //counter
+        shoesCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadCoats() {
+        ArrayList<Item> lista;
+        //*********** coatsCount *********//
+        lista = usdbh.getCoats(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addCoats(item);
+        }
+        //counter
+        coatsCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadUnderWear() {
+        ArrayList<Item> lista;
+        //*********** underWear *********//
+        lista = usdbh.getUnderWear(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addUnderWear(item);
+        }
+        //counter
+        underWearCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadPants() {
+        ArrayList<Item> lista;
+        //*********** pants *********//
+        lista = usdbh.getPants(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addPants(item);
+        }
+        //counter
+        pantsCount.setText("(" + lista.size() + ")");
+    }
+
+    private void loadShirts() {
+
+        ArrayList<Item> lista;
+
+        //*********** shirts *********//
+        lista = usdbh.getShirts(getActivity());
+        //load all items
+        for (int i = 0; i < lista.size(); i++) {
+            Item item = (Item) lista.get(i);
+            addShirt(item);
+        }
+        //counter
+        shirtCount.setText("(" + lista.size() + ")");
 
     }
 
@@ -192,19 +489,17 @@ public class FmItems extends Fragment {
 
         Intent intentCat = new Intent(getActivity(), AcCategory.class);
         intentCat.putExtra("Category", cat);
-        startActivity(intentCat);
+        startActivityForResult(intentCat, REQUEST_CATEGORY);
 
     }
 
     public void addItem(String cat) {
 
-
         //  Toast.makeText(getActivity(), "Cat->" + cat, Toast.LENGTH_SHORT).show();
 
         Intent intentAdd = new Intent(getActivity(), AcAddItem.class);
         intentAdd.putExtra("Category", cat);
-        startActivity(intentAdd);
-
+        startActivityForResult(intentAdd, REQUEST_ADD);
 
     }
 
@@ -563,6 +858,130 @@ public class FmItems extends Fragment {
 
             }
         });
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // super.onActivityResult(requestCode, resultCode, data);
+        getActivity();
+        Log.e("TAG-------FmItems", "onActivityResult");
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_ADD) {
+
+                Item i = (Item) data.getSerializableExtra("item");
+
+                addItemToCategory(i);
+
+            } else if (requestCode == REQUEST_CATEGORY) {
+
+                String cat = data.getStringExtra("Category");
+
+                updateLayout(cat);
+                Toast.makeText(getActivity(), "on activity result category", Toast.LENGTH_SHORT).show();
+
+            }
+        }
+    }
+
+    private void updateLayout(String cat) {
+
+        if (cat.equals(rootview.getResources().getString(R.string.catShirts))) {
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
+            layout.removeAllViews();
+            loadShirts();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catPants))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
+            layout.removeAllViews();
+            loadPants();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catUnderWear))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearUnderWear);
+            layout.removeAllViews();
+            loadUnderWear();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catCoats))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCoats);
+            layout.removeAllViews();
+            loadCoats();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catShoes))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearShoes);
+            layout.removeAllViews();
+            loadShoes();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catJumper))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearJumper);
+            layout.removeAllViews();
+            loadJumpers();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catPijamas))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPijamas);
+            layout.removeAllViews();
+            loadPijamas();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catDress))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearDress);
+            layout.removeAllViews();
+            loadDresses();
+
+        } else if (cat.equals(rootview.getResources().getString(R.string.catAccesories))) {
+
+            LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearAccesories);
+            layout.removeAllViews();
+            loadAccessories();
+
+        }
+
+    }
+
+    private void addItemToCategory(Item i) {
+
+        // cargamos la informavión en la lista
+        if (i.getCategory().equals(rootview.getResources().getString(R.string.catShirts))) {
+
+            addShirt(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catPants))) {
+
+            addPants(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catUnderWear))) {
+
+            addUnderWear(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catCoats))) {
+
+            addCoats(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catShoes))) {
+
+            addShoes(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catJumper))) {
+
+            addJumper(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catPijamas))) {
+
+            addPijamas(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catDress))) {
+
+            addDress(i);
+
+        } else if (i.getCategory().equals(rootview.getResources().getString(R.string.catAccesories))) {
+
+            addAccessories(i);
+        }
 
     }
 

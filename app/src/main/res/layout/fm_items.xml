@@ -36,8 +36,8 @@
                 android:layout_alignTop="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/shirt_img"
-                android:background="@color/background" />
+                android:background="@color/background"
+                android:src="@drawable/shirt_img" />
 
 
             <ImageView
@@ -45,11 +45,11 @@
                 android:id="@+id/imgLeftCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/left_ic"
                 android:layout_alignBottom="@+id/horizontalScrollViewCamisetas"
+                android:layout_gravity="center_vertical"
+                android:layout_toEndOf="@+id/imgCamisetas"
                 android:layout_toRightOf="@+id/imgCamisetas"
-                android:layout_toEndOf="@+id/imgCamisetas" />
+                android:src="@drawable/left_ic" />
 
             <HorizontalScrollView
 
@@ -82,11 +82,11 @@
                 android:id="@+id/imgRightCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/right_ic"
                 android:layout_below="@+id/imgAddCamisetas"
+                android:layout_gravity="center_vertical"
                 android:layout_toLeftOf="@+id/imgSearchCamisetas"
-                android:layout_toStartOf="@+id/imgSearchCamisetas" />
+                android:layout_toStartOf="@+id/imgSearchCamisetas"
+                android:src="@drawable/right_ic" />
 
             <ImageButton
 
@@ -112,6 +112,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:id="@+id/txtShirtCount"
+                style="@style/text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txtCamisetas"
+                android:layout_toEndOf="@+id/txtCamisetas"
+                android:layout_toRightOf="@+id/txtCamisetas"
+                android:text="(0)"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
         <!-- PANTALONES-->
 
@@ -138,8 +149,8 @@
                 android:layout_alignTop="@+id/horizontalScrollViewPantalones"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/pants_img"
-                android:background="@color/background" />
+                android:background="@color/background"
+                android:src="@drawable/pants_img" />
 
 
             <ImageView
@@ -214,6 +225,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                style="@style/text_color"
+                android:id="@+id/txtPantsCount"
+                android:layout_alignBottom="@+id/txtPantalones"
+                android:layout_toRightOf="@+id/txtPantalones"
+                android:layout_toEndOf="@+id/txtPantalones"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
 
@@ -242,8 +264,8 @@
                 android:layout_alignTop="@+id/horizontalScrollViewUnderWear"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/under_wear_img"
-                android:background="@color/background" />
+                android:background="@color/background"
+                android:src="@drawable/under_wear_img" />
 
 
             <ImageView
@@ -318,6 +340,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                style="@style/text_color"
+                android:id="@+id/txtUnderWearCount"
+                android:layout_alignBottom="@+id/txtUnderWear"
+                android:layout_toRightOf="@+id/txtUnderWear"
+                android:layout_toEndOf="@+id/txtUnderWear"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
         <!-- ABRIGOS -->
@@ -339,13 +372,15 @@
             <ImageButton
 
                 android:id="@+id/imgCoats"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewCoats"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/coat_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -420,6 +455,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                style="@style/text_color"
+                android:id="@+id/txtCoatsCount"
+                android:layout_alignBottom="@+id/txtCoats"
+                android:layout_toRightOf="@+id/txtCoats"
+                android:layout_toEndOf="@+id/txtCoats"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
         <!-- ZAPATOS -->
@@ -447,8 +493,8 @@
                 android:layout_alignTop="@+id/horizontalScrollViewShoes"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/shoes_img"
-                android:background="@color/background" />
+                android:background="@color/background"
+                android:src="@drawable/shoes_img" />
 
 
             <ImageView
@@ -523,6 +569,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                android:id="@+id/txtShoesCount"
+                style="@style/text_color"
+                android:layout_alignBottom="@+id/txtShoes"
+                android:layout_toRightOf="@+id/txtShoes"
+                android:layout_toEndOf="@+id/txtShoes"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
 
@@ -543,13 +600,15 @@
             <ImageButton
 
                 android:id="@+id/imgJumper"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewJumper"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/jumper_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -624,6 +683,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                android:id="@+id/txtJumperCount"
+                style="@style/text_color"
+                android:layout_alignBottom="@+id/txtJumper"
+                android:layout_toRightOf="@+id/txtJumper"
+                android:layout_toEndOf="@+id/txtJumper"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
 
@@ -646,13 +716,15 @@
             <ImageButton
 
                 android:id="@+id/imgPijamas"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewPijamas"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/pijama_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -727,6 +799,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                android:id="@+id/txtPijamasCount"
+                style="@style/text_color"
+                android:layout_alignBottom="@+id/txtPijamas"
+                android:layout_toRightOf="@+id/txtPijamas"
+                android:layout_toEndOf="@+id/txtPijamas"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
         <!-- VESTIDOS -->
@@ -747,13 +830,15 @@
             <ImageButton
 
                 android:id="@+id/imgDress"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewDress"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/dress_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -828,6 +913,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                android:id="@+id/txtDressCount"
+                style="@style/text_color"
+                android:layout_alignBottom="@+id/txtDress"
+                android:layout_toRightOf="@+id/txtDress"
+                android:layout_toEndOf="@+id/txtDress"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
         <!-- ACCESORIES -->
@@ -848,13 +944,15 @@
             <ImageButton
 
                 android:id="@+id/imgAccesories"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignTop="@+id/horizontalScrollViewAccesories"
                 android:layout_gravity="center_vertical|left"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/accessories_img"
+                android:background="@color/background" />
 
 
             <ImageView
@@ -929,6 +1027,17 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/search_ic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(0)"
+                style="@style/text_color"
+                android:id="@+id/txtAccessoriesCount"
+                android:layout_alignBottom="@+id/txtAccesories"
+                android:layout_toRightOf="@+id/txtAccesories"
+                android:layout_toEndOf="@+id/txtAccesories"
+                android:layout_marginLeft="10dp" />
         </RelativeLayout>
 
 

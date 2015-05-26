@@ -16,12 +16,12 @@
         <item>shirt_img</item>
         <item>pants_img</item>
         <item>under_wear_img</item>
-        <item>camisetas</item>
+        <item>coat_img</item>
         <item>shoes_img</item>
-        <item>camisetas</item>
-        <item>camisetas</item>
-        <item>camisetas</item>
-        <item>camisetas</item>
+        <item>jumper_img</item>
+        <item>pijama_img</item>
+        <item>dress_img</item>
+        <item>accessories_img</item>
     </string-array>
 
     <string-array name="seasonsArrays">

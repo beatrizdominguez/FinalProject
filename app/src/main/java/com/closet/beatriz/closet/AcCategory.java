@@ -205,6 +205,10 @@ public class AcCategory extends Activity {
 
             case (R.id.action_back):
 
+                Intent intentBack = new Intent();
+                intentBack.putExtra("Category", category);
+                setResult(RESULT_OK, intentBack);
+
                 this.finish();
                 break;
 

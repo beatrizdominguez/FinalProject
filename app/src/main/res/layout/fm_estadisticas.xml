@@ -27,7 +27,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#ffff9eb8"
+            android:background="@color/main"
             android:orientation="horizontal">
 
             <TextView
@@ -35,7 +35,8 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/statistics_value" />
+                android:text="@string/statistics_value"
+                android:textColor="@color/drawer_background" />
 
             <Button
                 android:id="@+id/btnValue"
@@ -75,7 +76,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#ffff9eb8"
+            android:background="@color/main"
             android:orientation="horizontal">
 
             <TextView
@@ -83,7 +84,8 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/statistics_count" />
+                android:text="@string/statistics_count"
+                android:textColor="@color/drawer_background" />
 
             <Button
                 android:id="@+id/btnCount"
@@ -255,7 +257,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#ffff9eb8"
+            android:background="@color/main"
             android:orientation="horizontal">
 
             <TextView
@@ -263,7 +265,8 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/statistics_colors" />
+                android:text="@string/statistics_colors"
+                android:textColor="@color/drawer_background" />
 
             <Button
                 android:id="@+id/btnColor"
@@ -297,7 +300,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#ffff9eb8"
+            android:background="@color/main"
             android:orientation="horizontal">
 
             <TextView
@@ -305,7 +308,8 @@
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/statistics_shops" />
+                android:text="@string/statistics_shops"
+                android:textColor="@color/drawer_background" />
 
             <Button
                 android:id="@+id/btnShops"

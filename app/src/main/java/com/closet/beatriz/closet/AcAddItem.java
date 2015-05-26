@@ -216,8 +216,8 @@ public class AcAddItem extends Activity {
             sched.setType(SPINNER_CATEGORY);
             sched.setName(catNames[i]);
             sched.setImage(catIcons[i]);
-            Log.e("TAG------image", "image array--- " + catIcons[i]);
-            Log.e("TAG------image", "image object--- " + sched.getImage());
+            // Log.e("TAG------image", "image array--- " + catIcons[i]);
+            // Log.e("TAG------image", "image object--- " + sched.getImage());
 
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add(sched);
@@ -328,7 +328,7 @@ public class AcAddItem extends Activity {
 
     private void save() {
 
-
+        Log.e("TAG", "justo dentro del metodo save");
         //int id;
         String image;
         String description;
@@ -370,6 +370,9 @@ public class AcAddItem extends Activity {
 
         if (validItem(i)) {
 
+            Log.e("TAG_____________add", "guardar item y cerrar");
+
+
             //save on data base
             usdbh.guardarItem(i);
             //create intent
@@ -382,7 +385,6 @@ public class AcAddItem extends Activity {
             // close the activity
             finish();
         }
-
 
     }
 
@@ -492,6 +494,7 @@ public class AcAddItem extends Activity {
 
             case (R.id.action_save):
 
+                Log.e("TAG", "le he dado al botón");
                 save();
 
                 break;
