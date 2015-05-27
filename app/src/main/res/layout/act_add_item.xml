@@ -23,8 +23,10 @@
             android:id="@+id/imageButton"
             android:layout_width="140dp"
             android:layout_height="150dp"
+            android:scaleType="fitCenter"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/no_image" />
+            android:src="@drawable/no_image"
+            android:background="#fff" />
 
         <TextView
             android:id="@+id/txtDesc"

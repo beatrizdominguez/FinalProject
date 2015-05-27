@@ -121,10 +121,10 @@ public class FmItems extends Fragment {
         // image.setMaxWidth(5);
         //image.setMaxHeight(70);
         //image.setClickable(true);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
         image.setLayoutParams(layoutParams);
 
-
+        image.setScaleType(ImageView.ScaleType.FIT_CENTER);
         layout.addView(image);
 
 

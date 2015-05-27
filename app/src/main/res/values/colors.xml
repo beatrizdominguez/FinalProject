@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="main">#065F50</color>
+    <color name="main_transparent">#50065F50</color>
     <color name="background">#ffeefff8</color>
     <color name="drawer_background">#fff</color>
     <color name="config_color">#FF3300</color>

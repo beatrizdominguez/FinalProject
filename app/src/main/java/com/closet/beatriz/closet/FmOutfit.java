@@ -1,5 +1,6 @@
 package com.closet.beatriz.closet;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -109,6 +110,7 @@ public class FmOutfit extends Fragment {
                 LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutOutfits);
                 //outfit name
                 TextView cat = new TextView(getActivity());
+
                 cat.setText(outName);
                 layout.addView(cat);
                 //outfit items
@@ -121,7 +123,11 @@ public class FmOutfit extends Fragment {
                 for (int i = 0; i < lista.size(); i++) {
 
                     ImageView image = new ImageView(getActivity());
-                    image.setMaxHeight(10);
+                    //  image.setMaxHeight(10);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+                    image.setLayoutParams(layoutParams);
+                    //image.setLayoutParams().height = 20;
+                    // image.getLayoutParams().width = 10;
                     Item item = lista.get(i);
                     Bitmap b = StringToBitmap(item.getImage());
                     image.setImageBitmap(b);
