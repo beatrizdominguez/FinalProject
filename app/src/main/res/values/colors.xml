@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- APP COLORS -->
     <color name="main">#065F50</color>
+    <color name="main_red">#9D122D</color>
     <color name="main_transparent">#50065F50</color>
-    <color name="background">#ffeefff8</color>
+    <color name="background">#d9d4c1</color>
+    <color name="background_light">#E4E2D5</color>
     <color name="drawer_background">#fff</color>
+    <color name="transparent">#00000000</color>
     <color name="config_color">#FF3300</color>
+
 
     <!-- color codes -->
     <string-array name="colors">

@@ -167,6 +167,7 @@ public class AcAddItem extends Activity {
             sched.setName(colorNames[i]);
             sched.setImage(colorCodes[i]);
 
+
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add(sched);
         }

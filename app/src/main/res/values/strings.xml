@@ -198,5 +198,6 @@
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
     <string name="title_activity_ac_selectt_item">AcSelecttItem</string>
+    <string name="title_activity_grid3">Grid3</string>
 
 </resources>

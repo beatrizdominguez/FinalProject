@@ -26,8 +26,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
 
         <TextView
@@ -42,9 +46,13 @@
             android:id="@+id/gridViewPants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtUnderWear"
@@ -59,8 +67,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
 
         <TextView
@@ -75,9 +87,13 @@
             android:id="@+id/gridViewCoats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtShoes"
@@ -92,8 +108,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtJumper"
@@ -108,8 +128,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtPijamas"
@@ -124,8 +148,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtDress"
@@ -140,8 +168,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
         <TextView
             android:id="@+id/txtAccesories"
@@ -156,8 +188,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent"
-            android:numColumns="3" />
+            android:numColumns="auto_fit"
+            android:columnWidth="70dp"
+            android:padding="10dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp"
+            android:listSelector="@color/main_transparent" />
 
     </LinearLayout>
 

@@ -6,7 +6,8 @@
     android:clickable="false"
     android:focusable="false"
     android:padding="20dp"
-    android:scrollbarStyle="outsideOverlay">
+    android:scrollbarStyle="outsideOverlay"
+    android:background="@drawable/background">
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/background"
+                android:background="@color/transparent"
                 android:src="@drawable/shirt_img" />
 
 
@@ -45,11 +46,11 @@
                 android:id="@+id/imgLeftCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical"
-                android:layout_toEndOf="@+id/imgCamisetas"
+                android:src="@drawable/left_ic"
+                android:layout_alignBottom="@+id/imgCamisetas"
                 android:layout_toRightOf="@+id/imgCamisetas"
-                android:src="@drawable/left_ic" />
+                android:layout_toEndOf="@+id/imgCamisetas" />
 
             <HorizontalScrollView
 
@@ -82,11 +83,11 @@
                 android:id="@+id/imgRightCamisetas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imgAddCamisetas"
                 android:layout_gravity="center_vertical"
-                android:layout_toLeftOf="@+id/imgSearchCamisetas"
-                android:layout_toStartOf="@+id/imgSearchCamisetas"
-                android:src="@drawable/right_ic" />
+                android:src="@drawable/right_ic"
+                android:layout_alignTop="@+id/imgLeftCamisetas"
+                android:layout_toLeftOf="@+id/imgAddCamisetas"
+                android:layout_toStartOf="@+id/imgAddCamisetas" />
 
             <ImageButton
 
@@ -98,7 +99,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtCamisetas"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic" />
+                android:src="@drawable/add_ic"
+                android:background="@color/transparent" />
 
             <ImageButton
 
@@ -149,7 +151,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewPantalones"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/background"
+                android:background="@color/transparent"
                 android:src="@drawable/pants_img" />
 
 
@@ -211,7 +213,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtPantalones"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic" />
+                android:src="@drawable/add_ic"
+                android:background="@color/transparent" />
 
             <ImageButton
 
@@ -224,7 +227,8 @@
                 android:layout_below="@+id/imgAddPantalones"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/search_ic" />
+                android:src="@drawable/search_ic"
+                android:background="@color/transparent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -264,7 +268,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewUnderWear"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/background"
+                android:background="@color/transparent"
                 android:src="@drawable/under_wear_img" />
 
 
@@ -326,7 +330,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtUnderWear"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic" />
+                android:src="@drawable/add_ic"
+                android:background="@color/transparent" />
 
             <ImageButton
 
@@ -339,7 +344,8 @@
                 android:layout_below="@+id/imgAddUnderWear"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/search_ic" />
+                android:src="@drawable/search_ic"
+                android:background="@android:color/transparent" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -380,7 +386,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/coat_img"
-                android:background="@color/background" />
+                android:background="@color/transparent" />
 
 
             <ImageView
@@ -493,7 +499,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewShoes"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/background"
+                android:background="@color/transparent"
                 android:src="@drawable/shoes_img" />
 
 
@@ -608,7 +614,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/jumper_img"
-                android:background="@color/background" />
+                android:background="@color/transparent" />
 
 
             <ImageView
@@ -724,7 +730,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/pijama_img"
-                android:background="@color/background" />
+                android:background="@color/main_transparent" />
 
 
             <ImageView
@@ -838,7 +844,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/dress_img"
-                android:background="@color/background" />
+                android:background="@color/transparent" />
 
 
             <ImageView
@@ -952,7 +958,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/accessories_img"
-                android:background="@color/background" />
+                android:background="@color/transparent" />
 
 
             <ImageView

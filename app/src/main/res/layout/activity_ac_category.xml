@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/transparent"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin">
 
@@ -14,16 +15,18 @@
         android:textSize="30dp" />
 
 
-    <!--android:numColumns="3auto_fit"-->
+    <!--android:numColumns="3"-->
     <GridView
         android:id="@+id/gridOneCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:columnWidth="70dp"
         android:gravity="center"
-        android:numColumns="3"
-        android:stretchMode="columnWidth" />
+        android:horizontalSpacing="10dp"
+        android:listSelector="@color/main_transparent"
+        android:numColumns="auto_fit"
+        android:padding="10dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
 
 </LinearLayout>

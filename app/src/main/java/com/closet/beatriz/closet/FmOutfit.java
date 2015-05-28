@@ -79,8 +79,11 @@ public class FmOutfit extends Fragment {
                         Editable value = input.getText();
                         outName = String.valueOf(input.getText());
                         if (outName.length() > 0) {
-                            Intent intent = new Intent(getActivity(), AcSelecttItem.class);
-                            startActivityForResult(intent, REQUEST_ADD_OUTFIT);
+                            //Intent intent = new Intent(getActivity(), AcSelecttItem.class);
+                            //startActivityForResult(intent, REQUEST_ADD_OUTFIT);
+
+                            Intent intent = new Intent(getActivity(), Grid3.class);
+                            startActivity(intent);
                         }
                         // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
                     }
