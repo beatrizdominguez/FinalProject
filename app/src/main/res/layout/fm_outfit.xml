@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background">
 
 
     <Button
@@ -12,20 +13,20 @@
         android:layout_gravity="center_horizontal"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:text="@string/txt_add_outfit" />
+        android:text="@string/txt_add_outfit"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
 
     <ScrollView
         android:id="@+id/scrollView7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:background="#ffff1925">
+        android:layout_gravity="center_horizontal">
 
         <LinearLayout
             android:id="@+id/layoutOutfits"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="#ff72ff46"
             android:orientation="vertical"></LinearLayout>
     </ScrollView>
 

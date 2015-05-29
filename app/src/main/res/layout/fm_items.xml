@@ -37,7 +37,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewCamisetas"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:src="@drawable/shirt_img" />
 
 
@@ -151,7 +151,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewPantalones"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:src="@drawable/pants_img" />
 
 
@@ -268,7 +268,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewUnderWear"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:src="@drawable/under_wear_img" />
 
 
@@ -386,7 +386,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/coat_img"
-                android:background="@color/transparent" />
+                android:background="@android:color/transparent" />
 
 
             <ImageView
@@ -499,7 +499,7 @@
                 android:layout_alignTop="@+id/horizontalScrollViewShoes"
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
-                android:background="@color/transparent"
+                android:background="@android:color/transparent"
                 android:src="@drawable/shoes_img" />
 
 
@@ -614,7 +614,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/jumper_img"
-                android:background="@color/transparent" />
+                android:background="@android:color/transparent" />
 
 
             <ImageView
@@ -730,7 +730,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/pijama_img"
-                android:background="@color/main_transparent" />
+                android:background="@android:color/transparent" />
 
 
             <ImageView
@@ -844,7 +844,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/dress_img"
-                android:background="@color/transparent" />
+                android:background="@android:color/transparent" />
 
 
             <ImageView
@@ -958,7 +958,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/accessories_img"
-                android:background="@color/transparent" />
+                android:background="@android:color/transparent" />
 
 
             <ImageView

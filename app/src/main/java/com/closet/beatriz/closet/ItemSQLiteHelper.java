@@ -1,3 +1,6 @@
+////////////VERSION TRABAJO
+
+
 package com.closet.beatriz.closet;
 
 /**
@@ -21,6 +24,9 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
     String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), colors VARCHAR(150), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateOutfits = "CREATE TABLE Outfits (id INTEGER PRIMARY KEY AUTOINCREMENT,  name VARCHAR(30))";
+    String sqlCreateItemOutfit = "CREATE TABLE ItemOutfit (id INTEGER NOT NULL, itemId INTEGER NOT NULL, PRIMARY KEY (id, itemId))";
+
     String sqlCreateColrs = "CREATE TABLE Colors (color VARCHAR(30))";
     String sqlFillColrs = "Insert Into Colors VALUES(?)";
 
@@ -38,6 +44,8 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         // Se ejecuta la sentencia SQL de creación de la tabla
         db.execSQL(sqlCreateItems);
         db.execSQL(sqlCreateColrs);
+        db.execSQL(sqlCreateOutfits);
+        db.execSQL(sqlCreateItemOutfit);
 
         String[] color = ctx.getResources().getStringArray(R.array.colorArrays);
 
@@ -639,7 +647,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-
     public ArrayList<Item> getAcessories(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
@@ -701,7 +708,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-
     public void guardarItem(Item i) {
 
         // Log.e("-----guardar item helper", i.getImage());
@@ -722,6 +728,63 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    //select all where id es id// cambiar sentencia sql
+    public Item getItem(int ID) {
+
+
+        Log.e("TAG-----------", "en el helper cargarlista");
+
+        Item i = null;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Items";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+
+        int idIdx = c.getColumnIndex("id");
+        int fotoIdx = c.getColumnIndex("image");
+        int descriptionIdx = c.getColumnIndex("description");
+        int categoryIdx = c.getColumnIndex("category");
+        int seasonIdx = c.getColumnIndex("season");
+        int colorsIdx = c.getColumnIndex("colors");
+        int sizeIdx = c.getColumnIndex("i_size");
+        int dateIdx = c.getColumnIndex("s_date");
+        int priceIdx = c.getColumnIndex("price");
+        int shopIdx = c.getColumnIndex("shop");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cFoto = c.getString(fotoIdx);
+                String cDescription = c.getString(descriptionIdx);
+                String cCategory = c.getString(categoryIdx);
+                String cSeason = c.getString(seasonIdx);
+                String cColors = c.getString(colorsIdx);
+                String cSize = c.getString(sizeIdx);
+                String cDate = c.getString(dateIdx);
+                Float cPrice = c.getFloat(priceIdx);
+                String cShop = c.getString(shopIdx);
+                //Log.e("foto-helper-cargar", cFoto);
+
+                if (cId == ID) {
+                    i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize, cPrice, cShop);
+
+                }
+
+
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return i;
+    }
+
     public void addColor(String color) {
 
         // Log.e("-----guardar item helper", i.getImage());
@@ -732,7 +795,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
 
     }
-
 
     ////not changed
     public int updateItem(Item i) {
@@ -773,6 +835,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
+    //******* STATISTICS *******//
 
     public Float[] priceStatistics(Context context) {
 
@@ -824,7 +887,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         return pricesArray;
     }
 
-
     public int[] countCategoryStatistics(Context context) {
 
         String[] categoryName = context.getResources().getStringArray(R.array.categoriesArrays);
@@ -874,7 +936,6 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
         return countArray;
     }
-
 
     public int[] countSeasonsStatistics(Context context) {
 
@@ -1064,5 +1125,120 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         return colors;
     }
 
+    //******* OUTFITS *******//
+
+    public void saveOutfit(Outfit outfit) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //************* OUTFIT ID AND NAME ***************//
+        String sqlInert = "INSERT INTO Outfits (name) VALUES ('" + outfit.getName() + "');";
+        // Log.e("insert item", sqlInertItem);
+        db.execSQL(sqlInert);
+
+        //************* OUTFIT ID AND ITEMS ***************//
+        ArrayList<Item> lista = outfit.getItemList();
+
+        int outfitID = getLastID();
+
+        for (int i = 0; i < lista.size(); i++) {
+
+            String sqlInertItems = "INSERT INTO ItemOutfit (id, itemId) VALUES (" + outfitID + ", " + lista.get(i).getId() + ");";
+
+            db.execSQL(sqlInertItems);
+
+        }
+
+    }
+
+    public int getLastID() {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        final String MY_QUERY = "SELECT last_insert_rowid();";
+        Cursor cur = db.rawQuery(MY_QUERY, null);
+        cur.moveToFirst();
+        int ID = cur.getInt(0);
+        cur.close();
+        Log.e("TAG--------------", "last id introduced: " + ID);
+        return ID;
+    }
+
+    public ArrayList<Outfit> getOutfits() {
+
+
+        ArrayList<Outfit> outfitList = new ArrayList<Outfit>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM Outfits";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        int idIdx = c.getColumnIndex("id");
+        int nameIdx = c.getColumnIndex("name");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+                // Outfit outfit = new Outfit();
+
+                // // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                String cName = c.getString(nameIdx);
+                //  Log.e("OUTFIT----------- id",String.valueOf(cId));
+                // Log.e("OUTFIT----------- name",cName);
+
+                // outfit.setId(cId);
+                // outfit.setName(cName);
+                // outfit.setItemList(getOutfitItems(cId));
+
+                Outfit outfit = new Outfit(cId, cName, getOutfitItems(cId));
+
+                outfitList.add(outfit);
+
+            } while (c.moveToNext());
+
+        }
+
+        c.close();
+        db.close();
+
+        return outfitList;
+
+    }
+
+    public ArrayList<Item> getOutfitItems(int id) {
+
+        ArrayList<Item> itemList = new ArrayList<Item>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM ItemOutfit WHERE id= " + id + ";";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        int idIdx = c.getColumnIndex("id");
+        int itemIdIdx = c.getColumnIndex("itemId");
+
+        //Log.e("TAG", "id" + idIdx);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // cargamos la información en el objeto
+                int cId = c.getInt(idIdx);
+                int cItemId = c.getInt(itemIdIdx);
+
+                itemList.add(getItem(cItemId));
+
+            } while (c.moveToNext());
+
+        }
+
+        c.close();
+        db.close();
+
+        return itemList;
+    }
 
 }

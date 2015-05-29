@@ -43,21 +43,33 @@ public class FmOutfit extends Fragment {
     String outName = "";
     public final static int REQUEST_ADD_OUTFIT = 1;
 
+    ItemSQLiteHelper usdbh;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootview = inflater.inflate(R.layout.fm_outfit, container, false);
+
+        //DB
+        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+                null, 1);
+
+        //cargar los outfits de la DB
+        loadOutfits();
+
+
         addOutfit = (Button) rootview.findViewById(R.id.btnAddOutfit);
         addOutfit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                addOutfit();
+                newOutfit();
 
             }
         });
+
         return rootview;
     }
 
@@ -67,7 +79,7 @@ public class FmOutfit extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
-    public void addOutfit() {
+    public void newOutfit() {
         final EditText input = new EditText(getActivity());
 
         new AlertDialog.Builder(getActivity())
@@ -79,11 +91,11 @@ public class FmOutfit extends Fragment {
                         Editable value = input.getText();
                         outName = String.valueOf(input.getText());
                         if (outName.length() > 0) {
-                            //Intent intent = new Intent(getActivity(), AcSelecttItem.class);
-                            //startActivityForResult(intent, REQUEST_ADD_OUTFIT);
+                            Intent intent = new Intent(getActivity(), AcSelecttItem.class);
+                            startActivityForResult(intent, REQUEST_ADD_OUTFIT);
 
-                            Intent intent = new Intent(getActivity(), Grid3.class);
-                            startActivity(intent);
+                            // Intent intent = new Intent(getActivity(), Grid3.class);
+                            // startActivity(intent);
                         }
                         // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
                     }
@@ -93,6 +105,50 @@ public class FmOutfit extends Fragment {
             }
         }).show();
 
+    }
+
+    public void loadOutfits() {
+
+        ArrayList<Outfit> lista;
+        lista = usdbh.getOutfits();
+
+        for (int i = 0; i < lista.size(); i++) {
+            showOutfit(lista.get(i));
+        }
+
+    }
+
+    public void showOutfit(Outfit outfit) {
+
+        LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutOutfits);
+        //outfit name
+        TextView cat = new TextView(getActivity());
+
+        cat.setText(outfit.getName());
+        layout.addView(cat);
+        //outfit items
+        HorizontalScrollView scroll = new HorizontalScrollView(getActivity());
+        layout.addView(scroll);
+        LinearLayout items = new LinearLayout(getActivity());
+        items.setOrientation(LinearLayout.HORIZONTAL);
+        scroll.addView(items);
+
+        ArrayList<Item> lista = outfit.getItemList();
+
+        //add items
+        for (int i = 0; i < lista.size(); i++) {
+
+            ImageView image = new ImageView(getActivity());
+            //  image.setMaxHeight(10);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
+            image.setLayoutParams(layoutParams);
+            //image.setLayoutParams().height = 20;
+            // image.getLayoutParams().width = 10;
+            Item item = lista.get(i);
+            Bitmap b = StringToBitmap(item.getImage());
+            image.setImageBitmap(b);
+            items.addView(image);
+        }
 
     }
 
@@ -105,37 +161,16 @@ public class FmOutfit extends Fragment {
             if (requestCode == REQUEST_ADD_OUTFIT) {
 
                 extras = data.getExtras();
-                ArrayList<Item> lista = new ArrayList<Item>();
-                lista = (ArrayList<Item>) extras.get("list");
-                Log.e("TAG------", "size: " + lista.size());
-                //Toast.makeText(getActivity(), "ON ACTIVITY RESULT", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "lista size: " + lista.size(), Toast.LENGTH_SHORT).show();
-                LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutOutfits);
-                //outfit name
-                TextView cat = new TextView(getActivity());
+                ArrayList<Item> lista = (ArrayList<Item>) extras.get("list");
 
-                cat.setText(outName);
-                layout.addView(cat);
-                //outfit items
-                HorizontalScrollView scroll = new HorizontalScrollView(getActivity());
-                layout.addView(scroll);
-                LinearLayout items = new LinearLayout(getActivity());
-                items.setOrientation(LinearLayout.HORIZONTAL);
-                scroll.addView(items);
-                //add items
-                for (int i = 0; i < lista.size(); i++) {
+                //********* creamos el objeto *********//
+                Outfit outfit = new Outfit(outName, lista);
 
-                    ImageView image = new ImageView(getActivity());
-                    //  image.setMaxHeight(10);
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
-                    image.setLayoutParams(layoutParams);
-                    //image.setLayoutParams().height = 20;
-                    // image.getLayoutParams().width = 10;
-                    Item item = lista.get(i);
-                    Bitmap b = StringToBitmap(item.getImage());
-                    image.setImageBitmap(b);
-                    items.addView(image);
-                }
+                //********* add to DB *********//
+                usdbh.saveOutfit(outfit);
+
+                //********* show on screen *********//
+                showOutfit(outfit);
 
             }
         }
