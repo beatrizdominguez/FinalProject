@@ -11,14 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
+public class AdapterCustomDrawer extends ArrayAdapter<MyDrawerItem> {
 
     Context context;
-    List<DrawerItem> drawerItemList;
+    List<MyDrawerItem> drawerItemList;
     int layoutResID;
 
-    public CustomDrawerAdapter(Context context, int layoutResourceID,
-                               List<DrawerItem> listItems) {
+    public AdapterCustomDrawer(Context context, int layoutResourceID,
+                               List<MyDrawerItem> listItems) {
         super(context, layoutResourceID, listItems);
         this.context = context;
         this.layoutResID = layoutResourceID;
@@ -49,7 +49,7 @@ public class CustomDrawerAdapter extends ArrayAdapter<DrawerItem> {
 
         }
 
-        DrawerItem dItem = (DrawerItem) this.drawerItemList.get(position);
+        MyDrawerItem dItem = (MyDrawerItem) this.drawerItemList.get(position);
 
         drawerHolder.icon.setImageDrawable(view.getResources().getDrawable(
                 dItem.getImgResID()));

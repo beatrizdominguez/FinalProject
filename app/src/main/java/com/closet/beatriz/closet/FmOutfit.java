@@ -1,32 +1,23 @@
 package com.closet.beatriz.closet;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -43,7 +34,7 @@ public class FmOutfit extends Fragment {
     String outName = "";
     public final static int REQUEST_ADD_OUTFIT = 1;
 
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +43,7 @@ public class FmOutfit extends Fragment {
         rootview = inflater.inflate(R.layout.fm_outfit, container, false);
 
         //DB
-        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+        usdbh = new SQLiteHelper(getActivity(), "Closet",
                 null, 1);
 
         //cargar los outfits de la DB
@@ -109,7 +100,7 @@ public class FmOutfit extends Fragment {
 
     public void loadOutfits() {
 
-        ArrayList<Outfit> lista;
+        ArrayList<MyOutfit> lista;
         lista = usdbh.getOutfits();
 
         for (int i = 0; i < lista.size(); i++) {
@@ -118,13 +109,13 @@ public class FmOutfit extends Fragment {
 
     }
 
-    public void showOutfit(Outfit outfit) {
+    public void showOutfit(MyOutfit myOutfit) {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutOutfits);
         //outfit name
         TextView cat = new TextView(getActivity());
 
-        cat.setText(outfit.getName());
+        cat.setText(myOutfit.getName());
         layout.addView(cat);
         //outfit items
         HorizontalScrollView scroll = new HorizontalScrollView(getActivity());
@@ -133,10 +124,10 @@ public class FmOutfit extends Fragment {
         items.setOrientation(LinearLayout.HORIZONTAL);
         scroll.addView(items);
 
-        ArrayList<Item> lista = outfit.getItemList();
+        ArrayList<MyItem> itemList = myOutfit.getItemList();
 
         //add items
-        for (int i = 0; i < lista.size(); i++) {
+        for (int i = 0; i < itemList.size(); i++) {
 
             ImageView image = new ImageView(getActivity());
             //  image.setMaxHeight(10);
@@ -144,7 +135,7 @@ public class FmOutfit extends Fragment {
             image.setLayoutParams(layoutParams);
             //image.setLayoutParams().height = 20;
             // image.getLayoutParams().width = 10;
-            Item item = lista.get(i);
+            MyItem item = itemList.get(i);
             Bitmap b = StringToBitmap(item.getImage());
             image.setImageBitmap(b);
             items.addView(image);
@@ -161,16 +152,16 @@ public class FmOutfit extends Fragment {
             if (requestCode == REQUEST_ADD_OUTFIT) {
 
                 extras = data.getExtras();
-                ArrayList<Item> lista = (ArrayList<Item>) extras.get("list");
+                ArrayList<MyItem> itemList = (ArrayList<MyItem>) extras.get("list");
 
                 //********* creamos el objeto *********//
-                Outfit outfit = new Outfit(outName, lista);
+                MyOutfit myOutfit = new MyOutfit(outName, itemList);
 
                 //********* add to DB *********//
-                usdbh.saveOutfit(outfit);
+                usdbh.saveOutfit(myOutfit);
 
                 //********* show on screen *********//
-                showOutfit(outfit);
+                showOutfit(myOutfit);
 
             }
         }

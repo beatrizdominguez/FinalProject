@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 
-public class Splash extends Activity {
+public class AcSplash extends Activity {
     /**
      * Duration of wait *
      */
@@ -27,9 +27,9 @@ public class Splash extends Activity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(Splash.this, MainActivity.class);
-                Splash.this.startActivity(mainIntent);
-                Splash.this.finish();
+                Intent mainIntent = new Intent(AcSplash.this, AcMainActivity.class);
+                AcSplash.this.startActivity(mainIntent);
+                AcSplash.this.finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
     }

@@ -3,11 +3,11 @@ package com.closet.beatriz.closet;
 /**
  * Created by Beatriz on 23/05/2015.
  */
-public class DrawerItem {
+public class MyDrawerItem {
     String ItemName;
     int imgResID;
 
-    public DrawerItem(String itemName, int imgResID) {
+    public MyDrawerItem(String itemName, int imgResID) {
         super();
         ItemName = itemName;
         this.imgResID = imgResID;

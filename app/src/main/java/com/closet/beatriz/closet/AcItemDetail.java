@@ -3,8 +3,6 @@ package com.closet.beatriz.closet;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -28,7 +26,7 @@ import java.io.Serializable;
 
 public class AcItemDetail extends Activity {
 
-    Item i;
+    MyItem myItem;
 
 
     @Override
@@ -37,8 +35,8 @@ public class AcItemDetail extends Activity {
         setContentView(R.layout.activity_ac_item_detail);
 
         //category = getIntent().getExtras("cat");
-        i = (Item) getIntent().getSerializableExtra("item");
-        show(i);
+        myItem = (MyItem) getIntent().getSerializableExtra("item");
+        show(myItem);
 
 
         ImageButton img = (ImageButton) findViewById(R.id.imgItem);
@@ -52,14 +50,14 @@ public class AcItemDetail extends Activity {
                 Intent intentPhoto = new Intent(AcItemDetail.this, AcItemPhoto.class);
                 Bundle mBundle = new Bundle();
                 //intentVer.putExtras("cat",category);
-                mBundle.putSerializable("item", (Serializable) i);
+                mBundle.putSerializable("item", (Serializable) myItem);
                 intentPhoto.putExtras(mBundle);
                 startActivity(intentPhoto);
             }
         });
     }
 
-    private void show(Item i) {
+    private void show(MyItem item) {
 
         ImageButton image = (ImageButton) findViewById(R.id.imgItem);
         TextView txtDesc = (TextView) findViewById(R.id.txtDesc2);
@@ -71,16 +69,16 @@ public class AcItemDetail extends Activity {
         TextView txtWhen = (TextView) findViewById(R.id.txtWhen2);
         TextView txtWhere = (TextView) findViewById(R.id.txtWhere2);
 
-        Bitmap btm = StringToBitmap(i.getImage());
+        Bitmap btm = StringToBitmap(item.getImage());
         image.setImageBitmap(btm);
-        txtDesc.setText(i.getDescription());
-        txtCat.setText(i.getCategory());
-        txtSeason.setText(i.getSeason());
-        txtColor.setText(i.getColours());
-        txtSize.setText(i.getSize());
-        txtPrice.setText(String.valueOf(i.getPrize()) + " €");
-        txtWhen.setText(i.getS_date());
-        txtWhere.setText(i.getShop());
+        txtDesc.setText(item.getDescription());
+        txtCat.setText(item.getCategory());
+        txtSeason.setText(item.getSeason());
+        txtColor.setText(item.getColours());
+        txtSize.setText(item.getSize());
+        txtPrice.setText(String.valueOf(item.getPrize()) + " €");
+        txtWhen.setText(item.getS_date());
+        txtWhere.setText(item.getShop());
     }
 
 
@@ -104,9 +102,9 @@ public class AcItemDetail extends Activity {
 
             case (R.id.action_share):
 
-              //  Toast.makeText(this, "share", Toast.LENGTH_LONG).show();
+                //  Toast.makeText(this, "share", Toast.LENGTH_LONG).show();
 
-                Bitmap bitmap = StringToBitmap(i.getImage());
+                Bitmap bitmap = StringToBitmap(myItem.getImage());
 
                 shareImage(this, bitmap, "");
 

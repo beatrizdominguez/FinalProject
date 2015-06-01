@@ -56,10 +56,10 @@ public class AcModifyItem extends Activity {
     String[] colorArray = new String[20];
     int colorCount = 0;
 
-    Item i;
+    MyItem myItem;
 
 
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
 
     @Override
@@ -81,14 +81,14 @@ public class AcModifyItem extends Activity {
         spnShop = (Spinner) findViewById(R.id.spnShop);
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(this, "Closet",
+        usdbh = new SQLiteHelper(this, "Closet",
                 null, 1);
 
 
         // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
         // Bundle extras = getIntent().getExtras();
-        i = (Item) getIntent().getSerializableExtra("item");
-        show(i);
+        myItem = (MyItem) getIntent().getSerializableExtra("item");
+        show(myItem);
 
 
         btnImg.setOnClickListener(new View.OnClickListener() {
@@ -214,27 +214,27 @@ public class AcModifyItem extends Activity {
 
         //convert bitmap to string
         //String str = BitmapToString(bitmap);
-        i.setImage(BitmapToString(bitmap));
-        i.setDescription(etxtDesc.getText().toString());
-        i.setCategory(spnCat.getSelectedItem().toString());
-        i.setSeason(spnSeason.getSelectedItem().toString());
-        i.setColours(txtColors.getText().toString());
-        i.setS_date(getDateFromDatePicker(datePicker).toString());
-        i.setSize(etxtSize.getText().toString());
-        i.setPrize(Float.valueOf(etxtPrice.getText().toString()));
-        i.setShop(spnShop.getSelectedItem().toString());
+        myItem.setImage(BitmapToString(bitmap));
+        myItem.setDescription(etxtDesc.getText().toString());
+        myItem.setCategory(spnCat.getSelectedItem().toString());
+        myItem.setSeason(spnSeason.getSelectedItem().toString());
+        myItem.setColours(txtColors.getText().toString());
+        myItem.setS_date(getDateFromDatePicker(datePicker).toString());
+        myItem.setSize(etxtSize.getText().toString());
+        myItem.setPrize(Float.valueOf(etxtPrice.getText().toString()));
+        myItem.setShop(spnShop.getSelectedItem().toString());
 
 
         //if all data is introduced
-        if (validItem(i)) {
+        if (validItem(myItem)) {
 
             //save on data base
-            usdbh.updateItem(i);
+            usdbh.updateItem(myItem);
 
             //create intent
             Intent intentSave = new Intent();
             Bundle mBundle = new Bundle();
-            mBundle.putSerializable("item", (Serializable) i);
+            mBundle.putSerializable("item", (Serializable) myItem);
             intentSave.putExtras(mBundle);
             setResult(RESULT_OK, intentSave);
 
@@ -322,7 +322,7 @@ public class AcModifyItem extends Activity {
     }
 
 
-    private void show(Item i) {
+    private void show(MyItem i) {
 
         btnImg.setImageBitmap(StringToBitmap(i.getImage()));
         etxtDesc.setText(i.getDescription());
@@ -385,7 +385,7 @@ public class AcModifyItem extends Activity {
     }
 
 
-    private boolean validItem(Item item) {
+    private boolean validItem(MyItem item) {
 
 
         if (item.getDescription().length() > 0) {

@@ -1,15 +1,18 @@
 package com.closet.beatriz.closet;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,7 +27,10 @@ public class FmConfig extends Fragment {
     Button btnAddColor;
     Button btnRename;
 
-    ItemSQLiteHelper usdbh;
+    MyColor color;
+
+
+    SQLiteHelper usdbh;
 
     public static final String IMAGE_RESOURCE_ID = "iconResourceID";
     public static final String ITEM_NAME = "itemName";
@@ -47,8 +53,10 @@ public class FmConfig extends Fragment {
 
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+        usdbh = new SQLiteHelper(getActivity(), "Closet",
                 null, 1);
+
+        color = new MyColor();
 
         Button btnSave = (Button) getActivity().findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -76,12 +84,10 @@ public class FmConfig extends Fragment {
             @Override
             public void onClick(View v) {
 
-                //check if work
-                // usdbh.getColors();
 
-                EditText txtColor = (EditText) rootview.findViewById(R.id.eTxtColor);
-                Log.e("TAG----", "color added: " + txtColor.getText().toString());
-                usdbh.addColor(txtColor.getText().toString());
+                newColor();
+
+
                 //user message
                 Toast.makeText(getActivity(), R.string.txt_msg_color,
                         Toast.LENGTH_SHORT).show();
@@ -100,6 +106,63 @@ public class FmConfig extends Fragment {
 
             }
         });
+
+    }
+
+    private void newColor() {
+
+        final EditText input = new EditText(getActivity());
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.txt_add_outfit)
+                .setMessage(R.string.txt_outfit_name)
+                .setView(input)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Editable value = input.getText();
+                        color.setColor(String.valueOf(input.getText()));
+                        //outName = String.valueOf(input.getText());
+                        if (color.getColor().length() > 0) {
+                            colorCode();
+
+                            // Intent intent = new Intent(getActivity(), Grid3.class);
+                            // startActivity(intent);
+                        }
+                        // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Do nothing.
+            }
+        }).show();
+
+    }
+
+    private void colorCode() {
+
+        /*
+        final EditText input = new EditText(getActivity());
+
+        new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.txt_add_outfit)
+                .setMessage(R.string.txt_outfit_name)
+                .setView(input)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Editable value = input.getText();
+                        color.setCode(String.valueOf(input.getText()));
+                        //outName = String.valueOf(input.getText());
+
+                        usdbh.addColor(color);
+                        // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Do nothing.
+            }
+        }).show();*/
+
+
 
     }
 

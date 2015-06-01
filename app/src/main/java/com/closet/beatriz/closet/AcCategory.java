@@ -2,7 +2,6 @@ package com.closet.beatriz.closet;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -25,18 +24,18 @@ public class AcCategory extends Activity {
     public final static int REQUEST_MODIFY = 2;
     GridView lv;
     AdapterItem adaptador = null;
-    private ArrayList<Item> lista = new ArrayList<Item>();
-    private ArrayList<Item> ALShirts = new ArrayList<Item>();
-    private ArrayList<Item> ALPants = new ArrayList<Item>();
-    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
-    private ArrayList<Item> ALCoats = new ArrayList<Item>();
-    private ArrayList<Item> ALShoes = new ArrayList<Item>();
-    private ArrayList<Item> ALJumper = new ArrayList<Item>();
-    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
-    private ArrayList<Item> ALDress = new ArrayList<Item>();
-    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
+    private ArrayList<MyItem> lista = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
     String category;
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     int pos;
 
@@ -49,7 +48,7 @@ public class AcCategory extends Activity {
         category = extras.getString("Category");
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(this, "Closet",
+        usdbh = new SQLiteHelper(this, "Closet",
                 null, 1);
 
         TextView title = (TextView) findViewById(R.id.txtTitle);
@@ -76,14 +75,14 @@ public class AcCategory extends Activity {
                 //category =String.valueOf( R.string.catShirts);
                 //MAYBE PROBLEM!!!
 
-                Item i;
-                i = (Item) lv.getItemAtPosition(position);
+                MyItem item;
+                item = (MyItem) lv.getItemAtPosition(position);
                 //Log.e("TAG", "listener del gridview");
                 // Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
                 Intent intentVer = new Intent(AcCategory.this, AcItemDetail.class);
                 Bundle mBundle = new Bundle();
                 //intentVer.putExtras("cat",category);
-                mBundle.putSerializable("item", (Serializable) i);
+                mBundle.putSerializable("item", (Serializable) item);
                 intentVer.putExtras(mBundle);
                 startActivity(intentVer);
 
@@ -101,11 +100,11 @@ public class AcCategory extends Activity {
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_ADD) {
 
-                Item i = (Item) data.getSerializableExtra("item");
+                MyItem item = (MyItem) data.getSerializableExtra("item");
 
-                if (i.getCategory().equals(category)) {
+                if (item.getCategory().equals(category)) {
 
-                    addToList(i);
+                    addToList(item);
 
                 }
 
@@ -114,11 +113,11 @@ public class AcCategory extends Activity {
 
                 deleteItem(pos);
 
-                Item i = (Item) data.getSerializableExtra("item");
+                MyItem item = (MyItem) data.getSerializableExtra("item");
 
-                if (i.getCategory().equals(category)) {
+                if (item.getCategory().equals(category)) {
 
-                    addToList(i);
+                    addToList(item);
 
                 }
 
@@ -127,7 +126,7 @@ public class AcCategory extends Activity {
         }
     }
 
-    private void addToList(Item i) {
+    private void addToList(MyItem i) {
 
         lista.add(i);
         adaptador.notifyDataSetChanged();
@@ -245,9 +244,9 @@ public class AcCategory extends Activity {
         pos = info.position;
         Log.e("ID-click", String.valueOf(pos));
 
-        Item i;
+        MyItem myItem;
 
-        i = (Item) lv.getItemAtPosition(pos);
+        myItem = (MyItem) lv.getItemAtPosition(pos);
 
         // segÃºn la opción seleccionada hacemos una cosa y otra
         switch (item.getItemId()) {
@@ -256,7 +255,7 @@ public class AcCategory extends Activity {
 
                 // modificar(pos);
                 Toast.makeText(this, "Modificar item", Toast.LENGTH_SHORT).show();
-                modify(i);
+                modify(myItem);
 
                 return true;
 
@@ -264,7 +263,7 @@ public class AcCategory extends Activity {
             case R.id.CtxLblBorrar:
 
                 //delete from the DB
-                usdbh.deleteItem(i.getId());
+                usdbh.deleteItem(myItem.getId());
 
                 deleteItem(pos);
 
@@ -281,11 +280,11 @@ public class AcCategory extends Activity {
     }
 
     // metodo modificar
-    public void modify(Item i) {
+    public void modify(MyItem item) {
 
         Intent intentModify = new Intent(AcCategory.this, AcModifyItem.class);
         Bundle mBundle = new Bundle();
-        mBundle.putSerializable("item", (Serializable) i);
+        mBundle.putSerializable("item", (Serializable) item);
         intentModify.putExtras(mBundle);
         setResult(RESULT_OK, intentModify);
         startActivityForResult(intentModify, REQUEST_MODIFY);

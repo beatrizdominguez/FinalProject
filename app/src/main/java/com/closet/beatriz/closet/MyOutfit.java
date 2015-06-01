@@ -6,23 +6,23 @@ import java.util.ArrayList;
 /**
  * Created by Beatriz on 29/05/2015.
  */
-public class Outfit implements Serializable {
+public class MyOutfit implements Serializable {
 
     int id;
     String name;
-    ArrayList<Item> itemList;
+    ArrayList<MyItem> itemList;
 
 
-    public Outfit() {
+    public MyOutfit() {
 
     }
 
-    public Outfit(String name, ArrayList<Item> itemList) {
+    public MyOutfit(String name, ArrayList<MyItem> itemList) {
         this.name = name;
         this.itemList = itemList;
     }
 
-    public Outfit(int id, String name, ArrayList<Item> itemList) {
+    public MyOutfit(int id, String name, ArrayList<MyItem> itemList) {
         this.id = id;
         this.name = name;
         this.itemList = itemList;
@@ -45,11 +45,11 @@ public class Outfit implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<Item> getItemList() {
+    public ArrayList<MyItem> getItemList() {
         return itemList;
     }
 
-    public void setItemList(ArrayList<Item> itemList) {
+    public void setItemList(ArrayList<MyItem> itemList) {
         this.itemList = itemList;
     }
 

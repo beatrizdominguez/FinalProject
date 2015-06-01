@@ -12,9 +12,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -24,7 +22,7 @@ import java.io.IOException;
 
 public class AcItemPhoto extends Activity {
 
-    Item i;
+    MyItem myItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +38,13 @@ public class AcItemPhoto extends Activity {
 
 
         //category = getIntent().getExtras("cat");
-        i = (Item) getIntent().getSerializableExtra("item");
-        show(i);
+        myItem = (MyItem) getIntent().getSerializableExtra("item");
+        show(myItem);
 
         return true;
     }
 
-    private void show(Item i) {
+    private void show(MyItem i) {
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
 
@@ -67,7 +65,7 @@ public class AcItemPhoto extends Activity {
 
                 //  Toast.makeText(this, "share", Toast.LENGTH_LONG).show();
 
-                Bitmap bitmap = StringToBitmap(i.getImage());
+                Bitmap bitmap = StringToBitmap(myItem.getImage());
 
                 shareImage(this, bitmap, "");
 

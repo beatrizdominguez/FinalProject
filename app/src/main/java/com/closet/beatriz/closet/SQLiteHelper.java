@@ -8,7 +8,6 @@ package com.closet.beatriz.closet;
  */
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,25 +15,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
-import android.widget.Toast;
 
-public class ItemSQLiteHelper extends SQLiteOpenHelper {
+public class SQLiteHelper extends SQLiteOpenHelper {
 
     // Sentencia SQL para crear la tabla de Usuarios
     String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), colors VARCHAR(150), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
     String sqlCreateOutfits = "CREATE TABLE Outfits (id INTEGER PRIMARY KEY AUTOINCREMENT,  name VARCHAR(30))";
     String sqlCreateItemOutfit = "CREATE TABLE ItemOutfit (id INTEGER NOT NULL, itemId INTEGER NOT NULL, PRIMARY KEY (id, itemId))";
 
-    String sqlCreateColrs = "CREATE TABLE Colors (color VARCHAR(30))";
-    String sqlFillColrs = "Insert Into Colors VALUES(?)";
+    String sqlCreateColors = "CREATE TABLE Colors (color VARCHAR(30) PRIMARY KEY, code VARCHAR(10))";
 
 
     Context ctx = null;
 
-    public ItemSQLiteHelper(Context contexto, String nombre,
-                            CursorFactory factory, int version) {
+    public SQLiteHelper(Context contexto, String nombre,
+                        CursorFactory factory, int version) {
         super(contexto, nombre, factory, version);
         ctx = contexto;
     }
@@ -43,18 +39,27 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // Se ejecuta la sentencia SQL de creación de la tabla
         db.execSQL(sqlCreateItems);
-        db.execSQL(sqlCreateColrs);
+        db.execSQL(sqlCreateColors);
         db.execSQL(sqlCreateOutfits);
         db.execSQL(sqlCreateItemOutfit);
 
-        String[] color = ctx.getResources().getStringArray(R.array.colorArrays);
+        //Add defult colors
 
+        String[] colorNames = ctx.getResources().getStringArray(R.array.colorArrays);
+        String[] colorCodes = ctx.getResources().getStringArray(R.array.colors);
 
         //insert colors
-        for (int i = 0; i < color.length; i++) {
-            Log.e("TAG", "array length:  " + color.length);
-            String sqlFillColrs = "Insert Into Colors VALUES('" + color[i] + "');";
-            db.execSQL(sqlFillColrs);
+        for (int i = 0; i < colorNames.length; i++) {
+
+            MyColor color = new MyColor(colorNames[i], colorCodes[i]);
+            Log.e("color inserted-----", "color: " + color.getColor());
+            Log.e("color inserted-----", "code: " + color.getCode());
+
+
+            addColor(color);
+            //Log.e("TAG", "array length:  " + colorNames.length);
+            // String sqlFillColrs = "Insert Into Colors (color,code) VALUES('" + colorNames[i] + "', '" + colorCodes[i] + "');";
+            //db.execSQL(sqlFillColrs);
         }
 
     }
@@ -70,12 +75,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateItems);
     }
 
-    public void cargarLista(Context context, ArrayList<Item> ALShirts, ArrayList<Item> ALPants, ArrayList<Item> ALUnderWear, ArrayList<Item> ALCoats, ArrayList<Item> ALShoes, ArrayList<Item> ALJumper, ArrayList<Item> ALPijamas, ArrayList<Item> ALDress, ArrayList<Item> ALAccesories) {
+    public void cargarLista(Context context, ArrayList<MyItem> ALShirts, ArrayList<MyItem> ALPants, ArrayList<MyItem> ALUnderWear, ArrayList<MyItem> ALCoats, ArrayList<MyItem> ALShoes, ArrayList<MyItem> ALJumper, ArrayList<MyItem> ALPijamas, ArrayList<MyItem> ALDress, ArrayList<MyItem> ALAccesories) {
 
 
         Log.e("TAG-----------", "en el helper cargarlista");
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -113,7 +118,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -159,12 +164,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getShirts(Context context) {
+    public ArrayList<MyItem> getShirts(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -201,7 +206,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -220,12 +225,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getPants(Context context) {
+    public ArrayList<MyItem> getPants(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -262,7 +267,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -281,11 +286,11 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getUnderWear(Context context) {
+    public ArrayList<MyItem> getUnderWear(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
-        Item i;
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -322,7 +327,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -341,12 +346,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getCoats(Context context) {
+    public ArrayList<MyItem> getCoats(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -383,7 +388,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -402,13 +407,13 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getShoes(Context context) {
+    public ArrayList<MyItem> getShoes(Context context) {
 
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
         Log.e("TAG-----------", "en el helper cargarlista");
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -445,7 +450,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -464,12 +469,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getJumper(Context context) {
+    public ArrayList<MyItem> getJumper(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -506,7 +511,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -525,12 +530,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getPijamas(Context context) {
+    public ArrayList<MyItem> getPijamas(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -567,7 +572,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -586,12 +591,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getDress(Context context) {
+    public ArrayList<MyItem> getDress(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -628,7 +633,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -647,12 +652,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<Item> getAcessories(Context context) {
+    public ArrayList<MyItem> getAcessories(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        Item i;
+        MyItem i;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -689,7 +694,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
@@ -708,7 +713,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public void guardarItem(Item i) {
+    public void guardarItem(MyItem i) {
 
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
@@ -729,12 +734,12 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
     }
 
     //select all where id es id// cambiar sentencia sql
-    public Item getItem(int ID) {
+    public MyItem getItem(int ID) {
 
 
         Log.e("TAG-----------", "en el helper cargarlista");
 
-        Item i = null;
+        MyItem i = null;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -772,7 +777,7 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
                 if (cId == ID) {
-                    i = new Item(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize, cPrice, cShop);
+                    i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize, cPrice, cShop);
 
                 }
 
@@ -785,39 +790,40 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         return i;
     }
 
-    public void addColor(String color) {
+    public void addColor(MyColor color) {
 
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String sqlAddColor = "Insert into Colors VALUES('" + color + "')";
+        String sqlAddColor = "Insert into Colors (color, code) VALUES('" + color.getColor() + "', '" + color.getCode() + "')";
         db.execSQL(sqlAddColor);
 
+        Log.e("TAG -------- color", "name: " + color.getColor() + "   code:" + color.getCode());
 
     }
 
     ////not changed
-    public int updateItem(Item i) {
+    public int updateItem(MyItem item) {
 
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         //values.put("id", queryValues.get("id"));
-        Log.e("ID--MODIFICAT", String.valueOf(i.getId()));
+        Log.e("ID--MODIFICAT", String.valueOf(item.getId()));
         //values.put("id", i.getId());
-        values.put("image", i.getImage());
-        values.put("description", i.getDescription());
-        values.put("category", i.getCategory());
-        values.put("season", i.getSeason());
-        values.put("colors", i.getColours());
-        values.put("i_size", i.getSize());
-        values.put("s_date", i.getS_date());
-        values.put("price", i.getPrize());
-        values.put("shop", i.getShop());
+        values.put("image", item.getImage());
+        values.put("description", item.getDescription());
+        values.put("category", item.getCategory());
+        values.put("season", item.getSeason());
+        values.put("colors", item.getColours());
+        values.put("i_size", item.getSize());
+        values.put("s_date", item.getS_date());
+        values.put("price", item.getPrize());
+        values.put("shop", item.getShop());
 
 
         return database.update("Items", values, "id" + " = ?",
-                new String[]{String.valueOf(i.getId())});
+                new String[]{String.valueOf(item.getId())});
     }
 
     public void deleteItem(int id) {
@@ -1087,10 +1093,10 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
     }
 
     //not working
-    public String[] getColors() {
+    public ArrayList<MyColor> getColors2() {
+        Log.e("TAG--------", "en el helper en getColors()");
 
-
-        String[] colors = null;
+        ArrayList<MyColor> colors = new ArrayList<MyColor>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1098,8 +1104,9 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(selectQuery, null);
 
 
-        int colorIdx = c.getColumnIndex("color");
-        int count = 0;
+        // int colorIdx = c.getColumnIndex("color");
+        // int codeIdx = c.getColumnIndex("color");
+
 
         //Log.e("TAG", "id" + idIdx);
 
@@ -1107,17 +1114,17 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
             do {
 
                 // // cargamos la información en el objeto
-                int cColor = c.getInt(colorIdx);
+                String cColor = c.getString(0);
+                String cCode = c.getString(1);
 
-                Log.e("TAG --- add color", "color: " + cColor + " at position " + count);
+                MyColor color = new MyColor(cColor, cCode);
 
-                colors[count] = String.valueOf(cColor);
-                count++;
+                Log.e("TAG2-------", "color: " + color.getColor() + "   code:   " + color.getCode());
 
+                colors.add(color);
 
             } while (c.moveToNext());
         }
-
 
         c.close();
         db.close();
@@ -1127,17 +1134,17 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
 
     //******* OUTFITS *******//
 
-    public void saveOutfit(Outfit outfit) {
+    public void saveOutfit(MyOutfit myOutfit) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         //************* OUTFIT ID AND NAME ***************//
-        String sqlInert = "INSERT INTO Outfits (name) VALUES ('" + outfit.getName() + "');";
+        String sqlInert = "INSERT INTO Outfits (name) VALUES ('" + myOutfit.getName() + "');";
         // Log.e("insert item", sqlInertItem);
         db.execSQL(sqlInert);
 
         //************* OUTFIT ID AND ITEMS ***************//
-        ArrayList<Item> lista = outfit.getItemList();
+        ArrayList<MyItem> lista = myOutfit.getItemList();
 
         int outfitID = getLastID();
 
@@ -1164,10 +1171,10 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         return ID;
     }
 
-    public ArrayList<Outfit> getOutfits() {
+    public ArrayList<MyOutfit> getOutfits() {
 
 
-        ArrayList<Outfit> outfitList = new ArrayList<Outfit>();
+        ArrayList<MyOutfit> myOutfitList = new ArrayList<MyOutfit>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1193,9 +1200,9 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
                 // outfit.setName(cName);
                 // outfit.setItemList(getOutfitItems(cId));
 
-                Outfit outfit = new Outfit(cId, cName, getOutfitItems(cId));
+                MyOutfit myOutfit = new MyOutfit(cId, cName, getOutfitItems(cId));
 
-                outfitList.add(outfit);
+                myOutfitList.add(myOutfit);
 
             } while (c.moveToNext());
 
@@ -1204,13 +1211,13 @@ public class ItemSQLiteHelper extends SQLiteOpenHelper {
         c.close();
         db.close();
 
-        return outfitList;
+        return myOutfitList;
 
     }
 
-    public ArrayList<Item> getOutfitItems(int id) {
+    public ArrayList<MyItem> getOutfitItems(int id) {
 
-        ArrayList<Item> itemList = new ArrayList<Item>();
+        ArrayList<MyItem> itemList = new ArrayList<MyItem>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 

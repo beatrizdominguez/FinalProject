@@ -40,17 +40,17 @@ public class FmItems extends Fragment {
 
 
     //arraylist
-    private ArrayList<Item> ALShirts = new ArrayList<Item>();
-    private ArrayList<Item> ALPants = new ArrayList<Item>();
-    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
-    private ArrayList<Item> ALCoats = new ArrayList<Item>();
-    private ArrayList<Item> ALShoes = new ArrayList<Item>();
-    private ArrayList<Item> ALJumper = new ArrayList<Item>();
-    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
-    private ArrayList<Item> ALDress = new ArrayList<Item>();
-    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
+    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
     String category;
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     public final static int REQUEST_ADD = 1;
     public final static int REQUEST_CATEGORY = 2;
@@ -72,7 +72,7 @@ public class FmItems extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+        usdbh = new SQLiteHelper(getActivity(), "Closet",
                 null, 1);
 
         initializeTextView();
@@ -108,14 +108,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addShirt(Item item) {
+    private void addShirt(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCamisetas);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -137,14 +137,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addPants(Item item) {
+    private void addPants(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPantalones);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -161,14 +161,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addUnderWear(Item item) {
+    private void addUnderWear(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearUnderWear);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -185,14 +185,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addCoats(Item item) {
+    private void addCoats(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearCoats);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -209,14 +209,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addShoes(Item item) {
+    private void addShoes(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearShoes);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -233,14 +233,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addJumper(Item item) {
+    private void addJumper(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearJumper);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -257,14 +257,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addPijamas(Item item) {
+    private void addPijamas(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearPijamas);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -281,14 +281,14 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addDress(Item item) {
+    private void addDress(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearDress);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -306,14 +306,14 @@ public class FmItems extends Fragment {
     }
 
 
-    private void addAccessories(Item item) {
+    private void addAccessories(MyItem myItem) {
 
         // Log.e("TAG--", "valor de j" + String.valueOf(j));
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.linearAccesories);
 
         ImageView image = new ImageView(getActivity());
-        Bitmap b = StringToBitmap(item.getImage());
+        Bitmap b = StringToBitmap(myItem.getImage());
         image.setImageBitmap(b);
         //image.setImageBitmap(i.getImage());
         // image.setMaxWidth(5);
@@ -346,12 +346,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadAccessories() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** accessoriesCount *********//
         lista = usdbh.getAcessories(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addAccessories(item);
         }
         //counter
@@ -359,12 +359,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadDresses() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** dressCount *********//
         lista = usdbh.getDress(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addDress(item);
         }
         //counter
@@ -372,12 +372,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadPijamas() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** pijamasCount *********//
         lista = usdbh.getPijamas(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addPijamas(item);
         }
         //counter
@@ -385,12 +385,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadJumpers() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** jumperCount *********//
         lista = usdbh.getJumper(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addJumper(item);
         }
         //counter
@@ -398,12 +398,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadShoes() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** shoesCount *********//
         lista = usdbh.getShoes(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addShoes(item);
         }
         //counter
@@ -411,12 +411,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadCoats() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** coatsCount *********//
         lista = usdbh.getCoats(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addCoats(item);
         }
         //counter
@@ -424,12 +424,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadUnderWear() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** underWear *********//
         lista = usdbh.getUnderWear(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addUnderWear(item);
         }
         //counter
@@ -437,12 +437,12 @@ public class FmItems extends Fragment {
     }
 
     private void loadPants() {
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
         //*********** pants *********//
         lista = usdbh.getPants(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addPants(item);
         }
         //counter
@@ -451,13 +451,13 @@ public class FmItems extends Fragment {
 
     private void loadShirts() {
 
-        ArrayList<Item> lista;
+        ArrayList<MyItem> lista;
 
         //*********** shirts *********//
         lista = usdbh.getShirts(getActivity());
         //load all items
         for (int i = 0; i < lista.size(); i++) {
-            Item item = (Item) lista.get(i);
+            MyItem item = (MyItem) lista.get(i);
             addShirt(item);
         }
         //counter
@@ -871,9 +871,9 @@ public class FmItems extends Fragment {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_ADD) {
 
-                Item i = (Item) data.getSerializableExtra("item");
+                MyItem myItem = (MyItem) data.getSerializableExtra("item");
 
-                addItemToCategory(i);
+                addItemToCategory(myItem);
 
             } else if (requestCode == REQUEST_CATEGORY) {
 
@@ -945,7 +945,7 @@ public class FmItems extends Fragment {
 
     }
 
-    private void addItemToCategory(Item i) {
+    private void addItemToCategory(MyItem i) {
 
         // cargamos la informavión en la lista
         if (i.getCategory().equals(rootview.getResources().getString(R.string.catShirts))) {

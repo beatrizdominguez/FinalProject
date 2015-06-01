@@ -17,7 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -67,20 +66,23 @@ public class AcAddItem extends Activity {
     String color = "";
     String category = "";
 
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     //Custom spinner
     /**
      * ***********  Intialize Variables ************
      */
     // public ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
-    SpinnerAdapter adapter;
+    AdapterSpinner adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_add_item);
 
+        //base de datos
+        usdbh = new SQLiteHelper(this, "Closet",
+                null, 1);
 
         //controls
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
@@ -98,9 +100,6 @@ public class AcAddItem extends Activity {
         spnShop = (Spinner) findViewById(R.id.spnShop);
 
 
-        //base de datos
-        usdbh = new ItemSQLiteHelper(this, "Closet",
-                null, 1);
 
 
         // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
@@ -152,28 +151,37 @@ public class AcAddItem extends Activity {
 
     private void initializeColorSpinner() {
 
-        ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
+        ArrayList<MySpinner> CustomListViewValuesArr = new ArrayList<MySpinner>();
         // Now i have taken static values by loop.
         // For further inhancement we can take data by webservice / json / xml;
-        String[] colorNames = getResources().getStringArray(R.array.colorArrays);
-        String[] colorCodes = getResources().getStringArray(R.array.colors);
+        // String[] colorNames = getResources().getStringArray(R.array.colorArrays);
+        //String[] colorCodes = getResources().getStringArray(R.array.colors);
 
-        for (int i = 0; i < colorNames.length; i++) {
+        //usdbh.getColors();
+        // usdbh.colorStatistics(this);
 
-            final SpinnerModel sched = new SpinnerModel();
+        ArrayList<MyColor> colors = usdbh.getColors2();
+
+
+        for (int i = 0; i < colors.size(); i++) {
+
+            final MySpinner spn = new MySpinner();
 
             /******* Firstly take data in model object ******/
-            sched.setType(SPINNER_COLOR);
-            sched.setName(colorNames[i]);
-            sched.setImage(colorCodes[i]);
+            spn.setType(SPINNER_COLOR);
+            spn.setName(colors.get(i).getColor());
+            spn.setImage(colors.get(i).getCode());
+
+            //spn.setName(colorNames[i]);
+            //spn.setImage(colorCodes[i]);
 
 
             /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add(sched);
+            CustomListViewValuesArr.add(spn);
         }
 
         // Create custom adapter object ( see below CustomAdapter.java )
-        adapter = new SpinnerAdapter(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
+        adapter = new AdapterSpinner(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
 
         // Set adapter to spinner
         spnColor.setAdapter(adapter);
@@ -202,7 +210,10 @@ public class AcAddItem extends Activity {
     }
 
     private void initializeCategorySpinner() {
-        ArrayList<SpinnerModel> CustomListViewValuesArr = new ArrayList<SpinnerModel>();
+
+        ArrayList<MySpinner> CustomListViewValuesArr = new ArrayList<MySpinner>();
+
+
 
         // Now i have taken static values by loop.
         // For further inhancement we can take data by webservice / json / xml;
@@ -211,21 +222,22 @@ public class AcAddItem extends Activity {
 
         for (int i = 0; i < catNames.length; i++) {
 
-            final SpinnerModel sched = new SpinnerModel();
+            final MySpinner spn = new MySpinner();
 
             /******* Firstly take data in model object ******/
-            sched.setType(SPINNER_CATEGORY);
-            sched.setName(catNames[i]);
-            sched.setImage(catIcons[i]);
+            spn.setType(SPINNER_CATEGORY);
+            spn.setName(catNames[i]);
+            spn.setImage(catIcons[i]);
+
             // Log.e("TAG------image", "image array--- " + catIcons[i]);
             // Log.e("TAG------image", "image object--- " + sched.getImage());
 
             /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add(sched);
+            CustomListViewValuesArr.add(spn);
         }
 
         // Create custom adapter object ( see below CustomAdapter.java )
-        adapter = new SpinnerAdapter(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
+        adapter = new AdapterSpinner(this, R.layout.custom_spinner, CustomListViewValuesArr, getResources());
 
         // Set adapter to spinner
         spnCat.setAdapter(adapter);
@@ -366,20 +378,20 @@ public class AcAddItem extends Activity {
 
         //Log.e("TAG----------", s_date.toString());
         // Log.e("TAG----------BTM byte count", String.valueOf(imageBitmap.getByteCount()));
-        Item i = new Item(image, description, category, season, colors, s_date.toString(), size, prize, shop);
+        MyItem item = new MyItem(image, description, category, season, colors, s_date.toString(), size, prize, shop);
         // Item i = new Item(description, colorArray, category, s_date.toString(), size, prize, shop);
 
-        if (validItem(i)) {
+        if (validItem(item)) {
 
             Log.e("TAG_____________add", "guardar item y cerrar");
 
 
             //save on data base
-            usdbh.guardarItem(i);
+            usdbh.guardarItem(item);
             //create intent
             Intent intentSave = new Intent();
             Bundle mBundle = new Bundle();
-            mBundle.putSerializable("item", (Serializable) i);
+            mBundle.putSerializable("item", (Serializable) item);
             intentSave.putExtras(mBundle);
             setResult(RESULT_OK, intentSave);
 
@@ -504,7 +516,7 @@ public class AcAddItem extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private boolean validItem(Item item) {
+    private boolean validItem(MyItem item) {
 
 
         if (item.getDescription().length() > 0) {

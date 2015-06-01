@@ -4,21 +4,16 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.chart.PieChart;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.renderer.DefaultRenderer;
 import org.achartengine.renderer.SimpleSeriesRenderer;
@@ -30,7 +25,7 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 public class FmEstadisticas extends Fragment {
 
     View rootview;
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     //buttons
     Button btnvalue;
@@ -67,7 +62,7 @@ public class FmEstadisticas extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(getActivity(), "Closet",
+        usdbh = new SQLiteHelper(getActivity(), "Closet",
                 null, 1);
 
         displayPrices();
@@ -169,7 +164,7 @@ public class FmEstadisticas extends Fragment {
                 //  int[] colorCount = usdbh.colorStatistics(getActivity());
 
 
-                Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                Intent intentCat = new Intent(getActivity(), AcPieChart.class);
                 intentCat.putExtra("title", R.string.statistics_colors);
                 intentCat.putExtra("name", colorName);
                 intentCat.putExtra("value", colorCount);
@@ -184,7 +179,7 @@ public class FmEstadisticas extends Fragment {
             public void onClick(View v) {
 
 
-                Intent intentCat = new Intent(getActivity(), PieChartView.class);
+                Intent intentCat = new Intent(getActivity(), AcPieChart.class);
                 intentCat.putExtra("title", R.string.statistics_shops);
                 intentCat.putExtra("name", shopName);
                 intentCat.putExtra("value", shopCount);

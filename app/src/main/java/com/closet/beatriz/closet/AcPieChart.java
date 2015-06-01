@@ -1,8 +1,6 @@
 package com.closet.beatriz.closet;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,8 +12,6 @@ import android.widget.Toast;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.chart.AbstractChart;
-import org.achartengine.chart.PieChart;
 import org.achartengine.model.CategorySeries;
 import org.achartengine.model.SeriesSelection;
 import org.achartengine.renderer.DefaultRenderer;
@@ -25,7 +21,7 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
  * Created by Beatriz on 21/05/2015.
  */
 
-public class PieChartView extends Activity {
+public class AcPieChart extends Activity {
 
 
     //add lots of colors for it to choose
@@ -106,9 +102,9 @@ public class PieChartView extends Activity {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
 
                     if (seriesSelection == null) {
-                        Toast.makeText(PieChartView.this, "No chart element was clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AcPieChart.this, "No chart element was clicked", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(PieChartView.this, "Chart element data point index " + (seriesSelection.getPointIndex() + 1) + " was clicked" + " point value=" + seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AcPieChart.this, "Chart element data point index " + (seriesSelection.getPointIndex() + 1) + " was clicked" + " point value=" + seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -118,10 +114,10 @@ public class PieChartView extends Activity {
                 public boolean onLongClick(View v) {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
                     if (seriesSelection == null) {
-                        Toast.makeText(PieChartView.this, "No chart element was long pressed", Toast.LENGTH_SHORT);
+                        Toast.makeText(AcPieChart.this, "No chart element was long pressed", Toast.LENGTH_SHORT);
                         return false;
                     } else {
-                        Toast.makeText(PieChartView.this, "Chart element data point index " + seriesSelection.getPointIndex() + " was long pressed", Toast.LENGTH_SHORT);
+                        Toast.makeText(AcPieChart.this, "Chart element data point index " + seriesSelection.getPointIndex() + " was long pressed", Toast.LENGTH_SHORT);
                         return true;
                     }
                 }

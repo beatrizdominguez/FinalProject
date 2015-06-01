@@ -3,16 +3,16 @@ package com.closet.beatriz.closet;
 /**
  * Created by Beatriz on 25/05/2015.
  */
-public class SpinnerModel {
+public class MySpinner {
     private int Type = 0;
     private String Name = "";
     private String Image = "";
 
-    public SpinnerModel() {
+    public MySpinner() {
 
     }
 
-    public SpinnerModel(int type, String name, String image) {
+    public MySpinner(int type, String name, String image) {
         Type = type;
         Name = name;
         Image = image;

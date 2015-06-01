@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Created by Beatriz on 24/04/2015.
  */
-public class Item implements Serializable {
+public class MyItem implements Serializable {
 
     int id;
     //Bitmap image;
@@ -26,12 +26,12 @@ public class Item implements Serializable {
     String shop;
 
 
-    public Item() {
+    public MyItem() {
 
     }
 
 
-    public Item(String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
+    public MyItem(String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
         this.image = image;
         this.description = description;
         this.category = category;
@@ -43,7 +43,7 @@ public class Item implements Serializable {
 
     }
 
-    public Item(int id, String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
+    public MyItem(int id, String image, String description, String category, String season, String s_date, String size, float prize, String shop) {
         this.id = id;
         this.image = image;
         this.description = description;
@@ -56,7 +56,7 @@ public class Item implements Serializable {
 
     }
 
-    public Item(String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
+    public MyItem(String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
         this.image = image;
         this.description = description;
         this.category = category;
@@ -69,7 +69,7 @@ public class Item implements Serializable {
 
     }
 
-    public Item(int id, String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
+    public MyItem(int id, String image, String description, String category, String season, String colours, String s_date, String size, float prize, String shop) {
         this.id = id;
         this.image = image;
         this.description = description;

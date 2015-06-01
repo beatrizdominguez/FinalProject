@@ -2,33 +2,25 @@ package com.closet.beatriz.closet;
 
 import android.app.Activity;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends Activity {
+public class AcMainActivity extends Activity {
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -36,9 +28,9 @@ public class MainActivity extends Activity {
 
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
-    CustomDrawerAdapter adapter;
+    AdapterCustomDrawer adapter;
 
-    List<DrawerItem> dataList;
+    List<MyDrawerItem> dataList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +38,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         // Initializing
-        dataList = new ArrayList<DrawerItem>();
+        dataList = new ArrayList<MyDrawerItem>();
         mTitle = mDrawerTitle = getTitle();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -56,15 +48,15 @@ public class MainActivity extends Activity {
 
 
         // Add Drawer Item to dataList
-        dataList.add(new DrawerItem(getString(R.string.title_section1), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section2), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section3), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section4), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section5), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section6), R.drawable.add_ic));
-        dataList.add(new DrawerItem(getString(R.string.title_section7), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section1), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section2), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section3), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section4), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section5), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section6), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section7), R.drawable.add_ic));
 
-        adapter = new CustomDrawerAdapter(MainActivity.this, R.layout.custom_drawer_item,
+        adapter = new AdapterCustomDrawer(AcMainActivity.this, R.layout.custom_drawer_item,
                 dataList);
 
         mDrawerList.setAdapter(adapter);

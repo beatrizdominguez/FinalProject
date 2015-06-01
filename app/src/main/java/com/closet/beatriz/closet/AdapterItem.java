@@ -8,18 +8,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -27,11 +23,11 @@ public class AdapterItem extends BaseAdapter {
 
     protected ArrayList<String> data;
     //atributos
-    private ArrayList<Item> lista;
+    private ArrayList<MyItem> lista;
     private LayoutInflater layout;
     Context context;
 
-    public AdapterItem(Context context, ArrayList<Item> lista) {
+    public AdapterItem(Context context, ArrayList<MyItem> lista) {
         this.layout = LayoutInflater.from(context);
         this.lista = lista;
         this.context = context;
@@ -75,7 +71,7 @@ public class AdapterItem extends BaseAdapter {
         //TextView cat = (TextView) convertView.findViewById(R.id.txtCat);
         TextView price = (TextView) convertView.findViewById(R.id.txtPrice);
 
-        Item i = (Item) getItem(position);
+        MyItem i = (MyItem) getItem(position);
         //definir segun control y clase
 
         if (i.getImage() == null) {

@@ -21,7 +21,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catShirts" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewshirts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catPants" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewPants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catUnderWear" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewUnderWear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catCoats" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewCoats"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catShoes" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewShoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catJumper" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewJumper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catPijamas" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewPijamas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catDress" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewDress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
             android:layout_marginBottom="10dp"
             android:text="@string/catAccesories" />
 
-        <com.closet.beatriz.closet.ExpandableHeightGridView
+        <com.closet.beatriz.closet.MyExpandableHeightGridView
             android:id="@+id/gridViewAccesories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

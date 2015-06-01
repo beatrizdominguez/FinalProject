@@ -27,19 +27,19 @@ public class AcSearch extends Activity {
     GridView lv;
 
     AdapterItem adaptador = null;
-    private ArrayList<Item> lista = new ArrayList<Item>();
-    private ArrayList<Item> backupLista = new ArrayList<Item>();
-    private ArrayList<Item> ALShirts = new ArrayList<Item>();
-    private ArrayList<Item> ALPants = new ArrayList<Item>();
-    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
-    private ArrayList<Item> ALCoats = new ArrayList<Item>();
-    private ArrayList<Item> ALShoes = new ArrayList<Item>();
-    private ArrayList<Item> ALJumper = new ArrayList<Item>();
-    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
-    private ArrayList<Item> ALDress = new ArrayList<Item>();
-    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
+    private ArrayList<MyItem> lista = new ArrayList<MyItem>();
+    private ArrayList<MyItem> backupLista = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
 
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
     int pos;
     String[] arrayColors;
     String[] arraySeasons;
@@ -103,7 +103,7 @@ public class AcSearch extends Activity {
 
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(this, "Closet",
+        usdbh = new SQLiteHelper(this, "Closet",
                 null, 1);
 
         //cargamos la lista a mostrar
@@ -128,14 +128,14 @@ public class AcSearch extends Activity {
                 //category =String.valueOf( R.string.catShirts);
                 //MAYBE PROBLEM!!!
 
-                Item i = null;
-                i = (Item) lv.getItemAtPosition(position);
+                MyItem myItem = null;
+                myItem = (MyItem) lv.getItemAtPosition(position);
                 //Log.e("TAG", "listener del gridview");
                 // Toast.makeText(AcCategory.this, "Item seleccionado", Toast.LENGTH_LONG).show();
                 Intent intentVer = new Intent(AcSearch.this, AcItemDetail.class);
                 Bundle mBundle = new Bundle();
                 //intentVer.putExtras("cat",category);
-                mBundle.putSerializable("item", (Serializable) i);
+                mBundle.putSerializable("item", (Serializable) myItem);
                 intentVer.putExtras(mBundle);
                 startActivity(intentVer);
 
@@ -285,17 +285,17 @@ public class AcSearch extends Activity {
 
         for (int i = 0; i < lista.size(); i++) {
 
-            Item item = (Item) lv.getItemAtPosition(i);
+            MyItem myItem = (MyItem) lv.getItemAtPosition(i);
 
             Log.e("item ------- check", "--------------------");
             Log.e("item ------- check", "position in list:   " + i);
             Log.e("item ------- check", "--------------------");
-            Log.e("item--------season", item.getSeason());
-            Log.e("item--------color", item.getColours());
-            Log.e("item--------desc", item.getDescription());
+            Log.e("item--------season", myItem.getSeason());
+            Log.e("item--------color", myItem.getColours());
+            Log.e("item--------desc", myItem.getDescription());
             Log.e("item ------- check", "--------------------");
 
-            if (!item.getSeason().equals(season) && !item.getSeason().equals(getResources().getString(R.string.txt_all))) {
+            if (!myItem.getSeason().equals(season) && !myItem.getSeason().equals(getResources().getString(R.string.txt_all))) {
 
 
                 lista.remove(i);
@@ -306,7 +306,7 @@ public class AcSearch extends Activity {
 
                 // Log.e("TAG -- remove", "No season, " + item.getSeason());
 
-            } else if (!item.getColours().contains(color) && !item.getColours().equals(getResources().getString(R.string.txt_all))) {
+            } else if (!myItem.getColours().contains(color) && !myItem.getColours().equals(getResources().getString(R.string.txt_all))) {
 
                 // Log.e("TAG -- remove", "No colors, " + item.getColours());
 
@@ -316,7 +316,7 @@ public class AcSearch extends Activity {
 
                 i--;
 
-            } else if (desc.length() > 0 && !item.getDescription().contains(desc)) {
+            } else if (desc.length() > 0 && !myItem.getDescription().contains(desc)) {
 
                 // Log.e("TAG -- remove", "No description, " + item.getDescription());
                 lista.remove(i);

@@ -2,18 +2,14 @@ package com.closet.beatriz.closet;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.Toast;
 
 import java.io.Serializable;
@@ -22,28 +18,28 @@ import java.util.ArrayList;
 
 public class AcSelecttItem extends Activity {
 
-    ExpandableHeightGridView gridShirts;
-    ExpandableHeightGridView gridPants;
-    ExpandableHeightGridView gridUnderWear;
-    ExpandableHeightGridView gridCoats;
-    ExpandableHeightGridView gridShoes;
-    ExpandableHeightGridView gridJumper;
-    ExpandableHeightGridView gridPijamas;
-    ExpandableHeightGridView gridDress;
-    ExpandableHeightGridView gridAccesories;
+    MyExpandableHeightGridView gridShirts;
+    MyExpandableHeightGridView gridPants;
+    MyExpandableHeightGridView gridUnderWear;
+    MyExpandableHeightGridView gridCoats;
+    MyExpandableHeightGridView gridShoes;
+    MyExpandableHeightGridView gridJumper;
+    MyExpandableHeightGridView gridPijamas;
+    MyExpandableHeightGridView gridDress;
+    MyExpandableHeightGridView gridAccesories;
     AdapterItem adaptador = null;
-    private ArrayList<Item> lista = new ArrayList<Item>();
-    private ArrayList<Item> ALShirts = new ArrayList<Item>();
-    private ArrayList<Item> ALPants = new ArrayList<Item>();
-    private ArrayList<Item> ALUnderWear = new ArrayList<Item>();
-    private ArrayList<Item> ALCoats = new ArrayList<Item>();
-    private ArrayList<Item> ALShoes = new ArrayList<Item>();
-    private ArrayList<Item> ALJumper = new ArrayList<Item>();
-    private ArrayList<Item> ALPijamas = new ArrayList<Item>();
-    private ArrayList<Item> ALDress = new ArrayList<Item>();
-    private ArrayList<Item> ALAccesories = new ArrayList<Item>();
+    private ArrayList<MyItem> lista = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
+    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
 
-    ItemSQLiteHelper usdbh;
+    SQLiteHelper usdbh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +47,7 @@ public class AcSelecttItem extends Activity {
         setContentView(R.layout.activity_ac_selectt_item);
 
         //base de datos
-        usdbh = new ItemSQLiteHelper(this, "Closet",
+        usdbh = new SQLiteHelper(this, "Closet",
                 null, 1);
 
         showItems();
@@ -69,10 +65,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridShirts.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridShirts.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -85,10 +81,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridPants.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridPants.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -101,10 +97,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridUnderWear.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridUnderWear.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
             }
         });
 
@@ -115,10 +111,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridCoats.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridCoats.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -131,10 +127,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridShoes.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridShoes.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
             }
         });
 
@@ -145,10 +141,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridJumper.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridJumper.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -160,10 +156,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridPijamas.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridPijamas.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -175,10 +171,10 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridDress.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridDress.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
@@ -190,30 +186,20 @@ public class AcSelecttItem extends Activity {
                                     int position, long id) {
                 //pos = position;
 
-                Item i;
-                i = (Item) gridAccesories.getItemAtPosition(position);
+                MyItem myItem;
+                myItem = (MyItem) gridAccesories.getItemAtPosition(position);
 
-                selectItem(i);
+                selectItem(myItem);
 
             }
         });
 
 
-        gridAccesories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @SuppressLint("NewApi")
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                Toast.makeText(AcSelecttItem.this, "long toast", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    private ArrayList<Item> selectItem(Item i) {
+    private ArrayList<MyItem> selectItem(MyItem i) {
 
         Toast.makeText(this, R.string.txt_outfit_added, Toast.LENGTH_SHORT).show();
-
 
         lista.add(i);
         return lista;
@@ -226,7 +212,7 @@ public class AcSelecttItem extends Activity {
 
         //shirts
         adaptador = new AdapterItem(this.getBaseContext(), ALShirts);
-        gridShirts = (ExpandableHeightGridView) findViewById(R.id.gridViewshirts);
+        gridShirts = (MyExpandableHeightGridView) findViewById(R.id.gridViewshirts);
         gridShirts.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridShirts);
@@ -234,7 +220,7 @@ public class AcSelecttItem extends Activity {
 
         //pants
         adaptador = new AdapterItem(this.getBaseContext(), ALPants);
-        gridPants = (ExpandableHeightGridView) findViewById(R.id.gridViewPants);
+        gridPants = (MyExpandableHeightGridView) findViewById(R.id.gridViewPants);
         gridPants.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridPants);
@@ -242,7 +228,7 @@ public class AcSelecttItem extends Activity {
 
         //Under wear
         adaptador = new AdapterItem(this.getBaseContext(), ALUnderWear);
-        gridUnderWear = (ExpandableHeightGridView) findViewById(R.id.gridViewUnderWear);
+        gridUnderWear = (MyExpandableHeightGridView) findViewById(R.id.gridViewUnderWear);
         gridUnderWear.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridUnderWear);
@@ -250,7 +236,7 @@ public class AcSelecttItem extends Activity {
 
         //Coats
         adaptador = new AdapterItem(this.getBaseContext(), ALCoats);
-        gridCoats = (ExpandableHeightGridView) findViewById(R.id.gridViewCoats);
+        gridCoats = (MyExpandableHeightGridView) findViewById(R.id.gridViewCoats);
         gridCoats.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridCoats);
@@ -258,7 +244,7 @@ public class AcSelecttItem extends Activity {
 
         //shoes
         adaptador = new AdapterItem(this.getBaseContext(), ALShoes);
-        gridShoes = (ExpandableHeightGridView) findViewById(R.id.gridViewShoes);
+        gridShoes = (MyExpandableHeightGridView) findViewById(R.id.gridViewShoes);
         gridShoes.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridShoes);
@@ -266,7 +252,7 @@ public class AcSelecttItem extends Activity {
 
         //Jumper
         adaptador = new AdapterItem(this.getBaseContext(), ALJumper);
-        gridJumper = (ExpandableHeightGridView) findViewById(R.id.gridViewJumper);
+        gridJumper = (MyExpandableHeightGridView) findViewById(R.id.gridViewJumper);
         gridJumper.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridJumper);
@@ -274,7 +260,7 @@ public class AcSelecttItem extends Activity {
 
         //Pijamas
         adaptador = new AdapterItem(this.getBaseContext(), ALPijamas);
-        gridPijamas = (ExpandableHeightGridView) findViewById(R.id.gridViewPijamas);
+        gridPijamas = (MyExpandableHeightGridView) findViewById(R.id.gridViewPijamas);
         gridPijamas.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridPijamas);
@@ -283,7 +269,7 @@ public class AcSelecttItem extends Activity {
 
         //Dresses
         adaptador = new AdapterItem(this.getBaseContext(), ALDress);
-        gridDress = (ExpandableHeightGridView) findViewById(R.id.gridViewDress);
+        gridDress = (MyExpandableHeightGridView) findViewById(R.id.gridViewDress);
         gridDress.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridDress);
@@ -291,7 +277,7 @@ public class AcSelecttItem extends Activity {
 
         //Accesories
         adaptador = new AdapterItem(this.getBaseContext(), ALAccesories);
-        gridAccesories = (ExpandableHeightGridView) findViewById(R.id.gridViewAccesories);
+        gridAccesories = (MyExpandableHeightGridView) findViewById(R.id.gridViewAccesories);
         gridAccesories.setExpanded(true);
         // asociar menu contextual
         registerForContextMenu(gridAccesories);
@@ -358,12 +344,12 @@ public class AcSelecttItem extends Activity {
 
             case R.id.CtxLblSee:
 
-                Item i;
-                i = (Item) gridPants.getItemAtPosition(info.position);
+                MyItem myItem;
+                myItem = (MyItem) gridPants.getItemAtPosition(info.position);
 
                 Intent intentVer = new Intent(AcSelecttItem.this, AcItemDetail.class);
                 Bundle mBundle = new Bundle();
-                mBundle.putSerializable("item", (Serializable) i);
+                mBundle.putSerializable("item", (Serializable) myItem);
                 intentVer.putExtras(mBundle);
                 startActivity(intentVer);
 

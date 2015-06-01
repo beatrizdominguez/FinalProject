@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +17,18 @@ import android.widget.TextView;
  * Created by Beatriz on 25/05/2015.
  */
 
-public class SpinnerAdapter extends ArrayAdapter<String> {
+public class AdapterSpinner extends ArrayAdapter<String> {
 
     private Activity activity;
     private ArrayList data;
     public Resources res;
-    SpinnerModel tempValues = null;
+    MySpinner tempValues = null;
     LayoutInflater inflater;
 
     /**
      * **********  SpinnerAdapter Constructor ****************
      */
-    public SpinnerAdapter(
+    public AdapterSpinner(
             AcAddItem activitySpinner,
             int textViewResourceId,
             ArrayList objects,
@@ -65,7 +64,7 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
         /***** Get each Model object from Arraylist ********/
         tempValues = null;
-        tempValues = (SpinnerModel) data.get(position);
+        tempValues = (MySpinner) data.get(position);
 
         TextView label = (TextView) row.findViewById(R.id.name);
         ImageView image = (ImageView) row.findViewById(R.id.image);
