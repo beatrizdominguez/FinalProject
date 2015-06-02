@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.Editable;
@@ -88,10 +89,6 @@ public class FmConfig extends Fragment {
                 newColor();
 
 
-                //user message
-                Toast.makeText(getActivity(), R.string.txt_msg_color,
-                        Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -114,23 +111,24 @@ public class FmConfig extends Fragment {
         final EditText input = new EditText(getActivity());
 
         new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.txt_add_outfit)
-                .setMessage(R.string.txt_outfit_name)
+                .setTitle(R.string.txt_add_color)
+                .setMessage(R.string.txt_color_name)
                 .setView(input)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.action_next, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         // Editable value = input.getText();
                         color.setColor(String.valueOf(input.getText()));
                         //outName = String.valueOf(input.getText());
                         if (color.getColor().length() > 0) {
-                            colorCode();
+
+                            colorCode(color.getColor());
 
                             // Intent intent = new Intent(getActivity(), Grid3.class);
                             // startActivity(intent);
                         }
                         // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
                     }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                }).setNegativeButton(R.string.action_cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Do nothing.
             }
@@ -138,33 +136,34 @@ public class FmConfig extends Fragment {
 
     }
 
-    private void colorCode() {
+    private void showToast(int color) {
+        String rgbString = "R: " + Color.red(color) + " B: " + Color.blue(color) + " G: " + Color.green(color);
+        Toast.makeText(getActivity(), rgbString, Toast.LENGTH_SHORT).show();
+    }
 
-        /*
-        final EditText input = new EditText(getActivity());
+    private void colorCode(final String colorName) {
 
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.txt_add_outfit)
-                .setMessage(R.string.txt_outfit_name)
-                .setView(input)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        // Editable value = input.getText();
-                        color.setCode(String.valueOf(input.getText()));
-                        //outName = String.valueOf(input.getText());
+        ColorPickerDialog colorPickerDialog = new ColorPickerDialog(getActivity(), Color.BLUE, new ColorPickerDialog.OnColorSelectedListener() {
 
-                        usdbh.addColor(color);
-                        // Toast.makeText(getActivity(), "ADD OUTFIT", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                // Do nothing.
+            @Override
+            public void onColorSelected(int color) {
+
+                //convert color to hex code string
+                String strColor = "#" + Integer.toHexString(color);
+
+                final MyColor newColor = new MyColor(colorName, strColor);
+                usdbh.addColor(newColor);
+
+                Toast.makeText(getActivity(), R.string.txt_msg_color, Toast.LENGTH_SHORT).show();
+
             }
-        }).show();*/
 
+        });
 
+        colorPickerDialog.show();
 
     }
+
 
     private void save() {
 

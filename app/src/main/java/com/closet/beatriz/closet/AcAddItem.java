@@ -55,6 +55,7 @@ public class AcAddItem extends Activity {
     int spinnerIndex;
     ImageButton btnImg;
     Button btnAddColor;
+    Button btnInfo;
     Button btnRmvColor;
     Button btnSave;
     public final static int REQUEST_CAMERA = 1;
@@ -135,6 +136,17 @@ public class AcAddItem extends Activity {
             }
         });
 
+        btnInfo = (Button) findViewById(R.id.btnInfo);
+
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(AcAddItem.this, R.string.txt_color_info, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         btnRmvColor = (Button) findViewById(R.id.btnRMVColor);
         btnRmvColor.setOnClickListener(new View.OnClickListener() {
@@ -196,8 +208,7 @@ public class AcAddItem extends Activity {
                 // Get selected row data to show on screen
                 color = ((TextView) v.findViewById(R.id.name)).getText().toString();
 
-                Toast.makeText(
-                        getApplicationContext(), color, Toast.LENGTH_LONG).show();
+                //Toast.makeText(  getApplicationContext(), color, Toast.LENGTH_LONG).show();
             }
 
             @Override

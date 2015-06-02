@@ -50,6 +50,7 @@ public class AcSelecttItem extends Activity {
         usdbh = new SQLiteHelper(this, "Closet",
                 null, 1);
 
+        loadLists();
         showItems();
         gridListeners();
 
@@ -205,12 +206,22 @@ public class AcSelecttItem extends Activity {
         return lista;
     }
 
+    public void loadLists() {
+        ALShirts = usdbh.getShirts(this);
+        ALPants = usdbh.getPants(this);
+        ALUnderWear = usdbh.getUnderWear(this);
+        ALCoats = usdbh.getCoats(this);
+        ALShoes = usdbh.getShoes(this);
+        ALJumper = usdbh.getJumper(this);
+        ALPijamas = usdbh.getPijamas(this);
+        ALDress = usdbh.getDress(this);
+        ALAccesories = usdbh.getAcessories(this);
+
+    }
+
     public void showItems() {
 
-        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas,
-                ALDress, ALAccesories);
-
-        //shirts
+        //*********** shirts *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALShirts);
         gridShirts = (MyExpandableHeightGridView) findViewById(R.id.gridViewshirts);
         gridShirts.setExpanded(true);
@@ -218,7 +229,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridShirts);
         gridShirts.setAdapter(adaptador);
 
-        //pants
+        //*********** pants *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALPants);
         gridPants = (MyExpandableHeightGridView) findViewById(R.id.gridViewPants);
         gridPants.setExpanded(true);
@@ -226,7 +237,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridPants);
         gridPants.setAdapter(adaptador);
 
-        //Under wear
+        //*********** Under wear *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALUnderWear);
         gridUnderWear = (MyExpandableHeightGridView) findViewById(R.id.gridViewUnderWear);
         gridUnderWear.setExpanded(true);
@@ -234,7 +245,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridUnderWear);
         gridUnderWear.setAdapter(adaptador);
 
-        //Coats
+        //*********** Coats *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALCoats);
         gridCoats = (MyExpandableHeightGridView) findViewById(R.id.gridViewCoats);
         gridCoats.setExpanded(true);
@@ -242,7 +253,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridCoats);
         gridCoats.setAdapter(adaptador);
 
-        //shoes
+        //*********** shoes *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALShoes);
         gridShoes = (MyExpandableHeightGridView) findViewById(R.id.gridViewShoes);
         gridShoes.setExpanded(true);
@@ -250,7 +261,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridShoes);
         gridShoes.setAdapter(adaptador);
 
-        //Jumper
+        //*********** Jumper *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALJumper);
         gridJumper = (MyExpandableHeightGridView) findViewById(R.id.gridViewJumper);
         gridJumper.setExpanded(true);
@@ -258,7 +269,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridJumper);
         gridJumper.setAdapter(adaptador);
 
-        //Pijamas
+        //*********** Pijamas *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALPijamas);
         gridPijamas = (MyExpandableHeightGridView) findViewById(R.id.gridViewPijamas);
         gridPijamas.setExpanded(true);
@@ -267,7 +278,7 @@ public class AcSelecttItem extends Activity {
         gridPijamas.setAdapter(adaptador);
 
 
-        //Dresses
+        //*********** Dresses *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALDress);
         gridDress = (MyExpandableHeightGridView) findViewById(R.id.gridViewDress);
         gridDress.setExpanded(true);
@@ -275,7 +286,7 @@ public class AcSelecttItem extends Activity {
         registerForContextMenu(gridDress);
         gridDress.setAdapter(adaptador);
 
-        //Accesories
+        //*********** Accesories *************//
         adaptador = new AdapterItem(this.getBaseContext(), ALAccesories);
         gridAccesories = (MyExpandableHeightGridView) findViewById(R.id.gridViewAccesories);
         gridAccesories.setExpanded(true);

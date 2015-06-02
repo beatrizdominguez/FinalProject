@@ -30,6 +30,7 @@
     <!-- Buttons -->
     <string name="action_add">Añadir</string>
     <string name="action_delete">Eliminar</string>
+    <string name="action_next">Siguiente</string>
 
     <!-- Add item -->
     <string name="txt_desc">Descripción</string>
@@ -41,6 +42,7 @@
     <string name="txt_currency"> €</string>
     <string name="txt_when_buy">¿Cúandlo lo compraste</string>
     <string name="txt_where_buy">¿Dónde lo compraste</string>
+    <string name="txt_color_info">Puedes añadir nuevos colores a la base de datos en la ventana de configuración</string>
     <string name="txt_invalid_description">No se ha introducido una descripción</string>
     <string name="txt_invalid_colors">Añada colores a la prenda</string>
     <string name="txt_invalid_size">Especifique una talla</string>
@@ -62,6 +64,8 @@
     <string name="txt_delete_cat">Eliminar categoría</string>
     <!-- <string name="action_delete">Eliminar</string> -->
     <string name="txt_add_color">Añadir color</string>
+    <string name="txt_color_name">Nombre del color:</string>
+    <string name="txt_pick_color">Pick a color:</string>
     <string name="txt_msg_color">Se ha añadido el color a la base de datos</string>
 
     <!-- Outfits -->

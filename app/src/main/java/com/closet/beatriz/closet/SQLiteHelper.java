@@ -51,15 +51,20 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         //insert colors
         for (int i = 0; i < colorNames.length; i++) {
 
+
+            ContentValues cv = new ContentValues();
+            cv.put("color", colorNames[i]);
+            cv.put("code", colorCodes[i]);
+            db.insert("Colors", null, cv);
+
+
             MyColor color = new MyColor(colorNames[i], colorCodes[i]);
             Log.e("color inserted-----", "color: " + color.getColor());
             Log.e("color inserted-----", "code: " + color.getCode());
 
 
-            addColor(color);
-            //Log.e("TAG", "array length:  " + colorNames.length);
-            // String sqlFillColrs = "Insert Into Colors (color,code) VALUES('" + colorNames[i] + "', '" + colorCodes[i] + "');";
-            //db.execSQL(sqlFillColrs);
+            //addColor(color);
+
         }
 
     }
@@ -75,101 +80,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(sqlCreateItems);
     }
 
-    public void cargarLista(Context context, ArrayList<MyItem> ALShirts, ArrayList<MyItem> ALPants, ArrayList<MyItem> ALUnderWear, ArrayList<MyItem> ALCoats, ArrayList<MyItem> ALShoes, ArrayList<MyItem> ALJumper, ArrayList<MyItem> ALPijamas, ArrayList<MyItem> ALDress, ArrayList<MyItem> ALAccesories) {
-
-
-        Log.e("TAG-----------", "en el helper cargarlista");
-
-        MyItem i;
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        String selectQuery = "SELECT  * FROM Items";
-        Cursor c = db.rawQuery(selectQuery, null);
-
-
-        int idIdx = c.getColumnIndex("id");
-        int fotoIdx = c.getColumnIndex("image");
-        int descriptionIdx = c.getColumnIndex("description");
-        int categoryIdx = c.getColumnIndex("category");
-        int seasonIdx = c.getColumnIndex("season");
-        int colorsIdx = c.getColumnIndex("colors");
-        int sizeIdx = c.getColumnIndex("i_size");
-        int dateIdx = c.getColumnIndex("s_date");
-        int priceIdx = c.getColumnIndex("price");
-        int shopIdx = c.getColumnIndex("shop");
-
-        //Log.e("TAG", "id" + idIdx);
-
-        if (c.moveToFirst()) {
-            do {
-
-                // // cargamos la información en el objeto
-                int cId = c.getInt(idIdx);
-                String cFoto = c.getString(fotoIdx);
-                String cDescription = c.getString(descriptionIdx);
-                String cCategory = c.getString(categoryIdx);
-                String cSeason = c.getString(seasonIdx);
-                String cColors = c.getString(colorsIdx);
-                String cSize = c.getString(sizeIdx);
-                String cDate = c.getString(dateIdx);
-                Float cPrice = c.getFloat(priceIdx);
-                String cShop = c.getString(shopIdx);
-                //Log.e("foto-helper-cargar", cFoto);
-
-
-                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
-                        cPrice, cShop);
-
-
-                // cargamos la informavión en la lista
-                if (cCategory.equals(context.getResources().getString(R.string.catShirts))) {
-
-                    ALShirts.add(i);
-                } else if (cCategory.equals(context.getResources().getString(R.string.catPants))) {
-
-                    ALPants.add(i);
-
-                } else if (cCategory.equals(context.getResources().getString(R.string.catUnderWear))) {
-
-                    ALUnderWear.add(i);
-
-                } else if (cCategory.equals(context.getResources().getString(R.string.catCoats))) {
-                    ALCoats.add(i);
-
-                } else if (cCategory.equals(context.getResources().getString(R.string.catShoes))) {
-                    ALShoes.add(i);
-
-
-                } else if (cCategory.equals(context.getResources().getString(R.string.catJumper))) {
-                    ALJumper.add(i);
-
-
-                } else if (cCategory.equals(context.getResources().getString(R.string.catPijamas))) {
-
-                    ALPijamas.add(i);
-                } else if (cCategory.equals(context.getResources().getString(R.string.catDress))) {
-
-                    ALDress.add(i);
-                } else if (cCategory.equals(context.getResources().getString(R.string.catAccesories))) {
-
-                    ALAccesories.add(i);
-                }
-
-
-            } while (c.moveToNext());
-        }
-        c.close();
-        db.close();
-
-    }
-
     public ArrayList<MyItem> getShirts(Context context) {
 
         Log.e("TAG-----------", "en el helper cargarlista");
         ArrayList<MyItem> list = new ArrayList<MyItem>();
 
-        MyItem i;
+        MyItem item;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -206,14 +122,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 String cShop = c.getString(shopIdx);
                 //Log.e("foto-helper-cargar", cFoto);
 
-                i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
+                item = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize,
                         cPrice, cShop);
 
 
                 // cargamos la informavión en la lista
                 if (cCategory.equals(context.getResources().getString(R.string.catShirts))) {
 
-                    list.add(i);
+                    list.add(item);
                 }
 
             } while (c.moveToNext());
@@ -713,21 +629,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public void guardarItem(MyItem i) {
+    public void guardarItem(MyItem item) {
 
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
 
         String sqlInertItem = "INSERT INTO Items (image, description, category, season, colors, i_size, s_date, price, shop ) VALUES ('" +
-                i.getImage() + "', '" +
-                i.getDescription() + "', '" +
-                i.getCategory() + "', '" +
-                i.getSeason() + "', '" +
-                i.getColours() + "', '" +
-                i.getSize() + "', '" +
-                i.getS_date() + "', " +
-                i.getPrize() + ", '" +
-                i.getShop() + "');";
+                item.getImage() + "', '" +
+                item.getDescription() + "', '" +
+                item.getCategory() + "', '" +
+                item.getSeason() + "', '" +
+                item.getColours() + "', '" +
+                item.getSize() + "', '" +
+                item.getS_date() + "', " +
+                item.getPrize() + ", '" +
+                item.getShop() + "');";
         // Log.e("insert item", sqlInertItem);
         db.execSQL(sqlInertItem);
 
@@ -737,9 +653,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public MyItem getItem(int ID) {
 
 
-        Log.e("TAG-----------", "en el helper cargarlista");
+        //Log.e("TAG-----------", "en el helper cargarlista");
 
-        MyItem i = null;
+        MyItem item = null;
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -777,7 +693,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 //Log.e("foto-helper-cargar", cFoto);
 
                 if (cId == ID) {
-                    i = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize, cPrice, cShop);
+                    item = new MyItem(cId, cFoto, cDescription, cCategory, cSeason, cColors, cDate, cSize, cPrice, cShop);
 
                 }
 
@@ -787,13 +703,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         c.close();
         db.close();
 
-        return i;
+        return item;
     }
 
     public void addColor(MyColor color) {
 
         // Log.e("-----guardar item helper", i.getImage());
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         String sqlAddColor = "Insert into Colors (color, code) VALUES('" + color.getColor() + "', '" + color.getCode() + "')";
         db.execSQL(sqlAddColor);

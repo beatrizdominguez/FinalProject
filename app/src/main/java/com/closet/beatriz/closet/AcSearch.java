@@ -158,44 +158,45 @@ public class AcSearch extends Activity {
 
     private void selectList() {
 
-        usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
+        // usdbh.cargarLista(this, ALShirts, ALPants, ALUnderWear, ALCoats, ALShoes, ALJumper, ALPijamas, ALDress, ALAccesories);
 
+        // Log.e("TAG--------", "crear adaptador");
         // Log.e("TAG--------", "crear adaptador");
         if (category.equals(getString(R.string.catShirts))) {
 
-            lista = ALShirts;
+            lista = usdbh.getShirts(this);
 
         } else if (category.equals(getString(R.string.catPants))) {
 
-            lista = ALPants;
+            lista = usdbh.getPants(this);
 
         } else if (category.equals(getString(R.string.catUnderWear))) {
 
-            lista = ALUnderWear;
+            lista = usdbh.getUnderWear(this);
 
         } else if (category.equals(getString(R.string.catCoats))) {
 
-            lista = ALCoats;
+            lista = usdbh.getCoats(this);
 
         } else if (category.equals(getString(R.string.catShoes))) {
 
-            lista = ALShoes;
+            lista = usdbh.getShoes(this);
 
         } else if (category.equals(getString(R.string.catJumper))) {
 
-            lista = ALJumper;
+            lista = usdbh.getJumper(this);
 
         } else if (category.equals(getString(R.string.catPijamas))) {
 
-            lista = ALPijamas;
+            lista = usdbh.getPijamas(this);
 
         } else if (category.equals(getString(R.string.catDress))) {
 
-            lista = ALDress;
+            lista = usdbh.getDress(this);
 
         } else if (category.equals(getString(R.string.catAccesories))) {
 
-            lista = ALAccesories;
+            lista = usdbh.getAcessories(this);
 
         }
 

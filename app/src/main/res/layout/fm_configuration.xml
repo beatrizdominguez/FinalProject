@@ -25,14 +25,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:entries="@array/shopsArrays" />
+            android:entries="@array/categoriesArrays" />
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_save" />
+            android:text="@string/action_save"
+            style="@style/button_color" />
 
         <TextView
             android:id="@+id/TxtAddCat"
@@ -55,7 +56,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_add" />
+            android:text="@string/action_add"
+            style="@style/button_color" />
 
         <TextView
             android:id="@+id/RenameCat"
@@ -71,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:entries="@array/shopsArrays" />
+            android:entries="@array/categoriesArrays" />
 
         <TextView
             android:id="@+id/EditNewName"
@@ -94,7 +96,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_save" />
+            android:text="@string/action_save"
+            style="@style/button_color" />
 
         <TextView
             android:id="@+id/TxtDelCat"
@@ -110,35 +113,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:entries="@array/shopsArrays" />
+            android:entries="@array/categoriesArrays" />
 
         <Button
             android:id="@+id/btnDelCat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_delete" />
-
-        <TextView
-            style="@style/text_color"
-            android:id="@+id/txtAddColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|left"
-            android:text="@string/txt_add_color"
-            android:textColor="@color/config_color" />
-
-        <EditText
-            android:id="@+id/eTxtColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:text="@string/action_delete"
+            style="@style/button_color" />
 
         <Button
             android:id="@+id/btnAddColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/action_add" />
+            android:text="@string/txt_add_color"
+            style="@style/button_color" />
     </LinearLayout>
 </ScrollView>
