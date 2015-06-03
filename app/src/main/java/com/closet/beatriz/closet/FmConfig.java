@@ -136,10 +136,6 @@ public class FmConfig extends Fragment {
 
     }
 
-    private void showToast(int color) {
-        String rgbString = "R: " + Color.red(color) + " B: " + Color.blue(color) + " G: " + Color.green(color);
-        Toast.makeText(getActivity(), rgbString, Toast.LENGTH_SHORT).show();
-    }
 
     private void colorCode(final String colorName) {
 

@@ -1,52 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ffc8ecde">
+        android:background="@color/background">
 
         <GridView
+            android:id="@+id/gridCalendar"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:id="@+id/gridView2"
-            android:numColumns="2"
-            android:layout_weight="2" />
+            android:layout_weight="1.06"
+            android:numColumns="2" />
+
+        <Button
+            android:layout_width="41dp"
+            android:layout_height="33dp"
+            android:text="+"
+            android:id="@+id/btnAddItem"
+            android:layout_gravity="bottom"
+            style="@style/button_color" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="1dp"
             android:layout_height="fill_parent"
-            android:background="#ff000000">
+            android:background="#ff000000"
+            android:orientation="horizontal">
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutNotes"
-            android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_row="5"
-            android:layout_column="18"
-            android:layout_weight="1">
+        <RelativeLayout
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.45">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/layoutNotes"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_column="18"
+                android:layout_row="5"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_notes"
+                    android:id="@+id/txtNotes" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAddNote"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Notas:" />
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/action_add" />
 
+        </RelativeLayout>
 
-        </LinearLayout>
     </LinearLayout>
 
 
     <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/calendarView"
         android:layout_weight="2" />
 
 </LinearLayout>

@@ -101,8 +101,6 @@ public class AcAddItem extends Activity {
         spnShop = (Spinner) findViewById(R.id.spnShop);
 
 
-
-
         // vemos si recibe informaciÃ³n a travÃ©s de un intent (modificar)
         Bundle extras = getIntent().getExtras();
         String cat = extras.getString("Category");
@@ -172,7 +170,7 @@ public class AcAddItem extends Activity {
         //usdbh.getColors();
         // usdbh.colorStatistics(this);
 
-        ArrayList<MyColor> colors = usdbh.getColors2();
+        ArrayList<MyColor> colors = usdbh.getColors();
 
 
         for (int i = 0; i < colors.size(); i++) {
@@ -223,7 +221,6 @@ public class AcAddItem extends Activity {
     private void initializeCategorySpinner() {
 
         ArrayList<MySpinner> CustomListViewValuesArr = new ArrayList<MySpinner>();
-
 
 
         // Now i have taken static values by loop.
@@ -398,7 +395,7 @@ public class AcAddItem extends Activity {
 
 
             //save on data base
-            usdbh.guardarItem(item);
+            usdbh.saveItem(item);
             //create intent
             Intent intentSave = new Intent();
             Bundle mBundle = new Bundle();

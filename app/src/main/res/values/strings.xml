@@ -72,6 +72,12 @@
     <string name="txt_add_outfit">Nuevo conjunto</string>
     <string name="txt_outfit_name">Nombre del conjunto:</string>
     <string name="txt_outfit_added">La prenda se ha añadido al conjunto</string>
+
+    <!-- Calendar -->
+    <string name="txt_add_note">Nueva nota</string>
+    <string name="txt_notes">Notas:</string>
+
+
     <!-- Menu items -->
     <string name="action_done">Done</string>
     <string name="action_see">Ver</string>

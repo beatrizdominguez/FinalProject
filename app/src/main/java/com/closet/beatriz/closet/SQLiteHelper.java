@@ -19,12 +19,17 @@ import android.util.Log;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
-    // Sentencia SQL para crear la tabla de Usuarios
+    //*********** ITEMS *************//
     String sqlCreateItems = "CREATE TABLE Items (id INTEGER PRIMARY KEY AUTOINCREMENT, image BLOB, description VARCHAR(30), category VARCHAR(20),season VARCHAR(15), colors VARCHAR(150), i_size VARCHAR(6), s_date VARCHAR(20), price FLOAT, shop VARCHAR(10))";
+    String sqlCreateColors = "CREATE TABLE Colors (color VARCHAR(30) PRIMARY KEY, code VARCHAR(10))";
+
+    //*********** OUTFITS *************//
     String sqlCreateOutfits = "CREATE TABLE Outfits (id INTEGER PRIMARY KEY AUTOINCREMENT,  name VARCHAR(30))";
     String sqlCreateItemOutfit = "CREATE TABLE ItemOutfit (id INTEGER NOT NULL, itemId INTEGER NOT NULL, PRIMARY KEY (id, itemId))";
 
-    String sqlCreateColors = "CREATE TABLE Colors (color VARCHAR(30) PRIMARY KEY, code VARCHAR(10))";
+    //*********** CALENDAR *************//
+    String sqlCreateCalendar = "CREATE TABLE NoteCalendar (date VARCHAR(10) NOT NULL, notes VARCHAR(50) NOT NULL, PRIMARY KEY (date, notes))";
+    String sqlCreateItemCalendar = "CREATE TABLE ItemCalendar (date VARCHAR(10) NOT NULL, itemId INTEGER NOT NULL, PRIMARY KEY (date, itemId))";
 
 
     Context ctx = null;
@@ -37,14 +42,19 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Se ejecuta la sentencia SQL de creación de la tabla
+
+        //*********** ITEMS *************//
         db.execSQL(sqlCreateItems);
         db.execSQL(sqlCreateColors);
+        //*********** OUTFITS *************//
         db.execSQL(sqlCreateOutfits);
         db.execSQL(sqlCreateItemOutfit);
+        //*********** CALENDAR *************//
+        db.execSQL(sqlCreateCalendar);
+        db.execSQL(sqlCreateItemCalendar);
+
 
         //Add defult colors
-
         String[] colorNames = ctx.getResources().getStringArray(R.array.colorArrays);
         String[] colorCodes = ctx.getResources().getStringArray(R.array.colors);
 
@@ -58,12 +68,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             db.insert("Colors", null, cv);
 
 
-            MyColor color = new MyColor(colorNames[i], colorCodes[i]);
-            Log.e("color inserted-----", "color: " + color.getColor());
-            Log.e("color inserted-----", "code: " + color.getCode());
+            // MyColor color = new MyColor(colorNames[i], colorCodes[i]);
 
-
-            //addColor(color);
 
         }
 
@@ -629,7 +635,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public void guardarItem(MyItem item) {
+    public void saveItem(MyItem item) {
 
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getReadableDatabase();
@@ -1008,23 +1014,16 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return shopCount;
     }
 
-    //not working
-    public ArrayList<MyColor> getColors2() {
+    public ArrayList<MyColor> getColors() {
         Log.e("TAG--------", "en el helper en getColors()");
 
-        ArrayList<MyColor> colors = new ArrayList<MyColor>();
+        ArrayList<MyColor> colorList = new ArrayList<MyColor>();
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         String selectQuery = "SELECT  * FROM Colors";
         Cursor c = db.rawQuery(selectQuery, null);
 
-
-        // int colorIdx = c.getColumnIndex("color");
-        // int codeIdx = c.getColumnIndex("color");
-
-
-        //Log.e("TAG", "id" + idIdx);
 
         if (c.moveToFirst()) {
             do {
@@ -1037,7 +1036,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
                 Log.e("TAG2-------", "color: " + color.getColor() + "   code:   " + color.getCode());
 
-                colors.add(color);
+                colorList.add(color);
 
             } while (c.moveToNext());
         }
@@ -1045,14 +1044,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         c.close();
         db.close();
 
-        return colors;
+        return colorList;
     }
 
     //******* OUTFITS *******//
 
     public void saveOutfit(MyOutfit myOutfit) {
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         //************* OUTFIT ID AND NAME ***************//
         String sqlInert = "INSERT INTO Outfits (name) VALUES ('" + myOutfit.getName() + "');";
@@ -1164,4 +1163,91 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return itemList;
     }
 
+    //******* CALENDAR *******//
+
+    public void addCalendarNote(String date, String note) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sqlInertNote = "INSERT INTO NoteCalendar (date, notes) VALUES ('" + date + "', '" + note + "');";
+        db.execSQL(sqlInertNote);
+
+    }
+
+    public void addCalendarItem(String date, MyItem item) {
+
+        Log.e("TAG--------", "en el helper en addCalendarItem()");
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sqlInertItem = "INSERT INTO ItemCalendar (date, itemId) VALUES ('" + date + "', " + item.getId() + ");";
+        Log.e("TAG--------", sqlInertItem);
+        db.execSQL(sqlInertItem);
+
+    }
+
+    public ArrayList<String> getCalendarNotes(String date) {
+        Log.e("TAG--------", "en el helper en getCalendarNotes()");
+
+        ArrayList<String> noteList = new ArrayList<String>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM NoteCalendar WHERE date ='" + date + "'";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+
+                // // cargamos la información en el objeto
+                String cDate = c.getString(0);
+                String cNote = c.getString(1);
+
+                Log.e("TAG-----------", "date: " + cDate);
+                Log.e("TAG-----------", "note: " + cNote);
+                noteList.add(cNote);
+
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+
+        return noteList;
+
+
+    }
+
+    public ArrayList<MyItem> getCalendarItems(String date) {
+        Log.e("TAG--------", "en el helper en getCalendarItems()");
+
+        ArrayList<MyItem> itemList = new ArrayList<MyItem>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM ItemCalendar WHERE date ='" + date + "'";
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Log.e("TAG--------", "recorriendo los resultados items:  ");
+
+                // // cargamos la información en el objeto
+                String cDate = c.getString(0);
+                int cItemId = c.getInt(1);
+                Log.e("TAG--------", "date: " + cDate);
+                Log.e("TAG--------", "item id: " + cItemId);
+
+                itemList.add(getItem(cItemId));
+
+
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+
+        return itemList;
+
+    }
 }
