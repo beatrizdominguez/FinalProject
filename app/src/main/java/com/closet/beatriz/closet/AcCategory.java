@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 
@@ -25,15 +27,7 @@ public class AcCategory extends Activity {
     GridView lv;
     AdapterItem adaptador = null;
     private ArrayList<MyItem> lista = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
+
     String category;
     SQLiteHelper usdbh;
 
@@ -249,11 +243,21 @@ public class AcCategory extends Activity {
 
         // segÃºn la opción seleccionada hacemos una cosa y otra
         switch (item.getItemId()) {
+
+            case R.id.CtxLblToday:
+
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy");
+                String date = dateFormat.format(System.currentTimeMillis());
+                // Toast.makeText(this, "date of today formated:  " + date2, Toast.LENGTH_SHORT).show();
+
+                usdbh.addCalendarItem(this, date, myItem);
+                Toast.makeText(this, R.string.msg_today, Toast.LENGTH_SHORT).show();
+
+                return true;
             case R.id.CtxLblModificar:
 
 
-                // modificar(pos);
-                Toast.makeText(this, "Modificar item", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "Modificar item", Toast.LENGTH_SHORT).show();
                 modify(myItem);
 
                 return true;
@@ -269,7 +273,7 @@ public class AcCategory extends Activity {
                 adaptador.notifyDataSetChanged();
 
                 //user mesage
-                Toast.makeText(this, R.string.txt_remove, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.msg_remove, Toast.LENGTH_SHORT).show();
 
                 return true;
 

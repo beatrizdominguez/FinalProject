@@ -158,7 +158,7 @@ public class FmOutfit extends Fragment {
                 MyOutfit myOutfit = new MyOutfit(outName, itemList);
 
                 //********* add to DB *********//
-                usdbh.saveOutfit(myOutfit);
+                usdbh.saveOutfit(getActivity(), myOutfit);
 
                 //********* show on screen *********//
                 showOutfit(myOutfit);

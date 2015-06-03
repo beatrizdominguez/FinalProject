@@ -39,6 +39,11 @@ public class AdapterItem extends BaseAdapter {
         return this;
     }
 
+    public void refresh(ArrayList<MyItem> items) {
+        lista = items;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return lista.size();

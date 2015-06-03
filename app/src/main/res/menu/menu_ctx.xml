@@ -2,6 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/CtxLblToday"
+        android:title="@string/action_today"></item>
+    <item
         android:id="@+id/CtxLblModificar"
         android:title="@string/action_modify"></item>
     <item

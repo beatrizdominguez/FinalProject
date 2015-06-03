@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
 
@@ -712,13 +713,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return item;
     }
 
-    public void addColor(MyColor color) {
+    public void addColor(Context context, MyColor color) {
 
         // Log.e("-----guardar item helper", i.getImage());
         SQLiteDatabase db = this.getWritableDatabase();
 
         String sqlAddColor = "Insert into Colors (color, code) VALUES('" + color.getColor() + "', '" + color.getCode() + "')";
-        db.execSQL(sqlAddColor);
+        try {
+            db.execSQL(sqlAddColor);
+
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.msg_duplicate_error, Toast.LENGTH_SHORT).show();
+        }
 
         Log.e("TAG -------- color", "name: " + color.getColor() + "   code:" + color.getCode());
 
@@ -1049,26 +1055,37 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     //******* OUTFITS *******//
 
-    public void saveOutfit(MyOutfit myOutfit) {
+    public void saveOutfit(Context context, MyOutfit myOutfit) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         //************* OUTFIT ID AND NAME ***************//
         String sqlInert = "INSERT INTO Outfits (name) VALUES ('" + myOutfit.getName() + "');";
         // Log.e("insert item", sqlInertItem);
-        db.execSQL(sqlInert);
+        // db.execSQL(sqlInert);
+        try {
+            db.execSQL(sqlInert);
 
-        //************* OUTFIT ID AND ITEMS ***************//
-        ArrayList<MyItem> lista = myOutfit.getItemList();
 
-        int outfitID = getLastID();
+            //************* OUTFIT ID AND ITEMS ***************//
+            ArrayList<MyItem> lista = myOutfit.getItemList();
 
-        for (int i = 0; i < lista.size(); i++) {
+            int outfitID = getLastID();
 
-            String sqlInertItems = "INSERT INTO ItemOutfit (id, itemId) VALUES (" + outfitID + ", " + lista.get(i).getId() + ");";
+            for (int i = 0; i < lista.size(); i++) {
 
-            db.execSQL(sqlInertItems);
+                String sqlInertItems = "INSERT INTO ItemOutfit (id, itemId) VALUES (" + outfitID + ", " + lista.get(i).getId() + ");";
 
+                try {
+                    db.execSQL(sqlInertItems);
+                } catch (Exception e) {
+                    Toast.makeText(context, R.string.msg_duplicate_error, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.msg_duplicate_error, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -1165,16 +1182,21 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     //******* CALENDAR *******//
 
-    public void addCalendarNote(String date, String note) {
+    public void addCalendarNote(Context context, String date, String note) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         String sqlInertNote = "INSERT INTO NoteCalendar (date, notes) VALUES ('" + date + "', '" + note + "');";
-        db.execSQL(sqlInertNote);
+
+        try {
+            db.execSQL(sqlInertNote);
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.msg_duplicate_error, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
-    public void addCalendarItem(String date, MyItem item) {
+    public void addCalendarItem(Context context, String date, MyItem item) {
 
         Log.e("TAG--------", "en el helper en addCalendarItem()");
 
@@ -1182,7 +1204,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         String sqlInertItem = "INSERT INTO ItemCalendar (date, itemId) VALUES ('" + date + "', " + item.getId() + ");";
         Log.e("TAG--------", sqlInertItem);
-        db.execSQL(sqlInertItem);
+        try {
+            db.execSQL(sqlInertItem);
+        } catch (Exception e) {
+            Toast.makeText(context, R.string.msg_duplicate_error, Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -1248,6 +1275,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.close();
 
         return itemList;
+
+    }
+
+    public void removeCalendarItems(String date) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sqlDelete = "DELETE FROM ItemCalendar WHERE date= ('" + date + "');";
+        Log.e("TAG--------", sqlDelete);
+        db.execSQL(sqlDelete);
+
+    }
+
+    public void removeCalendarNotes(String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sqlDelete = "DELETE FROM NoteCalendar WHERE date= ('" + date + "');";
+        Log.e("TAG--------", sqlDelete);
+        db.execSQL(sqlDelete);
 
     }
 }

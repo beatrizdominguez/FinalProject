@@ -148,7 +148,7 @@ public class FmConfig extends Fragment {
                 String strColor = "#" + Integer.toHexString(color);
 
                 final MyColor newColor = new MyColor(colorName, strColor);
-                usdbh.addColor(newColor);
+                usdbh.addColor(getActivity(), newColor);
 
                 Toast.makeText(getActivity(), R.string.txt_msg_color, Toast.LENGTH_SHORT).show();
 

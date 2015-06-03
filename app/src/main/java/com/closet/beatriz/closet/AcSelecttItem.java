@@ -200,7 +200,7 @@ public class AcSelecttItem extends Activity {
 
     private ArrayList<MyItem> selectItem(MyItem i) {
 
-        Toast.makeText(this, R.string.txt_outfit_added, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, R.string.txt_outfit_added, Toast.LENGTH_SHORT).show();
 
         lista.add(i);
         return lista;
@@ -298,7 +298,7 @@ public class AcSelecttItem extends Activity {
 
     public void save() {
 
-        Toast.makeText(this, "guardar", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "guardar", Toast.LENGTH_SHORT).show();
         //create intent
         Intent intentSave = new Intent();
         intentSave.putExtra("list", lista);

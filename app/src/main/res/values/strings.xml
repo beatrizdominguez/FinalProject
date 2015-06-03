@@ -24,12 +24,14 @@
     <string name="action_back">Volver</string>
     <string name="action_exit">Salir</string>
     <!-- Menu contextual -->
+    <string name="action_today">Hoy</string>
     <string name="action_remove">Eliminar</string>
     <string name="action_modify">Modificar</string>
 
     <!-- Buttons -->
     <string name="action_add">Añadir</string>
     <string name="action_delete">Eliminar</string>
+    <string name="action_empty">Vaciar</string>
     <string name="action_next">Siguiente</string>
 
     <!-- Add item -->
@@ -40,12 +42,17 @@
     <string name="txt_size">Talla</string>
     <string name="txt_price">Precio</string>
     <string name="txt_currency"> €</string>
-    <string name="txt_when_buy">¿Cúandlo lo compraste</string>
-    <string name="txt_where_buy">¿Dónde lo compraste</string>
+    <string name="txt_when_buy">Fecha compra</string>
+    <string name="txt_where_buy">Tienda</string>
     <string name="txt_color_info">Puedes añadir nuevos colores a la base de datos en la ventana de configuración</string>
     <string name="txt_invalid_description">No se ha introducido una descripción</string>
     <string name="txt_invalid_colors">Añada colores a la prenda</string>
     <string name="txt_invalid_size">Especifique una talla</string>
+    <!-- Photo Dialog -->
+    <string name="txt_add_photo">Añadir imagen</string>
+    <string name="txt_take_photo">Hacer foto</string>
+    <string name="txt_galery_photo">Galería</string>
+
 
     <!-- Search -->
     <!-- <string name="txt_cat">Categoría</string> -->
@@ -76,6 +83,7 @@
     <!-- Calendar -->
     <string name="txt_add_note">Nueva nota</string>
     <string name="txt_notes">Notas:</string>
+    <string name="txt_more">Más</string>
 
 
     <!-- Menu items -->
@@ -83,7 +91,9 @@
     <string name="action_see">Ver</string>
 
     <!-- Toast messages -->
-    <string name="txt_remove">La prenda ha sido eliminada</string>
+    <string name="msg_remove">La prenda ha sido eliminada</string>
+    <string name="msg_today">La prenda se ha añadido</string>
+    <string name="msg_duplicate_error">ERROR: información duplicada</string>
 
     <!-- Nombres de los items -->
     <string-array name="nav_drawer_items">
@@ -109,81 +119,6 @@
     <string name="catDress">Vestidos</string>
     <string name="catAccesories">Complementos</string>
 
-    <string-array name="categoryArrays">
-        <item>Camisetas</item>
-        <item>Pantalones</item>
-        <item>Ropa interior</item>
-        <item>Abrigos</item>
-        <item>Zapatos</item>
-        <item>Jerseys</item>
-        <item>Pijamas</item>
-        <item>Vestidos</item>
-        <item>Complementos</item>
-    </string-array>
-
-    <!-- Shops ???? tabla de la base de datos -->
-    <string-array name="shopsArrays22">
-        <item>Zara</item>
-        <item>HM</item>
-        <item>Primark</item>
-        <item>Berska</item>
-        <item>Stradivarius</item>
-        <item>Mango</item>
-        <item>Cortefield</item>
-        <item>Espirit</item>
-        <item>Kaymo</item>
-    </string-array>
-
-    <!-- Seasons -->
-    <string name="season_pronpt">Choose a season</string>
-
-    <string-array name="seasonsArrays2">
-        <item>Primavera</item>
-        <item>Verano</item>
-        <item>Invierno</item>
-        <item>Otoño</item>
-    </string-array>
-    <string-array name="searchSeasonsArrays">
-        <item>All</item>
-        <item>Primavera</item>
-        <item>Verano</item>
-        <item>Invierno</item>
-        <item>Otoño</item>
-    </string-array>
-    //seasons
-    <string name="seasonSpring">Primavera</string>
-    <string name="seasonSummer">Verano</string>
-    <string name="seasonWinter">Invierno</string>
-    <string name="seasonAutumn">Otoño</string>
-
-    <!-- Color list -->
-    <string-array name="colorArrays2">
-        <item>Red</item>
-        <item>Blue</item>
-        <item>Orange</item>
-        <item>White</item>
-        <item>Black</item>
-        <item>Pink</item>
-        <item>Yellow</item>
-        <item>Green</item>
-        <item>Aqua</item>
-        <item>Green</item>
-        <item>Other</item>
-    </string-array>
-
-    <!-- Color list -->
-    <string-array name="searchColorArrays">
-        <item>All</item>
-        <item>Red</item>
-        <item>Blue</item>
-        <item>Orange</item>
-        <item>White</item>
-        <item>Black</item>
-        <item>Pink</item>
-        <item>Yellow</item>
-        <item>Green</item>
-        <item>Aqua</item>
-    </string-array>
 
     <!-- Statistics -->
     <string name="statistics_title">Estadísticas</string>
@@ -196,6 +131,10 @@
     <string name="statistics_count">Numero de prendas</string>
     <string name="statistics_total_count">Número de prendas en tu armario: </string>
     <string name="statistics_see_graph">Ver la gráfica</string>
+
+
+    <!-- other -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_add_item2">AddItem2</string>
     <string name="hello_world">Hello world!</string>

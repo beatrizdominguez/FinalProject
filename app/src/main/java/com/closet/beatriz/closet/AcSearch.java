@@ -29,15 +29,6 @@ public class AcSearch extends Activity {
     AdapterItem adaptador = null;
     private ArrayList<MyItem> lista = new ArrayList<MyItem>();
     private ArrayList<MyItem> backupLista = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALShirts = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALPants = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALUnderWear = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALCoats = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALShoes = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALJumper = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALPijamas = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALDress = new ArrayList<MyItem>();
-    private ArrayList<MyItem> ALAccesories = new ArrayList<MyItem>();
 
     SQLiteHelper usdbh;
     int pos;

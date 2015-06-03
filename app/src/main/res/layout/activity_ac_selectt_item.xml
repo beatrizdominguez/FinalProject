@@ -31,7 +31,8 @@
             android:padding="10dp"
             android:stretchMode="columnWidth"
             android:verticalSpacing="10dp"
-            android:listSelector="@color/main_transparent" />
+            android:listSelector="@color/main_transparent"
+            android:choiceMode="multipleChoice" />
 
 
         <TextView
@@ -52,7 +53,8 @@
             android:stretchMode="columnWidth"
             android:verticalSpacing="10dp"
             android:drawSelectorOnTop="true"
-            android:listSelector="@color/main_transparent" />
+            android:listSelector="@color/main_transparent"
+            android:choiceMode="multipleChoice" />
 
         <TextView
             android:id="@+id/txtUnderWear"

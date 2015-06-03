@@ -12,6 +12,7 @@
         <item>Vestidos</item>
         <item>Complementos</item>
     </string-array>
+
     <string-array name="categoriesImagesArrays">
         <item>shirt_img</item>
         <item>pants_img</item>
