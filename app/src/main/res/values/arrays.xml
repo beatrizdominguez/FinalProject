@@ -2,15 +2,15 @@
 <resources>
 
     <string-array name="categoriesArrays">
-        <item>Camisetas</item>
-        <item>Pantalones</item>
-        <item>Ropa interior</item>
-        <item>Abrigos</item>
-        <item>Zapatos</item>
-        <item>Jerseys</item>
+        <item>Shirts</item>
+        <item>Pants</item>
+        <item>Under wear</item>
+        <item>Coats</item>
+        <item>Shoes</item>
+        <item>Jumpers</item>
         <item>Pijamas</item>
-        <item>Vestidos</item>
-        <item>Complementos</item>
+        <item>Dresses</item>
+        <item>Accessories</item>
     </string-array>
 
     <string-array name="categoriesImagesArrays">
@@ -26,25 +26,35 @@
     </string-array>
 
     <string-array name="seasonsArrays">
-        <item>Primavera</item>
-        <item>Verano</item>
-        <item>Invierno</item>
-        <item>Otoño</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Winter</item>
+        <item>Autom</item>
     </string-array>
 
     <string-array name="colorArrays">
-        <item>Black</item>
-        <item>White</item>
-        <item>Red</item>
         <item>Blue</item>
+        <item>Aqua blue</item>
+        <item>Lavender</item>
+        <item>Red</item>
+        <item>Fuchsia</item>
         <item>Orange</item>
         <item>Pink</item>
         <item>Yellow</item>
-        <item>Green</item>
-        <item>Aqua</item>
+        <item>White</item>
+        <item>Peach</item>
+        <item>Gold</item>
+        <item>Apple green</item>
+        <item>Light green</item>
+        <item>Tea blue</item>
+        <item>Silver</item>
+        <item>Dark brown</item>
+        <item>Navy blue</item>
+        <item>Purple</item>
+        <item>Black</item>
+        <item>Gray</item>
         <item>Other</item>
     </string-array>
-
 
     <!-- Shops ???? tabla de la base de datos -->
     <string-array name="shopsArrays">

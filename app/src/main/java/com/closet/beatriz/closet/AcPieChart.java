@@ -58,7 +58,7 @@ public class AcPieChart extends Activity {
 
         //chart information
         mRenderer.setApplyBackgroundColor(true);
-        mRenderer.setBackgroundColor(getResources().getColor(R.color.background));
+        // mRenderer.setBackgroundColor(getResources().getColor(R.color.background));
         //mRenderer.setShowLegend(false);
         mRenderer.setShowLegend(true);
         mRenderer.setChartTitle(title);
@@ -102,9 +102,9 @@ public class AcPieChart extends Activity {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
 
                     if (seriesSelection == null) {
-                        Toast.makeText(AcPieChart.this, "No chart element was clicked", Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(AcPieChart.this, "No chart element was clicked", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(AcPieChart.this, "Chart element data point index " + (seriesSelection.getPointIndex() + 1) + " was clicked" + " point value=" + seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(AcPieChart.this, "Chart element data point index " + (seriesSelection.getPointIndex() + 1) + " was clicked" + " point value=" + seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -114,10 +114,10 @@ public class AcPieChart extends Activity {
                 public boolean onLongClick(View v) {
                     SeriesSelection seriesSelection = mChartView.getCurrentSeriesAndPoint();
                     if (seriesSelection == null) {
-                        Toast.makeText(AcPieChart.this, "No chart element was long pressed", Toast.LENGTH_SHORT);
+                        // Toast.makeText(AcPieChart.this, "No chart element was long pressed", Toast.LENGTH_SHORT);
                         return false;
                     } else {
-                        Toast.makeText(AcPieChart.this, "Chart element data point index " + seriesSelection.getPointIndex() + " was long pressed", Toast.LENGTH_SHORT);
+                        //  Toast.makeText(AcPieChart.this, "Chart element data point index " + seriesSelection.getPointIndex() + " was long pressed", Toast.LENGTH_SHORT);
                         return true;
                     }
                 }

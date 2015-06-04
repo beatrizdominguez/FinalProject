@@ -1,12 +1,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView5"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:scrollbarStyle="outsideOverlay">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_alignEnd="@+id/textView3"
         android:layout_alignRight="@+id/textView3"
@@ -16,36 +17,29 @@
         android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/textView3"
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/statistics_title" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/main"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/main">
 
             <TextView
 
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="@string/statistics_value"
-                android:textColor="@color/drawer_background" />
+                android:textColor="@color/main_text" />
 
             <Button
                 android:id="@+id/btnValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/down_arrow" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -65,35 +59,29 @@
 
         </LinearLayout>
 
-        <TextView
-
-            style="@style/text_color"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="////////////////////////" />
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/main"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/main">
 
             <TextView
 
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="@string/statistics_count"
-                android:textColor="@color/drawer_background" />
+                android:textColor="@color/main_text" />
 
             <Button
                 android:id="@+id/btnCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/down_arrow" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/layoutCount"
@@ -110,30 +98,33 @@
                 android:text="@string/statistics_total" />
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="#f3ff70"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/main_transparent">
 
                 <TextView
 
                     style="@style/text_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/statistics_category" />
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/statistics_category"
+                    android:textColor="@color/main_text" />
 
                 <Button
                     android:id="@+id/btnCountCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:layout_marginLeft="100dp"
                     android:background="@drawable/down_arrow" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
-            /////////////////
+
+            <!-- //////// -->
 
 
             <LinearLayout
@@ -146,30 +137,32 @@
 
             </LinearLayout>
 
-            //////////seasons
 
-            <LinearLayout
+            <!-- seasons -->
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="#f3ff70"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/main_transparent">
 
                 <TextView
 
                     style="@style/text_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/statistics_seasons" />
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/statistics_seasons"
+                    android:textColor="@color/main_text" />
 
                 <Button
                     android:id="@+id/btnCountSeasons"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
+                    android:layout_alignParentRight="true"
+
                     android:background="@drawable/down_arrow" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/layoutCountSeasons"
@@ -183,28 +176,29 @@
             </LinearLayout>
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="#f3ff70"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/main_transparent">
 
                 <TextView
 
                     style="@style/text_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/statistics_colors" />
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/statistics_colors"
+                    android:textColor="@color/main_text" />
 
                 <Button
                     android:id="@+id/btnCountColors"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/down_arrow" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/layoutCountColors"
@@ -216,28 +210,29 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="#f3ff70"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@color/main_transparent">
 
                 <TextView
 
                     style="@style/text_color"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/statistics_shops" />
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/statistics_shops"
+                    android:textColor="@color/main_text" />
 
                 <Button
                     android:id="@+id/btnCountShops"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="100dp"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/down_arrow" />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/layoutCountShops"
@@ -251,31 +246,31 @@
 
         </LinearLayout>
 
-        //new
+        <!-- new -->
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/main"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/main">
 
             <TextView
 
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="@string/statistics_colors"
-                android:textColor="@color/drawer_background" />
+                android:textColor="@color/main_text" />
 
             <Button
                 android:id="@+id/btnColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/down_arrow" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -290,35 +285,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/statistics_see_graph" />
+                android:text="@string/statistics_see_graph"
+                style="@style/button_color"
+                android:layout_marginTop="10dp"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp" />
 
 
         </LinearLayout>
-        //new
+        <!-- new -->
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/main"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="@color/main">
 
             <TextView
 
                 style="@style/text_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:text="@string/statistics_shops"
-                android:textColor="@color/drawer_background" />
+                android:textColor="@color/main_text" />
 
             <Button
                 android:id="@+id/btnShops"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
+                android:layout_alignParentRight="true"
                 android:background="@drawable/down_arrow" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -331,10 +331,14 @@
 
             <Button
                 android:id="@+id/btnGraphShop"
+                style="@style/button_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/statistics_see_graph" />
+                android:text="@string/statistics_see_graph"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
 
         </LinearLayout>
 

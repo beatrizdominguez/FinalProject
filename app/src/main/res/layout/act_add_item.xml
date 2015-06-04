@@ -42,6 +42,7 @@
             android:id="@+id/etxtDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLength="30"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -166,6 +167,7 @@
                 android:id="@+id/etxtSize"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:maxLength="6"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="20dp" />
 
@@ -191,6 +193,7 @@
                 android:id="@+id/etxtPrice"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:maxLength="6"
                 android:layout_gravity="center_horizontal"
                 android:inputType="number"
                 android:text="0" />

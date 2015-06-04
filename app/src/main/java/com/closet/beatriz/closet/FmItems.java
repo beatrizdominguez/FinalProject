@@ -94,6 +94,7 @@ public class FmItems extends Fragment {
 
     }
 
+
     private void initializeTextView() {
 
         shirtCount = (TextView) rootview.findViewById(R.id.txtShirtCount);
@@ -122,7 +123,7 @@ public class FmItems extends Fragment {
         //image.setMaxHeight(70);
         //image.setClickable(true);
         //  LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(150, 75);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         // layoutParams.setMargins(10, 0, 10, 0);
         image.setLayoutParams(layoutParams);
 
@@ -867,8 +868,10 @@ public class FmItems extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         // super.onActivityResult(requestCode, resultCode, data);
         getActivity();
+
         Log.e("TAG-------FmItems", "onActivityResult");
         if (resultCode == Activity.RESULT_OK) {
+
             if (requestCode == REQUEST_ADD) {
 
                 MyItem myItem = (MyItem) data.getSerializableExtra("item");
@@ -880,7 +883,7 @@ public class FmItems extends Fragment {
                 String cat = data.getStringExtra("Category");
 
                 updateLayout(cat);
-                Toast.makeText(getActivity(), "on activity result category", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getActivity(), "on activity result category", Toast.LENGTH_SHORT).show();
 
             }
         }

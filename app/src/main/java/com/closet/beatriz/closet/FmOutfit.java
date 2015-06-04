@@ -1,5 +1,6 @@
 package com.closet.beatriz.closet;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -9,12 +10,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.AttributeSet;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -114,7 +117,7 @@ public class FmOutfit extends Fragment {
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutOutfits);
         //outfit name
         TextView cat = new TextView(getActivity());
-
+        cat.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
         cat.setText(myOutfit.getName());
         layout.addView(cat);
         //outfit items
@@ -133,8 +136,8 @@ public class FmOutfit extends Fragment {
             //  image.setMaxHeight(10);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(100, 100);
             image.setLayoutParams(layoutParams);
-            //image.setLayoutParams().height = 20;
-            // image.getLayoutParams().width = 10;
+            // image.getLayoutParams().height = 100;
+            //image.getLayoutParams().width = 75;
             MyItem item = itemList.get(i);
             Bitmap b = StringToBitmap(item.getImage());
             image.setImageBitmap(b);
@@ -142,6 +145,7 @@ public class FmOutfit extends Fragment {
         }
 
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

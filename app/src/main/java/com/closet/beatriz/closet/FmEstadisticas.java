@@ -189,10 +189,11 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide value layout and information
     private void showValue() {
 
         LinearLayout precio = (LinearLayout) rootview.findViewById(R.id.layoutPrecio);
-        Toast.makeText(getActivity(), "visibility: " + precio.getVisibility(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(getActivity(), "visibility: " + precio.getVisibility(), Toast.LENGTH_SHORT).show();
 
         if (precio.getVisibility() != LinearLayout.GONE) {
             precio.setVisibility(LinearLayout.GONE);
@@ -208,6 +209,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count layout and information
     private void showCount() {
 
         LinearLayout count = (LinearLayout) rootview.findViewById(R.id.layoutCount);
@@ -226,6 +228,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count by category layout and information
     private void showCountCategory() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountCategory);
@@ -244,6 +247,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count by seasons layout and information
     private void showCountSeasons() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountSeasons);
@@ -262,6 +266,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count by colors layout and information
     private void showCountColors() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountColors);
@@ -280,6 +285,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count by shops layout and information
     private void showCountShops() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountShops);
@@ -298,6 +304,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide colors layout and information
     private void showColors() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutColors);
@@ -316,6 +323,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //show or hide count by shops layout and information
     private void showShops() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
@@ -334,7 +342,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
-
+    //display the price information
     private void displayPrices() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutPrecio);
@@ -352,6 +360,7 @@ public class FmEstadisticas extends Fragment {
 
             //añadimos el nombre
             TextView cat = new TextView(getActivity());
+            cat.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
             cat.setText(categoryName[i] + ": " + pricesArray[i] + getActivity().getResources().getString(R.string.txt_currency));
             //add style
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -365,7 +374,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
-
+    //display the count by category information
     private void displayCountCategory() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountCategory);
@@ -381,6 +390,7 @@ public class FmEstadisticas extends Fragment {
             //añadimos el nombre
             TextView cat = new TextView(getActivity());
             cat.setText(categoryName[i] + ": " + countArray[i]);
+            cat.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
             //add style
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
             layout.addView(cat);
@@ -392,6 +402,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //display the count by season information
     private void displayCountSeason() {
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountSeasons);
 
@@ -408,6 +419,7 @@ public class FmEstadisticas extends Fragment {
 
             //añadimos el nombre
             TextView cat = new TextView(getActivity());
+            cat.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
             cat.setText(seasonName[i] + ": " + countArray[i]);
             //add style
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -421,7 +433,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
-
+    //display the count by color information
     private void displayCountColors() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountColors);
@@ -436,6 +448,7 @@ public class FmEstadisticas extends Fragment {
 
             //añadimos el nombre
             TextView color = new TextView(getActivity());
+            color.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
             color.setText(colorName[i] + ": " + colorCount[i]);
             //add style
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -445,6 +458,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //display the count by shop information
     private void displayCountShops() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutCountShops);
@@ -459,6 +473,7 @@ public class FmEstadisticas extends Fragment {
 
             //añadimos el nombre
             TextView shop = new TextView(getActivity());
+            shop.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
             shop.setText(shopName[i] + ": " + shopCount[i]);
             //add style
             // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -467,6 +482,7 @@ public class FmEstadisticas extends Fragment {
 
     }
 
+    //display the color information
     private void displayColors() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutColors);
@@ -491,6 +507,7 @@ public class FmEstadisticas extends Fragment {
 
                 //añadimos el nombre
                 TextView color = new TextView(getActivity());
+                color.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
                 color.setText(colorName[i] + ": " + Math.abs(percentage) + "%");
                 //add style
                 // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -502,14 +519,13 @@ public class FmEstadisticas extends Fragment {
 
     }
 
-
+    //display the shop information
     private void displayShops() {
 
         LinearLayout layout = (LinearLayout) rootview.findViewById(R.id.layoutShops);
 
         shopName = getActivity().getResources().getStringArray(R.array.shopsArrays);
         shopCount = usdbh.shopStatistics(getActivity());
-
 
         for (int i = 0; i < shopCount.length; i++) {
 
@@ -521,6 +537,7 @@ public class FmEstadisticas extends Fragment {
 
                 //añadimos el nombre
                 TextView color = new TextView(getActivity());
+                color.setTextAppearance(getActivity().getApplicationContext(), R.style.text_color);
                 color.setText(shopName[i] + ": " + Math.abs(percentage) + "%");
                 //add style
                 // Log.e("TAG", "color to add:  " + colorName[i] + " : " + colorCount[i]);
@@ -529,46 +546,6 @@ public class FmEstadisticas extends Fragment {
 
         }
 
-
     }
 
-
-    public void creteChart() {
-
-
-        int[] COLORS = new int[]{Color.GREEN, Color.BLUE, Color.MAGENTA, Color.CYAN};
-
-        double[] VALUES = new double[]{10, 11, 12, 13};
-
-        String[] NAME_LIST = new String[]{"A", "B", "C", "D"};
-
-        CategorySeries mSeries = new CategorySeries("");
-
-        DefaultRenderer mRenderer = new DefaultRenderer();
-
-        GraphicalView mChartView;
-
-        mRenderer.setApplyBackgroundColor(true);
-        mRenderer.setBackgroundColor(Color.argb(100, 50, 50, 50));
-        mRenderer.setChartTitleTextSize(20);
-        mRenderer.setLabelsTextSize(15);
-        mRenderer.setLegendTextSize(15);
-        mRenderer.setMargins(new int[]{20, 30, 15, 0});
-        mRenderer.setZoomButtonsVisible(true);
-        mRenderer.setStartAngle(90);
-
-        for (int i = 0; i < VALUES.length; i++) {
-            mSeries.add(NAME_LIST[i] + " " + VALUES[i], VALUES[i]);
-            SimpleSeriesRenderer renderer = new SimpleSeriesRenderer();
-            renderer.setColor(COLORS[(mSeries.getItemCount() - 1) % COLORS.length]);
-            mRenderer.addSeriesRenderer(renderer);
-        }
-
-        /*
-        if (mChartView != null) {
-            mChartView.repaint();
-        }*/
-
-
-    }
 }

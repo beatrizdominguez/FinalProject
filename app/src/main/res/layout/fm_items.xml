@@ -99,8 +99,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtCamisetas"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic"
-                android:background="@color/transparent" />
+                android:src="@drawable/add_ic" />
 
             <ImageButton
 
@@ -213,8 +212,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtPantalones"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic"
-                android:background="@color/transparent" />
+                android:src="@drawable/add_ic" />
 
             <ImageButton
 
@@ -227,8 +225,7 @@
                 android:layout_below="@+id/imgAddPantalones"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/search_ic"
-                android:background="@color/transparent" />
+                android:src="@drawable/search_ic" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -330,8 +327,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/txtUnderWear"
                 android:layout_gravity="right"
-                android:src="@drawable/add_ic"
-                android:background="@color/transparent" />
+                android:src="@drawable/add_ic" />
 
             <ImageButton
 
@@ -344,8 +340,7 @@
                 android:layout_below="@+id/imgAddUnderWear"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/search_ic"
-                android:background="@android:color/transparent" />
+                android:src="@drawable/search_ic" />
 
             <TextView
                 android:layout_width="wrap_content"

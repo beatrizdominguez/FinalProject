@@ -99,7 +99,7 @@ public class FmCalendar extends Fragment {
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
                 date = dayCode(dayOfMonth) + "/" + monthCode(month + 1) + "/" + year;
-                Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
                 //Toast.makeText(getActivity(), "" + dayOfMonth + " of " + monthName(month) + " of " + year, Toast.LENGTH_SHORT).show();
 
                 //remove info and add the one related to that date

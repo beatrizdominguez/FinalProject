@@ -88,7 +88,7 @@ public class AcAddItem extends Activity {
         //controls
         etxtDesc = (EditText) findViewById(R.id.etxtDesc);
         spnCat = (Spinner) findViewById(R.id.spnCat);
-        initializeCategorySpinner();
+        // initializeCategorySpinner();
         spnSeason = (Spinner) findViewById(R.id.spnSeason);
         //colors
         txtColors = (TextView) findViewById(R.id.txtColors);
@@ -490,7 +490,6 @@ public class AcAddItem extends Activity {
 
                 imageBitmap = BitmapFactory.decodeFile(picturePath);
                 btnImg.setImageBitmap(imageBitmap);
-
 
             }
         }

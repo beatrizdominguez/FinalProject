@@ -40,7 +40,7 @@ public class AcSearch extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-
+        //get information from intent
         Bundle extras = getIntent().getExtras();
         category = extras.getString("Category");
 
@@ -141,7 +141,7 @@ public class AcSearch extends Activity {
 
                 filter();
                 //filter2();
-                Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(AcSearch.this, "filtrar info", Toast.LENGTH_SHORT).show();
             }
         });
         Log.e("TAG-----------", "final del on create");
@@ -287,7 +287,7 @@ public class AcSearch extends Activity {
             Log.e("item--------desc", myItem.getDescription());
             Log.e("item ------- check", "--------------------");
 
-            if (!myItem.getSeason().equals(season) && !myItem.getSeason().equals(getResources().getString(R.string.txt_all))) {
+            if (!myItem.getSeason().equals(season) && !season.equals(getResources().getString(R.string.txt_all))) {
 
 
                 lista.remove(i);
@@ -298,7 +298,7 @@ public class AcSearch extends Activity {
 
                 // Log.e("TAG -- remove", "No season, " + item.getSeason());
 
-            } else if (!myItem.getColours().contains(color) && !myItem.getColours().equals(getResources().getString(R.string.txt_all))) {
+            } else if (!myItem.getColours().contains(color) && !color.equals(getResources().getString(R.string.txt_all))) {
 
                 // Log.e("TAG -- remove", "No colors, " + item.getColours());
 

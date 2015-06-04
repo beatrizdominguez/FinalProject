@@ -22,7 +22,8 @@
 
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
 
-        android:textAppearance="?android:attr/textAppearanceListItemSmall" />
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="@color/main" />
 
     <TextView
         android:id="@+id/counter"

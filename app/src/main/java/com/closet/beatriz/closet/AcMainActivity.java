@@ -48,7 +48,7 @@ public class AcMainActivity extends Activity {
 
 
         // Add Drawer Item to dataList
-        dataList.add(new MyDrawerItem(getString(R.string.title_section1), R.drawable.add_ic));
+        dataList.add(new MyDrawerItem(getString(R.string.title_section1), R.drawable.my_items_ic));
         dataList.add(new MyDrawerItem(getString(R.string.title_section2), R.drawable.add_ic));
         dataList.add(new MyDrawerItem(getString(R.string.title_section3), R.drawable.add_ic));
         dataList.add(new MyDrawerItem(getString(R.string.title_section4), R.drawable.add_ic));
@@ -141,10 +141,10 @@ public class AcMainActivity extends Activity {
                 break;
             case 6:
                 //change when fragment created
-                fragment = new FmItems();
-                args.putString(FmItems.ITEM_NAME, dataList.get(possition)
+                fragment = new FmAbout();
+                args.putString(FmAbout.ITEM_NAME, dataList.get(possition)
                         .getItemName());
-                args.putInt(FmItems.IMAGE_RESOURCE_ID, dataList.get(possition)
+                args.putInt(FmAbout.IMAGE_RESOURCE_ID, dataList.get(possition)
                         .getImgResID());
                 break;
 

@@ -12,40 +12,39 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
             android:name=".AcSplash"
-            android:label="@string/title_activity_splash">
-
-            <!-- Quitar comentario para que sea MAIN -->
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".AcMainActivity"
             android:label="@string/app_name">
 
-            <!-- Quitar, rolo desarrollo rapidez -->
+            <!-- activity not used due to the slow it causes -->
             <!--
                         <intent-filter>
                             <action android:name="android.intent.action.MAIN" />
 
                             <category android:name="android.intent.category.LAUNCHER" />
                         </intent-filter>
-            -->
+                        -->
+        </activity>
+        <activity
+            android:name=".AcMainActivity"
+            android:label="@string/app_name">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
         </activity>
         <activity
             android:name=".AcAddItem"
-            android:label="@string/title_activity_add_item2" />
+            android:label="@string/title_activity_add_item" />
         <activity
             android:name=".AcModifyItem"
-            android:label="CAMBIAR" />
+            android:label="@string/title_activity_modify_item" />
         <activity
             android:name=".AcSearch"
             android:label="@string/title_activity_search" />
@@ -64,9 +63,7 @@
         <activity
             android:name=".AcSelecttItem"
             android:label="@string/title_activity_ac_selectt_item" />
-        <activity
-            android:name=".Grid3"
-            android:label="@string/title_activity_grid3"></activity>
+
     </application>
 
 </manifest>

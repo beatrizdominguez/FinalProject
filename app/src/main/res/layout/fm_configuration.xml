@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbarStyle="outsideOverlay"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -11,14 +12,58 @@
         android:layout_gravity="left|top"
         android:orientation="vertical">
 
+        <Button
+            android:id="@+id/btnAddColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/txt_add_color"
+            style="@style/button_color"
+            android:layout_margin="10dp"
+            android:padding="10dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/txt_theme"
+                android:id="@+id/txtTheme"
+                android:layout_gravity="center_vertical"
+                style="@style/text_color" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnGreenTheme"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/main"
+                android:layout_marginLeft="20dp" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnThemeRed"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/main_red"
+                android:layout_marginLeft="20dp" />
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/Default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|left"
             android:text="@string/txt_default"
-            style="@style/text_color"
-            android:textColor="@color/config_color" />
+            style="@style/text_color" />
 
         <Spinner
             android:id="@+id/SpnDefault"
@@ -41,7 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|left"
             android:text="@string/txt_add_cat"
-            android:textColor="@color/config_color"
             style="@style/text_color" />
 
         <!-- RESTINGIR A LO QUE SEA EL ARCHAR EN LA BASE DE DATOS EJ 20 CARACTERES-->
@@ -65,7 +109,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|left"
             android:text="@string/txt_rename_cat"
-            android:textColor="@color/config_color"
             style="@style/text_color" />
 
         <Spinner
@@ -81,7 +124,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|left"
             android:text="@string/txt_newname_cat"
-            android:textColor="@color/config_color"
             style="@style/text_color" />
 
         <!-- RESTINGIR A LO QUE SEA EL ARCHAR EN LA BASE DE DATOS EJ 20 CARACTERES-->
@@ -105,8 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|left"
             android:text="@string/txt_delete_cat"
-            android:textColor="@color/config_color"
-            style="@style/text_color" />
+            style="@style/button_color" />
 
         <Spinner
             android:id="@+id/SpnDelCat"
@@ -123,12 +164,53 @@
             android:text="@string/action_delete"
             style="@style/button_color" />
 
-        <Button
-            android:id="@+id/btnAddColor"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/txt_add_color"
-            style="@style/button_color" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/txt_item_data"
+            android:id="@+id/txtInfoSave"
+            style="@style/text_color" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_season"
+            android:id="@+id/checkBoxSeason"
+            android:checked="true"
+            android:layout_marginLeft="30dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_size"
+            android:id="@+id/checkBoxSize"
+            android:checked="true"
+            android:layout_marginLeft="30dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_price"
+            android:id="@+id/checkBoxPrice"
+            android:checked="true"
+            android:layout_marginLeft="30dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_when_buy"
+            android:id="@+id/checkBoxWhen"
+            android:checked="true"
+            android:layout_marginLeft="30dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_where_buy"
+            android:id="@+id/checkBox"
+            android:checked="true"
+            android:layout_marginLeft="30dp" />
+
     </LinearLayout>
 </ScrollView>

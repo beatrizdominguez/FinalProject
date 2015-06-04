@@ -3,55 +3,55 @@
 
     <string name="app_name">Closet</string>
     <string name="splash_desc">Tu armario en el bolsillo</string>
-    <string name="title_section1">Mis prendas</string>
-    <string name="title_section2">Mis conjuntos</string>
-    <string name="title_section3">Calendario</string>
-    <string name="title_section4">Mis armarios</string>
-    <string name="title_section5">Conoce tu armario</string>
-    <string name="title_section6">Configuración</string>
+    <string name="title_section1">My clothes</string>
+    <string name="title_section2">My outfits</string>
+    <string name="title_section3">Calendar</string>
+    <string name="title_section4">My closets</string>
+    <string name="title_section5">Know your closet</string>
+    <string name="title_section6">Configuration</string>
     <string name="title_section7">About</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!-- Menu items -->
-    <string name="action_example">Example action</string>
+
     <string name="action_settings">Settings</string>
-    <string name="action_close">Cerrar</string>
-    <string name="action_cancel">Cancelar</string>
+    <string name="action_close">Close</string>
+    <string name="action_cancel">Cancel</string>
     <string name="action_save">Save</string>
     <!-- <string name="action_add">Añadir</string> -->
-    <string name="action_search">Buscar</string>
-    <string name="action_back">Volver</string>
-    <string name="action_exit">Salir</string>
+    <string name="action_search">Search</string>
+    <string name="action_back">Back</string>
+    <string name="action_exit">Exit</string>
     <!-- Menu contextual -->
-    <string name="action_today">Hoy</string>
-    <string name="action_remove">Eliminar</string>
-    <string name="action_modify">Modificar</string>
+    <string name="action_today">Today</string>
+    <string name="action_remove">Remove</string>
+    <string name="action_modify">Modify</string>
 
     <!-- Buttons -->
-    <string name="action_add">Añadir</string>
-    <string name="action_delete">Eliminar</string>
-    <string name="action_empty">Vaciar</string>
-    <string name="action_next">Siguiente</string>
+    <string name="action_add">Add</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_empty">Empty</string>
+    <string name="action_next">Next</string>
 
     <!-- Add item -->
-    <string name="txt_desc">Descripción</string>
-    <string name="txt_cat">Categoría</string>
-    <string name="txt_season">Temporada</string>
+    <string name="txt_desc">Description</string>
+    <string name="txt_cat">Category</string>
+    <string name="txt_season">Season</string>
     <string name="txt_color">Color</string>
-    <string name="txt_size">Talla</string>
-    <string name="txt_price">Precio</string>
-    <string name="txt_currency"> €</string>
-    <string name="txt_when_buy">Fecha compra</string>
-    <string name="txt_where_buy">Tienda</string>
-    <string name="txt_color_info">Puedes añadir nuevos colores a la base de datos en la ventana de configuración</string>
-    <string name="txt_invalid_description">No se ha introducido una descripción</string>
-    <string name="txt_invalid_colors">Añada colores a la prenda</string>
-    <string name="txt_invalid_size">Especifique una talla</string>
+    <string name="txt_size">Size</string>
+    <string name="txt_price">Price</string>
+    <string name="txt_currency"> $</string>
+    <string name="txt_when_buy">Purchase date</string>
+    <string name="txt_where_buy">Shop</string>
+    <string name="txt_color_info"> You can add new colors in the configuration screen</string>
+    <string name="txt_invalid_description">Introduce a description</string>
+    <string name="txt_invalid_colors">Add colors</string>
+    <string name="txt_invalid_size">specify size</string>
     <!-- Photo Dialog -->
-    <string name="txt_add_photo">Añadir imagen</string>
-    <string name="txt_take_photo">Hacer foto</string>
-    <string name="txt_galery_photo">Galería</string>
+    <string name="txt_add_photo">Add photo</string>
+    <string name="txt_take_photo">Take photo</string>
+    <string name="txt_galery_photo">Select image from gallery</string>
 
 
     <!-- Search -->
@@ -61,39 +61,44 @@
     <string name="txt_all">ALL</string>
 
     <!-- Configuration -->
-    <string name="txt_default">Armario predegterminado</string>
+    <string name="txt_theme">Choose app theme: </string>
+    <string name="txt_default">Default closet</string>
     <!-- <string name="action_save">Guardar</string> -->
-    <string name="txt_add_cat">Nueva categoría</string>
+    <string name="txt_add_cat">New category</string>
     <!-- <string name="action_add">Eliminar</string> -->
-    <string name="txt_rename_cat">Cambiar el nombre</string>
-    <string name="txt_newname_cat">Nuevo nombre</string>
+    <string name="txt_rename_cat">Rename</string>
+    <string name="txt_newname_cat">New name</string>
     <!-- <string name="action_save">Guardar</string> -->
-    <string name="txt_delete_cat">Eliminar categoría</string>
+    <string name="txt_delete_cat">Delete category</string>
     <!-- <string name="action_delete">Eliminar</string> -->
-    <string name="txt_add_color">Añadir color</string>
-    <string name="txt_color_name">Nombre del color:</string>
+    <string name="txt_add_color">Add color</string>
+    <string name="txt_color_name">Color name:</string>
     <string name="txt_pick_color">Pick a color:</string>
-    <string name="txt_msg_color">Se ha añadido el color a la base de datos</string>
+    <string name="txt_msg_color">Color added to the data base</string>
+    <string name="txt_item_data">Information to save</string>
 
     <!-- Outfits -->
-    <string name="txt_add_outfit">Nuevo conjunto</string>
-    <string name="txt_outfit_name">Nombre del conjunto:</string>
-    <string name="txt_outfit_added">La prenda se ha añadido al conjunto</string>
+    <string name="txt_add_outfit">New outfit</string>
+    <string name="txt_outfit_name">Outfit name:</string>
+    <string name="txt_outfit_added">Added to the outfit</string>
 
     <!-- Calendar -->
-    <string name="txt_add_note">Nueva nota</string>
-    <string name="txt_notes">Notas:</string>
-    <string name="txt_more">Más</string>
+    <string name="txt_add_note">New note</string>
+    <string name="txt_notes">Notes:</string>
+    <string name="txt_more">More</string>
 
+    <!-- About -->
+    <string name="txt_author">Author: Beatriz Domínguez</string>
+    <string name="txt_about">This application has been developed as a final project of </string>
 
     <!-- Menu items -->
     <string name="action_done">Done</string>
-    <string name="action_see">Ver</string>
+    <string name="action_see">See</string>
 
     <!-- Toast messages -->
-    <string name="msg_remove">La prenda ha sido eliminada</string>
-    <string name="msg_today">La prenda se ha añadido</string>
-    <string name="msg_duplicate_error">ERROR: información duplicada</string>
+    <string name="msg_remove">Item deleted</string>
+    <string name="msg_today">Item added</string>
+    <string name="msg_duplicate_error">Already introduced</string>
 
     <!-- Nombres de los items -->
     <string-array name="nav_drawer_items">
@@ -109,44 +114,47 @@
 
     <string name="desc_list_item_icon">Item Icon</string>
     //categories
-    <string name="catShirts">Camisetas</string>
-    <string name="catPants">Pantalones</string>
-    <string name="catUnderWear">Ropa interior</string>
-    <string name="catCoats">Abrigos</string>
-    <string name="catShoes">Zapatos</string>
-    <string name="catJumper">Jerseys</string>
+    <string name="catShirts">Shirts</string>
+    <string name="catPants">Pants</string>
+    <string name="catUnderWear">Under wear</string>
+    <string name="catCoats">Coats</string>
+    <string name="catShoes">Shoes</string>
+    <string name="catJumper">Jumpers</string>
     <string name="catPijamas">Pijamas</string>
-    <string name="catDress">Vestidos</string>
-    <string name="catAccesories">Complementos</string>
+    <string name="catDress">Dresses</string>
+    <string name="catAccesories">Accessories</string>
 
 
     <!-- Statistics -->
-    <string name="statistics_title">Estadísticas</string>
+    <string name="statistics_title">Statistics</string>
     <string name="statistics_total">Total: </string>
-    <string name="statistics_value">Precio</string>
-    <string name="statistics_category">Categorías</string>
-    <string name="statistics_seasons">Estaciones</string>
-    <string name="statistics_colors">Colores</string>
-    <string name="statistics_shops">Tiendas</string>
-    <string name="statistics_count">Numero de prendas</string>
-    <string name="statistics_total_count">Número de prendas en tu armario: </string>
-    <string name="statistics_see_graph">Ver la gráfica</string>
+    <string name="statistics_value">Price</string>
+    <string name="statistics_category">Categories</string>
+    <string name="statistics_seasons">Seasons</string>
+    <string name="statistics_colors">Colors</string>
+    <string name="statistics_shops">Shops</string>
+    <string name="statistics_count">Clothes number</string>
+    <string name="statistics_total_count">Clothes number in your closert: </string>
+    <string name="statistics_see_graph">See graph</string>
 
 
     <!-- other -->
 
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_add_item2">AddItem2</string>
-    <string name="hello_world">Hello world!</string>
+
+    <!-- other -->
     <string name="title_activity_search">Search</string>
-    <string name="title_activity_ac_category">AcCategory</string>
-    <string name="title_activity_splash">Splash</string>
-    <string name="title_activity_ac_item_detail">AcItemDetail</string>
-    <string name="title_activity_ac_item_photo">AcItemPhoto</string>
-    <string name="title_activity_horizontal_list_view_demo">HorizontalListViewDemo</string>
+    <string name="title_activity_add_item">New item</string>
+    <string name="title_activity_modify_item">Modify item</string>
+    <string name="title_activity_ac_category">Category</string>
+    <string name="title_activity_ac_item_detail">Item</string>
+    <string name="title_activity_ac_item_photo">Item</string>
+    <string name="title_activity_ac_selectt_item">Select</string>
+    <string name="title_pie_chart">Graph</string>
+
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
-    <string name="title_activity_ac_selectt_item">AcSelecttItem</string>
-    <string name="title_activity_grid3">Grid3</string>
+
 
 </resources>

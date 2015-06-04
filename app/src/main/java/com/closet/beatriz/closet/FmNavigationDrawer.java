@@ -251,7 +251,7 @@ public class FmNavigationDrawer extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_close) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
             return true;
         }
 

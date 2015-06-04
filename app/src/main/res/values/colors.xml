@@ -5,25 +5,35 @@
     <color name="main">#065F50</color>
     <color name="main_red">#9D122D</color>
     <color name="main_transparent">#50065F50</color>
+    <color name="main_text">#fff</color>
     <color name="background">#d9d4c1</color>
     <color name="background_light">#E4E2D5</color>
-    <color name="drawer_background">#fff</color>
-    <color name="transparent">#00000000</color>
     <color name="config_color">#FF3300</color>
 
 
     <!-- color codes -->
     <string-array name="colors">
-        <item name="BLACK">#000000</item>
+        <item name="BLUE">#802E9AFE</item>
+        <item name="AQUA_BLUE">#802ECCFA</item>
+        <item name="LAVANDER">#809F81F7</item>
+        <item name="RED">#80FF0000</item>
+        <item name="FUCHSIA">#80FF0099</item>
+        <item name="ORANGE">#80FF8000</item>
+        <item name="PINK">#80FF0080</item>
+        <item name="YELLOW">#80ffff00</item>
         <item name="WHITE">#FFFFFF</item>
-        <item name="RED">#FF0000</item>
-        <item name="BLUE">#0000FF</item>
-        <item name="ORANGE">#FF9900</item>
-        <item name="PINK">#FF0099</item>
-        <item name="YELLLOW">#FFFF00</item>
-        <item name="GREEN">#00CC00</item>
-        <item name="AQUA">#00FF99</item>
-        <item name="OTHER">#CC99CC</item>
+        <item name="PEACH">#80F7BE81</item>
+        <item name="GOLD">#80FFD700</item>
+        <item name="APPLE_GREEN">#80a8ff00</item>
+        <item name="LIGHT_GREEN">#8001DF3A</item>
+        <item name="TEA_BLUE">#80088A4B</item>
+        <item name="SILVER">#80CBCBCB</item>
+        <item name="DARK_BROWN">#8061380B</item>
+        <item name="NAVY_BLUE">#80000080</item>
+        <item name="PURPLE">#807401DF</item>
+        <item name="BLACK">#90000000</item>
+        <item name="GRAY">#806E6E6E</item>
+        <item name="OTHER">#80D8D8D8</item>
     </string-array>
 
 

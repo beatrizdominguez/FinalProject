@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="com.closet.beatriz.closet.AcItemPhoto">
+    tools:context="com.closet.beatriz.closet.AcItemPhoto"
+    android:background="@drawable/background">
 
     <ImageView
         android:id="@+id/imageView"
@@ -11,5 +12,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent" />
 </LinearLayout>

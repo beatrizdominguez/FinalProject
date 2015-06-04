@@ -74,7 +74,7 @@ public class AdapterItem extends BaseAdapter {
         ImageView photo = (ImageView) convertView.findViewById(R.id.imgItem);
         TextView desc = (TextView) convertView.findViewById(R.id.txtDesc);
         //TextView cat = (TextView) convertView.findViewById(R.id.txtCat);
-        TextView price = (TextView) convertView.findViewById(R.id.txtPrice);
+        //TextView price = (TextView) convertView.findViewById(R.id.txtPrice);
 
         MyItem i = (MyItem) getItem(position);
         //definir segun control y clase
@@ -90,7 +90,7 @@ public class AdapterItem extends BaseAdapter {
 
         desc.setText(i.getDescription());
         //cat.setText(i.getCategory());
-        price.setText(String.valueOf(i.getPrize()) + "€");
+        // price.setText(String.valueOf(i.getPrize()) + "€");
 
         convertView.setTag(i.getId());
 
@@ -104,6 +104,5 @@ public class AdapterItem extends BaseAdapter {
         Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         return bitmap;
     }
-
 
 }

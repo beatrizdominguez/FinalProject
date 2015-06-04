@@ -167,8 +167,7 @@ public class FmConfig extends Fragment {
         Spinner spnDfault = (Spinner) getActivity().findViewById(R.id.SpnDefault);
         String defaultCloset;
         defaultCloset = spnDfault.getSelectedItem().toString();
-        Toast.makeText(getActivity(), "SPN-> " + defaultCloset,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Default closet-> " + defaultCloset, Toast.LENGTH_SHORT).show();
     }
 
     private void add() {
@@ -176,8 +175,7 @@ public class FmConfig extends Fragment {
         EditText txtAddCat = (EditText) getActivity().findViewById(R.id.EditAddCat);
         String cat;
         cat = txtAddCat.getText().toString();
-        Toast.makeText(getActivity(), "add CAT-> " + cat,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "add CAT-> " + cat, Toast.LENGTH_SHORT).show();
     }
 
     private void rename() {
@@ -189,8 +187,7 @@ public class FmConfig extends Fragment {
         EditText txtAddCat = (EditText) getActivity().findViewById(R.id.EditRenameCat);
         String cat;
         cat = txtAddCat.getText().toString();
-        Toast.makeText(getActivity(), " CAT-> " + renameCat + " --- " + cat,
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Rename CAT-> " + renameCat + " --- " + cat, Toast.LENGTH_SHORT).show();
 
     }
 

@@ -45,7 +45,7 @@ public class AcItemDetail extends Activity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(AcItemDetail.this, "img grande", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(AcItemDetail.this, "img grande", Toast.LENGTH_SHORT).show();
 
                 Intent intentPhoto = new Intent(AcItemDetail.this, AcItemPhoto.class);
                 Bundle mBundle = new Bundle();
@@ -96,7 +96,7 @@ public class AcItemDetail extends Activity {
 
             case (R.id.action_back):
 
-                Toast.makeText(this, "close", Toast.LENGTH_LONG).show();
+                // Toast.makeText(this, "close", Toast.LENGTH_LONG).show();
                 this.finish();
                 break;
 
